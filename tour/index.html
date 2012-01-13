@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tour &mdash; Guzzle v2.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-scrollspy.js"></script>
+    <link rel="top" title="Guzzle v2.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Guzzle Documentation" href="../docs.html" />
+
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($span, minLevel) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
+
+    // Wipe out old list and patch in new one.
+    return $span.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+  </head>
+  <body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li>
+            <a href="../index.html">home</a>
+          </li>
+          <li>
+            <a href="../docs.html">docs</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">connect</a>
+          </li>
+        </ul>
+        <ul class="nav secondary-nav">
+          
+            
+<form class="pull-left" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid">
+   
+     <div class="guzzle-sidebar">
+  <div class="well">
+      <h4>Table of contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">Tour</a><ul>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="well">
+    <h4>Need support?</h4>
+    <p>Please post to our <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">google group</a> if you need support or have a technical question.</p>
+    <h4>Found an error?</h4>
+    <p>If you find an error in the documentation, please <a href="https://github.com/guzzle/guzzle-docs">file a ticket</a> or <a href="https://github.com/guzzle/guzzle-docs">submit a pull request</a>.</p>
+    <h4>Wanna help?</h4>
+    <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
+  </div>
+</div>
+     <div class="content">
+       
+  <div class="section" id="tour">
+<h1>Tour<a class="headerlink" href="#tour" title="Permalink to this headline">¶</a></h1>
+<p>Take a tour of Guzzle:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installing-guzzle">Installing Guzzle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#framework-integrations">Framework integrations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http.html">HTTP client for PHP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http.html#quick-overview-of-guzzle-s-http-features">Quick overview of Guzzle&#8217;s HTTP features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html#using-a-client-object">Using a Client object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html#sending-requests-and-using-responses">Sending requests and using responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html#plugins-for-common-http-request-behavior">Plugins for common HTTP request behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html#wrapping-it-all-up">Wrapping it all up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="using_services.html">Consuming web services using web service clients</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="using_services.html#command-based-web-service-clients">Command based web service clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_services.html#using-client-objects">Using Client objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building_services.html">Building web service clients</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="building_services.html#setting-up">Setting up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_services.html#create-a-client">Create a client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_services.html#create-commands">Create commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_services.html#iterating-over-pages-of-results">Iterating over pages of results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_services.html#unit-test-your-service">Unit test your service</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+       
+<div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
+  <a class="btn info" href="../docs.html" title="previous chapter">&laquo; Guzzle Documentation</a>
+  <a class="btn info" href="installation.html" title="next chapter">Installation &raquo;</a>
+</div>
+       <div id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'guzzle';
+    var disqus_identifier = 'Guzzle';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+     </div>
+   
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,277 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; Guzzle v2.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-scrollspy.js"></script>
+    <link rel="top" title="Guzzle v2.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Tour" href="index.html" />
+    <link rel="next" title="HTTP client for PHP" href="http.html" />
+    <link rel="prev" title="Tour" href="index.html" />
+
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($span, minLevel) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
+
+    // Wipe out old list and patch in new one.
+    return $span.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+  </head>
+  <body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li>
+            <a href="../index.html">home</a>
+          </li>
+          <li>
+            <a href="../docs.html">docs</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">connect</a>
+          </li>
+        </ul>
+        <ul class="nav secondary-nav">
+          
+            
+<form class="pull-left" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid">
+   
+     <div class="guzzle-sidebar">
+  <div class="well">
+      <h4>Table of contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installing-guzzle">Installing Guzzle</a><ul>
+<li><a class="reference internal" href="#adding-guzzle-to-a-project-using-phar">Adding Guzzle to a project using PHAR</a></li>
+<li><a class="reference internal" href="#adding-guzzle-to-a-project-using-composer">Adding Guzzle to a project using Composer</a></li>
+<li><a class="reference internal" href="#installing-guzzle-from-github">Installing Guzzle from GitHub</a><ul>
+<li><a class="reference internal" href="#using-your-own-autoloader">Using your own autoloader</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-the-unit-tests">Running the unit tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#framework-integrations">Framework integrations</a><ul>
+<li><a class="reference internal" href="#using-guzzle-with-symfony">Using Guzzle with Symfony</a></li>
+<li><a class="reference internal" href="#using-guzzle-with-silex">Using Guzzle with Silex</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="well">
+    <h4>Need support?</h4>
+    <p>Please post to our <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">google group</a> if you need support or have a technical question.</p>
+    <h4>Found an error?</h4>
+    <p>If you find an error in the documentation, please <a href="https://github.com/guzzle/guzzle-docs">file a ticket</a> or <a href="https://github.com/guzzle/guzzle-docs">submit a pull request</a>.</p>
+    <h4>Wanna help?</h4>
+    <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
+  </div>
+</div>
+     <div class="content">
+       
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Guzzle is a PHP 5.3+ HTTP client library and framework for building RESTful web service clients.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>PHP 5.3.2+ compiled with the cURL extension</li>
+<li>A recent version of cURL 7.16.2+ compiled with OpenSSL and zlib</li>
+<li><a class="reference external" href="http://www.phpunit.de/manual/3.6/en/installation.html">PHPUnit</a> is required to run the unit tests</li>
+<li><a class="reference external" href="http://nodejs.org">node.js</a> is required to run the unit tests</li>
+<li><a class="reference external" href="http://www.phing.info/trac/">Phing</a> is required to run the build scripts</li>
+</ol>
+</div>
+<div class="section" id="installing-guzzle">
+<h2>Installing Guzzle<a class="headerlink" href="#installing-guzzle" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-guzzle-to-a-project-using-phar">
+<h3>Adding Guzzle to a project using PHAR<a class="headerlink" href="#adding-guzzle-to-a-project-using-phar" title="Permalink to this headline">¶</a></h3>
+<p>Guzzle is distributed using a PHAR file that compresses all of the required classes into a single file.  In order to simplify installing Guzzle, <a class="reference external" href="https://github.com/seldaek/monolog">Monolog</a>, <a class="reference external" href="https://github.com/doctrine/common">Doctrine Common</a> Cache layer, <a class="reference external" href="https://github.com/symfony/Validator">Symfony2&#8217;s Validator</a>, and <a class="reference external" href="https://github.com/symfony/EventDispatcher">Symfony2&#8217;s EventDispatcher</a> are included.  Including the Guzzle phar file in your application will automatically configure autoloading so everything should just work.  You can download the Guzzle phar file from <a class="reference external" href="http://www.guzzle.php.org/guzzle.phar">http://www.guzzle.php.org/guzzle.phar</a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="err">$</span> <span class="nx">wget</span> <span class="o">--</span><span class="nx">quiet</span> <span class="nx">http</span><span class="o">://</span><span class="nx">www</span><span class="o">.</span><span class="nx">guzzlephp</span><span class="o">.</span><span class="nx">org</span><span class="o">/</span><span class="nx">guzzle</span><span class="o">.</span><span class="nx">phar</span>
+</pre></div>
+</div>
+<p>And include it in your scripts:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">require</span> <span class="s1">&#39;/path/to/guzzle.phar&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-guzzle-to-a-project-using-composer">
+<h3>Adding Guzzle to a project using Composer<a class="headerlink" href="#adding-guzzle-to-a-project-using-composer" title="Permalink to this headline">¶</a></h3>
+<p>Create composer.json file in the project root:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;require&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;guzzle/guzzle&quot;</span><span class="o">:</span> <span class="s2">&quot;&gt;=2.0.0&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then download composer.phar and run the install command:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="err">$</span> <span class="nx">wget</span> <span class="o">--</span><span class="nx">quiet</span> <span class="nx">http</span><span class="o">://</span><span class="nx">getcomposer</span><span class="o">.</span><span class="nx">org</span><span class="o">/</span><span class="nx">composer</span><span class="o">.</span><span class="nx">phar</span>
+<span class="err">$</span> <span class="nx">php</span> <span class="nx">composer</span><span class="o">.</span><span class="nx">phar</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">install</span><span class="o">-</span><span class="nx">suggests</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-guzzle-from-github">
+<h3>Installing Guzzle from GitHub<a class="headerlink" href="#installing-guzzle-from-github" title="Permalink to this headline">¶</a></h3>
+<p>Guzzle can be installed from source by cloning the Guzzle github repository and installing the dependencies using composer:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="err">$</span> <span class="nx">git</span> <span class="k">clone</span> <span class="nx">https</span><span class="o">://</span><span class="nx">github</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">guzzle</span><span class="o">/</span><span class="nx">guzzle</span><span class="o">.</span><span class="nx">git</span>
+<span class="err">$</span> <span class="nx">wget</span> <span class="o">--</span><span class="nx">quiet</span> <span class="nx">http</span><span class="o">://</span><span class="nx">getcomposer</span><span class="o">.</span><span class="nx">org</span><span class="o">/</span><span class="nx">composer</span><span class="o">.</span><span class="nx">phar</span>
+<span class="err">$</span> <span class="nx">php</span> <span class="nx">composer</span><span class="o">.</span><span class="nx">phar</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">install</span><span class="o">-</span><span class="nx">suggests</span>
+</pre></div>
+</div>
+<div class="section" id="using-your-own-autoloader">
+<h4>Using your own autoloader<a class="headerlink" href="#using-your-own-autoloader" title="Permalink to this headline">¶</a></h4>
+<p>You will need to add Guzzle and Guzzle&#8217;s dependencies to your application&#8217;s autoloader.  If your application does not already use an autoloader, you can use the <a class="reference external" href="https://github.com/symfony/ClassLoader">Symfony2 ClassLoader</a> component:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">require_once</span> <span class="s1">&#39;/path/to/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php&#39;</span><span class="p">;</span>
+<span class="nv">$classLoader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Symfony\Component\ClassLoader\UniversalClassLoader</span><span class="p">();</span>
+<span class="nv">$classLoader</span><span class="o">-&gt;</span><span class="na">registerNamespaces</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;Guzzle&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/guzzle/src&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Symfony&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/symfony/src&#39;</span>
+<span class="p">));</span>
+<span class="nv">$classLoader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="running-the-unit-tests">
+<h3>Running the unit tests<a class="headerlink" href="#running-the-unit-tests" title="Permalink to this headline">¶</a></h3>
+<p>Guzzle is unit tested using PHPUnit.  You will need to create your own phpunit.xml file in order to run the unit tests.  You can customize this file to suit your testing needs:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="err">$</span> <span class="nx">cp</span> <span class="nx">phpunit</span><span class="o">.</span><span class="nx">xml</span><span class="o">.</span><span class="nx">dist</span> <span class="nx">phpunit</span><span class="o">.</span><span class="nx">xml</span>
+</pre></div>
+</div>
+<p>You will need to install <a class="reference external" href="http://nodejs.org/">node.js</a> v0.5.0 or newer in order to test the cURL implementation.</p>
+</div>
+</div>
+<div class="section" id="framework-integrations">
+<h2>Framework integrations<a class="headerlink" href="#framework-integrations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-guzzle-with-symfony">
+<h3>Using Guzzle with Symfony<a class="headerlink" href="#using-guzzle-with-symfony" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://github.com/ddeboer/GuzzleBundle">Guzzle Symfony2 bundle</a> is available on github thanks to <a class="reference external" href="https://github.com/ddeboer">ddeboer</a></p>
+</div>
+<div class="section" id="using-guzzle-with-silex">
+<h3>Using Guzzle with Silex<a class="headerlink" href="#using-guzzle-with-silex" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://github.com/guzzle/guzzle-silex-extension">Guzzle Silex service provider</a> is available on github.</p>
+</div>
+</div>
+</div>
+
+
+       
+<div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
+  <a class="btn info" href="index.html" title="previous chapter">&laquo; Tour</a>
+  <a class="btn info" href="http.html" title="next chapter">HTTP client for PHP &raquo;</a>
+</div>
+       <div id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'guzzle';
+    var disqus_identifier = 'Guzzle';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+     </div>
+   
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

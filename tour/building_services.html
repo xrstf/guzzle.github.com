@@ -1,0 +1,508 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Building web service clients &mdash; Guzzle v2.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-scrollspy.js"></script>
+    <link rel="top" title="Guzzle v2.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Tour" href="index.html" />
+    <link rel="next" title="Guides" href="../guide/index.html" />
+    <link rel="prev" title="Consuming web services using web service clients" href="using_services.html" />
+
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($span, minLevel) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
+
+    // Wipe out old list and patch in new one.
+    return $span.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+  </head>
+  <body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li>
+            <a href="../index.html">home</a>
+          </li>
+          <li>
+            <a href="../docs.html">docs</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">connect</a>
+          </li>
+        </ul>
+        <ul class="nav secondary-nav">
+          
+            
+<form class="pull-left" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid">
+   
+     <div class="guzzle-sidebar">
+  <div class="well">
+      <h4>Table of contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">Building web service clients</a><ul>
+<li><a class="reference internal" href="#setting-up">Setting up</a><ul>
+<li><a class="reference internal" href="#command">Command/</a></li>
+<li><a class="reference internal" href="#tests">Tests/</a></li>
+<li><a class="reference internal" href="#client-php">Client.php</a></li>
+<li><a class="reference internal" href="#phpunit-xml-dist">phpunit.xml.dist</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-a-client">Create a client</a></li>
+<li><a class="reference internal" href="#create-commands">Create commands</a><ul>
+<li><a class="reference internal" href="#commands-help-to-hide-complexity">Commands help to hide complexity</a></li>
+<li><a class="reference internal" href="#docblock-annotations-for-commands">Docblock annotations for commands</a></li>
+<li><a class="reference internal" href="#commands-can-turn-http-responses-into-something-more-valuable">Commands can turn HTTP responses into something more valuable</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iterating-over-pages-of-results">Iterating over pages of results</a></li>
+<li><a class="reference internal" href="#unit-test-your-service">Unit test your service</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="well">
+    <h4>Need support?</h4>
+    <p>Please post to our <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">google group</a> if you need support or have a technical question.</p>
+    <h4>Found an error?</h4>
+    <p>If you find an error in the documentation, please <a href="https://github.com/guzzle/guzzle-docs">file a ticket</a> or <a href="https://github.com/guzzle/guzzle-docs">submit a pull request</a>.</p>
+    <h4>Wanna help?</h4>
+    <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
+  </div>
+</div>
+     <div class="content">
+       
+  <div class="section" id="building-web-service-clients">
+<h1>Building web service clients<a class="headerlink" href="#building-web-service-clients" title="Permalink to this headline">¶</a></h1>
+<p>Building web service clients using commands is better than creating requests manually.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Better choice for maintainability, features, and ease of use.</li>
+<li>Best practices are inherently implemented for the end-developer.</li>
+<li>Changes can be made to the underlying request and response processing without breaking the interface.</li>
+<li>Can create <a class="reference internal" href="../guide/service/creating_dynamic_commands.html"><em>dynamic commands</em></a> based on a service description.</li>
+</ol>
+</div></blockquote>
+<p>Simple web service clients make the assumption that the end-developer has an intricate understanding of how to send requests to a web service and how that web service will respond.  If you want to build a reusable RESTful web service client for an application you plan on maintaining, then creating a simple client might not cut it.  Simple clients might work for extremely simple web services (like <a class="reference external" href="http://developer.yahoo.com/weather/">Yahoo weather</a> for example) or quickly prototyping, but when you&#8217;re dealing with a huge web service with a ton of options (e.g. Amazon S3), then you&#8217;re going to want to build a robust web service client that executes commands.</p>
+<p>A command-based web service client that abstracts away the HTTP request and response makes a client more future-proof; if the API you are interacting with changes (for example, adds a required field), then you would only have to update the command in one place rather than every single file in your project that interacts with the web service.  Guzzle uses the <a class="reference external" href="http://en.wikipedia.org/wiki/Command_pattern">command pattern</a> for building requests and processing responses.  Abstracting the underlying implementation helps new developers to quickly send requests to an API using any of the best-practices coded into the command itself, rather than assuming that every developer on your team has an intricate understanding of the web service.</p>
+<p>Commands can also be created for developers dynamically using a <a class="reference internal" href="../guide/service/creating_dynamic_commands.html"><em>service description</em></a>.</p>
+<p>The following document will describe how to build a command-based web service client for Guzzle.</p>
+<div class="section" id="setting-up">
+<h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
+<p>The first thing you will need to do is create the directory structure of your project.  You can quickly create the required directory structure of your project by cloning the <a class="reference external" href="https://github.com/guzzle/guzzle-client-template">guzzle client template</a> and running the phing build script.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/guzzle/build
+<span class="nv">$ </span>phing template
+</pre></div>
+</div>
+<p>This phing build target will ask you a series of questions and generate a template for your web service client at a requested path.  The directory structure should mirror the following:</p>
+<div class="highlight-none"><div class="highlight"><pre>Command\
+    &lt;Name...&gt;Command.php
+Tests\
+    mock\
+        &lt;Name...&gt;Response
+    Command\
+        &lt;Name...&gt;CommandTest.php
+    &lt;Service&gt;ClientTest.php
+    bootstrap.php
+&lt;Service&gt;Client.php
+phpunit.xml.dist
+composer.json
+</pre></div>
+</div>
+<p>After running the phing build target to generate the project&#8217;s skeleton, you will need to modify the Client.php file by updating the factory method, adding a constructor if needed, and adding any class properties.</p>
+<div class="section" id="command">
+<h3>Command/<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h3>
+<p>Place all of the commands for your web service in this folder.</p>
+</div>
+<div class="section" id="tests">
+<h3>Tests/<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
+<p>Place your <tt class="docutils literal"><span class="pre">bootstrap.php</span></tt> file in this folder.  The boostrap.php file is responsible for setting up PHPUnit tests.</p>
+</div>
+<div class="section" id="client-php">
+<h3>Client.php<a class="headerlink" href="#client-php" title="Permalink to this headline">¶</a></h3>
+<p>Rename this class to the CamelCase name of the web service you are implementing followed by <tt class="docutils literal"><span class="pre">Client</span></tt>.  Use strict CamelCasing (e.g. Xml is correct, XML is not).  A good client name would be something like <tt class="docutils literal"><span class="pre">FooBarClient.php</span></tt>.</p>
+</div>
+<div class="section" id="phpunit-xml-dist">
+<h3>phpunit.xml.dist<a class="headerlink" href="#phpunit-xml-dist" title="Permalink to this headline">¶</a></h3>
+<p>Different developers will configure their development environment differently.  A phpunit.xml file is required to run PHPUnit tests against your service.  <tt class="docutils literal"><span class="pre">phpunit.xml.dist</span></tt> provides a template for developers to copy and modify.</p>
+</div>
+</div>
+<div class="section" id="create-a-client">
+<h2>Create a client<a class="headerlink" href="#create-a-client" title="Permalink to this headline">¶</a></h2>
+<p>Now that the directory structure is in place, you can start creating your web service client.  Rename Client.php to the CamelCase name of the web service you are interacting with.  Next you will need to create your client&#8217;s constructor.  Your client&#8217;s constructor can require any number of arguments that your client needs.  In order for a ServiceBuilder to create your client using a parameterized array, you&#8217;ll need to implement a <tt class="docutils literal"><span class="pre">factory()</span></tt> method that maps an array of parameters into an instantiated client object.  Any class composition should be handled in your client&#8217;s factory method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your client will not work with a service builder if you do not create a factory method.</p>
+</div>
+<p>Let&#8217;s start creating a custom web service client.  First we will extend the <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> class.  Next we will create a constructor that accepts several web service specific arguments.  After creating your constructor, you must create a factory method that accepts an array of configuration data.  The factory method accepts parameters, adds default parameters, validates that required parameters are present, creates a new client, attaches any observers needed for the client, and returns the client object:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Guzzle\MyService</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Guzzle\Service\Inspector</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Client</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * My example web service client</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">MyServiceClient</span> <span class="k">extends</span> <span class="nx">Client</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var string Username</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$username</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string Password</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$password</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Factory method to create a new MyServiceClient</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param array|Collection $config Configuration data. Array keys:</span>
+<span class="sd">     *    base_url - Base URL of web service</span>
+<span class="sd">     *    scheme - URI scheme: http or https</span>
+<span class="sd">     *  * username - API username</span>
+<span class="sd">     *  * password - API password</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return MyServiceClient</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">factory</span><span class="p">(</span><span class="nv">$config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$default</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;base_url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;{{scheme}}://{{username}}.test.com/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scheme&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https&#39;</span>
+        <span class="p">);</span>
+        <span class="nv">$required</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;base_url&#39;</span><span class="p">);</span>
+        <span class="nv">$config</span> <span class="o">=</span> <span class="nx">Inspector</span><span class="o">::</span><span class="na">prepareConfig</span><span class="p">(</span><span class="nv">$config</span><span class="p">,</span> <span class="nv">$default</span><span class="p">,</span> <span class="nv">$required</span><span class="p">);</span>
+
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span>
+            <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;base_url&#39;</span><span class="p">),</span>
+            <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">),</span>
+            <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+        <span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setConfig</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Client constructor</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $baseUrl Base URL of the web service</span>
+<span class="sd">     * @param string $username API username</span>
+<span class="sd">     * @param string $password API password</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$baseUrl</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$baseUrl</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">username</span> <span class="o">=</span> <span class="nv">$username</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">password</span> <span class="o">=</span> <span class="nv">$password</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">Inspector::prepareConfig</span></tt> method is responsible for adding default parameters to a configuration object and ensuring that required parameters are in the configuration.   The factory method in the above example will be very similar to the code you will need in your client&#8217;s factory method.  Any object composition required to build the client should be added in the factory method (for example, attaching event observers to the client based on configuration settings).</p>
+<p>Miscellaneous helper methods for your web service can also be put in the client.  For example, the Amazon S3 client has methods to create a signed URL.</p>
+</div>
+<div class="section" id="create-commands">
+<h2>Create commands<a class="headerlink" href="#create-commands" title="Permalink to this headline">¶</a></h2>
+<p>Commands can be created in one of two ways: create a concrete command class that extends <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt> or <a class="reference internal" href="../guide/service/creating_dynamic_commands.html"><em>create a dynamic command based on a service description</em></a>.  We will describe how to create concrete commands below.</p>
+<div class="section" id="commands-help-to-hide-complexity">
+<h3>Commands help to hide complexity<a class="headerlink" href="#commands-help-to-hide-complexity" title="Permalink to this headline">¶</a></h3>
+<p>Commands are the method in which you abstract away the underlying format of the requests that need to be sent to take action on a web service.  Commands in Guzzle are meant to be built by executing a series of setter methods on a command object.  Commands are only validated when they are being executed.  A <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object is responsible for executing commands.  Commands created for your web service must implement <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandIterface</span></tt>, but it&#8217;s easier to extend the <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt> class and implement the <tt class="docutils literal"><span class="pre">build()</span></tt> method.  The <tt class="docutils literal"><span class="pre">build()</span></tt> method is responsible for using the arguments of the command to build one or more HTTP requests.</p>
+</div>
+<div class="section" id="docblock-annotations-for-commands">
+<h3>Docblock annotations for commands<a class="headerlink" href="#docblock-annotations-for-commands" title="Permalink to this headline">¶</a></h3>
+<p>The required parameters of a command are validated based on docblock annotations on the command class.  Docblock annotations are also responsible for adding default parameters, setting static parameters on a command that cannot be changed, and enforcing type safety on different command parameters:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Guzzle\MyService\Command</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\AbstractCommand</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Sends a simple API request to an example web service</span>
+<span class="sd"> *</span>
+<span class="sd"> * @guzzle key doc=&quot;Destination object key&quot; required=&quot;true&quot;</span>
+<span class="sd"> * @guzzle headers doc=&quot;Headers to set on the request&quot; type=&quot;class:Guzzle\Common\Collection&quot;</span>
+<span class="sd"> * @guzzle other_value static=&quot;static value&quot;</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Simple</span> <span class="k">extends</span> <span class="nx">AbstractCommand</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example, we are creating a simple command to send a web service request.  Docblock annotations for commands start with the <tt class="docutils literal"><span class="pre">&#64;guzzle</span></tt> token.  The next token in is the parameter name (you must use snake_case parameter names).  After the &#64;guzzle token and parameter name are a series of optional attributes.  These attributes are as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="46%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Attribute</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal"><span class="pre">type</span></tt></td>
+<td>Type of variable (array, boolean, class, date, enum, float,
+integer, regex, string, timestamp).  Some type commands accept
+arguments by separating the type and argument with a colon
+(e.g. enum:lorem,ipsum).</td>
+<td><p class="first"><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">type=&quot;class:Guzzle\Common\Collection&quot;</span></tt></p>
+<p class="last"><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">type=&quot;array&quot;</span></tt></p>
+</td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">required</span></tt></td>
+<td>Whether or not the argument is required.  If a required parameter
+is not set and you try to execute a command, an exception will be
+thrown.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">required=&quot;true&quot;</span></tt> or
+<tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">required=&quot;false&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">default</span></tt></td>
+<td>Default value of the parameter that will be used if a value is
+not provided before executing the command.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">default=&quot;default-value!&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">doc</span></tt></td>
+<td>Documentation for the parameter.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">doc=&quot;This</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">documentation&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">min_length</span></tt></td>
+<td>Minimum value length.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">min_length=&quot;5&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">max_length</span></tt></td>
+<td>Maximum value length.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">max_length=&quot;15&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">static</span></tt></td>
+<td>A value that cannot be changed.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">static=&quot;this</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">changed&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">prepend</span></tt></td>
+<td>Text to prepend to the value if the value is set.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">prepend=&quot;this_is_added_before.&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">append</span></tt></td>
+<td>Text to append to the value if the value is set.</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">append=&quot;.this_is_added_after&quot;</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">filter</span></tt></td>
+<td>CSV list of functions or static functions that modifies a string</td>
+<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">filter=&quot;strtoupper,strrev&quot;</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>When a command is being prepared for execution, the docblock annotations will be validated against the arguments present on the command.  Any default values will be added to the arguments, and if any required arguments are missing, an exception will be thrown.</p>
+<p>As a general rule, most of the options for a command should essentially translate to an array key that the <tt class="docutils literal"><span class="pre">build()</span></tt> method takes into account when creating requests.  These keys should be specified in the docblock of the command&#8217;s class header, and an end-developer should be able to set these values using setter methods with helpful docblocks or by passing the values to the command as an array.  This might not always be possible if you are building a complex command, but not allowing options to be set by array key in this manner will prevent end-developers from being able to use some shortcuts when calling your command (e.g. <tt class="docutils literal"><span class="pre">$client-&gt;getCommand('test',</span> <span class="pre">array('key'</span> <span class="pre">=&gt;</span> <span class="pre">'value'));</span></tt>).</p>
+</div>
+<div class="section" id="commands-can-turn-http-responses-into-something-more-valuable">
+<h3>Commands can turn HTTP responses into something more valuable<a class="headerlink" href="#commands-can-turn-http-responses-into-something-more-valuable" title="Permalink to this headline">¶</a></h3>
+<p>Commands can turn HTTP responses into something more valuable for your application.  After a command is executed, it calls the <tt class="docutils literal"><span class="pre">process()</span></tt> method of the command.  The AbstractCommand class will automatically create a SimpleXMLElement if the response received by the command has a Content-Type of <tt class="docutils literal"><span class="pre">application/xml</span></tt>.  If you want to provide more valuable results from your commands, you can override the <tt class="docutils literal"><span class="pre">process()</span></tt> method and return any value you want.  To help developers who use code completion, be sure to update the <tt class="docutils literal"><span class="pre">&#64;return</span></tt> annotation of your <tt class="docutils literal"><span class="pre">getResult()</span></tt> method if you return a custom result (this will require you to override the <tt class="docutils literal"><span class="pre">getResult()</span></tt> method too):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Guzzle\MyService\Command</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\AbstractCommand</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Sends a simple API request to an example web service</span>
+<span class="sd"> *</span>
+<span class="sd"> * @guzzle key doc=&quot;Destination object key&quot; required=&quot;true&quot;</span>
+<span class="sd"> * @guzzle headers doc=&quot;Headers to set on the request&quot; type=&quot;class:Guzzle\Common\Collection&quot;</span>
+<span class="sd"> * @guzzle other_value static=&quot;static value&quot;</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Simple</span> <span class="k">extends</span> <span class="nx">AbstractCommand</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Set the destination key</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $key Destination key that will be added to the path</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return Simple</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setKey</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="nv">$key</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">build</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/{{key}}&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s1">&#39;X-Header&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;other_value&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">process</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AwesomeObject</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * {@inheritdoc}</span>
+<span class="sd">     * @return AwesomeObject</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getResult</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">getResult</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There&#8217;s our implemented command.  The <tt class="docutils literal"><span class="pre">build()</span></tt> method is responsible for creating an HTTP request to send to the web service.  This command will send a request to a web service that uses the <tt class="docutils literal"><span class="pre">key</span></tt> parameter as part of the path of the request, and adds an <tt class="docutils literal"><span class="pre">X-Header</span></tt> header value to the request using the <tt class="docutils literal"><span class="pre">other_value</span></tt> parameter of the command.  Parameters passed to a command can be referenced by calling <tt class="docutils literal"><span class="pre">$this-&gt;get($parameterName)</span></tt> or <tt class="docutils literal"><span class="pre">$this[$parameterName]</span></tt>.  This command will return an <tt class="docutils literal"><span class="pre">AwesomeObject</span></tt> when the <tt class="docutils literal"><span class="pre">getResult()</span></tt> method is called on the command.  We are overriding the <tt class="docutils literal"><span class="pre">getResult()</span></tt> method in our command so that developers who use code completion will know what type of object is returned from the command.  You will notice that there are setter methods on the client for setting the keys referenced in the docblock.  These are strongly encouraged to help developers to quickly use your command with code completion.  You can also do fancy stuff to the values provided to setter methods, like creating objects or extra validation.  There&#8217;s no need to create a setter method for the <tt class="docutils literal"><span class="pre">headers</span></tt> key, as that is implicitly managed by the <tt class="docutils literal"><span class="pre">AbstractCommand</span></tt> object.</p>
+<p>Here&#8217;s how you would execute this command using the client we created:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// Create your client using the factory method (use a service builder in your production app)</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="nx">MyServiceClient</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;shh!secret&#39;</span>
+<span class="p">));</span>
+
+<span class="nv">$command</span> <span class="o">=</span> <span class="nx">client</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;simple&#39;</span><span class="p">);</span>
+<span class="nv">$command</span><span class="o">-&gt;</span><span class="na">setKey</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+
+<span class="c1">// Result will be an instance of Awesomeobject</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+
+<span class="c1">// You can also get the result of the command by calling getResult</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="iterating-over-pages-of-results">
+<h2>Iterating over pages of results<a class="headerlink" href="#iterating-over-pages-of-results" title="Permalink to this headline">¶</a></h2>
+<p>Some web services return paginated results.  For example, a web service might return the total number of results and a subset of the results in an API response.  Guzzle provides a couple of helpful classes that make it easy to work with web services that implement this type of result pagination.</p>
+<p>The <tt class="docutils literal"><span class="pre">Guzzle\Service\ResourceIterator</span></tt> class should be used when dealing with results that can be iterated through by using some type of pagination controls like incrementing a page number or retrieving a list of resources using a next token returned from a web service.  You will need to extend the ResourceIterator class and implement the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method that is responsible for sending a subsequent request when the results of the current page of resources is exhausted.  The <tt class="docutils literal"><span class="pre">sendRequest</span></tt> method is responsible for sending a request to fetch the next page of results and configuring the internal state of the iterator to begin iterating over the newly fetched results.  You will need to create a concrete command that instantiates your extended ResourceIterator in the command&#8217;s <tt class="docutils literal"><span class="pre">process</span></tt> method.  Returning a ResourceIterator from a command object will help developers easily interact with a paginated result set&#8211; all a developer needs to do is <tt class="docutils literal"><span class="pre">foreach</span></tt> over the result object, and every single resource from the API will be returned.</p>
+<p>You might want to retrieve more than one page of results but not necessarily every page of results from a ResourceIterator.  In this case, you should allow end-developers to set a limit parameter on your command.  A limit parameter can be added to a ResourceIterator so that the iterator will not retrieve more resources than the limit amount.  For example, if you are retrieving 10 resources per page and your limit is set to 15, the resource iterator will retrieve a page of 10 resources followed by a page of 5 resources so that it will stay under the limit.  It is not guaranteed that the limit will limit the results to exactly the limit amount as this is dependent on the web service honoring the limit.</p>
+<p>See <tt class="docutils literal"><span class="pre">Guzzle\Aws\S3\Model\BucketIterator</span></tt> and <tt class="docutils literal"><span class="pre">Guzzle\Aws\SimpleDb\Model\SelectIterator</span></tt> for examples of building resource iterators.</p>
+</div>
+<div class="section" id="unit-test-your-service">
+<h2>Unit test your service<a class="headerlink" href="#unit-test-your-service" title="Permalink to this headline">¶</a></h2>
+<p>Unit testing a Guzzle web service client is not very difficult thanks to some of the freebies you get from the <tt class="docutils literal"><span class="pre">Guzzle\Tests</span></tt> namespace.  You can set mock responses on your requests or send requests to the test node.js server that comes with Guzzle.</p>
+<p>You can learn more about unit testing guzzle web service clients by reading the <a class="reference internal" href="../guide/service/testing_clients.html"><em>Unit testing web service clients</em></a> guide.</p>
+</div>
+</div>
+
+
+       
+<div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
+  <a class="btn info" href="using_services.html" title="previous chapter">&laquo; Consuming web services using web service clients</a>
+  <a class="btn info" href="../guide/index.html" title="next chapter">Guides &raquo;</a>
+</div>
+       <div id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'guzzle';
+    var disqus_identifier = 'Guzzle';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+     </div>
+   
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
