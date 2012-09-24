@@ -1,0 +1,114 @@
+#!/bin/bash
+# Pushes updated docs, phars, PEAR packages, and API docs to guzzlephp.org
+#
+# Installing environment:
+# 1. Install Pirum:
+#    pear channel-discover pear.pirum-project.org
+#    pear install pirum/Pirum
+# 2. Install APIGen
+#    pear channel-discover pear.apigen.org
+#    pear channel-discover pear.nette.org
+#    pear channel-discover pear.texy.info
+#    pear channel-discover pear.kukulich.cz
+#    pear channel-discover pear.andrewsville.cz
+#    pear install nette/Nette-beta
+#    pear install apigen/ApiGen
+# 3. Install Phing
+#    pear channel-discover pear.phing.info
+#    pear install phing/phing
+# 4. Install Sphinx
+#    easy_install -U Sphinx
+# 5. Discover Guzzle channel
+#    pear channel-discover guzzlephp.org/pear
+
+# Install doc related stuff if needed
+if [ "`which sphinx-build`" = '' ]; then
+    cwd="`pwd`"
+    cd /tmp
+    sudo easy_install pip
+    sudo pip install sphinx
+    sudo pip install pygments
+    cd $cwd
+fi
+
+push=$1
+
+# Install and update Guzzle
+if [ ! -d "./src" ]; then
+    echo "Cloning Guzzle"
+    git clone git@github.com:guzzle/guzzle src || exit 1
+else
+    echo "Updating Guzzle"
+    cd src && git reset --hard && git pull && cd .. || exit 1
+fi
+
+cd src
+
+mkdir -p build/artifacts/logs
+
+phing test-init
+
+# Get the latest tag (minus the leading 'v')
+latest=`git describe --abbrev=0 --tags | cut -d v -f 2`
+cd ..
+
+# Build phar files in the background
+echo "Building guzzle.phar"
+phing -f src/build.xml
+echo "Building guzzle-min.phar"
+phing -f src/build.xml -Dmin=true
+
+# Build PEAR package
+echo "Building PEAR package"
+cd src
+phing build-pear
+cp build/artifacts/pear/Guzzle-$latest.tgz ../pear/
+echo "Packaging for Pirum"
+cd ../pear
+pirum add . Guzzle-$latest.tgz
+rm guzzle-$latest.tgz
+cd ..
+
+# Build API docs
+echo "Building API documentation"
+apigen --quiet yes --source ./src/src --destination api --title Guzzle --google-analytics UA-22752917-1 --download no --source-code no &
+
+if [ ! -d _docs ]; then
+  echo 'Cloning docs from git@github.com:guzzle/guzzle-docs.git'
+  git clone git@github.com:guzzle/guzzle-docs.git _docs || exit 1
+else
+  echo 'Updating docs'
+  cd _docs && git reset --hard && git pull origin master || exit 1
+  cd ..
+fi
+
+# Build documentation
+cd _docs
+sed -i '' 's,_build,../,g' Makefile
+sed -i '' 's,$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html,$(SPHINXBUILD) -a -b html $(ALLSPHINXOPTS) $(BUILDDIR),g' Makefile
+echo "Building HTML documentation"
+make html GA=1 &
+
+echo "Waiting on background processes..."
+
+wait || exit 1
+
+cd ..
+
+# Only overwrite the phar if it exists
+if [ -f "src/build/artifacts/guzzle.phar" ]; then
+    echo "guzzle.phar built successfully. Copying to repo"
+    cp src/build/artifacts/guzzle.phar ./
+fi
+
+# Only overwrite the phar if it exists
+if [ -f "src/build/artifacts/guzzle-min.phar" ]; then
+    echo "guzzle-min.phar built successfully. Copying to repo"
+    cp src/build/artifacts/guzzle-min.phar ./
+fi
+
+# Push to github to publish the site
+if [ "$push" != "" ]; then
+  echo "Pushing build to github"
+  git add -A && git commit -m 'Updating' && git push origin master
+fi

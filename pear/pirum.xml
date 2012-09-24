@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<server>
+  <name>guzzlephp.org/pear</name>
+  <summary>Guzzle PEAR channel</summary>
+  <alias>guzzle</alias>
+  <url>http://guzzlephp.org/pear</url>
+</server>

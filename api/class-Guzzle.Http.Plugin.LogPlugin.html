@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.6.1" />
+
+	<title>Class Guzzle\Http\Plugin\LogPlugin | Guzzle</title>
+
+	<script type="text/javascript" src="resources/combined.js?144019575"></script>
+	<script type="text/javascript" src="elementlist.js?2895688926"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', "UA-22752917-1"]);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Plugin.html">Plugin</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.Plugin.AsyncPlugin.html">AsyncPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.ExponentialBackoffLogger.html">ExponentialBackoffLogger</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html">ExponentialBackoffPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.HistoryPlugin.html">HistoryPlugin</a></li>
+				<li class="active"><a href="class-Guzzle.Http.Plugin.LogPlugin.html">LogPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html">Md5ValidatorPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.MockPlugin.html">MockPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.OauthPlugin.html">OauthPlugin</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Http.Plugin.html" title="Summary of Guzzle\Http\Plugin"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class LogPlugin</h1>
+
+
+	<div class="description">
+	
+<p>Plugin class that will add request and response logging to an HTTP
+request.</p>
+
+<p>The log plugin can log contextual information about an HTTP transaction,
+request and response headers, request and response bodies, and cURL debug
+information. These different logging levels can be customized using bitwise
+operators on LOG_CONTEXT (transaction information), LOG_HEADERS (request and
+response headers), LOG_BODY (request and response entity bodies), and LOG_DEBUG
+(cURL info).</p>
+
+<p>You will only receive valuable logging information from requests sent using
+cURL. Requests with mock responses will not provide valuable information with
+the log plugin.</p>
+
+<p>Be careful when logging entity bodies; before they can be logged, the entire
+request and response entity bodies must be loaded into memory.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Http\Plugin\LogPlugin</span></b>			
+			 implements 
+<span>Symfony\Component\EventDispatcher\EventSubscriberInterface</span>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Plugin.html">Plugin</a><br />
+		
+
+		<b>Located at</b> Guzzle/Http/Plugin/LogPlugin.php<br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code>__construct( <span><code><a href="class-Guzzle.Common.Log.LogAdapterInterface.html">Guzzle\Common\Log\LogAdapterInterface</a></code> <var>$logAdapter</var></span>, <span>integer <var>$settings</var> = <code><a href="class-Guzzle.Http.Plugin.LogPlugin.html#LOG_CONTEXT">Guzzle\Http\Plugin\LogPlugin::<b>LOG_CONTEXT</b></a></code></span> )</code>
+
+		<div class="description short">
+			
+<p>Construct a new LogPlugin</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Construct a new LogPlugin</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$logAdapter</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Log.LogAdapterInterface.html">Guzzle\Common\Log\LogAdapterInterface</a></code></code><br> Adapter object used to log message</dd>
+					<dt><var>$settings</var></dt>
+					<dd><code>integer</code><br> Bitwise settings to use for logging</dd>
+				</dl></div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSubscribedEvents" id="_getSubscribedEvents">
+
+		<td class="attributes"><code>
+			 public static
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSubscribedEvents">#</a>
+		<code>getSubscribedEvents( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setSettings" id="_setSettings">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Plugin.LogPlugin.html">Guzzle\Http\Plugin\LogPlugin</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSettings">#</a>
+		<code>setSettings( <span>integer <var>$settings</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Change the log settings of the plugin</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Change the log settings of the plugin</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$settings</var></dt>
+					<dd><code>integer</code><br> Bitwise settings to control what's logged</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Plugin.LogPlugin.html">Guzzle\Http\Plugin\LogPlugin</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLogAdapter" id="_getLogAdapter">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Log.LogAdapterInterface.html">Guzzle\Common\Log\LogAdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLogAdapter">#</a>
+		<code>getLogAdapter( )</code>
+
+		<div class="description short">
+			
+<p>Get the log adapter object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the log adapter object</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Log.LogAdapterInterface.html">Guzzle\Common\Log\LogAdapterInterface</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onCurlRead" id="_onCurlRead">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onCurlRead">#</a>
+		<code>onCurlRead( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Event triggered when curl data is read from a request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Event triggered when curl data is read from a request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+				</dl></div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onCurlWrite" id="_onCurlWrite">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onCurlWrite">#</a>
+		<code>onCurlWrite( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Event triggered when curl data is written to a response</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Event triggered when curl data is written to a response</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+				</dl></div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onRequestBeforeSend" id="_onRequestBeforeSend">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onRequestBeforeSend">#</a>
+		<code>onRequestBeforeSend( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Called before a request is sent</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Called before a request is sent</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+				</dl></div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onRequestComplete" id="_onRequestComplete">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onRequestComplete">#</a>
+		<code>onRequestComplete( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Triggers the actual log write when a request completes</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Triggers the actual log write when a request completes</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+				</dl></div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="parseCurlLog" id="_parseCurlLog">
+
+		<td class="attributes"><code>
+			 protected 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parseCurlLog">#</a>
+		<code>parseCurlLog( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Parse cURL log messages</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse cURL log messages</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br> Request that has a curl handle</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="LOG_CONTEXT" id="LOG_CONTEXT">
+
+		<td class="attributes"><code>
+			integer
+		</code></td>
+		<td class="name"><code>
+<b>LOG_CONTEXT</b>		</code></td>
+		<td class="value"><code><span class="php-num">1</span></code></td>
+		<td class="description"><div>
+			<a href="#LOG_CONTEXT" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="LOG_HEADERS" id="LOG_HEADERS">
+
+		<td class="attributes"><code>
+			integer
+		</code></td>
+		<td class="name"><code>
+<b>LOG_HEADERS</b>		</code></td>
+		<td class="value"><code><span class="php-num">2</span></code></td>
+		<td class="description"><div>
+			<a href="#LOG_HEADERS" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="LOG_BODY" id="LOG_BODY">
+
+		<td class="attributes"><code>
+			integer
+		</code></td>
+		<td class="name"><code>
+<b>LOG_BODY</b>		</code></td>
+		<td class="value"><code><span class="php-num">4</span></code></td>
+		<td class="description"><div>
+			<a href="#LOG_BODY" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="LOG_DEBUG" id="LOG_DEBUG">
+
+		<td class="attributes"><code>
+			integer
+		</code></td>
+		<td class="name"><code>
+<b>LOG_DEBUG</b>		</code></td>
+		<td class="value"><code><span class="php-num">8</span></code></td>
+		<td class="description"><div>
+			<a href="#LOG_DEBUG" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="LOG_VERBOSE" id="LOG_VERBOSE">
+
+		<td class="attributes"><code>
+			integer
+		</code></td>
+		<td class="name"><code>
+<b>LOG_VERBOSE</b>		</code></td>
+		<td class="value"><code><span class="php-num">15</span></code></td>
+		<td class="description"><div>
+			<a href="#LOG_VERBOSE" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

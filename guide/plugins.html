@@ -1,0 +1,529 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plugins &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css?v=4" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css?v=7" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=3" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="Unit Testing Web Service Clients" href="service/testing_clients.html" />
+    <link rel="prev" title="Guides" href="index.html" />
+
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($span, minLevel) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
+
+    // Wipe out old list and patch in new one.
+    return $span.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+  </head>
+  <body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li>
+            <a href="../index.html">Home</a>
+          </li>
+          <li>
+            <a href="../docs.html">Docs</a>
+          </li>
+          <li>
+            <a href="https://github.com/guzzle/guzzle">GitHub</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+          </li>
+          <li>
+            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
+          </li>
+        </ul>
+        <ul class="nav secondary-nav">
+          
+            
+<form class="pull-left" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+   
+     
+       <div class="guzzle-sidebar">
+  <div class="well">
+      <h4>Table of contents</h4>
+      <ul>
+<li><a class="reference internal" href="#">Plugins</a><ul>
+<li><a class="reference internal" href="#http-plugins">HTTP Plugins</a><ul>
+<li><a class="reference internal" href="#over-the-wire-logging">Over the wire logging</a></li>
+<li><a class="reference internal" href="#truncated-exponential-backoff">Truncated exponential backoff</a></li>
+<li><a class="reference internal" href="#php-based-caching-forward-proxy">PHP-based caching forward proxy</a></li>
+<li><a class="reference internal" href="#cookie-session-plugin">Cookie session plugin</a></li>
+<li><a class="reference internal" href="#md5-hash-validator-plugin">MD5 hash validator plugin</a></li>
+<li><a class="reference internal" href="#history-plugin">History plugin</a></li>
+<li><a class="reference internal" href="#mock-plugin">Mock Plugin</a></li>
+<li><a class="reference internal" href="#curl-auth-plugin">Curl Auth Plugin</a></li>
+<li><a class="reference internal" href="#batch-queue-plugin">Batch Queue Plugin</a></li>
+<li><a class="reference internal" href="#oauth-1-0-plugin">OAuth 1.0 Plugin</a></li>
+<li><a class="reference internal" href="#async-plugin">Async Plugin</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#service-plugins">Service Plugins</a><ul>
+<li><a class="reference internal" href="#plugin-collection-plugin">Plugin Collection Plugin</a></li>
+<li><a class="reference internal" href="#third-party-plugins">Third-party plugins</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="well">
+    <h4>Need support?</h4>
+    <p>Please post to our <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">google group</a> if you need support or have a technical question.</p>
+    <h4>Found an error?</h4>
+    <p>If you find an error in the documentation, please <a href="https://github.com/guzzle/guzzle-docs">file a ticket</a> or <a href="https://github.com/guzzle/guzzle-docs">submit a pull request</a>.</p>
+    <h4>Wanna help?</h4>
+    <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
+  </div>
+</div>
+     
+     <div class="content">
+       
+  <div class="section" id="plugins">
+<h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h1>
+<p>Guzzle ships with a number of plugins that deal with both the <tt class="docutils literal"><span class="pre">Guzzle\Http</span></tt> and <tt class="docutils literal"><span class="pre">Guzzle\Service</span></tt> namespace.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Any event subscriber attached to the <tt class="docutils literal"><span class="pre">EventDispatcher</span></tt> of a <tt class="docutils literal"><span class="pre">Client</span></tt> object will automatically be attached to all request objects created by the client.  This allows you to attach, for example, a  HistoryPlugin to a client object, and from that point on, every request sent through that client will utilize the HistoryPlugin.</p>
+</div>
+<div class="section" id="http-plugins">
+<h2>HTTP Plugins<a class="headerlink" href="#http-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Guzzle provides easy to use request plugins that add behavior to requests based on signal slot event notifications.</p>
+<div class="section" id="over-the-wire-logging">
+<h3>Over the wire logging<a class="headerlink" href="#over-the-wire-logging" title="Permalink to this headline">¶</a></h3>
+<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\LogPlugin</span></tt> to view all data sent over the wire, including entity bodies and redirects:</p>
+<div class="highlight-python"><pre>use Guzzle\Http\Client;
+use Guzzle\Common\Log\ZendLogAdapter;
+use Guzzle\Http\Plugin\LogPlugin;
+
+$client = new Client('http://www.test.com/');
+
+$adapter = new ZendLogAdapter(new \Zend_Log(new \Zend_Log_Writer_Stream('php://output')));
+$logPlugin = new LogPlugin($adapter, LogPlugin::LOG_VERBOSE);
+
+// Attach the plugin to the request, which will in turn be attached to all
+// requests generated by the client
+$client-&gt;addSubscriber($logPlugin);
+
+$response = $client-&gt;get('http://google.com')-&gt;send();</pre>
+</div>
+<p>The code sample above wraps a <tt class="docutils literal"><span class="pre">Zend_Log</span></tt> object using a <tt class="docutils literal"><span class="pre">Guzzle\Common\Log\ZendLogAdapter</span></tt>.  After attaching the request to the plugin, all data sent over the wire will be logged to stdout.  The above code sample would output something like:</p>
+<div class="highlight-none"><div class="highlight"><pre>2011-03-10T20:07:56-06:00 DEBUG (7): www.google.com - &quot;GET / HTTP/1.1&quot; - 200 0 - 0.195698 0 45887
+* About to connect() to google.com port 80 (#0)
+*   Trying 74.125.227.50... * connected
+* Connected to google.com (74.125.227.50) port 80 (#0)
+&gt; GET / HTTP/1.1
+Accept: */*
+Accept-Encoding: deflate, gzip
+User-Agent: Guzzle/0.9 (Language=PHP/5.3.5; curl=7.21.2; Host=x86_64-apple-darwin10.4.0)
+Host: google.com
+
+&lt; HTTP/1.1 301 Moved Permanently
+&lt; Location: http://www.google.com/
+&lt; Content-Type: text/html; charset=UTF-8
+&lt; Date: Fri, 11 Mar 2011 02:06:32 GMT
+&lt; Expires: Sun, 10 Apr 2011 02:06:32 GMT
+&lt; Cache-Control: public, max-age=2592000
+&lt; Server: gws
+&lt; Content-Length: 219
+&lt; X-XSS-Protection: 1; mode=block
+&lt;
+* Ignoring the response-body
+* Connection #0 to host google.com left intact
+* Issue another request to this URL: &#39;http://www.google.com/&#39;
+* About to connect() to www.google.com port 80 (#1)
+*   Trying 74.125.45.147... * connected
+* Connected to www.google.com (74.125.45.147) port 80 (#1)
+&gt; GET / HTTP/1.1
+Host: www.google.com
+Accept: */*
+Accept-Encoding: deflate, gzip
+User-Agent: Guzzle/0.9 (Language=PHP/5.3.5; curl=7.21.2; Host=x86_64-apple-darwin10.4.0)
+
+&lt; HTTP/1.1 200 OK
+&lt; Date: Fri, 11 Mar 2011 02:06:32 GMT
+&lt; Expires: -1
+&lt; Cache-Control: private, max-age=0
+&lt; Content-Type: text/html; charset=ISO-8859-1
+&lt; Set-Cookie: PREF=ID=8a61470bce22ed5b:FF=0:TM=1299809192:LM=1299809192:S=axQwBxLyhXV7mbE3; expires=Sun, 10-Mar-2013 02:06:32 GMT; path=/; domain=.google.com
+&lt; Set-Cookie: NID=44=qxXLtXgSKI2S9_mG7KbN7yR2atSje1B9Eft_CHTyjTuIivwE9kB1sATn_YPmBNhZHiNyxcP4_tIYnawjSNWeAepixK3CoKHw-RINrgGNSG3RfpAG7M-IKxHmLhJM6NeA; expires=Sat, 10-Sep-2011 02:06:32 GMT; path=/; domain=.google.com; HttpOnly
+&lt; Server: gws
+&lt; X-XSS-Protection: 1; mode=block
+&lt; Transfer-Encoding: chunked
+&lt;
+* Connection #1 to host www.google.com left intact
+&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;
+[...snipped]
+</pre></div>
+</div>
+</div>
+<div class="section" id="truncated-exponential-backoff">
+<h3>Truncated exponential backoff<a class="headerlink" href="#truncated-exponential-backoff" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\ExponentialBackoffPlugin</span></tt> automatically retries failed HTTP requests using truncated exponential backoff:</p>
+<div class="highlight-python"><pre>use Guzzle\Http\Client;
+use Guzzle\Http\Plugin\ExponentialBackoffPlugin;
+
+$client = new Client('http://www.test.com/');
+
+$backoffPlugin = new ExponentialBackoffPlugin();
+
+// Add the exponential plugin to the client object
+$client-&gt;addSubscriber($backoffPlugin);
+
+$request = $client-&gt;get('http://google.com/');
+$request-&gt;send();</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">By default, the ExponentialBackoffPlugin will retry all 500 and 503 responses up to 3 times.  The number of retries and the HTTP status codes that are retried can be configured in the constructor of the plugin.</p>
+</div>
+</div>
+<div class="section" id="php-based-caching-forward-proxy">
+<h3>PHP-based caching forward proxy<a class="headerlink" href="#php-based-caching-forward-proxy" title="Permalink to this headline">¶</a></h3>
+<p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\CachePlugin</span></tt>.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior, cache lifetime, and supports ETag and Last-Modified based revalidation:</p>
+<div class="highlight-python"><pre>use Guzzle\Http\Client;
+use Doctrine\Common\Cache\ArrayCache;
+use Guzzle\Common\Cache\DoctrineCacheAdapter;
+use Guzzle\Http\Plugin\CachePlugin;
+
+$client = new Client('http://www.test.com/');
+
+$adapter = new DoctrineCacheAdapter(new ArrayCache());
+$cachePlugin = new CachePlugin($adapter, true);
+
+// Add the cache plugin to the client object
+$client-&gt;addSubscriber($cachePlugin);
+
+$request = $client-&gt;get('http://www.wikipedia.org/');
+$request-&gt;send();
+
+// The next request will revalidate against the origin server to see if it
+// has been modified.  If a 304 response is recieved the response will be
+// served from cache
+$request-&gt;send();</pre>
+</div>
+<p>Guzzle doesn&#8217;t try to reinvent the wheel when it comes to caching or logging.  Plenty of other frameworks have excellent solutions in place that you are probably already using in your applications.  Guzzle uses adapters for caching and logging.  Guzzle currently supports log adapters for the Zend Framework 1.0/2.0 and Monolog, and cache adapters for <a class="reference external" href="http://www.doctrine-project.org/">Doctrine 2.0</a> and the Zend Framework 1.0/2.0.</p>
+<p>See <a class="reference internal" href="http/caching.html"><em>Caching</em></a> for more information on the caching plugin.</p>
+</div>
+<div class="section" id="cookie-session-plugin">
+<h3>Cookie session plugin<a class="headerlink" href="#cookie-session-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Some web services require a Cookie in order to maintain a session.  The <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\CookiePlugin</span></tt> will add cookies to requests and parse cookies from responses using a CookieJar object:</p>
+<div class="highlight-python"><pre>use Guzzle\Http\Client;
+use Guzzle\Http\Plugin\CookiePlugin;
+use Guzzle\Http\CookieJar\ArrayCookieJar;
+
+$client = new Client('http://www.test.com/');
+
+$cookiePlugin = new CookiePlugin(new ArrayCookieJar());
+
+// Add the cookie plugin to the client object
+$client-&gt;addSubscriber($cookiePlugin);
+
+$request = $client-&gt;get('http://www.yahoo.com/');
+
+// Send the request with no cookies and parse the returned cookies
+$request-&gt;send();
+
+// Send the request again, noticing that cookies are being sent
+$request-&gt;send();
+
+echo $request;</pre>
+</div>
+</div>
+<div class="section" id="md5-hash-validator-plugin">
+<h3>MD5 hash validator plugin<a class="headerlink" href="#md5-hash-validator-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Entity bodies can sometimes be modified over the wire due to a faulty TCP transport or misbehaving proxy.  If an HTTP response contains a Content-MD5 header, then a MD5 hash of the entity body of a response can be compared against the Content-MD5 header of the response to determine if the response was delivered intact.  The <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\Md5ValidatorPlugin</span></tt> will throw an <tt class="docutils literal"><span class="pre">UnexpectedValueException</span></tt> if the calculated MD5 hash does not match the Content-MD5 hash:</p>
+<div class="highlight-python"><pre>use Guzzle\Http\Client;
+use Guzzle\Http\Plugin\Md5ValidatorPlugin;
+
+$client = new Client('http://www.test.com/');
+
+$md5Plugin = new Md5ValidatorPlugin();
+
+// Add the md5 plugin to the client object
+$client-&gt;addSubscriber($md5Plugin);
+
+$request = $client-&gt;get('http://www.yahoo.com/');
+$request-&gt;send();</pre>
+</div>
+<p>Calculating the MD5 hash of a large entity body or an entity body that was transferred using a Content-Encoding is an expensive operation.  When working in high performance applications, you might consider skipping the MD5 hash validation for entity bodies bigger than a certain size or Content-Encoded entity bodies (see <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\Md5ValidatorPlugin</span></tt> for more information).</p>
+</div>
+<div class="section" id="history-plugin">
+<h3>History plugin<a class="headerlink" href="#history-plugin" title="Permalink to this headline">¶</a></h3>
+<p>The history plugin tracks all of the requests and responses sent through a request or client.  This plugin can be useful for crawling or unit testing.  By default, the history plugin stores up to 10 requests and responses.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\HistoryPlugin</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">);</span>
+
+<span class="nv">$history</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HistoryPlugin</span><span class="p">();</span>
+<span class="nv">$history</span><span class="o">-&gt;</span><span class="na">setLimit</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="c1">// Add the history plugin to the client object</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$history</span><span class="p">);</span>
+
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.yahoo.com/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="nv">$history</span><span class="o">-&gt;</span><span class="na">getLastRequest</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$history</span><span class="o">-&gt;</span><span class="na">getLastResponse</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$history</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mock-plugin">
+<h3>Mock Plugin<a class="headerlink" href="#mock-plugin" title="Permalink to this headline">¶</a></h3>
+<p>The mock plugin is useful for testing Guzzle clients.  The mock plugin allows you to queue an array of responses that will satisfy requests sent from a client by consuming the request queue in FIFO order.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\MockPlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Message\Response</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">);</span>
+
+<span class="nv">$mock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MockPlugin</span><span class="p">();</span>
+<span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">addResponse</span><span class="p">(</span><span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+     <span class="o">-&gt;</span><span class="na">addResponse</span><span class="p">(</span><span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="mi">404</span><span class="p">));</span>
+
+<span class="c1">// Add the mock plugin to the client object</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$mock</span><span class="p">);</span>
+
+<span class="c1">// The following request will receive a 200 response from the plugin</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// The following request will receive a 404 response from the plugin</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="curl-auth-plugin">
+<span id="curl-auth"></span><h3>Curl Auth Plugin<a class="headerlink" href="#curl-auth-plugin" title="Permalink to this headline">¶</a></h3>
+<p>If your web service client requires basic authorization, then you can use the CurlAuthPlugin to easily add an Authorization header to each request sent by the client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\CurlAuthPlugin</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">);</span>
+
+<span class="nv">$authPlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CurlAuthPlugin</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">);</span>
+
+<span class="c1">// Add the auth plugin to the client object</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$authPlugin</span><span class="p">);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;projects/1/people&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<span class="nv">$xml</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleXMLElement</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">(</span><span class="k">true</span><span class="p">));</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">person</span> <span class="k">as</span> <span class="nv">$person</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$person</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="batch-queue-plugin">
+<h3>Batch Queue Plugin<a class="headerlink" href="#batch-queue-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Send a large number of requests using the batch queue plugin.  Any request created by a client will automatically be tracked and queued by the BatchQueuePlugin. In the constructor of the plugin, you can specify the maximum amount of requests to keep in queue before implicitly flushing, or set 0 to never automatically flush.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\BatchQueuePlugin</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">);</span>
+
+<span class="c1">// Here we are saying that if 10 or more requests are in the batch queue,</span>
+<span class="c1">// then it must automatically flush the queue and send the requests.</span>
+<span class="nv">$batchPlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BatchQueuePlugin</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">// Add the batch plugin to the client object</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$batchPlugin</span><span class="p">);</span>
+
+<span class="c1">// Queue up some requests on the BatchQueuePlugin</span>
+<span class="nv">$request1</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="nv">$request2</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="nv">$request3</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+
+<span class="c1">// If the batch plugin is handy, you can call the flush method directly</span>
+<span class="nv">$batchPlugin</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+
+<span class="c1">// If you no longer have the batch plugin handy, you can emit the &#39;flush&#39; event</span>
+<span class="c1">// from the client</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="s1">&#39;flush&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="oauth-1-0-plugin">
+<h3>OAuth 1.0 Plugin<a class="headerlink" href="#oauth-1-0-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Guzzle ships with an OAuth 1.0 plugin that can sign requests using a consumer key, consumer secret, OAuth token, and OAuth secret.  Here&#8217;s an example showing how to send an authenticated request to the Twitter REST API:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\OauthPlugin</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://api.twitter.com/1&#39;</span><span class="p">);</span>
+<span class="nv">$oauth</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OauthPlugin</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;consumer_key&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;my_key&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;consumer_secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_secret&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;token&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;my_token&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;token_secret&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;my_token_secret&#39;</span>
+<span class="p">));</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$oauth</span><span class="p">);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;statuses/public_timeline.json&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>If you need to use a custom signing method, you can pass a <tt class="docutils literal"><span class="pre">signature_method</span></tt> configuration option in the constructor of the OAuth plugin.  The <tt class="docutils literal"><span class="pre">signature_method</span></tt> option must be a callable variable that accepts a string to sign and signing key and returns a signed string.</p>
+</div>
+<div class="section" id="async-plugin">
+<h3>Async Plugin<a class="headerlink" href="#async-plugin" title="Permalink to this headline">¶</a></h3>
+<p>The AsyncPlugin allows you to send requests that do not wait on a response.  This is handled through cURL by utilizing the progress event.  When a request has sent all of its data to the remote server, Guzzle adds a 1ms timeout on the request and instructs cURL to not download the body of the response.  The async plugin then catches the exception and adds a mock response to the request, along with an X-Guzzle-Async header to let you know that the response was not fully downloaded.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\AsyncPlugin</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="k">new</span> <span class="nx">AsyncPlugin</span><span class="p">());</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="service-plugins">
+<h2>Service Plugins<a class="headerlink" href="#service-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="plugin-collection-plugin">
+<h3>Plugin Collection Plugin<a class="headerlink" href="#plugin-collection-plugin" title="Permalink to this headline">¶</a></h3>
+<p>This plugin can be used to attached plugins to every client created by a <tt class="docutils literal"><span class="pre">Guzzle\Service\Builder\ServiceBuilder</span></tt>. The following example demonstrates adding a HistoryPlugin to each client created by a service builder.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Plugin\PluginCollectionPlugin</span><span class="p">;</span>
+
+<span class="nv">$builder</span> <span class="o">=</span> <span class="nx">ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;config.json&#39;</span><span class="p">);</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">addSubsriber</span><span class="p">(</span><span class="k">new</span> <span class="nx">PluginCollectionPlugin</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="k">new</span> <span class="nx">HistoryPlugin</span><span class="p">())));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="third-party-plugins">
+<h3>Third-party plugins<a class="headerlink" href="#third-party-plugins" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/davedevelopment/guzzle-wsse-auth-plugin">WSSE Authentication plugin</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+       
+         
+<div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
+  <a class="btn info" href="index.html" title="previous chapter">&laquo; Guides</a>
+  <a class="btn info" href="service/testing_clients.html" title="next chapter">Unit Testing Web Service Clients &raquo;</a>
+</div>
+         <div id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'guzzle';
+    var disqus_identifier = 'guide/plugins';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+       
+     </div>
+   
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>
+    </p>
+  </div>
+  <script type="text/javascript">
+    
+    
+  </script>
+</footer>
+  </body>
+</html>

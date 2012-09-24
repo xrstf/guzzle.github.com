@@ -2,19 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Creating Dynamic Commands &mdash; Guzzle v2.0.0 documentation</title>
+    <title>Creating Dynamic Commands &mdash; Guzzle 3.0.0 documentation</title>
+    
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap.css?v=4" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=7" type="text/css" />
+    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=3" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2.0.0',
+        VERSION:     '3.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,12 +27,10 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-dropdown.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-scrollspy.js"></script>
-    <link rel="top" title="Guzzle v2.0.0 documentation" href="../../index.html" />
+    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../../index.html" />
     <link rel="up" title="Guides" href="../index.html" />
-    <link rel="next" title="Caching" href="../http/caching.html" />
-    <link rel="prev" title="Creating Plugins and Observers" href="../http/creating_plugins.html" />
+    <link rel="prev" title="FAQ" href="../faq.html" />
 
 <script type="text/javascript">
 (function () {
@@ -93,13 +95,19 @@
         <a class="brand" href="../../index.html">Guzzle</a>
         <ul class="nav">
           <li>
-            <a href="../../index.html">home</a>
+            <a href="../../index.html">Home</a>
           </li>
           <li>
-            <a href="../../docs.html">docs</a>
+            <a href="../../docs.html">Docs</a>
           </li>
           <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">connect</a>
+            <a href="https://github.com/guzzle/guzzle">GitHub</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+          </li>
+          <li>
+            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
           </li>
         </ul>
         <ul class="nav secondary-nav">
@@ -116,38 +124,14 @@
     </div>
   </div>
 
-<div class="container-fluid">
+<div class="container">
    
-     <div class="guzzle-sidebar">
+     
+       <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
-<li><a class="reference internal" href="#">Creating Dynamic Commands</a><ul>
-<li><a class="reference internal" href="#creating-a-service-description">Creating a service description</a></li>
-<li><a class="reference internal" href="#how-to-write-an-xml-service-description">How to write an XML service description</a><ul>
-<li><a class="reference internal" href="#define-commands-using-command-nodes">Define commands using <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes</a><ul>
-<li><a class="reference internal" href="#dynamic-commands">Dynamic commands</a></li>
-<li><a class="reference internal" href="#concrete-commands">Concrete commands</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#use-custom-types-for-data-validation">Use custom <tt class="docutils literal"><span class="pre">&lt;types&gt;</span></tt> for data validation</a></li>
-<li><a class="reference internal" href="#including-other-service-descriptions">Including other service descriptions</a><ul>
-<li><a class="reference internal" href="#xml">XML</a></li>
-<li><a class="reference internal" href="#json">JSON</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#creating-json-service-descriptions">Creating JSON service descriptions</a></li>
-<li><a class="reference internal" href="#use-dynamic-and-concrete-commands">Use Dynamic and Concrete Commands</a></li>
-<li><a class="reference internal" href="#caveats-with-service-descriptions">Caveats with service descriptions</a><ul>
-<li><a class="reference internal" href="#no-code-completion">No code completion</a></li>
-<li><a class="reference internal" href="#no-custom-response-processing">No custom response processing</a></li>
-<li><a class="reference internal" href="#weak-support-for-custom-entity-bodies">Weak support for custom entity bodies</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Creating Dynamic Commands</a></li>
 </ul>
 
   </div>
@@ -160,392 +144,25 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
+     
      <div class="content">
        
   <div class="section" id="creating-dynamic-commands">
 <h1>Creating Dynamic Commands<a class="headerlink" href="#creating-dynamic-commands" title="Permalink to this headline">¶</a></h1>
-<p>Guzzle allows you to create commands for your web service client based on a document called a service description.  As seen in <a class="reference internal" href="../../tour/building_services.html"><em>Building Web Service Clients</em></a>, Guzzle web service clients execute commands on a web service.  You can build concrete commands for every action you want to take on a web service, but you might find yourself writing a lot of boiler plate code if the actions you take on a web service are relatively the same, but just use a different path or method.  If this is the case for your client, you should consider utilizing Guzzle&#8217;s dynamic commands based on service descriptions.</p>
-<div class="section" id="creating-a-service-description">
-<h2>Creating a service description<a class="headerlink" href="#creating-a-service-description" title="Permalink to this headline">¶</a></h2>
-<p>Service descriptions can be representing using a PHP array, XML document, or JSON document.</p>
-<p>Let&#8217;s say you&#8217;re interacting with a web service that allows for the following routes and methods:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="nx">GET</span><span class="o">/</span><span class="nx">POST</span> <span class="o">/</span><span class="nx">users</span>
-<span class="nx">GET</span><span class="o">/</span><span class="nx">PUT</span><span class="o">/</span><span class="nx">DELETE</span> <span class="o">/</span><span class="nx">users</span><span class="o">/:</span><span class="nx">id</span>
-<span class="nx">GET</span><span class="o">/</span><span class="nx">POST</span> <span class="o">/</span><span class="nx">comments</span>
-<span class="nx">GET</span><span class="o">/</span><span class="nx">PUT</span><span class="o">/</span><span class="nx">DELETE</span> <span class="o">/</span><span class="nx">comments</span><span class="o">/:</span><span class="nx">id</span>
-</pre></div>
-</div>
-<p>This looks like a fairly simple API.  The following XML service description implements this simple web service using nothing but XML:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;client&gt;</span>
-    <span class="nt">&lt;commands&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;get_users&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/users&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Get a list of users<span class="nt">&lt;/doc&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;create_user&quot;</span> <span class="na">method=</span><span class="s">&quot;POST&quot;</span> <span class="na">path=</span><span class="s">&quot;/users&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Create a user<span class="nt">&lt;/doc&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">location=</span><span class="s">&quot;body&quot;</span> <span class="na">doc=</span><span class="s">&quot;User XML&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;delete_user&quot;</span> <span class="na">method=</span><span class="s">&quot;DELETE&quot;</span> <span class="na">path=</span><span class="s">&quot;/users/{{id}}&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Delete a user by ID<span class="nt">&lt;/doc&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;get_user&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/users/{{id}}&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;update_user&quot;</span> <span class="na">method=</span><span class="s">&quot;PUT&quot;</span> <span class="na">path=</span><span class="s">&quot;/users&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Update a user<span class="nt">&lt;/doc&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">location=</span><span class="s">&quot;body&quot;</span> <span class="na">doc=</span><span class="s">&quot;User XML&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;get_comments&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/comments&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Get a list of comments<span class="nt">&lt;/doc&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;create_comment&quot;</span> <span class="na">method=</span><span class="s">&quot;POST&quot;</span> <span class="na">path=</span><span class="s">&quot;/comments&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Create a comment<span class="nt">&lt;/doc&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">location=</span><span class="s">&quot;body&quot;</span> <span class="na">doc=</span><span class="s">&quot;Comment XML&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;get_comment&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/comments/{{id}}&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Get a comment by ID<span class="nt">&lt;/doc&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;update_comment&quot;</span> <span class="na">method=</span><span class="s">&quot;PUT&quot;</span> <span class="na">path=</span><span class="s">&quot;/comments/{{id}}&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Update a comment<span class="nt">&lt;/doc&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="na">doc=</span><span class="s">&quot;Comment ID&quot;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">location=</span><span class="s">&quot;body&quot;</span> <span class="na">doc=</span><span class="s">&quot;Comment XML&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-        <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;delete_comment&quot;</span> <span class="na">method=</span><span class="s">&quot;DELETE&quot;</span> <span class="na">path=</span><span class="s">&quot;/comments/{{id}}&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;doc&gt;</span>Delete a comment by ID<span class="nt">&lt;/doc&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/command&gt;</span>
-    <span class="nt">&lt;/commands&gt;</span>
-<span class="nt">&lt;/client&gt;</span>
-</pre></div>
-</div>
-<p>If you attach this service description to a client, you would be able to execute commands by name.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">use</span> <span class="nx">Guzzle\Service\Description\XmlDescriptionBuilder</span><span class="p">;</span>
-
-<span class="nv">$builder</span> <span class="o">=</span> <span class="nx">XmlDescriptionBuilder</span><span class="o">::</span><span class="na">build</span><span class="p">(</span><span class="s1">&#39;/path/to/client.xml&#39;</span><span class="p">);</span>
-
-<span class="nv">$command</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;delete_comment&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="m">123</span>
-<span class="p">));</span>
-
-<span class="nv">$httpResponse</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You should add the service description to your client in the client&#8217;s factory method using a <tt class="docutils literal"><span class="pre">Guzzle\Service\Description\XmlDescriptionBuilder</span></tt>.
-If you are attaching a JSON service description, use the JsonDescriptionBuilder.</p>
-</div>
-</div>
-<div class="section" id="how-to-write-an-xml-service-description">
-<h2>How to write an XML service description<a class="headerlink" href="#how-to-write-an-xml-service-description" title="Permalink to this headline">¶</a></h2>
-<p>XML service descriptions are stored in a separate XML file for each web service client.  The XML file should be stored in the same location as the client.  The root node of the XML file must be <tt class="docutils literal"><span class="pre">&lt;client&gt;</span></tt>.  The <tt class="docutils literal"><span class="pre">&lt;client&gt;</span></tt> node must contain one or more <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes which define each dynamic command that can be sent by the client.</p>
-<div class="section" id="define-commands-using-command-nodes">
-<h3>Define commands using <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes<a class="headerlink" href="#define-commands-using-command-nodes" title="Permalink to this headline">¶</a></h3>
-<p>Commands are defined using <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes.  A command node is a single command that can be executed on a web service.  Command nodes can either reference a concrete command class that will receive extra parameters from the command node or be a completely dynamic command that builds an HTTP request based on the command definition.</p>
-<div class="section" id="dynamic-commands">
-<h4>Dynamic commands<a class="headerlink" href="#dynamic-commands" title="Permalink to this headline">¶</a></h4>
-<p>Dynamic commands are commands that build HTTP requests completely based on the command definition and do not require a concrete command class.  Dynamic command nodes utilize the following attributes:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="14%" />
-<col width="86%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">Attribute</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>name</td>
-<td>The key used to reference the command.  Use snake_casing.</td>
-</tr>
-<tr><td>method</td>
-<td>The HTTP method the command will execute (GET, HEAD, DELETE, POST,
-PUT, OPTIONS).</td>
-</tr>
-<tr><td>path</td>
-<td>The path of the request (e.g. <tt class="docutils literal"><span class="pre">/path/to/users</span></tt>).  The path can be
-absolute or relative.  A relative path will append to the path set
-on the base_url of the service.  The path attribute can contain
-<tt class="docutils literal"><span class="pre">{{key_name}}</span></tt> injection points, where <tt class="docutils literal"><span class="pre">key_name</span></tt> is a parameter
-in the command with a location of <tt class="docutils literal"><span class="pre">path</span></tt>.</td>
-</tr>
-<tr><td>extends</td>
-<td>Extend a previously defined command in the same XML description to
-inherit every attribute of the parent command including params.  Any
-settings specified in the chile command will override settings from
-inherited from the parent.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;my_command&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/path/to/users&quot;</span><span class="nt">&gt;</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes can contain an optional <tt class="docutils literal"><span class="pre">&lt;doc&gt;</span></tt> node that describes what the command does.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;my_command&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/path/to/users&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;doc&gt;</span>Documentation about the command<span class="nt">&lt;/doc&gt;</span>
-<span class="nt">&lt;/command&gt;</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">&lt;param&gt;</span></tt> nodes are used within <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes to specify each parameter that the command will take into account when building an HTTP request.  Param nodes can contain the following attributes:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="12%" />
-<col width="53%" />
-<col width="35%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">Attribute</th>
-<th class="head">Description</th>
-<th class="head">Example</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>location</td>
-<td>The location in which the parameter will be added to the
-generated request.</td>
-<td><tt class="docutils literal"><span class="pre">location=&quot;path&quot;</span></tt> or
-<tt class="docutils literal"><span class="pre">location=&quot;header:X-Header&quot;</span></tt></td>
-</tr>
-<tr><td>type</td>
-<td>Type of variable (array, boolean, class, date, enum, float,
-integer, regex, string, timestamp).  Some type commands accept
-arguments by separating the type and argument with a colon
-(e.g. enum:lorem,ipsum).</td>
-<td><p class="first"><tt class="docutils literal"><span class="pre">type=&quot;class:Guzzle\Common\Collection&quot;</span></tt></p>
-<p class="last"><tt class="docutils literal"><span class="pre">type=&quot;array&quot;</span></tt></p>
-</td>
-</tr>
-<tr><td>required</td>
-<td>Whether or not the argument is required.  If a required parameter
-is not set and you try to execute a command, an exception will be
-thrown.</td>
-<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">required=&quot;true&quot;</span></tt> or
-<tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">required=&quot;false&quot;</span></tt></td>
-</tr>
-<tr><td>default</td>
-<td>Default value of the parameter that will be used if a value is
-not provided before executing the command.</td>
-<td><tt class="docutils literal"><span class="pre">default=&quot;default-value!&quot;</span></tt></td>
-</tr>
-<tr><td>doc</td>
-<td>Documentation for the parameter.</td>
-<td><tt class="docutils literal"><span class="pre">doc=&quot;This</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">documentation&quot;</span></tt></td>
-</tr>
-<tr><td>min_length</td>
-<td>Minimum value length.</td>
-<td><tt class="docutils literal"><span class="pre">min_length=&quot;5&quot;</span></tt></td>
-</tr>
-<tr><td>max_length</td>
-<td>Maximum value length.</td>
-<td><tt class="docutils literal"><span class="pre">max_length=&quot;15&quot;</span></tt></td>
-</tr>
-<tr><td>static</td>
-<td>A value that cannot be changed.</td>
-<td><tt class="docutils literal"><span class="pre">static=&quot;this</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">changed&quot;</span></tt></td>
-</tr>
-<tr><td>prepend</td>
-<td>Text to prepend to the value if the value is set.</td>
-<td><tt class="docutils literal"><span class="pre">prepend=&quot;this_is_added_before.&quot;</span></tt></td>
-</tr>
-<tr><td>append</td>
-<td>Text to append to the value if the value is set.</td>
-<td><tt class="docutils literal"><span class="pre">append=&quot;.this_is_added_after&quot;</span></tt></td>
-</tr>
-<tr><td>filter</td>
-<td>CSV list of functions or static functions that modifies a string</td>
-<td><tt class="docutils literal"><span class="pre">&#64;guzzle</span> <span class="pre">key</span> <span class="pre">filter=&quot;strtoupper,strrev&quot;</span></tt></td>
-</tr>
-</tbody>
-</table>
-<p>The <strong>location</strong> attribute can be one of the following values:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="9%" />
-<col width="91%" />
-</colgroup>
-<tbody valign="top">
-<tr><td>path</td>
-<td>Specifies the parameter as one that will inject into the <tt class="docutils literal"><span class="pre">path</span></tt> attribute of the command</td>
-</tr>
-<tr><td>query</td>
-<td>Sets a query string value using the key and value of the parameter.  A custom query string key
-can be used by providing the custom key after the query location separated by a colon
-(e.g. <tt class="docutils literal"><span class="pre">location=&quot;query:QueryKey</span></tt>)&#8221;</td>
-</tr>
-<tr><td>header</td>
-<td>The parameter will be added as a header.  The header will be set as the name of the parameter
-or you can specify a custom header by providing the custom header after the header location
-separated by a colon (e.g. <tt class="docutils literal"><span class="pre">location=&quot;header:X-Custom-Header&quot;</span></tt>)</td>
-</tr>
-<tr><td rowspan="2">body</td>
-<td rowspan="2">The parameter value will be used as the body of the generated HTTP request</td>
-</tr>
-<tr></tr>
-<tr><td>data</td>
-<td>This is the default location of parameters that do not contain a location attribute</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="concrete-commands">
-<h4>Concrete commands<a class="headerlink" href="#concrete-commands" title="Permalink to this headline">¶</a></h4>
-<p>Concrete commands pass the values specified in <tt class="docutils literal"><span class="pre">&lt;param&gt;</span></tt> nodes to concrete command objects.  This is useful if you want to create an abstracted concrete command that accepts a collection of parameters that it uses to build a request but still allows for custom response processing so that the command can return a valuable result.  Concrete commands require a <tt class="docutils literal"><span class="pre">class</span></tt> attribute that references the class name to instantiate when the command is created.  The class attribute can use the PHP namespace separator or periods for namespace separators (e.g. both <tt class="docutils literal"><span class="pre">Guzzle.Service.Command.ClosureCommand</span></tt> and <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\ClosureCommand</span></tt> are acceptable). Concrete command nodes don&#8217;t use a <tt class="docutils literal"><span class="pre">method</span></tt> or <tt class="docutils literal"><span class="pre">path</span></tt> attribute; however, these parameters can be specified as <tt class="docutils literal"><span class="pre">&lt;param&gt;</span></tt> nodes which will be passed to the concrete command as parameters.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;my_concrete_command&quot;</span> <span class="na">class=</span><span class="s">&quot;Guzzle.Service.MyService.Command.DefaultDynamicCommand&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;doc&gt;</span>Execute a command on the web service using a concrete class<span class="nt">&lt;/doc&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;path&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">doc=</span><span class="s">&quot;Path of request&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;method&quot;</span> <span class="na">type=</span><span class="s">&quot;enum:GET,HEAD,DELETE,POST,PUT,OPTIONS&quot;</span> <span class="na">doc=</span><span class="s">&quot;HTTP method. One of GET, HEAD, DELETE, PUT, POST, or OPTIONS&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;other_data&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">doc=</span><span class="s">&quot;Give me something&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;static_setting&quot;</span> <span class="na">static=</span><span class="s">&quot;dynamic&quot;</span> <span class="na">doc=</span><span class="s">&quot;This setting cannot be changed cause it is static&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/command&gt;</span>
-</pre></div>
-</div>
-<p>This example command will instantiate a <tt class="docutils literal"><span class="pre">Guzzle\Service\MyService\Command\DefaultDynamicCommand</span></tt> when it is executed from a client (e.g. <tt class="docutils literal"><span class="pre">$client-&gt;getCommand('my_concrete_command')-&gt;execute()</span></tt>).  The instantiated command will receive the <tt class="docutils literal"><span class="pre">&lt;param&gt;</span></tt> node values as a <tt class="docutils literal"><span class="pre">Guzzle\Common\Collection</span></tt> object that it can use to build an HTTP request.</p>
-</div>
-</div>
-<div class="section" id="use-custom-types-for-data-validation">
-<h3>Use custom <tt class="docutils literal"><span class="pre">&lt;types&gt;</span></tt> for data validation<a class="headerlink" href="#use-custom-types-for-data-validation" title="Permalink to this headline">¶</a></h3>
-<p>Custom types can be registered to create shortcut references to type implementations or custom type classes that can be registered with the <tt class="docutils literal"><span class="pre">Guzzle\Service\Inspector</span></tt> class.  The <tt class="docutils literal"><span class="pre">&lt;client&gt;</span></tt> node can contain a <tt class="docutils literal"><span class="pre">&lt;types&gt;</span></tt> node which contains one or more <tt class="docutils literal"><span class="pre">&lt;type&gt;</span></tt> nodes.</p>
-<p>You can use the <tt class="docutils literal"><span class="pre">type</span></tt> attribute on command parameters to enforce parameter values match a certain filter or are of a certain type.  For example, you could create a command parameter that must match a regular expression using the following snippet of code:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;client&gt;</span>
-    <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;example_command&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/{{username}}&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;my_parameter&quot;</span> <span class="na">type=</span><span class="s">&quot;regex:/[0-9a-zA-z_\-]+/&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/command&gt;</span>
-<span class="nt">&lt;/client&gt;</span>
-</pre></div>
-</div>
-<p>When an end-developer creates this command, they will need to pass a value that matches the <tt class="docutils literal"><span class="pre">/[0-9a-zA-z_\-]+/</span></tt> regular expression.  If a supplied parameter does not match this regular expression, an exception will be thrown.  If you use this same pattern in various parts of your XML service description, then you could create a shortcut <tt class="docutils literal"><span class="pre">&lt;type&gt;</span></tt> node and reference your custom type in each command.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;types&gt;</span>
-    <span class="nt">&lt;type</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">class=</span><span class="s">&quot;Guzzle.Service.Filter.Regex&quot;</span> <span class="na">default=</span><span class="s">&quot;/[0-9a-zA-z_\-]+/&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/types&gt;</span>
-<span class="nt">&lt;client&gt;</span>
-    <span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;example_command&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">path=</span><span class="s">&quot;/{{username}}&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;my_parameter&quot;</span> <span class="na">type=</span><span class="s">&quot;username&quot;</span> <span class="na">location=</span><span class="s">&quot;path&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/command&gt;</span>
-<span class="nt">&lt;/client&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="including-other-service-descriptions">
-<h3>Including other service descriptions<a class="headerlink" href="#including-other-service-descriptions" title="Permalink to this headline">¶</a></h3>
-<p>You can include other service descriptions in your service description files as long as the service description you are including uses the same format (e.g. XML can include XML and JSON can include JSON).</p>
-<div class="section" id="xml">
-<h4>XML<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-xml"><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;includes&gt;
-    &lt;include path="/path/to/service.xml" /&gt;
-    &lt;include path="../../relative/path/to/service.xml"
-&lt;/types&gt;</pre>
-</div>
-</div>
-<div class="section" id="json">
-<h4>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;includes&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">&quot;/path/to/service.json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;../../relative/path/to/service.json&quot;</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="creating-json-service-descriptions">
-<h2>Creating JSON service descriptions<a class="headerlink" href="#creating-json-service-descriptions" title="Permalink to this headline">¶</a></h2>
-<p>You can create service descriptions using .json files.  The JSON document must match the following template:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;includes&quot;</span><span class="o">:</span> <span class="p">[],</span>
-    <span class="s2">&quot;types&quot;</span><span class="o">:</span> <span class="p">{},</span>
-    <span class="s2">&quot;commands&quot;</span><span class="o">:</span> <span class="p">{}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>We covered including other service descriptions in the previous section.  Adding custom types in a JSON description must include a class value and can include any number of custom arguments to pass to the Symfony2 constraint object when it is instantiated.</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;types&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;regex&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;class&quot;</span><span class="o">:</span> <span class="s2">&quot;regex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;/[A-Z]+/&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Commands will follow this format:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;commands&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;abstract&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;class&quot;</span><span class="o">:</span> <span class="s2">&quot;Service\Command\Default&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;concrete&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;extends&quot;</span><span class="o">:</span> <span class="s2">&quot;abstract&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-                    <span class="s2">&quot;filter&quot;</span><span class="o">:</span> <span class="s2">&quot;strtolower&quot;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="use-dynamic-and-concrete-commands">
-<h2>Use Dynamic and Concrete Commands<a class="headerlink" href="#use-dynamic-and-concrete-commands" title="Permalink to this headline">¶</a></h2>
-<p>Concrete commands are much better suited for interacting with complex web services or dealing with custom entity bodies that must be generated based on command parameters.  Never fear&#8211; web service clients can utilize both concrete and dynamic commands.  When retrieving a command by name (<tt class="docutils literal"><span class="pre">$command</span> <span class="pre">=</span> <span class="pre">$client-&gt;getCommand('command_name')</span></tt>), the client will first check if it has a service description and if the service descriptions has a command defined by the name of &#8216;command_name.&#8217;  If the client has a dynamic command named &#8216;command_name&#8217;, then a dynamic command will be created and returned.  If the client does not have a service description or its service description does not have a command defined by that name, it will see if a concrete command class maps to that name.  If it does, it will create the concrete command class and return it.  Whether or not the command is a concrete command or dynamic command doesn&#8217;t matter to the end-developer as long as the developer can execute the command and get back a valuable response.</p>
-</div>
-<div class="section" id="caveats-with-service-descriptions">
-<h2>Caveats with service descriptions<a class="headerlink" href="#caveats-with-service-descriptions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="no-code-completion">
-<h3>No code completion<a class="headerlink" href="#no-code-completion" title="Permalink to this headline">¶</a></h3>
-<p>Dynamic commands cannot be directly instantiated and don&#8217;t have setter methods to easily build up a command.  This means that you won&#8217;t get code completion.</p>
-</div>
-<div class="section" id="no-custom-response-processing">
-<h3>No custom response processing<a class="headerlink" href="#no-custom-response-processing" title="Permalink to this headline">¶</a></h3>
-<p>Dynamic commands can&#8217;t perform any type of response processing to create more valuable command results.  This means, for example, that the result of a command to retrieve a user will return a <tt class="docutils literal"><span class="pre">\SimpleXMLElement</span></tt>, not a <tt class="docutils literal"><span class="pre">User</span></tt> object.  Have an idea for how to make this better?  Let us know!</p>
-</div>
-<div class="section" id="weak-support-for-custom-entity-bodies">
-<h3>Weak support for custom entity bodies<a class="headerlink" href="#weak-support-for-custom-entity-bodies" title="Permalink to this headline">¶</a></h3>
-<p>XML service descriptions are great for creating relatively simple commands, but you may have noticed that the PUT/POST commands in the example XML service description force the end-developer to build an XML entity body from scratch to send with those requests.  This is fine for relatively simple clients, but a better way of implementing these entity enclosing requests might be to create models for the bodies of the commands and force end-developers to set the data parameter using a model by specifying the class in the parameter&#8217;s type attribute:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- ... --&gt;</span>
-<span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;create_user&quot;</span> <span class="na">method=</span><span class="s">&quot;POST&quot;</span> <span class="na">path=</span><span class="s">&quot;/users&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;doc&gt;</span>Create a user<span class="nt">&lt;/doc&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span> <span class="na">type=</span><span class="s">&quot;class:Guzzle\Service\MyService\Model\User&quot;</span> <span class="na">location=</span><span class="s">&quot;body&quot;</span> <span class="na">doc=</span><span class="s">&quot;User model&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/command&gt;</span>
-<span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;create_comment&quot;</span> <span class="na">method=</span><span class="s">&quot;POST&quot;</span> <span class="na">path=</span><span class="s">&quot;/comments&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;doc&gt;</span>Create a comment<span class="nt">&lt;/doc&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span> <span class="na">type=</span><span class="s">&quot;class:Guzzle\Service\MyService\Model\Comment&quot;</span> <span class="na">location=</span><span class="s">&quot;body&quot;</span> <span class="na">doc=</span><span class="s">&quot;Comment model&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/command&gt;</span>
-<span class="c">&lt;!-- ... --&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>This content has moved to <a class="reference internal" href="service_descriptions.html"><em>Service Descriptions</em></a></p>
 </div>
 
 
        
+         
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
-  <a class="btn info" href="../http/creating_plugins.html" title="previous chapter">&laquo; Creating Plugins and Observers</a>
-  <a class="btn info" href="../http/caching.html" title="next chapter">Caching &raquo;</a>
+  <a class="btn info" href="../faq.html" title="previous chapter">&laquo; FAQ</a>
 </div>
-       <div id="comments">
+         <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
-    var disqus_identifier = 'Guzzle';
+    var disqus_identifier = 'guide/service/creating_dynamic_commands';
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -555,6 +172,7 @@ separated by a colon (e.g. <tt class="docutils literal"><span class="pre">locati
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
+       
      </div>
    
 </div>
@@ -564,6 +182,10 @@ separated by a colon (e.g. <tt class="docutils literal"><span class="pre">locati
     <p>
     </p>
   </div>
+  <script type="text/javascript">
+    
+    
+  </script>
 </footer>
   </body>
 </html>

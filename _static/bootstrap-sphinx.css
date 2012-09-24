@@ -7,52 +7,80 @@
 
 body {
   padding-top: 60px;
+  background-color: #FFFFFF;
+  position: relative;
 }
 
-.container-fluid > .content {
-    margin-left: 240px !important;
+p {
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+#guzzle-documentation {
+    min-height: 600px;
 }
 
 .guzzle-sidebar {
-  left: 20px;
-  position: absolute;
-  top: 0;
+  float: right;
+  margin: 0 0 0 20px;
   width: 220px;
   overflow: auto;
 }
 
 .hero-unit h1 {
-  font-size: 57px;
+  font-size: 49px;
+  margin-bottom: 12px;
 }
 .hero-unit {
-  padding: 41px;
+  padding: 40px;
+}
+.hero-unit p {
+    font-size: 17px;
 }
 .hero-unit img {
   float: left;
-  margin-right: 24px;
+  margin-right: 17px;
+}
+.hero-unit ul li {
+    margin-left: 220px;
+}
+.hero-unit .buttons {
+    text-align: center;
 }
 
-/*
+.other-buttons {
+    margin: 18px 0;
+    text-align: center;
+}
+
+.topbar-inner, .topbar .fill {
+    background-color: #222;
+    background-color: #222222;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#444444), to(#111111));
+    background-image: -moz-linear-gradient(top, #444444, #111111);
+    background-image: -ms-linear-gradient(top, #444444, #111111);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #444444), color-stop(100%, #111111));
+    background-image: -webkit-linear-gradient(top, #444444, #111111);
+    background-image: -o-linear-gradient(top, #444444, #111111);
+    background-image: linear-gradient(top, #444444, #111111);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#111111', GradientType=0);
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
 .topbar {
-  font-size: 20px;
+  font-size: 14px;
 }
-
-.topbar .dropdown li {
-  font-size: 13px;
-}
-*/
 
 .topbar .brand {
-  padding: 5px 7px !important;
   font-weight: bold !important;
-  text-shadow: 1px 1px 1px #111111 !important;
-  background: none repeat scroll 0 0 #F67E00;
-  border: 1px solid #000000;
-  border-radius: 5px 5px 5px 5px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
   color: #FFFFFF;
-  font-family: Arial,Helvetica,sans-serif;
-  margin: 4px 12px 0 0;
+  font-family: Helvetica,sans-serif;
+  margin: 10px 12px 0 0;
+  padding: 0;
 }
 
 div.documentwrapper {
@@ -61,33 +89,34 @@ div.documentwrapper {
 }
 
 .prettyprint, .highlight pre {
-    background-color: #FEFBF3;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    padding: 9px;
+    background-color: #eee;
+    padding: 7px 30px;
+    overflow: auto;
+    border: none;
+    border-radius: 0;
+    line-height: 1.3em;
+    font-family: 'Consolas','Menlo','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace;
+    font-size: 14px;
 }
 .highlight .hll { background-color: #ffffcc }
-.highlight { background: #ffffcc; }
+.highlight { background: none; }
 
 tt {
-  padding: 0 3px 2px;
-  font-family: Monaco, Andale Mono, Courier New, monospace;
-  font-size: 12px;
-  border-radius: 3px 3px 3px 3px;
-  color: rgba(0,0,0,.75);
-  background-color: #FEE9CC;
-  color: rgba(0, 0, 0, 0.75);
+  background-color: #ECF0F3;
+  color: #222222;
+  padding: 0 1px 1px;
+  font-family: 'Consolas','Menlo','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace
+  font-size: 13px;
 }
 
 div.note {
-  background-color: #DDF4FB;
-  border-radius: 4px 4px 4px 4px;
+  background-color: #FAFAFA;
+  border-radius: none;
   border-style: solid;
-  border-width: 1px;
-  border-color: #C6EDF9;
-  color: #404040;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-width: 1px 0 1px 0;
+  border-color: #ccc;
+  color: #3E4349;
   box-shadow: none;
-  padding: 14px 14px 5px 14px;
+  padding: 10px 30px;
   margin-bottom: 18px;
 }

@@ -2,19 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Guides &mdash; Guzzle v2.0.0 documentation</title>
+    <title>Guides &mdash; Guzzle 3.0.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css?v=4" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css?v=7" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=3" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.0.0',
+        VERSION:     '3.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,11 +27,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-dropdown.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-scrollspy.js"></script>
-    <link rel="top" title="Guzzle v2.0.0 documentation" href="../index.html" />
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
-    <link rel="next" title="Unit Testing Web Service Clients" href="service/testing_clients.html" />
+    <link rel="next" title="Plugins" href="plugins.html" />
     <link rel="prev" title="Building web service clients" href="../tour/building_services.html" />
 
 <script type="text/javascript">
@@ -93,13 +96,19 @@
         <a class="brand" href="../index.html">Guzzle</a>
         <ul class="nav">
           <li>
-            <a href="../index.html">home</a>
+            <a href="../index.html">Home</a>
           </li>
           <li>
-            <a href="../docs.html">docs</a>
+            <a href="../docs.html">Docs</a>
           </li>
           <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">connect</a>
+            <a href="https://github.com/guzzle/guzzle">GitHub</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+          </li>
+          <li>
+            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
           </li>
         </ul>
         <ul class="nav secondary-nav">
@@ -116,9 +125,10 @@
     </div>
   </div>
 
-<div class="container-fluid">
+<div class="container">
    
-     <div class="guzzle-sidebar">
+     
+       <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
@@ -137,12 +147,35 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
+     
      <div class="content">
        
   <div class="section" id="guides">
 <h1>Guides<a class="headerlink" href="#guides" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#http-plugins">HTTP Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#over-the-wire-logging">Over the wire logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#truncated-exponential-backoff">Truncated exponential backoff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#php-based-caching-forward-proxy">PHP-based caching forward proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#cookie-session-plugin">Cookie session plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#md5-hash-validator-plugin">MD5 hash validator plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#history-plugin">History plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#mock-plugin">Mock Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#curl-auth-plugin">Curl Auth Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#batch-queue-plugin">Batch Queue Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#oauth-1-0-plugin">OAuth 1.0 Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#async-plugin">Async Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#service-plugins">Service Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#plugin-collection-plugin">Plugin Collection Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#third-party-plugins">Third-party plugins</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="service/testing_clients.html">Unit Testing Web Service Clients</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="service/testing_clients.html#phpunit-integration">PHPUnit integration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="service/testing_clients.html#files">Files</a></li>
@@ -168,75 +201,113 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="http/creating_plugins.html">Creating Plugins and Observers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="http/creating_plugins.html#overview">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#subscribing-an-observer-to-a-subject">Subscribing an observer to a subject</a></li>
-<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#priorities">Priorities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#filtering-events">Filtering events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#subscribing-to-a-subject">Subscribing to a subject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#knowing-what-events-to-listen-to">Knowing what events to listen to</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="http/creating_plugins.html#events-emitted-by-different-subjects">Events emitted by different subjects</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#guzzle-http-events"><tt class="docutils literal"><span class="pre">Guzzle\Http</span></tt> events</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="http/creating_plugins.html#guzzle-http-message-request"><tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Request</span></tt></a></li>
-<li class="toctree-l4"><a class="reference internal" href="http/creating_plugins.html#guzzle-http-message-entityenclosingrequest"><tt class="docutils literal"><span class="pre">Guzzle\Http\Message\EntityEnclosingRequest</span></tt></a></li>
-<li class="toctree-l4"><a class="reference internal" href="http/creating_plugins.html#guzzle-http-pool-pool"><tt class="docutils literal"><span class="pre">Guzzle\Http\Pool\Pool</span></tt></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#guzzle-service-events"><tt class="docutils literal"><span class="pre">Guzzle\Service</span> <span class="pre">events</span></tt></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="http/creating_plugins.html#guzzle-service-client"><tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt></a></li>
-<li class="toctree-l4"><a class="reference internal" href="http/creating_plugins.html#guzzle-service-resourceiterator"><tt class="docutils literal"><span class="pre">Guzzle\Service\ResourceIterator</span></tt></a></li>
-<li class="toctree-l4"><a class="reference internal" href="http/creating_plugins.html#guzzle-service-resourceiteratorapplybatched"><tt class="docutils literal"><span class="pre">Guzzle\Service\ResourceIteratorApplyBatched</span></tt></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="http/creating_plugins.html#event-hooks">Event hooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="http/creating_plugins.html#examples-of-the-event-system">Examples of the event system</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#signing-requests-for-an-api">Signing requests for an API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/creating_plugins.html#simple-echo-plugin">Simple Echo plugin</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="service/creating_dynamic_commands.html">Creating Dynamic Commands</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="service/creating_dynamic_commands.html#creating-a-service-description">Creating a service description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/creating_dynamic_commands.html#how-to-write-an-xml-service-description">How to write an XML service description</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="service/creating_dynamic_commands.html#define-commands-using-command-nodes">Define commands using <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="service/creating_dynamic_commands.html#dynamic-commands">Dynamic commands</a></li>
-<li class="toctree-l4"><a class="reference internal" href="service/creating_dynamic_commands.html#concrete-commands">Concrete commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service/service_descriptions.html">Service Descriptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#creating-a-service-description">Creating a service description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#how-to-write-an-xml-service-description">How to write an XML service description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#define-commands-using-command-nodes">Define commands using <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#dynamic-commands">Dynamic commands</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="service/creating_dynamic_commands.html#use-custom-types-for-data-validation">Use custom <tt class="docutils literal"><span class="pre">&lt;types&gt;</span></tt> for data validation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="service/creating_dynamic_commands.html#including-other-service-descriptions">Including other service descriptions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="service/creating_dynamic_commands.html#xml">XML</a></li>
-<li class="toctree-l4"><a class="reference internal" href="service/creating_dynamic_commands.html#json">JSON</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="service/creating_dynamic_commands.html#creating-json-service-descriptions">Creating JSON service descriptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/creating_dynamic_commands.html#use-dynamic-and-concrete-commands">Use Dynamic and Concrete Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/creating_dynamic_commands.html#caveats-with-service-descriptions">Caveats with service descriptions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="service/creating_dynamic_commands.html#no-code-completion">No code completion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="service/creating_dynamic_commands.html#no-custom-response-processing">No custom response processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="service/creating_dynamic_commands.html#weak-support-for-custom-entity-bodies">Weak support for custom entity bodies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#use-custom-types-for-data-validation">Use custom <tt class="docutils literal"><span class="pre">&lt;types&gt;</span></tt> for data validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#sending-put-and-post-requests">Sending PUT and POST requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#including-other-service-descriptions">Including other service descriptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#xml">XML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#json">JSON</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="http/caching.html">Caching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="upgrade/1.0-2.0.html">Upgrading from Guzzle 1.x to Guzzle 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#creating-json-service-descriptions">Creating JSON service descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#use-dynamic-and-concrete-commands">Use Dynamic and Concrete Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#concrete-commands">Concrete commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#response-processing">Response processing</a></li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="batching.html">Batching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="batching.html#sending-requests-and-commands-in-parallel">Sending requests and commands in parallel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batching.html#batching-overview">Batching overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batching.html#using-the-batchbuilder">Using the BatchBuilder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="batching.html#transferring-requests">Transferring requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batching.html#transferring-commands">Transferring commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="batching.html#batch-behaviors">Batch behaviors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="batching.html#automatically-flushing-a-queue">Automatically flushing a queue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batching.html#notifying-on-flush">Notifying on flush</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batching.html#keeping-a-history">Keeping a history</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batching.html#exception-buffering">Exception buffering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http/caching.html">Caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http/caching.html#cache-options">Cache options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#override-cache-ttl">Override cache TTL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#custom-caching-decision">Custom caching decision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#revalidation-options">Revalidation options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#normalizing-requests-for-caching">Normalizing requests for caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#setting-client-wide-cache-settings">Setting Client-wide cache settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="http/caching.html#cache-revalidation">Cache revalidation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http/caching.html#cache-adapters">Cache adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#doctrine">Doctrine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#zend-framework">Zend Framework</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service/resource_iterators.html">Resource iterators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/resource_iterators.html#getting-an-iterator-from-a-client">Getting an iterator from a client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service/resource_iterators.html#iterator-options">Iterator options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/resource_iterators.html#resolving-iterator-class-names">Resolving iterator class names</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service/resource_iterators.html#creating-an-iterator">Creating an iterator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service/resource_iterators.html#implement-the-sendrequest-method">Implement the sendRequest method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/resource_iterators.html#update-the-nexttoken-property">Update the nextToken property</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service/resource_iterators.html#example-iterator">Example iterator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#what-should-i-do-if-i-get-this-error-fatal-error-maximum-function-nesting-level-of-100-reached-aborting">What should I do if I get this error: Fatal error: Maximum function nesting level of &#8216;100&#8217; reached, aborting!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-speed-up-my-client">How can I speed up my client?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#why-am-i-getting-a-417-error-response">Why am I getting a 417 error response?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
 
        
+         
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
   <a class="btn info" href="../tour/building_services.html" title="previous chapter">&laquo; Building web service clients</a>
-  <a class="btn info" href="service/testing_clients.html" title="next chapter">Unit Testing Web Service Clients &raquo;</a>
+  <a class="btn info" href="plugins.html" title="next chapter">Plugins &raquo;</a>
 </div>
-       <div id="comments">
+         <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
-    var disqus_identifier = 'Guzzle';
+    var disqus_identifier = 'guide/index';
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -246,6 +317,7 @@
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
+       
      </div>
    
 </div>
@@ -255,6 +327,10 @@
     <p>
     </p>
   </div>
+  <script type="text/javascript">
+    
+    
+  </script>
 </footer>
   </body>
 </html>

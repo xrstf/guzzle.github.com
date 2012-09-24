@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<p xmlns="http://pear.php.net/dtd/rest.package" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
+<n>guzzle</n>
+<c>guzzlephp.org/pear</c>
+<ca xlink:href="/rest/c/Default">Default</ca>
+<l>MIT</l>
+<s>HTTP client and REST client framework</s>
+<d>Guzzle is a PHP 5.3+ HTTP client and framework for building RESTful web service clients</d>
+<r xlink:href="/rest/r/guzzle" />
+</p>

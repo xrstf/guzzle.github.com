@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.6.1" />
+
+	<title>Class Guzzle\Service\Resource\ResourceIterator | Guzzle</title>
+
+	<script type="text/javascript" src="resources/combined.js?144019575"></script>
+	<script type="text/javascript" src="elementlist.js?2895688926"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', "UA-22752917-1"]);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Plugin.html">Plugin</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Service.Resource.ResourceIterator.html">ResourceIterator</a></li>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorApplyBatched.html">ResourceIteratorApplyBatched</a></li>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorClassFactory.html">ResourceIteratorClassFactory</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">ResourceIteratorFactoryInterface</a></li>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">ResourceIteratorInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Service.Resource.html" title="Summary of Guzzle\Service\Resource"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class ResourceIterator</h1>
+
+
+	<div class="description">
+	
+<p>Class that holds an event dispatcher</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Guzzle.Common.AbstractHasDispatcher.html"><span>Guzzle\Common\AbstractHasDispatcher</span></a>
+			
+			 implements 
+				<a href="class-Guzzle.Common.HasDispatcherInterface.html"><span>Guzzle\Common\HasDispatcherInterface</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Guzzle\Service\Resource\ResourceIterator</span></b>			
+			 implements 
+				<a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html"><span>Guzzle\Service\Resource\ResourceIteratorInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		<b>Abstract</b><br />
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Service.html">Service</a>\<a href="namespace-Guzzle.Service.Resource.html">Resource</a><br />
+		
+
+		<b>Located at</b> Guzzle/Service/Resource/ResourceIterator.php<br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="getAllEvents" id="_getAllEvents">
+
+		<td class="attributes"><code>
+			 public static
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAllEvents">#</a>
+		<code>getAllEvents( )</code>
+
+		<div class="description short">
+			
+<p>Get a list of all of the events emitted from the class</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a list of all of the events emitted from the class</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code>__construct( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span>, <span>array <var>$data</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			
+<p>This should only be invoked by a ClientInterface object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>This should only be invoked by a ClientInterface object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br> Initial command used for iteration</dd>
+					<dt><var>$data</var></dt>
+					<dd><code>array</code><br> Associative array of additional parameters. You may specify any number of
+custom options for an iterator. Among these options, you may also specify the
+following values: limit: Attempt to limit the maximum number of resources to
+this amount page_size: Attempt to retrieve this number of resources per request</dd>
+				</dl></div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toArray" id="_toArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toArray">#</a>
+		<code>toArray( )</code>
+
+		<div class="description short">
+			
+<p>Get all of the resources as an array (be careful as this could issue a large
+number of requests if no limit is specified)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get all of the resources as an array (be careful as this could issue a large
+number of requests if no limit is specified)</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_toArray">Guzzle\Service\Resource\ResourceIteratorInterface::toArray</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setLimit" id="_setLimit">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">Guzzle\Service\Resource\ResourceIteratorInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setLimit">#</a>
+		<code>setLimit( <span>integer <var>$limit</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Attempt to limit the total number of resources returned by the iterator.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Attempt to limit the total number of resources returned by the iterator.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$limit</var></dt>
+					<dd><code>integer</code><br> Limit amount</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">Guzzle\Service\Resource\ResourceIteratorInterface</a></code></code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_setLimit">Guzzle\Service\Resource\ResourceIteratorInterface::setLimit</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPageSize" id="_setPageSize">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">Guzzle\Service\Resource\ResourceIteratorInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPageSize">#</a>
+		<code>setPageSize( <span>integer <var>$pageSize</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Attempt to limit the total number of resources retrieved per request by the
+iterator.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Attempt to limit the total number of resources retrieved per request by the
+iterator.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pageSize</var></dt>
+					<dd><code>integer</code><br>$limit Limit amount</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">Guzzle\Service\Resource\ResourceIteratorInterface</a></code></code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_setPageSize">Guzzle\Service\Resource\ResourceIteratorInterface::setPageSize</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+			mixed|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code>get( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get an option from the iterator</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get an option from the iterator</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br> Key of the option to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed|null</code><br>Returns NULL if not set or the value if set<br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_get">Guzzle\Service\Resource\ResourceIteratorInterface::get</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Resource.ResourceIterator.html">Guzzle\Service\Resource\ResourceIterator</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code>set( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set an option on the iterator</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set an option on the iterator</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br> Key of the option to set</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>mixed</code><br> Value to set for the option</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Resource.ResourceIterator.html">Guzzle\Service\Resource\ResourceIterator</a></code></code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_set">Guzzle\Service\Resource\ResourceIteratorInterface::set</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="current" id="_current">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_current">#</a>
+		<code>current( )</code>
+
+		<div class="description short">
+			
+<p>Return the current element.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return the current element.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Returns the current element.<br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Iterator.html#_current">Iterator::current</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="key" id="_key">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_key">#</a>
+		<code>key( )</code>
+
+		<div class="description short">
+			
+<p>Return the key of the current element.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return the key of the current element.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Iterator.html#_key">Iterator::key</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="count" id="_count">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_count">#</a>
+		<code>count( )</code>
+
+		<div class="description short">
+			
+<p>Return the total number of items that have been retrieved thus far.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return the total number of items that have been retrieved thus far.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Countable.html#_count">Countable::count</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRequestCount" id="_getRequestCount">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRequestCount">#</a>
+		<code>getRequestCount( )</code>
+
+		<div class="description short">
+			
+<p>Get the total number of requests sent</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the total number of requests sent</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rewind" id="_rewind">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rewind">#</a>
+		<code>rewind( )</code>
+
+		<div class="description short">
+			
+<p>Rewind the Iterator to the first element and send the original command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Rewind the Iterator to the first element and send the original command</p>
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Iterator.html#_rewind">Iterator::rewind</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="valid" id="_valid">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_valid">#</a>
+		<code>valid( )</code>
+
+		<div class="description short">
+			
+<p>Check if there is a current element after calls to rewind() or next().</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if there is a current element after calls to rewind() or next().</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Returns TRUE if the current element is valid or FALSE<br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Iterator.html#_valid">Iterator::valid</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="next" id="_next">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_next">#</a>
+		<code>next( )</code>
+
+		<div class="description short">
+			
+<p>Move forward to next element and may trigger subsequent requests</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Move forward to next element and may trigger subsequent requests</p>
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Iterator.html#_next">Iterator::next</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getNextToken" id="_getNextToken">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getNextToken">#</a>
+		<code>getNextToken( )</code>
+
+		<div class="description short">
+			
+<p>Retrieve the NextToken that can be used in other iterators.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve the NextToken that can be used in other iterators.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>Returns a NextToken<br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_getNextToken">Guzzle\Service\Resource\ResourceIteratorInterface::getNextToken</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="calculatePageSize" id="_calculatePageSize">
+
+		<td class="attributes"><code>
+			 protected 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_calculatePageSize">#</a>
+		<code>calculatePageSize( )</code>
+
+		<div class="description short">
+			
+<p>Returns the value that should be specified for the page size for a request
+that will maintain any hard limits, but still honor the specified pageSize if
+the number of items retrieved + pageSize &lt; hard limit</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns the value that should be specified for the page size for a request
+that will maintain any hard limits, but still honor the specified pageSize if
+the number of items retrieved + pageSize &lt; hard limit</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>Returns the page size of the next request.<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="resetState" id="_resetState">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_resetState">#</a>
+		<code>resetState( )</code>
+
+		<div class="description short">
+			
+<p>Reset the internal state of the iterator without triggering a rewind()</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Reset the internal state of the iterator without triggering a rewind()</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sendRequest" id="_sendRequest">
+
+		<td class="attributes"><code>
+			abstract protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sendRequest">#</a>
+		<code>sendRequest( )</code>
+
+		<div class="description short">
+			
+<p>Send a request to retrieve the next page of results. Hook for subclasses to
+implement.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Send a request to retrieve the next page of results. Hook for subclasses to
+implement.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Returns the newly loaded resources<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Common.AbstractHasDispatcher.html#methods">Guzzle\Common\AbstractHasDispatcher</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_addSubscriber">addSubscriber()</a>, 
+			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_dispatch">dispatch()</a>, 
+			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_getEventDispatcher">getEventDispatcher()</a>, 
+			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_setEventDispatcher">setEventDispatcher()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="command" id="$command">
+
+		<td class="attributes"><code>
+			protected 
+			<code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code>
+		</code></td>
+
+		<td class="name">
+<var>$command</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$command" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Command used to send requests</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Command used to send requests</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="originalCommand" id="$originalCommand">
+
+		<td class="attributes"><code>
+			protected 
+			<code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code>
+		</code></td>
+
+		<td class="name">
+<var>$originalCommand</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$originalCommand" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>First sent command</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>First sent command</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="resources" id="$resources">
+
+		<td class="attributes"><code>
+			protected 
+			array
+		</code></td>
+
+		<td class="name">
+<var>$resources</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$resources" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Currently loaded resources</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Currently loaded resources</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="retrievedCount" id="$retrievedCount">
+
+		<td class="attributes"><code>
+			protected 
+			integer
+		</code></td>
+
+		<td class="name">
+<var>$retrievedCount</var>		</td>
+		<td class="value"><code><span class="php-num">0</span></code></td>
+		<td class="description"><div>
+			<a href="#$retrievedCount" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Total number of resources that have been retrieved</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Total number of resources that have been retrieved</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="iteratedCount" id="$iteratedCount">
+
+		<td class="attributes"><code>
+			protected 
+			integer
+		</code></td>
+
+		<td class="name">
+<var>$iteratedCount</var>		</td>
+		<td class="value"><code><span class="php-num">0</span></code></td>
+		<td class="description"><div>
+			<a href="#$iteratedCount" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Total number of resources that have been iterated</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Total number of resources that have been iterated</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="nextToken" id="$nextToken">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$nextToken</var>		</td>
+		<td class="value"><code><span class="php-keyword1">false</span></code></td>
+		<td class="description"><div>
+			<a href="#$nextToken" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>NextToken/Marker for a subsequent request</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>NextToken/Marker for a subsequent request</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="pageSize" id="$pageSize">
+
+		<td class="attributes"><code>
+			protected 
+			integer
+		</code></td>
+
+		<td class="name">
+<var>$pageSize</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$pageSize" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Maximum number of resources to fetch per request</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Maximum number of resources to fetch per request</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="limit" id="$limit">
+
+		<td class="attributes"><code>
+			protected 
+			integer
+		</code></td>
+
+		<td class="name">
+<var>$limit</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$limit" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Maximum number of resources to retrieve in total</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Maximum number of resources to retrieve in total</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="requestCount" id="$requestCount">
+
+		<td class="attributes"><code>
+			protected 
+			integer
+		</code></td>
+
+		<td class="name">
+<var>$requestCount</var>		</td>
+		<td class="value"><code><span class="php-num">0</span></code></td>
+		<td class="description"><div>
+			<a href="#$requestCount" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Number of requests sent</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Number of requests sent</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="data" id="$data">
+
+		<td class="attributes"><code>
+			protected 
+			array
+		</code></td>
+
+		<td class="name">
+<var>$data</var>		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$data" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Initial data passed to the constructor</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Initial data passed to the constructor</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="invalid" id="$invalid">
+
+		<td class="attributes"><code>
+			protected 
+			boolean
+		</code></td>
+
+		<td class="name">
+<var>$invalid</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$invalid" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Whether or not the current value is known to be invalid. This<br />
+is set for example when a senRequest() method returns 0 resources.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Whether or not the current value is known to be invalid. This is set for
+example when a senRequest() method returns 0 resources.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Guzzle.Common.AbstractHasDispatcher.html#properties">Guzzle\Common\AbstractHasDispatcher</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#$eventDispatcher"><var>$eventDispatcher</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+</div>
+
+	<div id="footer">
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

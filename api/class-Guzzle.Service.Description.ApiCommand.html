@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.6.1" />
+
+	<title>Class Guzzle\Service\Description\ApiCommand | Guzzle</title>
+
+	<script type="text/javascript" src="resources/combined.js?144019575"></script>
+	<script type="text/javascript" src="elementlist.js?2895688926"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', "UA-22752917-1"]);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Plugin.html">Plugin</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Service.Description.ApiCommand.html">ApiCommand</a></li>
+				<li><a href="class-Guzzle.Service.Description.ApiParam.html">ApiParam</a></li>
+				<li><a href="class-Guzzle.Service.Description.ArrayDescriptionBuilder.html">ArrayDescriptionBuilder</a></li>
+				<li><a href="class-Guzzle.Service.Description.JsonDescriptionBuilder.html">JsonDescriptionBuilder</a></li>
+				<li><a href="class-Guzzle.Service.Description.ServiceDescription.html">ServiceDescription</a></li>
+				<li><a href="class-Guzzle.Service.Description.ServiceDescriptionAbstractFactory.html">ServiceDescriptionAbstractFactory</a></li>
+				<li><a href="class-Guzzle.Service.Description.XmlDescriptionBuilder.html">XmlDescriptionBuilder</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Description.ApiCommandInterface.html">ApiCommandInterface</a></li>
+				<li><a href="class-Guzzle.Service.Description.DescriptionBuilderInterface.html">DescriptionBuilderInterface</a></li>
+				<li><a href="class-Guzzle.Service.Description.ServiceDescriptionFactoryInterface.html">ServiceDescriptionFactoryInterface</a></li>
+				<li><a href="class-Guzzle.Service.Description.ServiceDescriptionInterface.html">ServiceDescriptionInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Service.Description.html" title="Summary of Guzzle\Service\Description"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class ApiCommand</h1>
+
+
+	<div class="description">
+	
+<p>Data object holding the information of an API command</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Service\Description\ApiCommand</span></b>			
+			 implements 
+				<a href="class-Guzzle.Service.Description.ApiCommandInterface.html"><span>Guzzle\Service\Description\ApiCommandInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Service.html">Service</a>\<a href="namespace-Guzzle.Service.Description.html">Description</a><br />
+		
+
+		<b>Located at</b> Guzzle/Service/Description/ApiCommand.php<br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code>__construct( <span>array <var>$config</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Constructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Constructor</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$config</var></dt>
+					<dd><code>array</code><br> Array of configuration data using the following keys - name: Name of the
+command - doc: Method documentation - doc_url: URL pointing to an online
+reference about the command - method: HTTP method of the command - uri: URI
+routing information of the command - class: Concrete class that implements this
+command - result_type: Optional string containing the type of result created by
+the command - result_doc: Optional string containing the description of the
+result - deprecated: Set to true if this is a deprecated command - params:
+Associative array of parameters for the command with each parameter containing
+the following keys: - name: Parameter name - type: Type of variable (boolean,
+integer, string, array, class name, etc...) - type_args: Argument(s) to pass to
+the type validation - required: Whether or not the parameter is required -
+default: Default value - doc: Documentation - min_length: Minimum length -
+max_length: Maximum length - location: One of query, path, header, or body -
+location_key: Location key mapping value (e.g. query string value name) -
+static: Whether or not the param can be changed from this value - prepend: Text
+to prepend when adding this value - append: Text to append when adding this
+value - filters: Comma separated list of filters to run the value through. Must
+be a callable. Can call static class methods by separating the class and
+function with ::.</dd>
+				</dl></div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fromCommand" id="_fromCommand">
+
+		<td class="attributes"><code>
+			 public static
+			<code><a href="class-Guzzle.Service.Description.ApiCommand.html">Guzzle\Service\Description\ApiCommand</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromCommand">#</a>
+		<code>fromCommand( <span>string <var>$className</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Create an ApiCommand object from a class and its docblock</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create an ApiCommand object from a class and its docblock</p>
+
+<p>Example: @guzzle my_argument default="hello" required="true"
+doc="Description" type="string"</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$className</var></dt>
+					<dd><code>string</code><br> Name of the class</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Description.ApiCommand.html">Guzzle\Service\Description\ApiCommand</a></code></code><br />
+				</div>
+
+
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://guzzlephp.org/tour/building_services.html#docblock-annotations-for-commands">http://guzzlephp.org/tour/building_services.html#docblock-annotations-for-commands</a><br />
+				</div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toArray" id="_toArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toArray">#</a>
+		<code>toArray( )</code>
+
+		<div class="description short">
+			
+<p>Get as an array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get as an array</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_toArray">Guzzle\Service\Description\ApiCommandInterface::toArray</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParams" id="_getParams">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParams">#</a>
+		<code>getParams( )</code>
+
+		<div class="description short">
+			
+<p>Get the params of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the params of the command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getParams">Guzzle\Service\Description\ApiCommandInterface::getParams</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParamNames" id="_getParamNames">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParamNames">#</a>
+		<code>getParamNames( )</code>
+
+		<div class="description short">
+			
+<p>Returns an array of parameter names</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns an array of parameter names</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getParamNames">Guzzle\Service\Description\ApiCommandInterface::getParamNames</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hasParam" id="_hasParam">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hasParam">#</a>
+		<code>hasParam( <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if the command has a specific parameter by name</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the command has a specific parameter by name</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br> Name of the param</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_hasParam">Guzzle\Service\Description\ApiCommandInterface::hasParam</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParam" id="_getParam">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Description.ApiParam.html">Guzzle\Service\Description\ApiParam</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParam">#</a>
+		<code>getParam( <span>string <var>$param</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get a single parameter of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a single parameter of the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$param</var></dt>
+					<dd><code>string</code><br> Parameter to retrieve by name</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Description.ApiParam.html">Guzzle\Service\Description\ApiParam</a></code>|null</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getParam">Guzzle\Service\Description\ApiCommandInterface::getParam</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addParam" id="_addParam">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addParam">#</a>
+		<code>addParam( <span><code><a href="class-Guzzle.Service.Description.ApiParam.html">Guzzle\Service\Description\ApiParam</a></code> <var>$param</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add a parameter to the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add a parameter to the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$param</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Description.ApiParam.html">Guzzle\Service\Description\ApiParam</a></code></code><br> Parameter to add</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeParam" id="_removeParam">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeParam">#</a>
+		<code>removeParam( <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Remove a parameter from the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove a parameter from the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br> Name of the parameter to remove</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMethod" id="_getMethod">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMethod">#</a>
+		<code>getMethod( )</code>
+
+		<div class="description short">
+			
+<p>Get the HTTP method of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the HTTP method of the command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getMethod">Guzzle\Service\Description\ApiCommandInterface::getMethod</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setMethod" id="_setMethod">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setMethod">#</a>
+		<code>setMethod( <span>string <var>$method</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the method of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the method of the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$method</var></dt>
+					<dd><code>string</code><br> Method to set</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getConcreteClass" id="_getConcreteClass">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getConcreteClass">#</a>
+		<code>getConcreteClass( )</code>
+
+		<div class="description short">
+			
+<p>Get the concrete command class that implements this command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the concrete command class that implements this command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getConcreteClass">Guzzle\Service\Description\ApiCommandInterface::getConcreteClass</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setConcreteClass" id="_setConcreteClass">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setConcreteClass">#</a>
+		<code>setConcreteClass( <span>string <var>$className</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the concrete class of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the concrete class of the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$className</var></dt>
+					<dd><code>string</code><br> Concrete class name</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getName" id="_getName">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getName">#</a>
+		<code>getName( )</code>
+
+		<div class="description short">
+			
+<p>Get the name of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the name of the command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getName">Guzzle\Service\Description\ApiCommandInterface::getName</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setName" id="_setName">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setName">#</a>
+		<code>setName( <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the name of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the name of the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br> Name of the command</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDoc" id="_getDoc">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDoc">#</a>
+		<code>getDoc( )</code>
+
+		<div class="description short">
+			
+<p>Get the documentation for the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the documentation for the command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getDoc">Guzzle\Service\Description\ApiCommandInterface::getDoc</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDoc" id="_setDoc">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDoc">#</a>
+		<code>setDoc( <span>string <var>$doc</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the command's documentation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the command's documentation</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$doc</var></dt>
+					<dd><code>string</code><br> Command documentation</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDocUrl" id="_getDocUrl">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDocUrl">#</a>
+		<code>getDocUrl( )</code>
+
+		<div class="description short">
+			
+<p>Get the documentation URL of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the documentation URL of the command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getDocUrl">Guzzle\Service\Description\ApiCommandInterface::getDocUrl</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDocUrl" id="_setDocUrl">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDocUrl">#</a>
+		<code>setDocUrl( <span>string <var>$docUrl</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the URL pointing to additional documentation on the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the URL pointing to additional documentation on the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$docUrl</var></dt>
+					<dd><code>string</code><br> Documentation URL</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getResultType" id="_getResultType">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getResultType">#</a>
+		<code>getResultType( )</code>
+
+		<div class="description short">
+			
+<p>Get the type of data stored in the result of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the type of data stored in the result of the command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getResultType">Guzzle\Service\Description\ApiCommandInterface::getResultType</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setResultType" id="_setResultType">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setResultType">#</a>
+		<code>setResultType( <span>string <var>$resultType</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the type of result created by the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the type of result created by the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$resultType</var></dt>
+					<dd><code>string</code><br> Type of result</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getResultDoc" id="_getResultDoc">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getResultDoc">#</a>
+		<code>getResultDoc( )</code>
+
+		<div class="description short">
+			
+<p>Get the documentation specific to the result of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the documentation specific to the result of the command</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getResultDoc">Guzzle\Service\Description\ApiCommandInterface::getResultDoc</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setResultDoc" id="_setResultDoc">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setResultDoc">#</a>
+		<code>setResultDoc( <span>string <var>$resultDoc</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the result doc of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the result doc of the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$resultDoc</var></dt>
+					<dd><code>string</code><br> Documentation about the result of the command</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isDeprecated" id="_isDeprecated">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isDeprecated">#</a>
+		<code>isDeprecated( )</code>
+
+		<div class="description short">
+			
+<p>Get whether or not the command is deprecated</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get whether or not the command is deprecated</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_isDeprecated">Guzzle\Service\Description\ApiCommandInterface::isDeprecated</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDeprecated" id="_setDeprecated">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDeprecated">#</a>
+		<code>setDeprecated( <span>boolean <var>$isDeprecated</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set whether or not the command is deprecated</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set whether or not the command is deprecated</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$isDeprecated</var></dt>
+					<dd><code>boolean</code><br> Set to true to mark as deprecated</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUri" id="_getUri">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUri">#</a>
+		<code>getUri( )</code>
+
+		<div class="description short">
+			
+<p>Get the URI that will be merged into the generated request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the URI that will be merged into the generated request</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_getUri">Guzzle\Service\Description\ApiCommandInterface::getUri</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setUri" id="_setUri">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setUri">#</a>
+		<code>setUri( <span>string <var>$uri</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the URI template of the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the URI template of the command</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string</code><br> URI template to set</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validate" id="_validate">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validate">#</a>
+		<code>validate( <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$config</var></span>, <span><code><a href="class-Guzzle.Service.Inspector.html">Guzzle\Service\Inspector</a></code> <var>$inspector</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Validates that all required args are included in a config object, and if not,
+throws an InvalidArgumentException with a helpful error message. Adds default
+args to the passed config object if the parameter was not set in the config
+object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validates that all required args are included in a config object, and if not,
+throws an InvalidArgumentException with a helpful error message. Adds default
+args to the passed config object if the parameter was not set in the config
+object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$config</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> Configuration settings</dd>
+					<dt><var>$inspector</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Inspector.html">Guzzle\Service\Inspector</a></code></code><br> Inspector to use with the validation</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Exception.ValidationException.html">Guzzle\Service\Exception\ValidationException</a></code></code><br>when validation errors occur<br />
+				</div>
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Description.ApiCommandInterface.html#_validate">Guzzle\Service\Description\ApiCommandInterface::validate</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="DEFAULT_COMMAND_CLASS" id="DEFAULT_COMMAND_CLASS">
+
+		<td class="attributes"><code>
+			string
+		</code></td>
+		<td class="name"><code>
+<b>DEFAULT_COMMAND_CLASS</b>		</code></td>
+		<td class="value"><code><span class="php-quote">'Guzzle\\Service\\Command\\DynamicCommand'</span></code></td>
+		<td class="description"><div>
+			<a href="#DEFAULT_COMMAND_CLASS" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Default command class to use when none is specified</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Default command class to use when none is specified</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="GUZZLE_ANNOTATION" id="GUZZLE_ANNOTATION">
+
+		<td class="attributes"><code>
+			string
+		</code></td>
+		<td class="name"><code>
+<b>GUZZLE_ANNOTATION</b>		</code></td>
+		<td class="value"><code><span class="php-quote">'@guzzle'</span></code></td>
+		<td class="description"><div>
+			<a href="#GUZZLE_ANNOTATION" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Annotation used to specify Guzzle service description info</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Annotation used to specify Guzzle service description info</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="params" id="$params">
+
+		<td class="attributes"><code>
+			protected 
+			array
+		</code></td>
+
+		<td class="name">
+<var>$params</var>		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$params" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Parameters</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Parameters</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="name" id="$name">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$name</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$name" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Name of the command</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Name of the command</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="doc" id="$doc">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$doc</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$doc" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Documentation</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Documentation</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="method" id="$method">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$method</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$method" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>HTTP method</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>HTTP method</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="uri" id="$uri">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$uri</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$uri" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>HTTP URI of the command</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>HTTP URI of the command</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="class" id="$class">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$class</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$class" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Class of the command object</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Class of the command object</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="resultType" id="$resultType">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$resultType</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$resultType" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Result type generated by the command</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Result type generated by the command</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="resultDoc" id="$resultDoc">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$resultDoc</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$resultDoc" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Result type generated by the command</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Result type generated by the command</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="deprecated" id="$deprecated">
+
+		<td class="attributes"><code>
+			protected 
+			boolean
+		</code></td>
+
+		<td class="name">
+<var>$deprecated</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$deprecated" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Whether or not the command is deprecated</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Whether or not the command is deprecated</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="docUrl" id="$docUrl">
+
+		<td class="attributes"><code>
+			protected 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$docUrl</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$docUrl" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Reference URL of the command</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Reference URL of the command</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="apiCommandCache" id="$apiCommandCache">
+
+		<td class="attributes"><code>
+			protected static
+			array
+		</code></td>
+
+		<td class="name">
+<var>$apiCommandCache</var>		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$apiCommandCache" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Cache of parsed Command class ApiCommands</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Cache of parsed Command class ApiCommands</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+</div>
+
+	<div id="footer">
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

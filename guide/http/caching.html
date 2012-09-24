@@ -2,19 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Caching &mdash; Guzzle v2.0.0 documentation</title>
+    <title>Caching &mdash; Guzzle 3.0.0 documentation</title>
+    
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap.css?v=4" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=7" type="text/css" />
+    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=3" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2.0.0',
+        VERSION:     '3.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,12 +27,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-dropdown.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-scrollspy.js"></script>
-    <link rel="top" title="Guzzle v2.0.0 documentation" href="../../index.html" />
+    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../../index.html" />
     <link rel="up" title="Guides" href="../index.html" />
-    <link rel="next" title="Upgrading from Guzzle 1.x to Guzzle 2.0" href="../upgrade/1.0-2.0.html" />
-    <link rel="prev" title="Creating Dynamic Commands" href="../service/creating_dynamic_commands.html" />
+    <link rel="next" title="Resource iterators" href="../service/resource_iterators.html" />
+    <link rel="prev" title="Batching" href="../batching.html" />
 
 <script type="text/javascript">
 (function () {
@@ -93,13 +96,19 @@
         <a class="brand" href="../../index.html">Guzzle</a>
         <ul class="nav">
           <li>
-            <a href="../../index.html">home</a>
+            <a href="../../index.html">Home</a>
           </li>
           <li>
-            <a href="../../docs.html">docs</a>
+            <a href="../../docs.html">Docs</a>
           </li>
           <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">connect</a>
+            <a href="https://github.com/guzzle/guzzle">GitHub</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+          </li>
+          <li>
+            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
           </li>
         </ul>
         <ul class="nav secondary-nav">
@@ -116,13 +125,30 @@
     </div>
   </div>
 
-<div class="container-fluid">
+<div class="container">
    
-     <div class="guzzle-sidebar">
+     
+       <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
-<li><a class="reference internal" href="#">Caching</a></li>
+<li><a class="reference internal" href="#">Caching</a><ul>
+<li><a class="reference internal" href="#cache-options">Cache options</a><ul>
+<li><a class="reference internal" href="#override-cache-ttl">Override cache TTL</a></li>
+<li><a class="reference internal" href="#custom-caching-decision">Custom caching decision</a></li>
+<li><a class="reference internal" href="#revalidation-options">Revalidation options</a></li>
+<li><a class="reference internal" href="#normalizing-requests-for-caching">Normalizing requests for caching</a></li>
+<li><a class="reference internal" href="#setting-client-wide-cache-settings">Setting Client-wide cache settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cache-revalidation">Cache revalidation</a></li>
+<li><a class="reference internal" href="#cache-adapters">Cache adapters</a><ul>
+<li><a class="reference internal" href="#doctrine">Doctrine</a></li>
+<li><a class="reference internal" href="#zend-framework">Zend Framework</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
   </div>
@@ -135,23 +161,126 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
+     
      <div class="content">
        
   <div class="section" id="caching">
 <h1>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h1>
+<p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\CachePlugin</span></tt>.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior, cache lifetime, and supports automatic ETag and Last-Modified based revalidation.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\CachePlugin</span><span class="p">;</span>
+
+<span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">());</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="nv">$adapter</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.wikipedia.org&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$cache</span><span class="p">);</span>
+
+<span class="nv">$response1</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+
+<span class="c1">// The next request will revalidate against the origin server to see if it</span>
+<span class="c1">// has been modified.  If a 304 response is recieved the response will be</span>
+<span class="c1">// served from cache</span>
+<span class="nv">$response2</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The cache plugin intercepts GET and HEAD requests before they are actually transferred to the origin server.  The cache plugin then generates a hash key based on the request message and checks to see if a response exists in the cache.  If a response exists in the cache, the cache adapter then checks to make sure that the response is still fresh.  If the response is fresh and passes any required revalidation, then the cached response is served instead of contacting the origin server.</p>
+<div class="section" id="cache-options">
+<h2>Cache options<a class="headerlink" href="#cache-options" title="Permalink to this headline">¶</a></h2>
+<p>There are several options you can add to requests or clients to modify the behavior of the cache plugin.</p>
+<div class="section" id="override-cache-ttl">
+<h3>Override cache TTL<a class="headerlink" href="#override-cache-ttl" title="Permalink to this headline">¶</a></h3>
+<p>You can override the number of seconds a cacheable response is stored in the cache by setting the <tt class="docutils literal"><span class="pre">cache.override_ttl</span></tt> parameter on the params object of a request:</p>
+<div class="highlight-python"><pre>// If the response to the request is cacheable, then the response will be cached for 100 seconds
+$request-&gt;getParams()-&gt;set('cache.override_ttl', 100);</pre>
+</div>
+</div>
+<div class="section" id="custom-caching-decision">
+<h3>Custom caching decision<a class="headerlink" href="#custom-caching-decision" title="Permalink to this headline">¶</a></h3>
+<p>If the service you are interacting with does not return caching headers or returns responses that are normally something that would not be cached, you can set a <tt class="docutils literal"><span class="pre">cache.filter_strategy</span></tt> parameter on the params object of a request. This parameter should be a callable function that accepts a <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\RequestInterface</span></tt> object and returns true if the request can be cached or false if the request cannot be cached:</p>
+<div class="highlight-python"><pre>// Causes every request to be cacheable
+$request-&gt;getParams()-&gt;set('cache.filter_strategy', function (Guzzle\Http\Message\RequestInterface $request) {
+    return true;
+});</pre>
+</div>
+</div>
+<div class="section" id="revalidation-options">
+<h3>Revalidation options<a class="headerlink" href="#revalidation-options" title="Permalink to this headline">¶</a></h3>
+<p>You can change the revalidation behavior of a request using the <tt class="docutils literal"><span class="pre">cache.revalidate</span></tt> parameter.  Setting this parameter to <tt class="docutils literal"><span class="pre">never</span></tt> will ensure that a revalidation request is never sent, and the response is always served from the origin server.  Setting this parameter to <tt class="docutils literal"><span class="pre">skip</span></tt> will never revalidate and uses the response stored in the cache.</p>
+</div>
+<div class="section" id="normalizing-requests-for-caching">
+<h3>Normalizing requests for caching<a class="headerlink" href="#normalizing-requests-for-caching" title="Permalink to this headline">¶</a></h3>
+<p>Use the <tt class="docutils literal"><span class="pre">cache.key_filter</span></tt> parameter if you wish to strip certain headers or query string parameters from your request before creating a unique hash for the request.  This parameter can be useful if you send a special authorization header that changes based on the date, but still wish to cache the responses of those requests.  The cache.key_filter format can contain a list of <tt class="docutils literal"><span class="pre">query</span></tt> and <tt class="docutils literal"><span class="pre">header</span></tt> values to remove from the request hash.  You are not required to specify both a query or header list, and either list can contain one or more keys to ignore.  For example, here we are saying that the <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">q</span></tt> query string variables and the <tt class="docutils literal"><span class="pre">Date</span></tt> header should be ignored when generating a hash key for the request:</p>
+<div class="highlight-python"><pre>$request-&gt;getParams()-&gt;set('cache.key_filter', 'query=a, q; header=Date, Host');</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This parameter only works when no <tt class="docutils literal"><span class="pre">cache.filter_strategy</span></tt> parameter is provided.</p>
+</div>
+</div>
+<div class="section" id="setting-client-wide-cache-settings">
+<h3>Setting Client-wide cache settings<a class="headerlink" href="#setting-client-wide-cache-settings" title="Permalink to this headline">¶</a></h3>
+<p>You can specify cache settings for every request created by a client by adding cache settings to the configuration options of a client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;params.cache.override_ttl&#39;</span> <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">,</span>
+    <span class="s1">&#39;params.cache.revalidate&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;never&#39;</span>
+<span class="p">));</span>
+
+<span class="k">echo</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;cache.override_ttl&#39;</span><span class="p">);</span>
+<span class="c1">// Prints 3600</span>
+<span class="k">echo</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;cache.revalidate&#39;</span><span class="p">);</span>
+<span class="c1">// Prints never</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cache-revalidation">
+<h2>Cache revalidation<a class="headerlink" href="#cache-revalidation" title="Permalink to this headline">¶</a></h2>
+<p>If the cache plugin determines that a response to a GET request needs revalidation, a conditional GET is transferred to the origin server.  If the origin server returns a 304 response, then a response containing the merged headers of the cached response with the new response and the entity body of the cached response is returned.</p>
+</div>
+<div class="section" id="cache-adapters">
+<h2>Cache adapters<a class="headerlink" href="#cache-adapters" title="Permalink to this headline">¶</a></h2>
+<p>The cache plugin requires a cache adapter so that is can store responses in a cache.  Guzzle currently supports cache adapters for <a class="reference external" href="http://www.doctrine-project.org/">Doctrine 2.0</a> and the Zend Framework 1.0 or 2.0.</p>
+<div class="section" id="doctrine">
+<h3>Doctrine<a class="headerlink" href="#doctrine" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\CachePlugin</span><span class="p">;</span>
+
+<span class="nv">$backend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">();</span>
+<span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="nv">$backend</span><span class="p">);</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="nv">$adapter</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="zend-framework">
+<h3>Zend Framework<a class="headerlink" href="#zend-framework" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Cache\ZendCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Zend\Cache\Backend\TestBackend</span><span class="p">;</span>
+
+<span class="nv">$backend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TestBackend</span><span class="p">();</span>
+<span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ZendCacheAdapter</span><span class="p">(</span><span class="nv">$backend</span><span class="p">);</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="nv">$adapter</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
        
+         
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
-  <a class="btn info" href="../service/creating_dynamic_commands.html" title="previous chapter">&laquo; Creating Dynamic Commands</a>
-  <a class="btn info" href="../upgrade/1.0-2.0.html" title="next chapter">Upgrading from Guzzle 1.x to Guzzle 2.0 &raquo;</a>
+  <a class="btn info" href="../batching.html" title="previous chapter">&laquo; Batching</a>
+  <a class="btn info" href="../service/resource_iterators.html" title="next chapter">Resource iterators &raquo;</a>
 </div>
-       <div id="comments">
+         <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
-    var disqus_identifier = 'Guzzle';
+    var disqus_identifier = 'guide/http/caching';
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -161,6 +290,7 @@
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
+       
      </div>
    
 </div>
@@ -170,6 +300,10 @@
     <p>
     </p>
   </div>
+  <script type="text/javascript">
+    
+    
+  </script>
 </footer>
   </body>
 </html>

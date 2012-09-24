@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0         http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>guzzle</name>
+ <channel>guzzlephp.org/pear</channel>
+ <summary>HTTP client and REST client framework</summary>
+ <description>Guzzle is a PHP 5.3+ HTTP client and framework for building RESTful web service clients</description>
+ <lead>
+  <name>Michael Dowling</name>
+  <user>mtdowling</user>
+  <email>mtdowling@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-01-23</date>
+ <time>06:54:24</time>
+ <version>
+  <release>2.0.5</release>
+  <api>2.0.5</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
+ <notes>
+HTTP client
+ </notes>
+ <contents>
+  <dir baseinstalldir="guzzle" name="/">
+   <file baseinstalldir="guzzle" md5sum="024f8cf7a7d63259093ecc609f5c9e9c" name="Guzzle/Common/Cache/AbstractCacheAdapter.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="8b465f5ce00cfbbc6705ac88c9d326c2" name="Guzzle/Common/Cache/CacheAdapterInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="76dd2b195302fd3204f9ce1f2e1a3bcc" name="Guzzle/Common/Cache/DoctrineCacheAdapter.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="ba00e6af755c7a4df09da676043330bd" name="Guzzle/Common/Cache/ZendCacheAdapter.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="057c73011598d3ebd24c6d2978a06e09" name="Guzzle/Common/Log/AbstractLogAdapter.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="a5bfcf6e7910b7bffe47a8ac92010dcd" name="Guzzle/Common/Log/ClosureLogAdapter.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="fabf4e6ef8a6ba4666773117dee364e3" name="Guzzle/Common/Log/LogAdapterInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="ef16fb791a821f391e81b4e481fd503f" name="Guzzle/Common/Log/MonologLogAdapter.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="e9da11986beb4533dfba30cb3f3c5348" name="Guzzle/Common/Log/ZendLogAdapter.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="5e4749a14cf52ae39ed3a504afb1716f" name="Guzzle/Common/AbstractHasDispatcher.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="10a317d104dd0e003fe30fb9d9e757b8" name="Guzzle/Common/Collection.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="ca728695917fa3b012c0ba8341308a4c" name="Guzzle/Common/Event.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="62ee256e64e8518944b936bc71fa8344" name="Guzzle/Common/ExceptionCollection.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="942ad8c8d7de7faef2d86b9955cc2047" name="Guzzle/Common/GuzzleExceptionInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="e8453747becd4fd17db9ad612a462ce5" name="Guzzle/Common/HasDispatcherInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="2806b4b42a438c9ceeb5273c7708a428" name="Guzzle/Common/NullObject.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="ed93e53515ded46d4591293542417259" name="Guzzle/Common/Stream.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="f4e4584ff29034883956b05023cba43b" name="Guzzle/Common/XmlElement.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="16dc63bb7c28a0dde0f07af5f34aca4e" name="Guzzle/Http/CookieJar/ArrayCookieJar.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="b37edebf8cbcb9632da8b02452598b75" name="Guzzle/Http/CookieJar/CookieJarInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="132a9ebb916acca436e9c73471138946" name="Guzzle/Http/CookieJar/FileCookieJar.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="2392123f06a94fb3adf139f311926538" name="Guzzle/Http/Curl/CurlException.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="3aa4c0aabae63398ede4d02d6166cad0" name="Guzzle/Http/Curl/CurlHandle.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="f62bdfc7d3a353c3a4a6cb7061c55630" name="Guzzle/Http/Curl/CurlMulti.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="07ce22e76975d50cb599bff5d8a99a10" name="Guzzle/Http/Curl/CurlMultiInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="ba09a0c3b8f6ae4805b85ab8fb5b3e83" name="Guzzle/Http/Message/AbstractMessage.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="8bdf30f27f9ef189df63c9af222b3539" name="Guzzle/Http/Message/BadResponseException.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="6fec76cdba68100b28f259da03be4c41" name="Guzzle/Http/Message/EntityEnclosingRequest.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="32afc8c4ac421e8f478884eb62f3aabf" name="Guzzle/Http/Message/EntityEnclosingRequestInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="a5cbaa5e7d26b51a854f995802022420" name="Guzzle/Http/Message/MessageInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="da2dba9a5b25d5333bde42a0e20f5661" name="Guzzle/Http/Message/Request.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="caced9f8be1ce4f663d6841c5bfdc754" name="Guzzle/Http/Message/RequestException.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="43db8f67931b7263661a698895c32907" name="Guzzle/Http/Message/RequestFactory.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="fc4c61ca3ac01082ccdb602e549e0ff5" name="Guzzle/Http/Message/RequestInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="9ff7c0f91138a8c368d8101869004de8" name="Guzzle/Http/Message/Response.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="ec834c3dd9dbd508df61641f87cb1633" name="Guzzle/Http/Plugin/BasicAuthPlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="8b1036e8e6481527857e2df18470d1c3" name="Guzzle/Http/Plugin/BatchQueuePlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="ae8734e976b967b8dc47869fe8523fef" name="Guzzle/Http/Plugin/CachePlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="41040a422186a259c61587e1c74eba2f" name="Guzzle/Http/Plugin/CookiePlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="6ce0ad46bdff1d1db311dbd651ad0917" name="Guzzle/Http/Plugin/ExponentialBackoffPlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="e0892a168854f83d6fec8526c3c4c47a" name="Guzzle/Http/Plugin/HistoryPlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="0bf1c6edb65a5f8bb4182449761f9103" name="Guzzle/Http/Plugin/LogPlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="b18979530b6d922f16949e5da7fc77a0" name="Guzzle/Http/Plugin/Md5ValidatorPlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="7c89b4e7ad108c73df75eb313d5dc3e3" name="Guzzle/Http/Plugin/MockPlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="cd795b535cbbca6c1bf0316909b658cc" name="Guzzle/Http/Plugin/OauthPlugin.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="93534afda01bcf22a4ca1a420bfcd562" name="Guzzle/Http/Client.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="72e478518a66f625c658cf87287949ed" name="Guzzle/Http/ClientInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="7983fc365d43cd908512597e0d6899c9" name="Guzzle/Http/Cookie.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="738b53410575cfe080584ee4315d7e8e" name="Guzzle/Http/EntityBody.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="c335be4f2a5c76756f60c33d5002c69f" name="Guzzle/Http/HttpException.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="75ae29122de71c904c1e609a0dd81b11" name="Guzzle/Http/QueryString.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="f2e7d0cab8f7f13812306da8ff4dc52f" name="Guzzle/Http/Url.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="d45792e3c48ce57c14dd4a007bea4490" name="Guzzle/Service/Command/AbstractCommand.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="666997b7b7dec731f8aac7f3e36eb45a" name="Guzzle/Service/Command/ClosureCommand.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="e59919d629198028a8f8250fdec42b16" name="Guzzle/Service/Command/CommandInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="870204b012114216a7e8df6af28f2b86" name="Guzzle/Service/Command/CommandSet.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="95694265f294becfdec25fd27927c1a6" name="Guzzle/Service/Command/CommandSetException.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="cfc482a2776fb60b7d52ef80444cc2a9" name="Guzzle/Service/Command/DynamicCommand.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="83bf43c2591ab831cc74acff012b2d79" name="Guzzle/Service/Description/ApiCommand.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="cad1500a27be0e1de332dba142ae07c6" name="Guzzle/Service/Description/ApiCommandFactory.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="a5d103f9a5cf35d0f2d50d4f42e85780" name="Guzzle/Service/Description/CommandFactoryInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="5955965517fc36b899dda56f1ba319e3" name="Guzzle/Service/Description/DescriptionBuilderInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="b2ff25a0b93f021a5711251805a89ef4" name="Guzzle/Service/Description/JsonDescriptionBuilder.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="0a4b309fba8787a25014bde0eb71081d" name="Guzzle/Service/Description/ServiceDescription.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="5d456eaf2386aa692757f253b340b94d" name="Guzzle/Service/Description/XmlDescriptionBuilder.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="57894005ccdc3ac4774ca11e2a029982" name="Guzzle/Service/Client.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="834d55e2f0801a3fe47d602ae48fb3ee" name="Guzzle/Service/ClientInterface.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="741f1c170c7cfac30b152102fa30f121" name="Guzzle/Service/Inflector.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="534e9455426d2190dc2fbd8e1d583a49" name="Guzzle/Service/Inspector.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="5a9f4ec24d8d4b70e69ca6a45056962d" name="Guzzle/Service/ResourceIterator.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="d199269e64b409683e737377881f5757" name="Guzzle/Service/ResourceIteratorApplyBatched.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="2ce619abd5686a344f6d07b78f52d9df" name="Guzzle/Service/ServiceBuilder.php" role="php" />
+   <file baseinstalldir="guzzle" md5sum="a4f6f93a9c9468a11a218ea28d237b19" name="Guzzle/Guzzle.php" role="php" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+</package>

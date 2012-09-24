@@ -2,19 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tour &mdash; Guzzle v2.0.0 documentation</title>
+    <title>Tour &mdash; Guzzle 3.0.0 documentation</title>
+    
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css?v=4" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css?v=7" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=3" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.0.0',
+        VERSION:     '3.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,9 +27,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-dropdown.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-scrollspy.js"></script>
-    <link rel="top" title="Guzzle v2.0.0 documentation" href="../index.html" />
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="next" title="Installation" href="installation.html" />
     <link rel="prev" title="Guzzle Documentation" href="../docs.html" />
@@ -93,13 +96,19 @@
         <a class="brand" href="../index.html">Guzzle</a>
         <ul class="nav">
           <li>
-            <a href="../index.html">home</a>
+            <a href="../index.html">Home</a>
           </li>
           <li>
-            <a href="../docs.html">docs</a>
+            <a href="../docs.html">Docs</a>
           </li>
           <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">connect</a>
+            <a href="https://github.com/guzzle/guzzle">GitHub</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+          </li>
+          <li>
+            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
           </li>
         </ul>
         <ul class="nav secondary-nav">
@@ -116,9 +125,10 @@
     </div>
   </div>
 
-<div class="container-fluid">
+<div class="container">
    
-     <div class="guzzle-sidebar">
+     
+       <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
@@ -137,6 +147,7 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
+     
      <div class="content">
        
   <div class="section" id="tour">
@@ -147,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#installing-guzzle">Installing Guzzle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#running-the-unit-tests">Running the unit tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#framework-integrations">Framework integrations</a></li>
 </ul>
 </li>
@@ -154,8 +166,8 @@
 <li class="toctree-l2"><a class="reference internal" href="http.html#quick-overview-of-guzzle-s-http-features">Quick overview of Guzzle&#8217;s HTTP features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="http.html#using-a-client-object">Using a Client object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="http.html#sending-requests-and-using-responses">Sending requests and using responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html#uri-templates">URI templates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="http.html#plugins-for-common-http-request-behavior">Plugins for common HTTP request behavior</a></li>
-<li class="toctree-l2"><a class="reference internal" href="http.html#wrapping-it-all-up">Wrapping it all up</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="using_services.html">Consuming web services using web service clients</a><ul>
@@ -167,7 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="building_services.html#setting-up">Setting up</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_services.html#create-a-client">Create a client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_services.html#create-commands">Create commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building_services.html#iterating-over-pages-of-results">Iterating over pages of results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_services.html#iterating-over-resources">Iterating over resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_services.html#unit-test-your-service">Unit test your service</a></li>
 </ul>
 </li>
@@ -177,15 +189,16 @@
 
 
        
+         
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
   <a class="btn info" href="../docs.html" title="previous chapter">&laquo; Guzzle Documentation</a>
   <a class="btn info" href="installation.html" title="next chapter">Installation &raquo;</a>
 </div>
-       <div id="comments">
+         <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
-    var disqus_identifier = 'Guzzle';
+    var disqus_identifier = 'tour/index';
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -195,6 +208,7 @@
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
+       
      </div>
    
 </div>
@@ -204,6 +218,10 @@
     <p>
     </p>
   </div>
+  <script type="text/javascript">
+    
+    
+  </script>
 </footer>
   </body>
 </html>
