@@ -2,6 +2,30 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
     <pi>
         <p>
+            <n>Guzzle</n>
+            <c>guzzlephp.org/pear</c>
+            <ca xlink:href="/rest/c/Default">Default</ca>
+            <l>MIT</l>
+            <s>Guzzle is a PHP 5.3+ HTTP client and framework for building RESTful web service clients</s>
+            <d>PHP HTTP client</d>
+            <r xlink:href="/rest/r/guzzle" />
+        </p>
+
+        <a>
+            <r>
+                <v>2.8.7</v>
+                <s>stable</s>
+            </r>
+
+        </a>
+
+        <deps>
+            <v>2.8.7</v>
+            <d>a:1:{s:8:"required";a:2:{s:3:"php";a:1:{s:3:"min";s:5:"5.3.2";}s:13:"pearinstaller";a:1:{s:3:"min";s:5:"1.4.6";}}}</d>
+        </deps>
+
+    </pi>    <pi>
+        <p>
             <n>guzzle</n>
             <c>guzzlephp.org/pear</c>
             <ca xlink:href="/rest/c/Default">Default</ca>

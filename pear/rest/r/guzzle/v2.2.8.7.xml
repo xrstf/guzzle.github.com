@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release2 http://pear.php.net/dtd/rest.release2.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>2.8.7</v>
+    <a>2.8.7</a>
+    <mp>5.3.2</mp>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Guzzle is a PHP 5.3+ HTTP client and framework for building RESTful web service clients</s>
+    <d>PHP HTTP client</d>
+    <da>2012-09-30 20:53:51</da>
+    <n>
+-
+ </n>
+    <f>113260</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-2.8.7</g>
+    <x xlink:href="package.2.8.7.xml"/>
+</r>
