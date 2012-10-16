@@ -40,17 +40,77 @@ Any class that implements the ``Guzzle\Common\HasDispatcherInterface`` must impl
 Event hooks
 -----------
 
-+---------------------------------+---------------------------+----------------------------------+-------------------------------------+
-| Subject                         | Event                     | Description                      | Arguments                           |
-+=================================+===========================+==================================+=====================================+
-| ``Guzzle\Http\Client``          | client.create_request     | Client has created a request     | * client: The client                |
-|                                 |                           |                                  | * request: The created request      |
-+---------------------------------+---------------------------+----------------------------------+-------------------------------------+
-| ``Guzzle\Http\Message\Request`` | request.before_send       | About to send request            | * request: Request to be sent       |
-|                                 +---------------------------+----------------------------------+-------------------------------------+
-|                                 | request.sent              | Sent the request                 | * request: Request that was sent    |
-|                                 |                           |                                  | * response: Received response       |
-+---------------------------------+---------------------------+----------------------------------+-------------------------------------+
++---------------------------------+-----------------------------+----------------------------------+-------------------------------------+
+| Subject                         | Event                       | Description                      | Arguments                           |
++=================================+=============================+==================================+=====================================+
+| ``Guzzle\Http\Client``          | client.create_request       | Client has created a request     | * client: The client                |
+|                                 |                             |                                  | * request: The created request      |
++---------------------------------+-----------------------------+----------------------------------+-------------------------------------+
+| ``Guzzle\Http\Message\Request`` | request.before_send         | About to send request            | * request: Request to be sent       |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | request.sent                | Sent the request                 | * request: Request that was sent    |
+|                                 |                             |                                  | * response: Received response       |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | request.complete            | Completed a full HTTP transaction| * request: Request that was sent    |
+|                                 |                             |                                  | * response: Received response       |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | request.success             | Completed a successful request   | * request: Request that was sent    |
+|                                 |                             |                                  | * response: Received response       |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | request.error               | Completed an unsuccessful request| * request: Request that was sent    |
+|                                 |                             |                                  | * response: Received response       |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | request.exception           | An unsuccessful response was     | * request: Request                  |
+|                                 |                             | received.                        | * response: Received response       |
+|                                 |                             |                                  | * exception: BadResponseException   |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | request.receive.status_line | Received the start of a response | * line: Full response start line    |
+|                                 |                             |                                  | * status_code: Status code          |
+|                                 |                             |                                  | * reason_phrase: Reason phrase      |
+|                                 |                             |                                  | * previous_response: (e.g. redirect)|
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | request.set_response        | A response was set on the request| * request: Request                  |
+|                                 |                             |                                  | * response: Response that was set   |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl.callback.progress      | cURL progress event (only        | * request: Request                  |
+|                                 |                             | dispatched when curl.emit_io is  | * handle: CurlHandle                |
+|                                 |                             | set on a request's curl options  | * download_size: Total download size|
+|                                 |                             |                                  | * downloaded: Bytes downloaded      |
+|                                 |                             |                                  | * upload_size: Total upload bytes   |
+|                                 |                             |                                  | * uploaded: Bytes uploaded          |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl.callback.write         | cURL event called when data is   | * request: Request                  |
+|                                 |                             | written to an outgoing stream    | * write: Data being written         |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl.callback.read          | cURL event called when data is   | * request: Request                  |
+|                                 |                             | written to an incoming stream    | * read: Data being read             |
++---------------------------------+-----------------------------+----------------------------------+-------------------------------------+
+| ``Guzzle\Http\Curl\CurlMulti``  | curl_multi.add_request      | Added a request                  | * request: Request being added      |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl_multi.remove_request   | Removed a request                | * request: Request being removed    |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl_multi.before_send      | About to send handles            | * requests: Array of Request objects|
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl_multi.polling_request  | Polling a specific handle        | * request: Request being polled     |
+|                                 |                             |                                  | * curl_multi: cURL multi handle     |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl_multi.complete         | Completed a multi transfer       |                                     |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | curl_multi.exception        | Encountered an exception during  | * exception: Exception encountered  |
+|                                 |                             | the transfer                     | * all_exceptions: All buffered      |
+|                                 |                             |                                  |   exception                         |
++---------------------------------+-----------------------------+----------------------------------+-------------------------------------+
+| ``Guzzle\Service\Client``       | client.command.create       | Client has created a command     | * client: The client                |
+|                                 |                             |                                  | * command: The created command      |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | command.before_prepare      | Before a command is prepared     | * command: Command being prepared   |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | command.before_send         | Before a command is executed     | * command: Command about to send    |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | command.after_send          | After a command is executed      | * command: Command that was sent    |
+|                                 +-----------------------------+----------------------------------+-------------------------------------+
+|                                 | command.after_send          | After a command is executed      | * command: Command that was sent    |
++---------------------------------+-----------------------------+----------------------------------+-------------------------------------+
 
 Examples of the event system
 ----------------------------

@@ -158,15 +158,19 @@
 <div class="section" id="what-should-i-do-if-i-get-this-error-fatal-error-maximum-function-nesting-level-of-100-reached-aborting">
 <h2>What should I do if I get this error: Fatal error: Maximum function nesting level of &#8216;100&#8217; reached, aborting!<a class="headerlink" href="#what-should-i-do-if-i-get-this-error-fatal-error-maximum-function-nesting-level-of-100-reached-aborting" title="Permalink to this headline">¶</a></h2>
 <p>You could run into this error if you have the XDebug extension installed and you execute a lot of requests in callbacks.  This error message comes specifically from the XDebug extension. PHP itself does not have a function nesting limit. Change this setting in your php.ini to increase the limit:</p>
-<p>xdebug.max_nesting_level = 1000</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xdebug</span><span class="o">.</span><span class="n">max_nesting_level</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
 <p>[<a class="reference external" href="http://stackoverflow.com/a/4293870/151504">source</a>]</p>
 </div>
 <div class="section" id="how-can-i-speed-up-my-client">
 <h2>How can I speed up my client?<a class="headerlink" href="#how-can-i-speed-up-my-client" title="Permalink to this headline">¶</a></h2>
 <p>There are several things you can do to speed up your client:</p>
 <ol class="arabic simple">
-<li>Disable type validation on your <tt class="docutils literal"><span class="pre">Guzzle\Service\Inspector</span></tt></li>
 <li>Utilize a C based HTTP message parser (e.g. <tt class="docutils literal"><span class="pre">Guzzle\Http\Parser\Message\PeclHttpMessageParser</span></tt>)</li>
+<li>Disable operation validation by setting the <tt class="docutils literal"><span class="pre">command.disable_validation</span></tt> option to true on a command (this could have side effects)</li>
+<li>Disable operation response processing by setting <tt class="docutils literal"><span class="pre">command.response_processing</span></tt> to &#8216;raw&#8217; on a command (this will have side effects)</li>
+<li>Disable operation model processing by setting <tt class="docutils literal"><span class="pre">command.response_processing</span></tt> to &#8216;native&#8217; on a command (this will have side effects)</li>
 </ol>
 </div>
 <div class="section" id="why-am-i-getting-a-417-error-response">

@@ -155,30 +155,21 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugins</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="plugins.html#http-plugins">HTTP Plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#over-the-wire-logging">Over the wire logging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#truncated-exponential-backoff">Truncated exponential backoff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#php-based-caching-forward-proxy">PHP-based caching forward proxy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#cookie-session-plugin">Cookie session plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#md5-hash-validator-plugin">MD5 hash validator plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#history-plugin">History plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#mock-plugin">Mock Plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#curl-auth-plugin">Curl Auth Plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#batch-queue-plugin">Batch Queue Plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#oauth-1-0-plugin">OAuth 1.0 Plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#async-plugin">Async Plugin</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="plugins.html#service-plugins">Service Plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#plugin-collection-plugin">Plugin Collection Plugin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html#third-party-plugins">Third-party plugins</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#log-plugin">Log plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#backoff-plugin">Backoff Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#cache-plugin">Cache plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#cookie-plugin">Cookie plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#md5-validator-plugin">MD5 validator plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#history-plugin">History plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#mock-plugin">Mock Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#curl-auth-plugin">Curl Auth Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#oauth-1-0-plugin">OAuth 1.0 Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#async-plugin">Async Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#third-party-plugins">Third-party plugins</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="service/testing_clients.html">Unit Testing Web Service Clients</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="service/testing_clients.html#phpunit-integration">PHPUnit integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="service/testing_clients.html#files">Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="service/testing_clients.html#bootstrapping">Bootstrapping</a></li>
 </ul>
 </li>
@@ -214,24 +205,17 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="service/service_descriptions.html">Service Descriptions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#creating-a-service-description">Creating a service description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#how-to-write-an-xml-service-description">How to write an XML service description</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#define-commands-using-command-nodes">Define commands using <tt class="docutils literal"><span class="pre">&lt;command&gt;</span></tt> nodes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#dynamic-commands">Dynamic commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#service-description-attributes">Service description attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#baseurl">baseUrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#operations">operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#parameters">parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#location">location</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#use-custom-types-for-data-validation">Use custom <tt class="docutils literal"><span class="pre">&lt;types&gt;</span></tt> for data validation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#sending-put-and-post-requests">Sending PUT and POST requests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#including-other-service-descriptions">Including other service descriptions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#xml">XML</a></li>
-<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#json">JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#models">models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service/service_descriptions.html#id1">location</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#creating-json-service-descriptions">Creating JSON service descriptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/service_descriptions.html#use-dynamic-and-concrete-commands">Use Dynamic and Concrete Commands</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#concrete-commands">Concrete commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="service/service_descriptions.html#response-processing">Response processing</a></li>
 </ul>
 </li>
 </ul>
@@ -259,6 +243,7 @@
 <li class="toctree-l3"><a class="reference internal" href="http/caching.html#custom-caching-decision">Custom caching decision</a></li>
 <li class="toctree-l3"><a class="reference internal" href="http/caching.html#revalidation-options">Revalidation options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="http/caching.html#normalizing-requests-for-caching">Normalizing requests for caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http/caching.html#other-options">Other options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="http/caching.html#setting-client-wide-cache-settings">Setting Client-wide cache settings</a></li>
 </ul>
 </li>

@@ -134,11 +134,19 @@
       <ul>
 <li><a class="reference internal" href="#">HTTP client for PHP</a><ul>
 <li><a class="reference internal" href="#quick-overview-of-guzzle-s-http-features">Quick overview of Guzzle&#8217;s HTTP features</a></li>
-<li><a class="reference internal" href="#using-a-client-object">Using a Client object</a></li>
+<li><a class="reference internal" href="#using-a-client-object">Using a Client object</a><ul>
+<li><a class="reference internal" href="#configuration-options">Configuration options</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#sending-requests-and-using-responses">Sending requests and using responses</a><ul>
 <li><a class="reference internal" href="#requests">Requests</a><ul>
 <li><a class="reference internal" href="#put">PUT</a></li>
 <li><a class="reference internal" href="#post">POST</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#redirects">Redirects</a><ul>
+<li><a class="reference internal" href="#post-redirects">POST Redirects</a></li>
+<li><a class="reference internal" href="#redirects-and-non-repeatable-streams">Redirects and non-repeatable streams</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#dealing-with-errors">Dealing with errors</a><ul>
@@ -156,6 +164,7 @@
 </li>
 <li><a class="reference internal" href="#uri-templates">URI templates</a></li>
 <li><a class="reference internal" href="#plugins-for-common-http-request-behavior">Plugins for common HTTP request behavior</a></li>
+<li><a class="reference internal" href="#cookies">Cookies</a></li>
 </ul>
 </li>
 </ul>
@@ -182,19 +191,14 @@
 <li>Supports GET, HEAD, POST, DELETE, OPTIONS, PUT, and TRACE methods</li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Persistent_connections">Persistent connections</a> are implicitly managed by Guzzle, resulting in huge performance benefits</li>
 <li>Send requests in parallel</li>
-<li>Allows custom entity bodies to be sent in PUT and POST requests, including sending data from a PHP stream</li>
+<li>Allows custom entity bodies to be sent in PUT, POST, and DELETE requests, including sending data from a PHP stream</li>
 <li>Allows full access to request HTTP headers</li>
-<li>Responses can be cached and served from cache using the CachePlugin</li>
-<li>Failed requests can be retried using truncated <a class="reference external" href="http://en.wikipedia.org/wiki/Exponential_backoff">exponential backoff</a> using the ExponentialBackoffPlugin</li>
-<li>All data sent over the wire can be logged using the LogPlugin</li>
-<li>Cookie sessions can be maintained between requests using the CookiePlugin</li>
+<li>Cookies, Logging, Caching, exponential backoff, async requests, and more through <a class="reference internal" href="../guide/plugins.html"><em>Guzzle Plugins</em></a></li>
 <li>Supports HTTPS and SSL certificate validation</li>
 <li>Requests can be sent through a proxy</li>
-<li>Automatically requests compressed data and automatically decompresses data</li>
 <li>Supports authentication methods provided by cURL (Basic, Digest, GSS Negotiate, NTLM)</li>
 <li>Transparently follows redirects</li>
 <li>Subject/Observer signal slot system for modifying request behavior</li>
-<li>Support for asynchronous requests that do not wait for a response</li>
 </ul>
 </div>
 <div class="section" id="using-a-client-object">
@@ -211,6 +215,22 @@
 </div>
 <p>Notice that the URI provided to the client&#8217;s <tt class="docutils literal"><span class="pre">get()</span></tt> method is relative.  The path in the URI is also relative.  Relative paths will add to the path of the base URL of the client&#8211; so in the example above, the path of the base URL is <tt class="docutils literal"><span class="pre">/api/v1</span></tt>, the relative path is <tt class="docutils literal"><span class="pre">projects/123/tickets</span></tt>, and the URL will ultimately become <tt class="docutils literal"><span class="pre">https://mydomain.unfuddle.com/api/v1/projects/123/tickets</span></tt>.  If a relative path and a query string are provided, then the relative path will be appended to the base URL path, and the query string provided will be merged into the query string of the base URL.  If an absolute path is provided (e.g. <tt class="docutils literal"><span class="pre">/path/to/something</span></tt>), then the path specified in the base URL of the client will be replaced with the absolute path, and the query string provided will replace the query string of the base URL.  If an absolute URL is provided (e.g. <tt class="docutils literal"><span class="pre">http://www.test.com/path</span></tt>), then the request will completely use the absolute URL as-is without merging in any of the URL parts specified in the base URL.</p>
 <p>All requests in the above client would need <a class="reference external" href="http://www.ietf.org/rfc/rfc2617.txt">basic HTTP authorization</a> added after they are created.  You can automate this and add the authorization header to all requests generated by the client by adding a <a class="reference internal" href="../guide/plugins.html#curl-auth"><em>CurlAuthPlugin</em></a> to the client&#8217;s event dispatcher.</p>
+<div class="section" id="configuration-options">
+<h3>Configuration options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h3>
+<p>The second argument of the client&#8217;s constructor is an array of configuration data. This can include URI template data or special options that alter the client&#8217;s behavior:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">curl.options</span></tt>: Associative array of cURL options to apply to every request created by the client.</li>
+<li><tt class="docutils literal"><span class="pre">ssl.certificate_authority</span></tt>: Set to true to use the bundled SSL certificate bundle, <tt class="docutils literal"><span class="pre">system</span></tt> to use the bundle on your system, a string pointing to a file to use a specific certificate authority, a string pointing to a directory to use multiple certificates, or <tt class="docutils literal"><span class="pre">false</span></tt> to disable SSL validation.</li>
+<li><tt class="docutils literal"><span class="pre">request.params</span></tt>: Associative array of parameters to apply to the parameter collection of every request created by the client.</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://foo.com&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;curl.options&#39;</span>              <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="nx">CURLOPT_PROXY</span> <span class="o">=&gt;</span> <span class="s1">&#39;tcp://localhost:8080&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;ssl.certificate_authority&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;request.params&#39;</span>            <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="sending-requests-and-using-responses">
 <h2>Sending requests and using responses<a class="headerlink" href="#sending-requests-and-using-responses" title="Permalink to this headline">¶</a></h2>
@@ -348,6 +368,28 @@
 <span class="p">));</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="redirects">
+<h3>Redirects<a class="headerlink" href="#redirects" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="post-redirects">
+<h4>POST Redirects<a class="headerlink" href="#post-redirects" title="Permalink to this headline">¶</a></h4>
+<p>Redirecting HTTP POST requests can be tricky. The redirect behavior of a POST request can be tuned by setting the <a class="reference external" href="http://curl.haxx.se/libcurl/c/curl_easy_setopt.html#CURLOPTPOSTREDIR">CURLOPT_POSTREDIR</a> cURL option on the request:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getCurlOptions</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nx">CURLOPT_POSTREDIR</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We will touch more on setting cURL options later in this chapter.</p>
+</div>
+<div class="section" id="redirects-and-non-repeatable-streams">
+<h4>Redirects and non-repeatable streams<a class="headerlink" href="#redirects-and-non-repeatable-streams" title="Permalink to this headline">¶</a></h4>
+<p>You may encounter a cURL error if a redirect occurs when sending entity enclosing requests using a non-repeatable stream (e.g. network stream). When this error occurs, you must set the <cite>body_as_string</cite> cURL option of a request to true. This gets around the issue where cURL cannot rewind the stream on a redirect or challenge due to the inability of PHP to specify a seek or IO callback.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getCurlOptions</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;body_as_string&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be careful when using this option with large streams because the stream must be completely buffered into memory.</p>
 </div>
 </div>
 </div>
@@ -510,49 +552,60 @@
 </div>
 <div class="section" id="low-level-curl-access">
 <h3>Low level cURL access<a class="headerlink" href="#low-level-curl-access" title="Permalink to this headline">¶</a></h3>
-<p>Most of the functionality implemented in the libcurl bindings has been simplified and abstracted by Guzzle. Developers who need access to <a class="reference external" href="http://www.php.net/curl_setopt">cURL specific functionality</a> that is not abstracted by Guzzle (e.g. proxies and SSL) can still add cURL handle specific behavior to Guzzle HTTP requests by modifiying the cURL options collection of a request:</p>
+<p>Most of the functionality implemented in the libcurl bindings has been simplified and abstracted by Guzzle. Developers who need access to <a class="reference external" href="http://www.php.net/curl_setopt">cURL specific functionality</a> that is not abstracted by Guzzle (e.g. proxies and some SSL options) can still add cURL handle specific behavior to Guzzle HTTP requests by modifiying the cURL options collection of a request:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getCurlOptions</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nx">CURLOPT_SSL_VERIFYHOST</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>You can add cURL options to every request sent from your client by adding configuration options to the client that are prefixed with &#8220;curl.&#8221;.  Clients will automatically map cURL constants for keys and values to their correct PHP value.</p>
+<p>You can add cURL options to every request sent from your client by adding configuration options to the <cite>curl.options</cite> array.  Clients will automatically map cURL constants for keys and values to their correct PHP value.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;https://example.com/&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;curl.CURLOPT_SSL_VERIFYHOST&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-    <span class="s1">&#39;curl.CURLOPT_SSL_VERIFYPEER&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-    <span class="s1">&#39;curl.CURLOPT_PROXY&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;proxy.mydomain.com:8080&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;curl.CURLOPT_PROXYTYPE&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;CURLPROXY_HTTP&#39;</span>
+    <span class="s1">&#39;curl.options&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="nx">CURLOPT_SSL_VERIFYHOST</span>   <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="s1">&#39;CURLOPT_SSL_VERIFYPEER&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="nx">CURLOPT_PROXY</span>            <span class="o">=&gt;</span> <span class="s1">&#39;proxy.mydomain.com:8080&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;CURLOPT_PROXYTYPE&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;CURLPROXY_HTTP&#39;</span>
+    <span class="p">)</span>
 <span class="p">));</span>
 </pre></div>
 </div>
-<p>You can blacklist cURL options and headers from ever being sent by cURL by adding a <tt class="docutils literal"><span class="pre">curl.blacklist</span></tt> configuration option to your client with an array of cURL options to blacklist.  The follow example demonstrates how to blacklist the <tt class="docutils literal"><span class="pre">CURLOPT_ENCODING</span></tt> option from ever being set on a request and prevents cURL from ever sending an <tt class="docutils literal"><span class="pre">Accept</span></tt> header on any request.</p>
+<p>If you are using <a class="reference internal" href="../guide/service/service_descriptions.html"><em>Service Descriptions</em></a> then you can override the cURL options within the definition of an operation, for example:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;get_users&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;curl.options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;CURLOPT_CONNECTTIMEOUT&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can blacklist cURL options and headers from ever being sent by cURL by adding a <tt class="docutils literal"><span class="pre">blacklist</span></tt> configuration option to the <tt class="docutils literal"><span class="pre">curl.options</span></tt> array of your client. The following example demonstrates how to blacklist the <tt class="docutils literal"><span class="pre">CURLOPT_ENCODING</span></tt> option from ever being set on a request and prevents cURL from ever sending an <tt class="docutils literal"><span class="pre">Accept</span></tt> header on any request.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;https://example.com/&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;curl.blacklist&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="nx">CURLOPT_ENCODING</span><span class="p">,</span> <span class="s1">&#39;header.Accept&#39;</span><span class="p">)</span>
+    <span class="s1">&#39;curl.options&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;blacklist&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="nx">CURLOPT_ENCODING</span><span class="p">,</span> <span class="s1">&#39;header.Accept&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
 <span class="p">));</span>
 </pre></div>
 </div>
-<p>If you are using <a class="reference internal" href="../guide/service/service_descriptions.html"><em>Service Descriptions</em></a> then you can override the cURL options within the definition, for example:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;command</span> <span class="na">name=</span><span class="s">&quot;get_users&quot;</span> <span class="na">method=</span><span class="s">&quot;GET&quot;</span> <span class="na">uri=</span><span class="s">&quot;/users&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;doc&gt;</span>Get a list of users<span class="nt">&lt;/doc&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;curl.CURLOPT_CONNECTTIMEOUT&quot;</span> <span class="na">default=</span><span class="s">&quot;100&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/command&gt;</span>
-</pre></div>
-</div>
+<p>Other special options that can be set in the <tt class="docutils literal"><span class="pre">curl.options</span></tt> array include:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">debug</span></tt>: Adds verbose cURL output to a temp stream owned by the cURL handle object</li>
+<li><tt class="docutils literal"><span class="pre">progress</span></tt>: Instructs cURL to emit events when IO events occur. This allows you to be notified when bytes are transferred over the wire by subscribing to a request&#8217;s <tt class="docutils literal"><span class="pre">curl.callback.read</span></tt>, <tt class="docutils literal"><span class="pre">curl.callback.write</span></tt>, and <tt class="docutils literal"><span class="pre">curl.callback.progress</span></tt> events.</li>
+</ul>
 </div>
 </div>
 <div class="section" id="uri-templates">
 <h2>URI templates<a class="headerlink" href="#uri-templates" title="Permalink to this headline">¶</a></h2>
-<p>Guzzle supports the entire <a class="reference external" href="http://tools.ietf.org/html/draft-gregorio-uritemplate-08">URI templates RFC</a>.  URI templates add a special syntax to URIs that replace template place holders with user defined variables.</p>
+<p>Guzzle supports the entire <a class="reference external" href="http://tools.ietf.org/html/rfc6570">URI templates RFC</a>.  URI templates add a special syntax to URIs that replace template place holders with user defined variables.</p>
 <p>Every request created by a Guzzle HTTP client passes through a URI template so that URI template expressions are automatically expanded:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;https://example.com/&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span>
-<span class="p">));</span>
-
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;https://example.com/&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">));</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/{a}&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Because of URI template expansion, the URL of the above request will become <tt class="docutils literal"><span class="pre">https://example.com/hi</span></tt>.  Notice that the template was expanded using configuration variables of the client.  You can pass in custom URI template variables by passing the URI of your request as an array where the first index of the array is the URI template and the second index of the array are template variables that are merged into the client&#8217;s configuration variables:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;/test{?a,b}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;there&#39;</span>
-<span class="p">));</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;/test{?a,b}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;there&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>The URL for this request will become <tt class="docutils literal"><span class="pre">https://test.com?a=hi&amp;b=there</span></tt>.  URI templates aren&#8217;t limited to just simple variable replacements;  URI templates can provide an enormous amount of flexibility when creating request URIs:</p>
@@ -578,6 +631,17 @@
 <h2>Plugins for common HTTP request behavior<a class="headerlink" href="#plugins-for-common-http-request-behavior" title="Permalink to this headline">¶</a></h2>
 <p>Guzzle provides easy to use request plugins that add behavior to requests based on signal slot event notifications.</p>
 <p>View the plugin documention here: <a class="reference internal" href="../guide/plugins.html"><em>Guzzle Plugins</em></a></p>
+</div>
+<div class="section" id="cookies">
+<h2>Cookies<a class="headerlink" href="#cookies" title="Permalink to this headline">¶</a></h2>
+<p>Cookies can be modified and retrieved from a request using the following methods:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">addCookie</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">removeCookie</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<span class="nv">$value</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getCookie</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<span class="nv">$valueArray</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getCookies</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Use the <a class="reference internal" href="../guide/plugins.html"><em>cookie plugin</em></a> if you need to reuse cookies between requests.</p>
 </div>
 </div>
 

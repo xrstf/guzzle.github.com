@@ -170,25 +170,27 @@
 <div class="section" id="sending-requests-and-commands-in-parallel">
 <h2>Sending requests and commands in parallel<a class="headerlink" href="#sending-requests-and-commands-in-parallel" title="Permalink to this headline">¶</a></h2>
 <p>You can send HTTP requests in parallel by passing an array of <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\RequestInterface</span></tt> objects to <tt class="docutils literal"><span class="pre">Guzzle\Http\Client::send()</span></tt>:</p>
-<div class="highlight-python"><pre>$responses = $client-&gt;send(array(
-    $client-&gt;get('http://www.example.com/foo'),
-    $client-&gt;get('http://www.example.com/baz')
-    $client-&gt;get('http://www.example.com/bar')
-));</pre>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$responses</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/foo&#39;</span><span class="p">),</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/baz&#39;</span><span class="p">)</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/bar&#39;</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
 </div>
 <p>You can send commands in parallel by passing an array of <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandInterface</span></tt> objects <tt class="docutils literal"><span class="pre">Guzzle\Service\Client::execute()</span></tt>:</p>
-<div class="highlight-python"><pre>$commands = $client-&gt;execute(array(
-    $client-&gt;getCommand('foo'),
-    $client-&gt;getCommand('baz'),
-    $client-&gt;getCommand('bar')
-));</pre>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$commands</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">),</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">),</span>
+    <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
 </div>
-<p>These approaches work well for most use-cases.  When you need more control over the requests that are sent in parallel or you need to send a large number of requests, you need to use the functionality provided in the <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch</span></tt> namespace.</p>
+<p>These approaches work well for most use-cases.  When you need more control over the requests that are sent in parallel or you need to send a large number of requests, you need to use the functionality provided in the <tt class="docutils literal"><span class="pre">Guzzle\Batch</span></tt> namespace.</p>
 </div>
 <div class="section" id="batching-overview">
 <h2>Batching overview<a class="headerlink" href="#batching-overview" title="Permalink to this headline">¶</a></h2>
-<p>The batch object, <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\Batch</span></tt>, is a queue.  You add requests to the queue until you are ready to transfer all of the requests.  In order to efficiently transfer the items in the queue, the batch object delegates the responsibility of dividing the queue into manageable parts to a divisor (<tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\BatchDivisorInterface</span></tt>).  The batch object then iterates over each array of items created by the divisor and sends them to the batch object&#8217;s <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\BatchTransferInterface</span></tt>.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Batch\Batch</span><span class="p">;</span>
+<p>The batch object, <tt class="docutils literal"><span class="pre">Guzzle\Batch\Batch</span></tt>, is a queue.  You add requests to the queue until you are ready to transfer all of the requests.  In order to efficiently transfer the items in the queue, the batch object delegates the responsibility of dividing the queue into manageable parts to a divisor (<tt class="docutils literal"><span class="pre">Guzzle\Batch\BatchDivisorInterface</span></tt>).  The batch object then iterates over each array of items created by the divisor and sends them to the batch object&#8217;s <tt class="docutils literal"><span class="pre">Guzzle\Batch\BatchTransferInterface</span></tt>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Batch\Batch</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Http\BatchRequestTransfer</span><span class="p">;</span>
 
 <span class="c1">// BatchRequestTransfer acts as both the divisor and transfer strategy</span>
@@ -213,11 +215,11 @@
 </div>
 <div class="section" id="using-the-batchbuilder">
 <h2>Using the BatchBuilder<a class="headerlink" href="#using-the-batchbuilder" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\BatchBuilder</span></tt> makes it easier to create batch objects.  The batch builder also provides an easier way to add additional behaviors to your batch object.</p>
+<p>The <tt class="docutils literal"><span class="pre">Guzzle\Batch\BatchBuilder</span></tt> makes it easier to create batch objects.  The batch builder also provides an easier way to add additional behaviors to your batch object.</p>
 <div class="section" id="transferring-requests">
 <h3>Transferring requests<a class="headerlink" href="#transferring-requests" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">Guzzle\Http\BatchRequestTransfer</span></tt> class efficiently transfers HTTP requests in parallel by grouping batches of requests by the curl_multi handle that is used to transfer the requests.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Batch\BatchBuilder</span><span class="p">;</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Batch\BatchBuilder</span><span class="p">;</span>
 
 <span class="nv">$batch</span> <span class="o">=</span> <span class="nx">BatchBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">transferRequests</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -228,7 +230,7 @@
 <div class="section" id="transferring-commands">
 <h3>Transferring commands<a class="headerlink" href="#transferring-commands" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\BatchCommandTransfer</span></tt> class efficiently transfers service commands by grouping commands by the client that is used to transfer them.  You can add commands to a batch object that are transferred by different clients, and the batch will handle the rest.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Batch\BatchBuilder</span><span class="p">;</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Batch\BatchBuilder</span><span class="p">;</span>
 
 <span class="nv">$batch</span> <span class="o">=</span> <span class="nx">BatchBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">transferCommands</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -248,8 +250,8 @@
 <p>You can add various behaviors to your batch that allow for more customizable transfers.</p>
 <div class="section" id="automatically-flushing-a-queue">
 <h3>Automatically flushing a queue<a class="headerlink" href="#automatically-flushing-a-queue" title="Permalink to this headline">¶</a></h3>
-<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\FlushingBatch</span></tt> decorator when you want to pump a large number of items into a batch queue and have the queue automatically flush when the size of the queue reaches a certain threshold.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Batch\BatchBuilder</span><span class="p">;</span>
+<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Batch\FlushingBatch</span></tt> decorator when you want to pump a large number of items into a batch queue and have the queue automatically flush when the size of the queue reaches a certain threshold.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Batch\BatchBuilder</span><span class="p">;</span>
 
 <span class="nv">$batch</span> <span class="o">=</span> <span class="nx">BatchBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">transferRequests</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -261,8 +263,8 @@
 </div>
 <div class="section" id="notifying-on-flush">
 <h3>Notifying on flush<a class="headerlink" href="#notifying-on-flush" title="Permalink to this headline">¶</a></h3>
-<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\NotifyingBatch</span></tt> decorator if you want a function to be notified each time the batch queue is flushed.  This is useful when paired with the flushing batch decorator.  Pass a callable to the <tt class="docutils literal"><span class="pre">notify()</span></tt> method of a batch builder to use this decorator with the builder.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Batch\BatchBuilder</span><span class="p">;</span>
+<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Batch\NotifyingBatch</span></tt> decorator if you want a function to be notified each time the batch queue is flushed.  This is useful when paired with the flushing batch decorator.  Pass a callable to the <tt class="docutils literal"><span class="pre">notify()</span></tt> method of a batch builder to use this decorator with the builder.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Batch\BatchBuilder</span><span class="p">;</span>
 
 <span class="nv">$batch</span> <span class="o">=</span> <span class="nx">BatchBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">transferRequests</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -277,8 +279,8 @@
 </div>
 <div class="section" id="keeping-a-history">
 <h3>Keeping a history<a class="headerlink" href="#keeping-a-history" title="Permalink to this headline">¶</a></h3>
-<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\HistoryBatch</span></tt> decorator if you want to maintain a history of all the items transferred with the batch queue.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Batch\BatchBuilder</span><span class="p">;</span>
+<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Batch\HistoryBatch</span></tt> decorator if you want to maintain a history of all the items transferred with the batch queue.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Batch\BatchBuilder</span><span class="p">;</span>
 
 <span class="nv">$batch</span> <span class="o">=</span> <span class="nx">BatchBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
     <span class="o">-&gt;</span><span class="na">transferRequests</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -291,7 +293,7 @@
 </div>
 <div class="section" id="exception-buffering">
 <h3>Exception buffering<a class="headerlink" href="#exception-buffering" title="Permalink to this headline">¶</a></h3>
-<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Common\Batch\ExceptionBufferingBatch</span></tt> decorator to buffer exceptions during a transfer so that you can transfer as many items as possible then deal with the errored batches after the transfer completes.  After transfer, use the <tt class="docutils literal"><span class="pre">getExceptions()</span></tt> method of a batch to retrieve an array of <tt class="docutils literal"><span class="pre">Guzzle\Common\Exception\BatchTransferException</span></tt> objects.  You can use these exceptions to attempt to retry the failed batches.  Be sure to clear the buffered exceptions when you are done with them by using the <tt class="docutils literal"><span class="pre">clearExceptions()</span></tt> method.</p>
+<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Batch\ExceptionBufferingBatch</span></tt> decorator to buffer exceptions during a transfer so that you can transfer as many items as possible then deal with the errored batches after the transfer completes.  After transfer, use the <tt class="docutils literal"><span class="pre">getExceptions()</span></tt> method of a batch to retrieve an array of <tt class="docutils literal"><span class="pre">Guzzle\Batch\Exception\BatchTransferException</span></tt> objects.  You can use these exceptions to attempt to retry the failed batches.  Be sure to clear the buffered exceptions when you are done with them by using the <tt class="docutils literal"><span class="pre">clearExceptions()</span></tt> method.</p>
 <p>Batch builder method: <tt class="docutils literal"><span class="pre">bufferExceptions()</span></tt></p>
 </div>
 </div>

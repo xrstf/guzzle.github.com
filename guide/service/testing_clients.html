@@ -134,7 +134,6 @@
       <ul>
 <li><a class="reference internal" href="#">Unit Testing Web Service Clients</a><ul>
 <li><a class="reference internal" href="#phpunit-integration">PHPUnit integration</a><ul>
-<li><a class="reference internal" href="#files">Files</a></li>
 <li><a class="reference internal" href="#bootstrapping">Bootstrapping</a></li>
 </ul>
 </li>
@@ -181,15 +180,13 @@
 <div class="section" id="phpunit-integration">
 <h2>PHPUnit integration<a class="headerlink" href="#phpunit-integration" title="Permalink to this headline">¶</a></h2>
 <p>Guzzle is unit tested using <a class="reference external" href="http://www.phpunit.de/">PHPUnit</a>.  Your web service client&#8217;s unit tests should extend <tt class="docutils literal"><span class="pre">Guzzle\Tests\GuzzleTestCase</span></tt> so that you can take advantage of some of the built in helpers.</p>
-<div class="section" id="files">
-<h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
-<p>The basic skeleton of a project can be generated using the phing build script from the Guzzle client template (<a class="reference external" href="https://github.com/guzzle/guzzle-client-template">https://github.com/guzzle/guzzle-client-template</a>).  You will be prompted to answer several questions about your web service and a skeleton client project will be generated for you.</p>
 <p>In order to unit test your client, a developer would need to copy phpunit.xml.dist to phpunit.xml and make any needed modifications.  As a best practice and security measure for you and your contributors, it is recommended to add an ignore statement to your SCM so that phpunit.xml is ignored.</p>
-</div>
 <div class="section" id="bootstrapping">
 <h3>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">¶</a></h3>
-<p>Your web service client should have a tests/ folder that contains a bootstrap.php file. The bootstrap.php file responsible for autoloading and configuring a <tt class="docutils literal"><span class="pre">Guzzle\Service\ServiceBuilder</span></tt> that is used throughout your unit tests for loading a configured client.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="nx">Guzzle\Tests\GuzzleTestCase</span><span class="o">::</span><span class="na">setServiceBuilder</span><span class="p">(</span><span class="nx">Guzzle\Service\ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<p>Your web service client should have a tests/ folder that contains a bootstrap.php file. The bootstrap.php file responsible for autoloading and configuring a <tt class="docutils literal"><span class="pre">Guzzle\Service\Builder\ServiceBuilder</span></tt> that is used throughout your unit tests for loading a configured client. You can add custom parameters to your phpunit.xml file that expects users to provide the path to their configuration data.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nx">Guzzle\Tests\GuzzleTestCase</span><span class="o">::</span><span class="na">setServiceBuilder</span><span class="p">(</span><span class="nx">Aws\Common\Aws</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;CONFIG&#39;</span><span class="p">]));</span>
+
+<span class="nx">Guzzle\Tests\GuzzleTestCase</span><span class="o">::</span><span class="na">setServiceBuilder</span><span class="p">(</span><span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;test.unfuddle&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Guzzle.Unfuddle.UnfuddleClient&#39;</span><span class="p">,</span>
         <span class="s1">&#39;params&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
@@ -201,11 +198,7 @@
 <span class="p">)));</span>
 </pre></div>
 </div>
-<p>The above code registers a service builder that can be used throughout your unit tests.  You would then be able to retrieve an instantiated and configured Unfuddle client by calling <tt class="docutils literal"><span class="pre">$this-&gt;getServiceBuilder()-&gt;get('test.unfuddle)</span></tt>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A default bootstrap.php file will be generated for you if you use the guzzle client template</p>
-</div>
+<p>The above code registers a service builder that can be used throughout your unit tests.  You would then be able to retrieve an instantiated and configured Unfuddle client by calling <tt class="docutils literal"><span class="pre">$this-&gt;getServiceBuilder()-&gt;get('test.unfuddle)</span></tt>. The above code assumes that <tt class="docutils literal"><span class="pre">$_SERVER['CONFIG']</span></tt> contains the path to a file that stores service description configuration.</p>
 </div>
 </div>
 <div class="section" id="unit-testing-remote-apis">
@@ -228,6 +221,9 @@
 <div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;phpunit</span> <span class="na">bootstrap=</span><span class="s">&quot;./tests/bootstrap.php&quot;</span> <span class="na">colors=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;php&gt;</span>
+        <span class="c">&lt;!-- Specify the path to a service configuration file --&gt;</span>
+        <span class="nt">&lt;server</span> <span class="na">name=</span><span class="s">&quot;CONFIG&quot;</span> <span class="na">value=</span><span class="s">&quot;test_services.json&quot;</span> <span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- Or, specify each require parameter individually --&gt;</span>
         <span class="nt">&lt;server</span> <span class="na">name=</span><span class="s">&quot;API_USER&quot;</span> <span class="na">value=</span><span class="s">&quot;change_me&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;server</span> <span class="na">name=</span><span class="s">&quot;API_PASSWORD&quot;</span> <span class="na">value=</span><span class="s">&quot;****&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/php&gt;</span>
@@ -261,8 +257,8 @@ Content-Type: application/xml
 </pre></div>
 </div>
 <p>After queueing mock responses for a client, you can get an array of the requests that were sent by the client that were issued a mock response by calling <tt class="docutils literal"><span class="pre">$this-&gt;getMockedRequests()</span></tt>.</p>
-<p>You can also use the <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\MockPlugin</span></tt> object directly with your clients.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="nv">$plugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Plugin\MockPlugin</span><span class="p">();</span>
+<p>You can also use the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Mock\MockPlugin</span></tt> object directly with your clients.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$plugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Plugin\Mock\MockPlugin</span><span class="p">();</span>
 <span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">addResponse</span><span class="p">(</span><span class="k">new</span> <span class="nx">Guzzle\Http\Message\Response</span><span class="p">(</span><span class="mi">200</span><span class="p">));</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">();</span>
 <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$plugin</span><span class="p">);</span>

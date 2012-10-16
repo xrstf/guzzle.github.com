@@ -193,7 +193,7 @@
 <table border="1" class="docutils">
 <colgroup>
 <col width="25%" />
-<col width="21%" />
+<col width="22%" />
 <col width="26%" />
 <col width="28%" />
 </colgroup>
@@ -214,7 +214,7 @@
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td rowspan="2"><tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Request</span></tt></td>
+<tr class="row-odd"><td rowspan="11"><tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Request</span></tt></td>
 <td>request.before_send</td>
 <td>About to send request</td>
 <td><ul class="first last simple">
@@ -227,6 +227,171 @@
 <td><ul class="first last simple">
 <li>request: Request that was sent</li>
 <li>response: Received response</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>request.complete</td>
+<td>Completed a full HTTP transaction</td>
+<td><ul class="first last simple">
+<li>request: Request that was sent</li>
+<li>response: Received response</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>request.success</td>
+<td>Completed a successful request</td>
+<td><ul class="first last simple">
+<li>request: Request that was sent</li>
+<li>response: Received response</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>request.error</td>
+<td>Completed an unsuccessful request</td>
+<td><ul class="first last simple">
+<li>request: Request that was sent</li>
+<li>response: Received response</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>request.exception</td>
+<td>An unsuccessful response was
+received.</td>
+<td><ul class="first last simple">
+<li>request: Request</li>
+<li>response: Received response</li>
+<li>exception: BadResponseException</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>request.receive.status_line</td>
+<td>Received the start of a response</td>
+<td><ul class="first last simple">
+<li>line: Full response start line</li>
+<li>status_code: Status code</li>
+<li>reason_phrase: Reason phrase</li>
+<li>previous_response: (e.g. redirect)</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>request.set_response</td>
+<td>A response was set on the request</td>
+<td><ul class="first last simple">
+<li>request: Request</li>
+<li>response: Response that was set</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>curl.callback.progress</td>
+<td>cURL progress event (only
+dispatched when curl.emit_io is
+set on a request&#8217;s curl options</td>
+<td><ul class="first last simple">
+<li>request: Request</li>
+<li>handle: CurlHandle</li>
+<li>download_size: Total download size</li>
+<li>downloaded: Bytes downloaded</li>
+<li>upload_size: Total upload bytes</li>
+<li>uploaded: Bytes uploaded</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>curl.callback.write</td>
+<td>cURL event called when data is
+written to an outgoing stream</td>
+<td><ul class="first last simple">
+<li>request: Request</li>
+<li>write: Data being written</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>curl.callback.read</td>
+<td>cURL event called when data is
+written to an incoming stream</td>
+<td><ul class="first last simple">
+<li>request: Request</li>
+<li>read: Data being read</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td rowspan="6"><tt class="docutils literal"><span class="pre">Guzzle\Http\Curl\CurlMulti</span></tt></td>
+<td>curl_multi.add_request</td>
+<td>Added a request</td>
+<td><ul class="first last simple">
+<li>request: Request being added</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>curl_multi.remove_request</td>
+<td>Removed a request</td>
+<td><ul class="first last simple">
+<li>request: Request being removed</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>curl_multi.before_send</td>
+<td>About to send handles</td>
+<td><ul class="first last simple">
+<li>requests: Array of Request objects</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>curl_multi.polling_request</td>
+<td>Polling a specific handle</td>
+<td><ul class="first last simple">
+<li>request: Request being polled</li>
+<li>curl_multi: cURL multi handle</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>curl_multi.complete</td>
+<td>Completed a multi transfer</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>curl_multi.exception</td>
+<td>Encountered an exception during
+the transfer</td>
+<td><ul class="first last simple">
+<li>exception: Exception encountered</li>
+<li>all_exceptions: All buffered
+exception</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td rowspan="5"><tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt></td>
+<td>client.command.create</td>
+<td>Client has created a command</td>
+<td><ul class="first last simple">
+<li>client: The client</li>
+<li>command: The created command</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>command.before_prepare</td>
+<td>Before a command is prepared</td>
+<td><ul class="first last simple">
+<li>command: Command being prepared</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>command.before_send</td>
+<td>Before a command is executed</td>
+<td><ul class="first last simple">
+<li>command: Command about to send</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>command.after_send</td>
+<td>After a command is executed</td>
+<td><ul class="first last simple">
+<li>command: Command that was sent</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>command.after_send</td>
+<td>After a command is executed</td>
+<td><ul class="first last simple">
+<li>command: Command that was sent</li>
 </ul>
 </td>
 </tr>

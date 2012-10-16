@@ -2,14 +2,14 @@
 Caching
 =======
 
-Guzzle can leverage HTTP's caching specifications using the ``Guzzle\Http\Plugin\CachePlugin``.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on `RFC 2616 <http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html>`_, uses HTTP headers to control caching behavior, cache lifetime, and supports automatic ETag and Last-Modified based revalidation.
+Guzzle can leverage HTTP's caching specifications using the ``Guzzle\Plugin\Cache\CachePlugin``.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on `RFC 2616 <http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html>`_, uses HTTP headers to control caching behavior, cache lifetime, and supports automatic ETag and Last-Modified based revalidation.
 
 .. code-block:: php
 
     use Doctrine\Common\Cache\ArrayCache;
     use Guzzle\Http\Client;
     use Guzzle\Common\Cache\DoctrineCacheAdapter;
-    use Guzzle\Http\Plugin\CachePlugin;
+    use Guzzle\Plugin\Cache\CachePlugin;
 
     $adapter = new DoctrineCacheAdapter(new ArrayCache());
     $cache = new CachePlugin($adapter, true);
@@ -34,7 +34,9 @@ There are several options you can add to requests or clients to modify the behav
 Override cache TTL
 ~~~~~~~~~~~~~~~~~~
 
-You can override the number of seconds a cacheable response is stored in the cache by setting the ``cache.override_ttl`` parameter on the params object of a request::
+You can override the number of seconds a cacheable response is stored in the cache by setting the ``cache.override_ttl`` parameter on the params object of a request:
+
+.. code-block:: php
 
     // If the response to the request is cacheable, then the response will be cached for 100 seconds
     $request->getParams()->set('cache.override_ttl', 100);
@@ -42,12 +44,7 @@ You can override the number of seconds a cacheable response is stored in the cac
 Custom caching decision
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If the service you are interacting with does not return caching headers or returns responses that are normally something that would not be cached, you can set a ``cache.filter_strategy`` parameter on the params object of a request. This parameter should be a callable function that accepts a ``Guzzle\Http\Message\RequestInterface`` object and returns true if the request can be cached or false if the request cannot be cached::
-
-    // Causes every request to be cacheable
-    $request->getParams()->set('cache.filter_strategy', function (Guzzle\Http\Message\RequestInterface $request) {
-        return true;
-    });
+If the service you are interacting with does not return caching headers or returns responses that are normally something that would not be cached, you can set a custom ``can_cache`` object on the constructor of the CachePlugin and provide a ``Guzzle\Plugin\Cache\CanCacheInterface`` object. You can use the ``Guzzle\Plugin\Cache\CallbackCanCacheStrategy`` to easily make a caching decision based on an HTTP request and response.
 
 Revalidation options
 ~~~~~~~~~~~~~~~~~~~~
@@ -57,13 +54,16 @@ You can change the revalidation behavior of a request using the ``cache.revalida
 Normalizing requests for caching
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use the ``cache.key_filter`` parameter if you wish to strip certain headers or query string parameters from your request before creating a unique hash for the request.  This parameter can be useful if you send a special authorization header that changes based on the date, but still wish to cache the responses of those requests.  The cache.key_filter format can contain a list of ``query`` and ``header`` values to remove from the request hash.  You are not required to specify both a query or header list, and either list can contain one or more keys to ignore.  For example, here we are saying that the ``a`` and ``q`` query string variables and the ``Date`` header should be ignored when generating a hash key for the request::
+Use the ``cache.key_filter`` parameter if you wish to strip certain headers or query string parameters from your request before creating a unique hash for the request.  This parameter can be useful if you send a special authorization header that changes based on the date, but still wish to cache the responses of those requests.  The cache.key_filter format can contain a list of ``query`` and ``header`` values to remove from the request hash.  You are not required to specify both a query or header list, and either list can contain one or more keys to ignore.  For example, here we are saying that the ``a`` and ``q`` query string variables and the ``Date`` header should be ignored when generating a hash key for the request:
+
+.. code-block:: php
 
     $request->getParams()->set('cache.key_filter', 'query=a, q; header=Date, Host');
 
-.. note::
+Other options
+~~~~~~~~~~~~~
 
-    This parameter only works when no ``cache.filter_strategy`` parameter is provided.
+There are many other options available to the CachePlugin that can meet almost any caching requirement, including custom revalidation implementations, custom cache key generators, custom caching decision strategies, and custom cache storage objects. Take a look the constructor of ``Guzzle\Plugin\Cache\CachePlugin`` for more information.
 
 Setting Client-wide cache settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,7 +74,7 @@ You can specify cache settings for every request created by a client by adding c
 
     $client = new Guzzle\Http\Client('http://www.test.com', array(
         'params.cache.override_ttl' => 3600,
-        'params.cache.revalidate' => 'never'
+        'params.cache.revalidate'   => 'never'
     ));
 
     echo $client->get('/')->getParams()->get('cache.override_ttl');
@@ -85,7 +85,7 @@ You can specify cache settings for every request created by a client by adding c
 Cache revalidation
 ------------------
 
-If the cache plugin determines that a response to a GET request needs revalidation, a conditional GET is transferred to the origin server.  If the origin server returns a 304 response, then a response containing the merged headers of the cached response with the new response and the entity body of the cached response is returned.
+If the cache plugin determines that a response to a GET request needs revalidation, a conditional GET is transferred to the origin server.  If the origin server returns a 304 response, then a response containing the merged headers of the cached response with the new response and the entity body of the cached response is returned. Custom revalidation strategies can be injected into a CachePlugin if needed.
 
 Cache adapters
 --------------
@@ -99,7 +99,7 @@ Doctrine
 
     use Doctrine\Common\Cache\ArrayCache;
     use Guzzle\Common\Cache\DoctrineCacheAdapter;
-    use Guzzle\Http\Plugin\CachePlugin;
+    use Guzzle\Plugin\Cache\CachePlugin;
 
     $backend = new ArrayCache();
     $adapter = new DoctrineCacheAdapter($backend);

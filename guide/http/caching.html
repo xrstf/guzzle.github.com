@@ -138,6 +138,7 @@
 <li><a class="reference internal" href="#custom-caching-decision">Custom caching decision</a></li>
 <li><a class="reference internal" href="#revalidation-options">Revalidation options</a></li>
 <li><a class="reference internal" href="#normalizing-requests-for-caching">Normalizing requests for caching</a></li>
+<li><a class="reference internal" href="#other-options">Other options</a></li>
 <li><a class="reference internal" href="#setting-client-wide-cache-settings">Setting Client-wide cache settings</a></li>
 </ul>
 </li>
@@ -166,11 +167,11 @@
        
   <div class="section" id="caching">
 <h1>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h1>
-<p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Http\Plugin\CachePlugin</span></tt>.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior, cache lifetime, and supports automatic ETag and Last-Modified based revalidation.</p>
+<p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt>.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior, cache lifetime, and supports automatic ETag and Last-Modified based revalidation.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\CachePlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\CachePlugin</span><span class="p">;</span>
 
 <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">());</span>
 <span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="nv">$adapter</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
@@ -193,18 +194,14 @@
 <div class="section" id="override-cache-ttl">
 <h3>Override cache TTL<a class="headerlink" href="#override-cache-ttl" title="Permalink to this headline">¶</a></h3>
 <p>You can override the number of seconds a cacheable response is stored in the cache by setting the <tt class="docutils literal"><span class="pre">cache.override_ttl</span></tt> parameter on the params object of a request:</p>
-<div class="highlight-python"><pre>// If the response to the request is cacheable, then the response will be cached for 100 seconds
-$request-&gt;getParams()-&gt;set('cache.override_ttl', 100);</pre>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// If the response to the request is cacheable, then the response will be cached for 100 seconds</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;cache.override_ttl&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="custom-caching-decision">
 <h3>Custom caching decision<a class="headerlink" href="#custom-caching-decision" title="Permalink to this headline">¶</a></h3>
-<p>If the service you are interacting with does not return caching headers or returns responses that are normally something that would not be cached, you can set a <tt class="docutils literal"><span class="pre">cache.filter_strategy</span></tt> parameter on the params object of a request. This parameter should be a callable function that accepts a <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\RequestInterface</span></tt> object and returns true if the request can be cached or false if the request cannot be cached:</p>
-<div class="highlight-python"><pre>// Causes every request to be cacheable
-$request-&gt;getParams()-&gt;set('cache.filter_strategy', function (Guzzle\Http\Message\RequestInterface $request) {
-    return true;
-});</pre>
-</div>
+<p>If the service you are interacting with does not return caching headers or returns responses that are normally something that would not be cached, you can set a custom <tt class="docutils literal"><span class="pre">can_cache</span></tt> object on the constructor of the CachePlugin and provide a <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CanCacheInterface</span></tt> object. You can use the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CallbackCanCacheStrategy</span></tt> to easily make a caching decision based on an HTTP request and response.</p>
 </div>
 <div class="section" id="revalidation-options">
 <h3>Revalidation options<a class="headerlink" href="#revalidation-options" title="Permalink to this headline">¶</a></h3>
@@ -213,19 +210,20 @@ $request-&gt;getParams()-&gt;set('cache.filter_strategy', function (Guzzle\Http\
 <div class="section" id="normalizing-requests-for-caching">
 <h3>Normalizing requests for caching<a class="headerlink" href="#normalizing-requests-for-caching" title="Permalink to this headline">¶</a></h3>
 <p>Use the <tt class="docutils literal"><span class="pre">cache.key_filter</span></tt> parameter if you wish to strip certain headers or query string parameters from your request before creating a unique hash for the request.  This parameter can be useful if you send a special authorization header that changes based on the date, but still wish to cache the responses of those requests.  The cache.key_filter format can contain a list of <tt class="docutils literal"><span class="pre">query</span></tt> and <tt class="docutils literal"><span class="pre">header</span></tt> values to remove from the request hash.  You are not required to specify both a query or header list, and either list can contain one or more keys to ignore.  For example, here we are saying that the <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">q</span></tt> query string variables and the <tt class="docutils literal"><span class="pre">Date</span></tt> header should be ignored when generating a hash key for the request:</p>
-<div class="highlight-python"><pre>$request-&gt;getParams()-&gt;set('cache.key_filter', 'query=a, q; header=Date, Host');</pre>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;cache.key_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;query=a, q; header=Date, Host&#39;</span><span class="p">);</span>
+</pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This parameter only works when no <tt class="docutils literal"><span class="pre">cache.filter_strategy</span></tt> parameter is provided.</p>
 </div>
+<div class="section" id="other-options">
+<h3>Other options<a class="headerlink" href="#other-options" title="Permalink to this headline">¶</a></h3>
+<p>There are many other options available to the CachePlugin that can meet almost any caching requirement, including custom revalidation implementations, custom cache key generators, custom caching decision strategies, and custom cache storage objects. Take a look the constructor of <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt> for more information.</p>
 </div>
 <div class="section" id="setting-client-wide-cache-settings">
 <h3>Setting Client-wide cache settings<a class="headerlink" href="#setting-client-wide-cache-settings" title="Permalink to this headline">¶</a></h3>
 <p>You can specify cache settings for every request created by a client by adding cache settings to the configuration options of a client.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;params.cache.override_ttl&#39;</span> <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">,</span>
-    <span class="s1">&#39;params.cache.revalidate&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;never&#39;</span>
+    <span class="s1">&#39;params.cache.revalidate&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;never&#39;</span>
 <span class="p">));</span>
 
 <span class="k">echo</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;cache.override_ttl&#39;</span><span class="p">);</span>
@@ -238,7 +236,7 @@ $request-&gt;getParams()-&gt;set('cache.filter_strategy', function (Guzzle\Http\
 </div>
 <div class="section" id="cache-revalidation">
 <h2>Cache revalidation<a class="headerlink" href="#cache-revalidation" title="Permalink to this headline">¶</a></h2>
-<p>If the cache plugin determines that a response to a GET request needs revalidation, a conditional GET is transferred to the origin server.  If the origin server returns a 304 response, then a response containing the merged headers of the cached response with the new response and the entity body of the cached response is returned.</p>
+<p>If the cache plugin determines that a response to a GET request needs revalidation, a conditional GET is transferred to the origin server.  If the origin server returns a 304 response, then a response containing the merged headers of the cached response with the new response and the entity body of the cached response is returned. Custom revalidation strategies can be injected into a CachePlugin if needed.</p>
 </div>
 <div class="section" id="cache-adapters">
 <h2>Cache adapters<a class="headerlink" href="#cache-adapters" title="Permalink to this headline">¶</a></h2>
@@ -247,7 +245,7 @@ $request-&gt;getParams()-&gt;set('cache.filter_strategy', function (Guzzle\Http\
 <h3>Doctrine<a class="headerlink" href="#doctrine" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Guzzle\Http\Plugin\CachePlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\CachePlugin</span><span class="p">;</span>
 
 <span class="nv">$backend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">();</span>
 <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="nv">$backend</span><span class="p">);</span>
