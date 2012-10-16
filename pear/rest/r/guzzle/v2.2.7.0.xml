@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release2 http://pear.php.net/dtd/rest.release2.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>2.7.0</v>
+    <a>2.0.0</a>
+    <mp>5.3.2</mp>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Object-oriented PHP HTTP Client for PHP 5.3+</s>
+    <d>Guzzle is a PHP HTTP client library and framework for building RESTful web service clients</d>
+    <da>2012-10-15 21:40:19</da>
+    <n>
+* BC: Inflection classes moved to Guzzle\Inflection. No longer static methods. Can now inject custom inflectors into classes.
+* BC: Removed magic setX methods from commands
+* BC: Magic methods mapped to service description commands are now inflected in the command factory rather than the client __call() method
+* Verbose cURL options are no longer enabled by default. Set curl.debug to true on a client to enable.
+* Bug: Now allowing colons in a response start-line (e.g. HTTP/1.1 503 Service Unavailable: Back-end server is at capacity)
+* Guzzle\Service\Resource\ResourceIteratorApplyBatched now internally uses the Guzzle\Common\Batch namespace
+* Added Guzzle\Service\Plugin namespace and a PluginCollectionPlugin
+* Added the ability to set POST fields and files in a service description
+* Guzzle\Http\EntityBody::factory() now accepts objects with a __toString() method
+* Adding a command.before_prepare event to clients
+* Added BatchClosureTransfer and BatchClosureDivisor
+* BatchTransferException now includes references to the batch divisor and transfer strategies
+* Fixed some tests so that they pass more reliably
+* Added Guzzle\Common\Log\ArrayLogAdapter
+ </n>
+    <f>107490</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-2.7.0</g>
+    <x xlink:href="package.2.7.0.xml"/>
+</r>

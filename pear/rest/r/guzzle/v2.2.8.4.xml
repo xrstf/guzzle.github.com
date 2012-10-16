@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release2 http://pear.php.net/dtd/rest.release2.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>2.8.4</v>
+    <a>2.0.0</a>
+    <mp>5.3.2</mp>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Object-oriented PHP HTTP Client for PHP 5.3+</s>
+    <d>Guzzle is a PHP HTTP client library and framework for building RESTful web service clients</d>
+    <da>2012-10-15 21:35:49</da>
+    <n>
+* Bug: Custom delay time calculations are no longer ignored in the ExponentialBackoffPlugin
+* Added the ability to transfer entity bodies as a string rather than streamed. This gets around curl error 65. Set `body_as_string` in a request's curl options to enable.
+* Added a StreamInterface, EntityBodyInterface, and added ftell() to Guzzle\Common\Stream
+* Added an AbstractEntityBodyDecorator and a ReadLimitEntityBody decorator to transfer only a subset of a decorated stream
+* Stream and EntityBody objects will now return the file position to the previous position after a read required operation (e.g. getContentMd5())
+* Added additional response status codes
+* Removed SSL information from the default User-Agent header
+* DELETE requests can now send an entity body
+* Added an EventDispatcher to the ExponentialBackoffPlugin and added an ExponentialBackoffLogger to log backoff retries
+* Added the ability of the MockPlugin to consume mocked request bodies
+* LogPlugin now exposes request and response objects in the extras array
+ </n>
+    <f>109960</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-2.8.4</g>
+    <x xlink:href="package.2.8.4.xml"/>
+</r>

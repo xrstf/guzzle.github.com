@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release http://pear.php.net/dtd/rest.release.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>2.8.2</v>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Object-oriented PHP HTTP Client for PHP 5.3+</s>
+    <d>Guzzle is a PHP HTTP client library and framework for building RESTful web service clients</d>
+    <da>2012-10-15 21:37:14</da>
+    <n>
+* Bug: Query string values set to 0 are no longer dropped from the query string
+* Bug: A Collection object is no longer created each time a call is made to ``Guzzle\Service\Command\AbstractCommand::getRequestHeaders()``
+* Bug: ``+`` is now treated as an encoded space when parsing query strings
+* QueryString and Collection performance improvements
+* Allowing dot notation for class paths in filters attribute of a service descriptions
+ </n>
+    <f>107115</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-2.8.2</g>
+    <x xlink:href="package.2.8.2.xml"/>
+</r>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release2 http://pear.php.net/dtd/rest.release2.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>2.8.3</v>
+    <a>2.0.0</a>
+    <mp>5.3.2</mp>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Object-oriented PHP HTTP Client for PHP 5.3+</s>
+    <d>Guzzle is a PHP HTTP client library and framework for building RESTful web service clients</d>
+    <da>2012-10-15 21:36:19</da>
+    <n>
+* Bug: Fixed a case where empty POST requests were sent as GET requests
+* Bug: Fixed a bug in ExponentialBackoffPlugin that caused fatal errors when retrying an EntityEnclosingRequest that does not have a body
+* Bug: Setting the response body of a request to null after completing a request, not when setting the state of a request to new
+* Added multiple inheritance to service description commands
+* Added an ApiCommandInterface and added ``getParamNames()`` and ``hasParam()``
+* Removed the default 2mb size cutoff from the Md5ValidatorPlugin so that it now defaults to validating everything
+* Changed CurlMulti::perform to pass a smaller timeout to CurlMulti::executeHandles
+ </n>
+    <f>107532</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-2.8.3</g>
+    <x xlink:href="package.2.8.3.xml"/>
+</r>
