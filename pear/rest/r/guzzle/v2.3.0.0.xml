@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release2 http://pear.php.net/dtd/rest.release2.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>3.0.0</v>
+    <a>3.0.0</a>
+    <mp>5.3.2</mp>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Object-oriented PHP HTTP Client for PHP 5.3+</s>
+    <d>Guzzle is a PHP HTTP client library and framework for building RESTful web service clients</d>
+    <da>2012-10-15 21:50:58</da>
+    <n>
+* Rewrote service description format to be based on Swagger
+* Now based on JSON schema
+* Added nested input structures and nested response models
+* Support for JSON and XML input and output models
+* Renamed `commands` to `operations`
+* Removed dot class notation
+* Removed custom types
+* Broke the project into smaller top-level namespaces to be more component friendly
+* Removed support for XML configs and descriptions. Use arrays or JSON files.
+* Removed the Validation component and Inspector
+* Moved all cookie code to Guzzle\Plugin\Cookie
+* Magic methods on a Guzzle\Service\Client now return the command un-executed.
+* Calling getResult() or getResponse() on a command will lazily execute the command if needed.
+* Now shipping with cURL's CA certs and using it by default
+* Added previousResponse() method to response objects
+* No longer sending Accept and Accept-Encoding headers on every request
+* Only sending an Expect header by default when a payload is greater than 1MB
+* Added/moved client options:
+* curl.blacklist to curl.option.blacklist
+* Added ssl.certificate_authority
+* Added a Guzzle\Iterator component
+* Moved plugins from Guzzle\Http\Plugin to Guzzle\Plugin
+* Added a more robust backoff retry strategy (replaced the ExponentialBackoffPlugin)
+* Added a more robust caching plugin
+* Added setBody to response objects
+* Updating LogPlugin to use a more flexible MessageFormatter
+* Added a completely revamped build process
+* Cleaning up Collection class and removing default values from the get method
+* Fixed ZF2 cache adapters
+ </n>
+    <f>262569</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-3.0.0</g>
+    <x xlink:href="package.3.0.0.xml"/>
+</r>
