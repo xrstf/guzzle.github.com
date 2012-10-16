@@ -42,7 +42,7 @@
 * Cleaning up Collection class and removing default values from the get method
 * Fixed ZF2 cache adapters
  </n>
-    <f>262569</f>
+    <f>262571</f>
     <g>http://guzzlephp.org/pear/get/Guzzle-3.0.0</g>
     <x xlink:href="package.3.0.0.xml"/>
 </r>
