@@ -166,7 +166,7 @@ Service descriptions are comprised of the following top-level attributes:
 +------------------+-----------------------------------------------------------------------------------------------------------------------+
 | models           | Hash of models used by the service represented in JSON Schema format                                                  |
 +------------------+-----------------------------------------------------------------------------------------------------------------------+
-| extends          | (optional) Path to a service description file to extend (can be a .json, .js, or .php file)                           |
+| includes         | (optional) Array of service description files to include and extend from (can be a .json, .js, or .php file)          |
 +------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 baseUrl

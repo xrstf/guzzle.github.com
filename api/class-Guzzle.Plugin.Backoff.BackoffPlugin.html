@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Plugin\Backoff\BackoffPlugin | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -238,6 +238,7 @@ strategy</p>
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="__construct" id="___construct">
@@ -264,9 +265,10 @@ strategy</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$strategy</var></dt>
-					<dd><code><code><a href="class-Guzzle.Plugin.Backoff.BackoffStrategyInterface.html">Guzzle\Plugin\Backoff\BackoffStrategyInterface</a></code></code><br> The backoff strategy used to determine whether or not to retry and the amount
-of delay between retries.</dd>
+					<dd><code><code><a href="class-Guzzle.Plugin.Backoff.BackoffStrategyInterface.html">Guzzle\Plugin\Backoff\BackoffStrategyInterface</a></code></code><br>$strategy The backoff strategy used to determine whether or not to retry and the
+amount of delay between retries.</dd>
 				</dl></div>
+
 
 
 
@@ -278,7 +280,7 @@ of delay between retries.</dd>
 
 		<td class="attributes"><code>
 			 public static
-			self
+			<code><a href="class-Guzzle.Plugin.Backoff.BackoffPlugin.html">Guzzle\Plugin\Backoff\BackoffPlugin</a></code>
 			
 			</code>
 		</td>
@@ -304,17 +306,18 @@ errors and cURL errors</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$maxRetries</var></dt>
-					<dd><code>integer</code><br> Maximum number of retries</dd>
+					<dd><code>integer</code><br>$maxRetries Maximum number of retries</dd>
 					<dt><var>$httpCodes</var></dt>
-					<dd><code>array</code><br> HTTP response codes to retry</dd>
+					<dd><code>array</code><br>$httpCodes HTTP response codes to retry</dd>
 					<dt><var>$curlCodes</var></dt>
-					<dd><code>array</code><br> cURL error codes to retry</dd>
+					<dd><code>array</code><br>$curlCodes cURL error codes to retry</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Plugin.Backoff.BackoffPlugin.html">Guzzle\Plugin\Backoff\BackoffPlugin</a></code></code><br />
 				</div>
+
 
 
 
@@ -354,8 +357,9 @@ errors and cURL errors</p>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents</a></code></div>
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Common.AbstractHasDispatcher.html#_getAllEvents">Guzzle\Common\AbstractHasDispatcher::getAllEvents()</a></code></div>
+
 		</div>
 		</div></td>
 	</tr>
@@ -378,6 +382,7 @@ errors and cURL errors</p>
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -415,8 +420,9 @@ errors and cURL errors</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$event</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
 				</dl></div>
+
 
 
 
@@ -452,8 +458,9 @@ errors and cURL errors</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$event</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
 				</dl></div>
+
 
 
 
@@ -477,13 +484,15 @@ errors and cURL errors</p>
 
 
 
+
+
+
+
 	<table class="summary" id="constants">
 	<caption>Constants summary</caption>
 	<tr data-order="DELAY_PARAM" id="DELAY_PARAM">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 <b>DELAY_PARAM</b>		</code></td>
 		<td class="value"><code><span class="php-quote">'plugins.backoff.retry_time'</span></code></td>
@@ -502,9 +511,7 @@ errors and cURL errors</p>
 	</tr>
 	<tr data-order="RETRY_PARAM" id="RETRY_PARAM">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 <b>RETRY_PARAM</b>		</code></td>
 		<td class="value"><code><span class="php-quote">'plugins.backoff.retry_count'</span></code></td>
@@ -523,9 +530,7 @@ errors and cURL errors</p>
 	</tr>
 	<tr data-order="RETRY_EVENT" id="RETRY_EVENT">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 <b>RETRY_EVENT</b>		</code></td>
 		<td class="value"><code><span class="php-quote">'plugins.backoff.retry'</span></code></td>
@@ -546,12 +551,12 @@ errors and cURL errors</p>
 
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="strategy" id="$strategy">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Plugin.Backoff.BackoffStrategyInterface.html">Guzzle\Plugin\Backoff\BackoffStrategyInterface</a></code>
 		</code></td>
 
@@ -587,10 +592,13 @@ errors and cURL errors</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

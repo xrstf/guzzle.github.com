@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Batch\BatchBuilder | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -221,6 +221,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="factory" id="_factory">
@@ -256,6 +257,7 @@
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -270,7 +272,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_autoFlushAt">#</a>
-		<code>autoFlushAt( <span>$threshold <var>$threshold</var></span> )</code>
+		<code>autoFlushAt( <span>mixed <var>$threshold</var></span> )</code>
 
 		<div class="description short">
 			
@@ -289,13 +291,14 @@ threshold. Adds <code><a href="class-Guzzle.Batch.FlushingBatch.html">Guzzle\Bat
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$threshold</var></dt>
-					<dd><code>$threshold</code><br>Number of items to allow in the queue before a flush</dd>
+					<dd><code>mixed</code><br>$threshold Number of items to allow in the queue before a flush</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Batch.BatchBuilder.html">Guzzle\Batch\BatchBuilder</a></code></code><br />
 				</div>
+
 
 
 
@@ -334,6 +337,7 @@ Adds <code><a href="class-Guzzle.Batch.HistoryBatch.html">Guzzle\Batch\HistoryBa
 				<div class="list">
 					<code><code><a href="class-Guzzle.Batch.BatchBuilder.html">Guzzle\Batch\BatchBuilder</a></code></code><br />
 				</div>
+
 
 
 
@@ -377,6 +381,7 @@ thrown. Enables the <code><a href="class-Guzzle.Batch.ExceptionBufferingBatch.ht
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -408,7 +413,7 @@ thrown. Enables the <code><a href="class-Guzzle.Batch.ExceptionBufferingBatch.ht
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$callable</var></dt>
-					<dd><code>mixed</code><br> Callable function to notify</dd>
+					<dd><code>mixed</code><br>$callable Callable function to notify</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -420,6 +425,7 @@ thrown. Enables the <code><a href="class-Guzzle.Batch.ExceptionBufferingBatch.ht
 				<div class="list">
 					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if the argument is not callable<br />
 				</div>
+
 
 
 		</div>
@@ -455,13 +461,14 @@ strategy.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$batchSize</var></dt>
-					<dd><code>integer</code><br> Batch size for each batch of requests</dd>
+					<dd><code>integer</code><br>$batchSize Batch size for each batch of requests</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Batch.BatchBuilder.html">Guzzle\Batch\BatchBuilder</a></code></code><br />
 				</div>
+
 
 
 
@@ -498,13 +505,14 @@ strategy.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$batchSize</var></dt>
-					<dd><code>integer</code><br> Batch size for each batch of commands</dd>
+					<dd><code>integer</code><br>$batchSize Batch size for each batch of commands</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Batch.BatchBuilder.html">Guzzle\Batch\BatchBuilder</a></code></code><br />
 				</div>
+
 
 
 
@@ -539,13 +547,14 @@ strategy.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$divisorStrategy</var></dt>
-					<dd><code><code><a href="class-Guzzle.Batch.BatchDivisorInterface.html">Guzzle\Batch\BatchDivisorInterface</a></code></code><br> Strategy used to divide a batch queue into batches</dd>
+					<dd><code><code><a href="class-Guzzle.Batch.BatchDivisorInterface.html">Guzzle\Batch\BatchDivisorInterface</a></code></code><br>$divisorStrategy Strategy used to divide a batch queue into batches</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Batch.BatchBuilder.html">Guzzle\Batch\BatchBuilder</a></code></code><br />
 				</div>
+
 
 
 
@@ -580,13 +589,14 @@ strategy.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$transferStrategy</var></dt>
-					<dd><code><code><a href="class-Guzzle.Batch.BatchTransferInterface.html">Guzzle\Batch\BatchTransferInterface</a></code></code><br> How items are transferred</dd>
+					<dd><code><code><a href="class-Guzzle.Batch.BatchTransferInterface.html">Guzzle\Batch\BatchTransferInterface</a></code></code><br>$transferStrategy How items are transferred</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Batch.BatchBuilder.html">Guzzle\Batch\BatchBuilder</a></code></code><br />
 				</div>
+
 
 
 
@@ -630,6 +640,7 @@ strategy.</p>
 				</div>
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -641,12 +652,16 @@ strategy.</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="autoFlush" id="$autoFlush">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
@@ -671,9 +686,8 @@ strategy.</p>
 		</div></td>
 	</tr>
 	<tr data-order="history" id="$history">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
@@ -698,9 +712,8 @@ strategy.</p>
 		</div></td>
 	</tr>
 	<tr data-order="exceptionBuffering" id="$exceptionBuffering">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
@@ -725,9 +738,8 @@ strategy.</p>
 		</div></td>
 	</tr>
 	<tr data-order="afterFlush" id="$afterFlush">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			mixed
 		</code></td>
 
@@ -752,9 +764,8 @@ strategy.</p>
 		</div></td>
 	</tr>
 	<tr data-order="transferStrategy" id="$transferStrategy">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Batch.BatchTransferInterface.html">Guzzle\Batch\BatchTransferInterface</a></code>
 		</code></td>
 
@@ -779,9 +790,8 @@ strategy.</p>
 		</div></td>
 	</tr>
 	<tr data-order="divisorStrategy" id="$divisorStrategy">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Batch.BatchDivisorInterface.html">Guzzle\Batch\BatchDivisorInterface</a></code>
 		</code></td>
 
@@ -806,9 +816,8 @@ strategy.</p>
 		</div></td>
 	</tr>
 	<tr data-order="mapping" id="$mapping">
-
 		<td class="attributes"><code>
-			protected static
+			protected static 
 			array
 		</code></td>
 
@@ -839,10 +848,13 @@ strategy.</p>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

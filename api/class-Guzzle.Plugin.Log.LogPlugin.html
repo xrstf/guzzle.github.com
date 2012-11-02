@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Plugin\Log\LogPlugin | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -219,6 +219,7 @@ template variable substitution.</p>
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="__construct" id="___construct">
@@ -249,13 +250,14 @@ template variable substitution.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$logAdapter</var></dt>
-					<dd><code><code><a href="class-Guzzle.Log.LogAdapterInterface.html">Guzzle\Log\LogAdapterInterface</a></code></code><br> Adapter object used to log message</dd>
+					<dd><code><code><a href="class-Guzzle.Log.LogAdapterInterface.html">Guzzle\Log\LogAdapterInterface</a></code></code><br>$logAdapter Adapter object used to log message</dd>
 					<dt><var>$formatter</var></dt>
-					<dd><code>string|<code><a href="class-Guzzle.Log.MessageFormatter.html">Guzzle\Log\MessageFormatter</a></code></code><br> Formatter used to format log messages or the formatter template</dd>
+					<dd><code>string|<code><a href="class-Guzzle.Log.MessageFormatter.html">Guzzle\Log\MessageFormatter</a></code></code><br>$formatter Formatter used to format log messages or the formatter template</dd>
 					<dt><var>$wireBodies</var></dt>
-					<dd><code>boolean</code><br> Set to true to track request and response bodies using a temporary buffer if
-the bodies are not repeatable.</dd>
+					<dd><code>boolean</code><br>$wireBodies Set to true to track request and response bodies using a temporary
+buffer if the bodies are not repeatable.</dd>
 				</dl></div>
+
 
 
 
@@ -267,7 +269,7 @@ the bodies are not repeatable.</dd>
 
 		<td class="attributes"><code>
 			 public static
-			self
+			<code><a href="class-Guzzle.Plugin.Log.LogPlugin.html">Guzzle\Plugin\Log\LogPlugin</a></code>
 			
 			</code>
 		</td>
@@ -293,16 +295,17 @@ information to stderr</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$wireBodies</var></dt>
-					<dd><code>boolean</code><br> Set to false to disable request/response body output when they use are not
-repeatable</dd>
+					<dd><code>boolean</code><br>$wireBodies Set to false to disable request/response body output when they use
+are not repeatable</dd>
 					<dt><var>$stream</var></dt>
-					<dd><code>resource</code><br> Stream to write to when logging</dd>
+					<dd><code>resource</code><br>$stream Stream to write to when logging</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Plugin.Log.LogPlugin.html">Guzzle\Plugin\Log\LogPlugin</a></code></code><br />
 				</div>
+
 
 
 
@@ -328,6 +331,7 @@ repeatable</dd>
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -365,8 +369,9 @@ repeatable</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$event</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
 				</dl></div>
+
 
 
 
@@ -402,8 +407,9 @@ repeatable</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$event</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
 				</dl></div>
+
 
 
 
@@ -439,8 +445,9 @@ repeatable</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$event</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
 				</dl></div>
+
 
 
 
@@ -476,8 +483,9 @@ repeatable</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$event</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code></dd>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
 				</dl></div>
+
 
 
 
@@ -493,12 +501,16 @@ repeatable</dd>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="formatter" id="$formatter">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Log.MessageFormatter.html">Guzzle\Log\MessageFormatter</a></code>
 		</code></td>
 
@@ -523,9 +535,8 @@ repeatable</dd>
 		</div></td>
 	</tr>
 	<tr data-order="wireBodies" id="$wireBodies">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
@@ -553,10 +564,13 @@ repeatable</dd>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

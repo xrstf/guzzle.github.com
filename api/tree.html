@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Tree | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -134,6 +134,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-AppendIterator.html">AppendIterator</a></li>
 				<li><a href="class-ArrayIterator.html">ArrayIterator</a></li>
 				<li><a href="class-Closure.html">Closure</a></li>
 				<li><a href="class-DateTime.html">DateTime</a></li>
@@ -179,11 +180,13 @@
 				<li><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">Guzzle\Http\ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">Guzzle\Http\RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></li>
 				<li><a href="class-Guzzle.Http.Utils.html">Guzzle\Http\Utils</a></li>
 				<li><a href="class-Guzzle.Inflection.Inflector.html">Guzzle\Inflection\Inflector</a></li>
 				<li><a href="class-Guzzle.Inflection.MemoizingInflector.html">Guzzle\Inflection\MemoizingInflector</a></li>
 				<li><a href="class-Guzzle.Inflection.PreComputedInflector.html">Guzzle\Inflection\PreComputedInflector</a></li>
+				<li><a href="class-Guzzle.Iterator.AppendIterator.html">Guzzle\Iterator\AppendIterator</a></li>
 				<li><a href="class-Guzzle.Iterator.ChunkedIterator.html">Guzzle\Iterator\ChunkedIterator</a></li>
 				<li><a href="class-Guzzle.Iterator.FilterIterator.html">Guzzle\Iterator\FilterIterator</a></li>
 				<li><a href="class-Guzzle.Iterator.MapIterator.html">Guzzle\Iterator\MapIterator</a></li>
@@ -200,6 +203,7 @@
 				<li><a href="class-Guzzle.Parser.Message.MessageParser.html">Guzzle\Parser\Message\MessageParser</a></li>
 				<li><a href="class-Guzzle.Parser.Message.PeclHttpMessageParser.html">Guzzle\Parser\Message\PeclHttpMessageParser</a></li>
 				<li><a href="class-Guzzle.Parser.ParserRegistry.html">Guzzle\Parser\ParserRegistry</a></li>
+				<li><a href="class-Guzzle.Parser.UriTemplate.PeclUriTemplate.html">Guzzle\Parser\UriTemplate\PeclUriTemplate</a></li>
 				<li><a href="class-Guzzle.Parser.UriTemplate.UriTemplate.html">Guzzle\Parser\UriTemplate\UriTemplate</a></li>
 				<li><a href="class-Guzzle.Parser.Url.UrlParser.html">Guzzle\Parser\Url\UrlParser</a></li>
 				<li><a href="class-Guzzle.Plugin.Async.AsyncPlugin.html">Guzzle\Plugin\Async\AsyncPlugin</a></li>
@@ -358,9 +362,11 @@
 				<li><a href="class-Guzzle.Common.Exception.UnexpectedValueException.html">Guzzle\Common\Exception\UnexpectedValueException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.BadResponseException.html">Guzzle\Http\Exception\BadResponseException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.ClientErrorResponseException.html">Guzzle\Http\Exception\ClientErrorResponseException</a></li>
+				<li><a href="class-Guzzle.Http.Exception.CouldNotRewindStreamException.html">Guzzle\Http\Exception\CouldNotRewindStreamException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.CurlException.html">Guzzle\Http\Exception\CurlException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.RequestException.html">Guzzle\Http\Exception\RequestException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.ServerErrorResponseException.html">Guzzle\Http\Exception\ServerErrorResponseException</a></li>
+				<li><a href="class-Guzzle.Http.Exception.TooManyRedirectsException.html">Guzzle\Http\Exception\TooManyRedirectsException</a></li>
 				<li><a href="class-Guzzle.Service.Exception.CommandException.html">Guzzle\Service\Exception\CommandException</a></li>
 				<li><a href="class-Guzzle.Service.Exception.DescriptionBuilderException.html">Guzzle\Service\Exception\DescriptionBuilderException</a></li>
 				<li><a href="class-Guzzle.Service.Exception.InconsistentClientTransferException.html">Guzzle\Service\Exception\InconsistentClientTransferException</a></li>
@@ -861,6 +867,15 @@
 
 				</li>
 
+			<li><div class="notlast"><a href="class-Guzzle.Http.RedirectPlugin.html"><span>Guzzle\Http\RedirectPlugin</span></a>
+			 implements 
+<span>Symfony\Component\EventDispatcher\EventSubscriberInterface</span>
+			
+			
+			</div>
+
+				</li>
+
 			<li><div class="notlast"><a href="class-Guzzle.Http.Url.html"><span>Guzzle\Http\Url</span></a>
 			
 			
@@ -988,6 +1003,15 @@
 				</ul></li>
 
 			<li><div class="notlast"><a href="class-Guzzle.Parser.ParserRegistry.html"><span>Guzzle\Parser\ParserRegistry</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li><div class="notlast"><a href="class-Guzzle.Parser.UriTemplate.PeclUriTemplate.html"><span>Guzzle\Parser\UriTemplate\PeclUriTemplate</span></a>
+			 implements 
+				<a href="class-Guzzle.Parser.UriTemplate.UriTemplateInterface.html"><span>Guzzle\Parser\UriTemplate\UriTemplateInterface</span></a>
 			
 			
 			</div>
@@ -1598,6 +1622,20 @@
 			</div>
 
 				<ul>
+
+			<li><div class="notlast"><a href="class-AppendIterator.html"><span>AppendIterator</span></a>
+			
+			
+			</div>
+
+				<ul>
+
+			<li class="last"><div class="last"><a href="class-Guzzle.Iterator.AppendIterator.html"><span>Guzzle\Iterator\AppendIterator</span></a>
+			
+			
+			</div>
+
+				</ul></li>
 
 			<li><div class="notlast"><a href="class-FilterIterator.html"><span>FilterIterator</span></a>
 			
@@ -2213,6 +2251,15 @@
 
 				<ul>
 
+			<li><div class="notlast"><a href="class-Guzzle.Http.Exception.CouldNotRewindStreamException.html"><span>Guzzle\Http\Exception\CouldNotRewindStreamException</span></a>
+			 implements 
+				<a href="class-Guzzle.Http.Exception.HttpException.html"><span>Guzzle\Http\Exception\HttpException</span></a>
+			
+			
+			</div>
+
+				</li>
+
 			<li><div class="notlast"><a href="class-Guzzle.Http.Exception.RequestException.html"><span>Guzzle\Http\Exception\RequestException</span></a>
 			 implements 
 				<a href="class-Guzzle.Http.Exception.HttpException.html"><span>Guzzle\Http\Exception\HttpException</span></a>
@@ -2243,7 +2290,14 @@
 
 				</li>
 
-			<li class="last"><div class="last"><a href="class-Guzzle.Http.Exception.ServerErrorResponseException.html"><span>Guzzle\Http\Exception\ServerErrorResponseException</span></a>
+			<li><div class="notlast"><a href="class-Guzzle.Http.Exception.ServerErrorResponseException.html"><span>Guzzle\Http\Exception\ServerErrorResponseException</span></a>
+			
+			
+			</div>
+
+				</li>
+
+			<li class="last"><div class="last"><a href="class-Guzzle.Http.Exception.TooManyRedirectsException.html"><span>Guzzle\Http\Exception\TooManyRedirectsException</span></a>
 			
 			
 			</div>
@@ -2320,7 +2374,7 @@
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

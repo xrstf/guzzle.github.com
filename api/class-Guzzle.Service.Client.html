@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Service\Client | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -238,6 +238,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="factory" id="_factory">
@@ -270,7 +271,7 @@ to build more complex clients.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$config</var></dt>
-					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> Configuration data</dd>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$config Configuration data</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -280,8 +281,9 @@ to build more complex clients.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.FromConfigInterface.html#_factory">Guzzle\Common\FromConfigInterface::factory</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.FromConfigInterface.html#_factory">Guzzle\Common\FromConfigInterface::factory()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -318,8 +320,11 @@ to build more complex clients.</p>
 
 
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Client.html#_getAllEvents">Guzzle\Http\Client::getAllEvents()</a></code></div>
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -327,7 +332,7 @@ to build more complex clients.</p>
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code>
+			mixed
 			
 			</code>
 		</td>
@@ -338,14 +343,14 @@ to build more complex clients.</p>
 
 		<div class="description short">
 			
-<p>Magic method used to retrieve a command. Magic method must be enabled on the
+<p>Magic method used to retrieve a command. Magic methods must be enabled on the
 client to use this functionality.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Magic method used to retrieve a command. Magic method must be enabled on the
+<p>Magic method used to retrieve a command. Magic methods must be enabled on the
 client to use this functionality.</p>
 
 
@@ -353,20 +358,21 @@ client to use this functionality.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$method</var></dt>
-					<dd><code>string</code><br> Name of the command object to instantiate</dd>
+					<dd><code>string</code><br>$method Name of the command object to instantiate</dd>
 					<dt><var>$args</var></dt>
-					<dd><code>array</code><br> Arguments to pass to the command</dd>
+					<dd><code>array</code><br>$args Arguments to pass to the command</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br />
+					<code>mixed</code><br>Returns the result of the command<br />
 				</div>
 
 				<h4>Throws</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Common.Exception.BadMethodCallException.html">Guzzle\Common\Exception\BadMethodCallException</a></code></code><br>when a command is not found or magic methods are disabled<br />
 				</div>
+
 
 
 		</div>
@@ -376,7 +382,7 @@ client to use this functionality.</p>
 
 		<td class="attributes"><code>
 			 public 
-			self
+			<code><a href="class-Guzzle.Service.Client.html">Guzzle\Service\Client</a></code>
 			
 			</code>
 		</td>
@@ -400,13 +406,14 @@ client to use this functionality.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$isEnabled</var></dt>
-					<dd><code>boolean</code><br> Set to true to enable magic methods or false to disable them</dd>
+					<dd><code>boolean</code><br>$isEnabled Set to true to enable magic methods or false to disable them</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Service.Client.html">Guzzle\Service\Client</a></code></code><br />
 				</div>
+
 
 
 
@@ -449,9 +456,9 @@ InvalidArgumentException is thrown.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code><br> Name of the command to retrieve</dd>
+					<dd><code>string</code><br>$name Name of the command to retrieve</dd>
 					<dt><var>$args</var></dt>
-					<dd><code>array</code><br> Arguments to pass to the command</dd>
+					<dd><code>array</code><br>$args Arguments to pass to the command</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -465,8 +472,9 @@ InvalidArgumentException is thrown.</p>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getCommand">Guzzle\Service\ClientInterface::getCommand</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getCommand">Guzzle\Service\ClientInterface::getCommand()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -498,7 +506,7 @@ InvalidArgumentException is thrown.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$factory</var></dt>
-					<dd><code><code><a href="class-Guzzle.Service.Command.Factory.FactoryInterface.html">Guzzle\Service\Command\Factory\FactoryInterface</a></code></code><br> Command factory</dd>
+					<dd><code><code><a href="class-Guzzle.Service.Command.Factory.FactoryInterface.html">Guzzle\Service\Command\Factory\FactoryInterface</a></code></code><br>$factory Command factory</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -508,8 +516,9 @@ InvalidArgumentException is thrown.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setCommandFactory">Guzzle\Service\ClientInterface::setCommandFactory</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setCommandFactory">Guzzle\Service\ClientInterface::setCommandFactory()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -541,7 +550,7 @@ InvalidArgumentException is thrown.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$factory</var></dt>
-					<dd><code><code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</a></code></code><br> Resource iterator factory</dd>
+					<dd><code><code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</a></code></code><br>$factory Resource iterator factory</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -551,8 +560,9 @@ InvalidArgumentException is thrown.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setResourceIteratorFactory">Guzzle\Service\ClientInterface::setResourceIteratorFactory</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setResourceIteratorFactory">Guzzle\Service\ClientInterface::setResourceIteratorFactory()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -584,11 +594,12 @@ InvalidArgumentException is thrown.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$command</var></dt>
-					<dd><code>string|<code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br> Command class or command name.</dd>
+					<dd><code>string|<code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Command class or command name.</dd>
 					<dt><var>$commandOptions</var></dt>
-					<dd><code>array</code><br> Command options used when creating commands.</dd>
+					<dd><code>array</code><br>$commandOptions Command options used when creating commands.</dd>
 					<dt><var>$iteratorOptions</var></dt>
-					<dd><code>array</code><br> Iterator options passed to the iterator when it is instantiated.</dd>
+					<dd><code>array</code><br>$iteratorOptions Iterator options passed to the iterator when it is
+instantiated.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -598,8 +609,9 @@ InvalidArgumentException is thrown.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getIterator">Guzzle\Service\ClientInterface::getIterator</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getIterator">Guzzle\Service\ClientInterface::getIterator()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -631,7 +643,7 @@ InvalidArgumentException is thrown.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$command</var></dt>
-					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code>|array</code><br> Command or array of commands to execute</dd>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code>|array</code><br>$command Command or array of commands to execute</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -646,8 +658,9 @@ multiple commands<br />
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_execute">Guzzle\Service\ClientInterface::execute</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_execute">Guzzle\Service\ClientInterface::execute()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -679,10 +692,10 @@ multiple commands<br />
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$service</var></dt>
-					<dd><code><code><a href="class-Guzzle.Service.Description.ServiceDescription.html">Guzzle\Service\Description\ServiceDescription</a></code></code><br> Service description</dd>
+					<dd><code><code><a href="class-Guzzle.Service.Description.ServiceDescription.html">Guzzle\Service\Description\ServiceDescription</a></code></code><br>$service Service description</dd>
 					<dt><var>$updateFactory</var></dt>
-					<dd><code>boolean</code><br> Set to false to not update the service description based command factory if it
-is not already on the client.</dd>
+					<dd><code>boolean</code><br>$updateFactory Set to false to not update the service description based command
+factory if it is not already on the client.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -692,8 +705,9 @@ is not already on the client.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setDescription">Guzzle\Service\ClientInterface::setDescription</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setDescription">Guzzle\Service\ClientInterface::setDescription()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -730,8 +744,9 @@ is not already on the client.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getDescription">Guzzle\Service\ClientInterface::getDescription</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getDescription">Guzzle\Service\ClientInterface::getDescription()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -763,7 +778,7 @@ is not already on the client.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$inflector</var></dt>
-					<dd><code><code><a href="class-Guzzle.Inflection.InflectorInterface.html">Guzzle\Inflection\InflectorInterface</a></code></code><br> Inflection object</dd>
+					<dd><code><code><a href="class-Guzzle.Inflection.InflectorInterface.html">Guzzle\Inflection\InflectorInterface</a></code></code><br>$inflector Inflection object</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -773,8 +788,9 @@ is not already on the client.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setInflector">Guzzle\Service\ClientInterface::setInflector</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_setInflector">Guzzle\Service\ClientInterface::setInflector()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -811,8 +827,9 @@ is not already on the client.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getInflector">Guzzle\Service\ClientInterface::getInflector</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.ClientInterface.html#_getInflector">Guzzle\Service\ClientInterface::getInflector()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -849,6 +866,7 @@ is not already on the client.</dd>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -882,6 +900,7 @@ is not already on the client.</dd>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Service.Command.Factory.FactoryInterface.html">Guzzle\Service\Command\Factory\FactoryInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -936,13 +955,15 @@ is not already on the client.</dd>
 
 
 
+
+
+
+
 	<table class="summary" id="constants">
 	<caption>Constants summary</caption>
 	<tr data-order="COMMAND_PARAMS" id="COMMAND_PARAMS">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 <b>COMMAND_PARAMS</b>		</code></td>
 		<td class="value"><code><span class="php-quote">'command.params'</span></code></td>
@@ -966,6 +987,7 @@ is not already on the client.</dd>
 	<tr>
 		<td><code>
 			<a href="class-Guzzle.Http.Client.html#CURL_OPTIONS"><b>CURL_OPTIONS</b></a>, 
+			<a href="class-Guzzle.Http.Client.html#DISABLE_REDIRECTS"><b>DISABLE_REDIRECTS</b></a>, 
 			<a href="class-Guzzle.Http.Client.html#REQUEST_PARAMS"><b>REQUEST_PARAMS</b></a>, 
 			<a href="class-Guzzle.Http.Client.html#SSL_CERT_AUTHORITY"><b>SSL_CERT_AUTHORITY</b></a>
 		</code></td>
@@ -981,12 +1003,12 @@ is not already on the client.</dd>
 	</table>
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="serviceDescription" id="$serviceDescription">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Service.Description.ServiceDescription.html">Guzzle\Service\Description\ServiceDescription</a></code>
 		</code></td>
 
@@ -1011,15 +1033,14 @@ is not already on the client.</dd>
 		</div></td>
 	</tr>
 	<tr data-order="enableMagicMethods" id="$enableMagicMethods">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
 		<td class="name">
 <var>$enableMagicMethods</var>		</td>
-		<td class="value"><code><span class="php-keyword1">false</span></code></td>
+		<td class="value"><code><span class="php-keyword1">true</span></code></td>
 		<td class="description"><div>
 			<a href="#$enableMagicMethods" class="anchor">#</a>
 
@@ -1038,9 +1059,8 @@ is not already on the client.</dd>
 		</div></td>
 	</tr>
 	<tr data-order="commandFactory" id="$commandFactory">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Service.Command.Factory.FactoryInterface.html">Guzzle\Service\Command\Factory\FactoryInterface</a></code>
 		</code></td>
 
@@ -1061,9 +1081,8 @@ is not already on the client.</dd>
 		</div></td>
 	</tr>
 	<tr data-order="resourceIteratorFactory" id="$resourceIteratorFactory">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</a></code>
 		</code></td>
 
@@ -1084,9 +1103,8 @@ is not already on the client.</dd>
 		</div></td>
 	</tr>
 	<tr data-order="inflector" id="$inflector">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Inflection.InflectorInterface.html">Guzzle\Inflection\InflectorInterface</a></code>
 		</code></td>
 
@@ -1131,10 +1149,13 @@ is not already on the client.</dd>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Interface Guzzle\Plugin\Cookie\CookieJar\CookieJarInterface | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -228,6 +228,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="remove" id="_remove">
@@ -264,17 +265,18 @@ then the cookie with the specified name, path and domain is removed.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$domain</var></dt>
-					<dd><code>string</code><br> Set to clear only cookies matching a domain</dd>
+					<dd><code>string</code><br>$domain Set to clear only cookies matching a domain</dd>
 					<dt><var>$path</var></dt>
-					<dd><code>string</code><br> Set to clear only cookies matching a domain and path</dd>
+					<dd><code>string</code><br>$path Set to clear only cookies matching a domain and path</dd>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code><br> Set to clear only cookies matching a domain, path, and name</dd>
+					<dd><code>string</code><br>$name Set to clear only cookies matching a domain, path, and name</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Plugin.Cookie.CookieJar.CookieJarInterface.html">Guzzle\Plugin\Cookie\CookieJar\CookieJarInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -318,6 +320,7 @@ discard flag. To be called when the user agent shuts down according to RFC
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -354,6 +357,7 @@ discard flag. To be called when the user agent shuts down according to RFC
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -385,13 +389,14 @@ discard flag. To be called when the user agent shuts down according to RFC
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$cookie</var></dt>
-					<dd><code><code><a href="class-Guzzle.Plugin.Cookie.Cookie.html">Guzzle\Plugin\Cookie\Cookie</a></code></code><br> Cookie to add</dd>
+					<dd><code><code><a href="class-Guzzle.Plugin.Cookie.Cookie.html">Guzzle\Plugin\Cookie\Cookie</a></code></code><br>$cookie Cookie to add</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br>Returns true on success or false on failure<br />
 				</div>
+
 
 
 
@@ -426,8 +431,9 @@ discard flag. To be called when the user agent shuts down according to RFC
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$response</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br> Response object</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response object</dd>
 				</dl></div>
+
 
 
 
@@ -463,13 +469,14 @@ discard flag. To be called when the user agent shuts down according to RFC
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br> Request object to match</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request object to match</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>array</code><br />
 				</div>
+
 
 
 
@@ -504,21 +511,22 @@ discard flag. To be called when the user agent shuts down according to RFC
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$domain</var></dt>
-					<dd><code>string</code><br> Domain of the cookie</dd>
+					<dd><code>string</code><br>$domain Domain of the cookie</dd>
 					<dt><var>$path</var></dt>
-					<dd><code>string</code><br> Path of the cookie</dd>
+					<dd><code>string</code><br>$path Path of the cookie</dd>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code><br> Name of the cookie</dd>
+					<dd><code>string</code><br>$name Name of the cookie</dd>
 					<dt><var>$skipDiscardable</var></dt>
-					<dd><code>boolean</code><br> Set to TRUE to skip cookies with the Discard attribute.</dd>
+					<dd><code>boolean</code><br>$skipDiscardable Set to TRUE to skip cookies with the Discard attribute.</dd>
 					<dt><var>$skipExpired</var></dt>
-					<dd><code>boolean</code><br> Set to FALSE to include expired</dd>
+					<dd><code>boolean</code><br>$skipExpired Set to FALSE to include expired</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>array</code><br>Returns an array of Cookie objects<br />
 				</div>
+
 
 
 
@@ -552,10 +560,18 @@ discard flag. To be called when the user agent shuts down according to RFC
 
 
 
+
+
+
+
+
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

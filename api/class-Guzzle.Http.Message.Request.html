@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\Message\Request | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -241,6 +241,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="getAllEvents" id="_getAllEvents">
@@ -276,8 +277,9 @@
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -309,14 +311,15 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$method</var></dt>
-					<dd><code>string</code><br> HTTP method</dd>
+					<dd><code>string</code><br>$method HTTP method</dd>
 					<dt><var>$url</var></dt>
-					<dd><code>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br> HTTP URL to connect to. The URI scheme, host header, and URI are parsed from
-the full URL. If query string parameters are present they will be parsed as
+					<dd><code>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br>$url HTTP URL to connect to. The URI scheme, host header, and URI are parsed
+from the full URL. If query string parameters are present they will be parsed as
 well.</dd>
 					<dt><var>$headers</var></dt>
-					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> HTTP headers</dd>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
 				</dl></div>
+
 
 
 
@@ -351,6 +354,11 @@ well.</dd>
 
 
 
+
+				<h4>See</h4>
+				<div class="list">
+						Guzzle\Plugin\Redirect\RedirectPlugin::cloneRequestWithGetMethod<br />
+				</div>
 
 
 		</div>
@@ -389,8 +397,9 @@ well.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#___toString">Guzzle\Http\Message\RequestInterface::__toString</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#___toString">Guzzle\Http\Message\RequestInterface::__toString()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -424,7 +433,7 @@ received.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$event</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br> Received</dd>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event Received</dd>
 				</dl></div>
 
 
@@ -432,6 +441,7 @@ received.</p>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Exception.BadResponseException.html">Guzzle\Http\Exception\BadResponseException</a></code></code><br>if the response is not successful<br />
 				</div>
+
 
 
 		</div>
@@ -465,7 +475,7 @@ received.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$client</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code></dd>
+					<dd><code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br>$client</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -475,8 +485,9 @@ received.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setClient">Guzzle\Http\Message\RequestInterface::setClient</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setClient">Guzzle\Http\Message\RequestInterface::setClient()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -513,8 +524,9 @@ received.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getClient">Guzzle\Http\Message\RequestInterface::getClient</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getClient">Guzzle\Http\Message\RequestInterface::getClient()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -551,8 +563,9 @@ received.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.MessageInterface.html#_getRawHeaders">Guzzle\Http\Message\MessageInterface::getRawHeaders</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.MessageInterface.html#_getRawHeaders">Guzzle\Http\Message\MessageInterface::getRawHeaders()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -594,8 +607,9 @@ received.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setUrl">Guzzle\Http\Message\RequestInterface::setUrl</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setUrl">Guzzle\Http\Message\RequestInterface::setUrl()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -636,8 +650,9 @@ received.</p>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_send">Guzzle\Http\Message\RequestInterface::send</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_send">Guzzle\Http\Message\RequestInterface::send()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -676,8 +691,9 @@ been sent</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getResponse">Guzzle\Http\Message\RequestInterface::getResponse</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getResponse">Guzzle\Http\Message\RequestInterface::getResponse()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -692,7 +708,7 @@ been sent</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getQuery">#</a>
-		<code>getQuery( <span> <var>$asString</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code>getQuery( <span>mixed <var>$asString</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -716,8 +732,9 @@ in the request</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getQuery">Guzzle\Http\Message\RequestInterface::getQuery</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getQuery">Guzzle\Http\Message\RequestInterface::getQuery()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -754,8 +771,9 @@ in the request</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getMethod">Guzzle\Http\Message\RequestInterface::getMethod</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getMethod">Guzzle\Http\Message\RequestInterface::getMethod()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -792,8 +810,9 @@ in the request</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getScheme">Guzzle\Http\Message\RequestInterface::getScheme</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getScheme">Guzzle\Http\Message\RequestInterface::getScheme()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -825,7 +844,7 @@ in the request</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$scheme</var></dt>
-					<dd><code>string</code><br> Scheme to set</dd>
+					<dd><code>string</code><br>$scheme Scheme to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -835,8 +854,9 @@ in the request</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setScheme">Guzzle\Http\Message\RequestInterface::setScheme</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setScheme">Guzzle\Http\Message\RequestInterface::setScheme()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -873,8 +893,9 @@ in the request</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getHost">Guzzle\Http\Message\RequestInterface::getHost</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getHost">Guzzle\Http\Message\RequestInterface::getHost()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -908,7 +929,7 @@ port of the request.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$host</var></dt>
-					<dd><code>string</code><br> Host to set (e.g. <a href="http://www.yahoo.com">www.yahoo.com</a>, <a
+					<dd><code>string</code><br>$host Host to set (e.g. <a href="http://www.yahoo.com">www.yahoo.com</a>, <a
 href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 				</dl></div>
 
@@ -919,8 +940,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setHost">Guzzle\Http\Message\RequestInterface::setHost</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setHost">Guzzle\Http\Message\RequestInterface::setHost()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -957,8 +979,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getProtocolVersion">Guzzle\Http\Message\RequestInterface::getProtocolVersion</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getProtocolVersion">Guzzle\Http\Message\RequestInterface::getProtocolVersion()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -990,7 +1013,7 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$protocol</var></dt>
-					<dd><code>string</code><br> HTTP protocol version to use with the request</dd>
+					<dd><code>string</code><br>$protocol HTTP protocol version to use with the request</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1000,8 +1023,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setProtocolVersion">Guzzle\Http\Message\RequestInterface::setProtocolVersion</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setProtocolVersion">Guzzle\Http\Message\RequestInterface::setProtocolVersion()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1038,8 +1062,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getPath">Guzzle\Http\Message\RequestInterface::getPath</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getPath">Guzzle\Http\Message\RequestInterface::getPath()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1071,7 +1096,7 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$path</var></dt>
-					<dd><code>string|array</code><br> Path to set or array of segments to implode</dd>
+					<dd><code>string|array</code><br>$path Path to set or array of segments to implode</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1081,8 +1106,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setPath">Guzzle\Http\Message\RequestInterface::setPath</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setPath">Guzzle\Http\Message\RequestInterface::setPath()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1119,8 +1145,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getPort">Guzzle\Http\Message\RequestInterface::getPort</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getPort">Guzzle\Http\Message\RequestInterface::getPort()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1152,7 +1179,7 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$port</var></dt>
-					<dd><code>integer</code><br> Port number to set</dd>
+					<dd><code>integer</code><br>$port Port number to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1162,8 +1189,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setPort">Guzzle\Http\Message\RequestInterface::setPort</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setPort">Guzzle\Http\Message\RequestInterface::setPort()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1200,8 +1228,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getUsername">Guzzle\Http\Message\RequestInterface::getUsername</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getUsername">Guzzle\Http\Message\RequestInterface::getUsername()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1238,8 +1267,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getPassword">Guzzle\Http\Message\RequestInterface::getPassword</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getPassword">Guzzle\Http\Message\RequestInterface::getPassword()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1271,11 +1301,11 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$user</var></dt>
-					<dd><code>string|boolean</code><br> User name or false disable authentication</dd>
+					<dd><code>string|boolean</code><br>$user User name or false disable authentication</dd>
 					<dt><var>$password</var></dt>
-					<dd><code>string</code><br> Password</dd>
+					<dd><code>string</code><br>$password Password</dd>
 					<dt><var>$scheme</var></dt>
-					<dd><code>string</code><br> Authentication scheme to use (Basic, Digest)</dd>
+					<dd><code>string</code><br>$scheme Authentication scheme to use (Basic, Digest)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1289,8 +1319,9 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setAuth">Guzzle\Http\Message\RequestInterface::setAuth</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setAuth">Guzzle\Http\Message\RequestInterface::setAuth()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1329,8 +1360,9 @@ and fragment</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getResource">Guzzle\Http\Message\RequestInterface::getResource</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getResource">Guzzle\Http\Message\RequestInterface::getResource()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1364,8 +1396,8 @@ scheme://username:password@domain:port/path?query_string#fragment</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$asObject</var></dt>
-					<dd><code>boolean</code><br> Set to TRUE to retrieve the URL as a clone of the URL object owned by the
-request.</dd>
+					<dd><code>boolean</code><br>$asObject Set to TRUE to retrieve the URL as a clone of the URL object owned by
+the request.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1375,8 +1407,9 @@ request.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getUrl">Guzzle\Http\Message\RequestInterface::getUrl</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getUrl">Guzzle\Http\Message\RequestInterface::getUrl()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1413,8 +1446,9 @@ request.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getState">Guzzle\Http\Message\RequestInterface::getState</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getState">Guzzle\Http\Message\RequestInterface::getState()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1446,7 +1480,7 @@ request.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$state</var></dt>
-					<dd><code>string</code><br> State of the request (complete, sending, or new)</dd>
+					<dd><code>string</code><br>$state State of the request (complete, sending, or new)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1456,8 +1490,9 @@ request.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setState">Guzzle\Http\Message\RequestInterface::setState</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setState">Guzzle\Http\Message\RequestInterface::setState()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1494,8 +1529,9 @@ request.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getCurlOptions">Guzzle\Http\Message\RequestInterface::getCurlOptions</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getCurlOptions">Guzzle\Http\Message\RequestInterface::getCurlOptions()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1527,7 +1563,7 @@ request.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$data</var></dt>
-					<dd><code>string</code><br> Header data.</dd>
+					<dd><code>string</code><br>$data Header data.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1537,8 +1573,9 @@ request.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_receiveResponseHeader">Guzzle\Http\Message\RequestInterface::receiveResponseHeader</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_receiveResponseHeader">Guzzle\Http\Message\RequestInterface::receiveResponseHeader()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1570,10 +1607,10 @@ request.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$response</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br> Response object to set</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response object to set</dd>
 					<dt><var>$queued</var></dt>
-					<dd><code>boolean</code><br> Set to TRUE to keep the request in a state of not having been sent, but queue
-the response for send()</dd>
+					<dd><code>boolean</code><br>$queued Set to TRUE to keep the request in a state of not having been sent, but
+queue the response for send()</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1583,8 +1620,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setResponse">Guzzle\Http\Message\RequestInterface::setResponse</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setResponse">Guzzle\Http\Message\RequestInterface::setResponse()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1616,7 +1654,7 @@ the response for send()</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$body</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br> Response body object</dd>
+					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Response body object</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1626,8 +1664,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setResponseBody">Guzzle\Http\Message\RequestInterface::setResponseBody</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setResponseBody">Guzzle\Http\Message\RequestInterface::setResponseBody()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1664,8 +1703,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_isResponseBodyRepeatable">Guzzle\Http\Message\RequestInterface::isResponseBodyRepeatable</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_isResponseBodyRepeatable">Guzzle\Http\Message\RequestInterface::isResponseBodyRepeatable()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1702,8 +1742,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getCookies">Guzzle\Http\Message\RequestInterface::getCookies</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getCookies">Guzzle\Http\Message\RequestInterface::getCookies()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1735,7 +1776,7 @@ the response for send()</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code><br> Cookie to retrieve</dd>
+					<dd><code>string</code><br>$name Cookie to retrieve</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1745,8 +1786,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getCookie">Guzzle\Http\Message\RequestInterface::getCookie</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_getCookie">Guzzle\Http\Message\RequestInterface::getCookie()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1778,9 +1820,9 @@ the response for send()</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code><br> Name of the cookie to add</dd>
+					<dd><code>string</code><br>$name Name of the cookie to add</dd>
 					<dt><var>$value</var></dt>
-					<dd><code>string</code><br> Value to set</dd>
+					<dd><code>string</code><br>$value Value to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1790,8 +1832,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_addCookie">Guzzle\Http\Message\RequestInterface::addCookie</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_addCookie">Guzzle\Http\Message\RequestInterface::addCookie()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1823,7 +1866,7 @@ the response for send()</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code><br> Cookie to remove by name</dd>
+					<dd><code>string</code><br>$name Cookie to remove by name</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1833,8 +1876,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_removeCookie">Guzzle\Http\Message\RequestInterface::removeCookie</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_removeCookie">Guzzle\Http\Message\RequestInterface::removeCookie()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1871,8 +1915,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_canCache">Guzzle\Http\Message\RequestInterface::canCache</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_canCache">Guzzle\Http\Message\RequestInterface::canCache()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1904,7 +1949,7 @@ the response for send()</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$eventDispatcher</var></dt>
-					<dd><code>Symfony\Component\EventDispatcher\EventDispatcherInterface</code></dd>
+					<dd><code>Symfony\Component\EventDispatcher\EventDispatcherInterface</code><br>$eventDispatcher</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1914,8 +1959,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_setEventDispatcher">Guzzle\Common\HasDispatcherInterface::setEventDispatcher</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_setEventDispatcher">Guzzle\Common\HasDispatcherInterface::setEventDispatcher()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1952,8 +1998,9 @@ the response for send()</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getEventDispatcher">Guzzle\Common\HasDispatcherInterface::getEventDispatcher</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getEventDispatcher">Guzzle\Common\HasDispatcherInterface::getEventDispatcher()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1985,16 +2032,17 @@ the response for send()</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$eventName</var></dt>
-					<dd><code>string</code><br> Name of the event to dispatch</dd>
+					<dd><code>string</code><br>$eventName Name of the event to dispatch</dd>
 					<dt><var>$context</var></dt>
-					<dd><code>array</code><br> Context of the event</dd>
+					<dd><code>array</code><br>$context Context of the event</dd>
 				</dl></div>
 
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_dispatch">Guzzle\Common\HasDispatcherInterface::dispatch</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_dispatch">Guzzle\Common\HasDispatcherInterface::dispatch()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -2026,7 +2074,7 @@ the response for send()</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$subscriber</var></dt>
-					<dd><code>Symfony\Component\EventDispatcher\EventSubscriberInterface</code><br> Event subscriber</dd>
+					<dd><code>Symfony\Component\EventDispatcher\EventSubscriberInterface</code><br>$subscriber Event subscriber</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -2039,8 +2087,9 @@ the response for send()</dd>
 				<div class="list">
 				</div>
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_addSubscriber">Guzzle\Common\HasDispatcherInterface::addSubscriber</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_addSubscriber">Guzzle\Common\HasDispatcherInterface::addSubscriber()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -2074,11 +2123,14 @@ like cache-control</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Header that changed</dd>
+					<dd><code>string</code><br>$header Header that changed</dd>
 				</dl></div>
 
 
 
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.AbstractMessage.html#_changedHeader">Guzzle\Http\Message\AbstractMessage::changedHeader()</a></code></div>
 
 		</div>
 		</div></td>
@@ -2102,6 +2154,7 @@ like cache-control</p>
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -2144,6 +2197,7 @@ like cache-control</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -2180,6 +2234,7 @@ like cache-control</p>
 				</div>
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -2212,6 +2267,10 @@ like cache-control</p>
 
 
 
+
+
+
+
 	<table class="summary inherited">
 	<caption>Constants inherited from <a href="class-Guzzle.Http.Message.RequestInterface.html#constants">Guzzle\Http\Message\RequestInterface</a></caption>
 	<tr>
@@ -2234,12 +2293,12 @@ like cache-control</p>
 	</table>
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="eventDispatcher" id="$eventDispatcher">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			Symfony\Component\EventDispatcher\EventDispatcherInterface
 		</code></td>
 
@@ -2260,9 +2319,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="url" id="$url">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code>
 		</code></td>
 
@@ -2287,9 +2345,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="method" id="$method">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
@@ -2314,9 +2371,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="client" id="$client">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
 		</code></td>
 
@@ -2337,9 +2393,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="response" id="$response">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>
 		</code></td>
 
@@ -2364,9 +2419,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="responseBody" id="$responseBody">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code>
 		</code></td>
 
@@ -2391,9 +2445,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="state" id="$state">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
@@ -2418,9 +2471,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="username" id="$username">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
@@ -2445,9 +2497,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="password" id="$password">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
@@ -2472,9 +2523,8 @@ like cache-control</p>
 		</div></td>
 	</tr>
 	<tr data-order="curlOptions" id="$curlOptions">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
 		</code></td>
 
@@ -2512,10 +2562,13 @@ like cache-control</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

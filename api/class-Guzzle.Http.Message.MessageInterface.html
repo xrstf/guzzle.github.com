@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Interface Guzzle\Http\Message\MessageInterface | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -231,6 +231,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="getParams" id="_getParams">
@@ -266,6 +267,7 @@
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -297,15 +299,16 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Header name to add</dd>
+					<dd><code>string</code><br>$header Header name to add</dd>
 					<dt><var>$value</var></dt>
-					<dd><code>string</code><br> Value of the header</dd>
+					<dd><code>string</code><br>$value Value of the header</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.MessageInterface.html">Guzzle\Http\Message\MessageInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -340,13 +343,14 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$headers</var></dt>
-					<dd><code>array</code><br> Associative array of header data.</dd>
+					<dd><code>array</code><br>$headers Associative array of header data.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.MessageInterface.html">Guzzle\Http\Message\MessageInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -383,9 +387,9 @@ headers.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Header to retrieve.</dd>
+					<dd><code>string</code><br>$header Header to retrieve.</dd>
 					<dt><var>$string</var></dt>
-					<dd><code>boolean</code><br> Set to true to get the header as a string</dd>
+					<dd><code>boolean</code><br>$string Set to true to get the header as a string</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -393,6 +397,7 @@ headers.</p>
 					<code>string|<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>|null</code><br>Returns NULL if no matching header is found. Returns a string if $string is set
 to TRUE. Returns a Header object if a matching header is found.<br />
 				</div>
+
 
 
 
@@ -427,15 +432,16 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Header to retrieve</dd>
+					<dd><code>string</code><br>$header Header to retrieve</dd>
 					<dt><var>$token</var></dt>
-					<dd><code>string</code><br> Token separator</dd>
+					<dd><code>string</code><br>$token Token separator</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|null</code><br />
 				</div>
+
 
 
 
@@ -472,11 +478,11 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Header to set</dd>
+					<dd><code>string</code><br>$header Header to set</dd>
 					<dt><var>$data</var></dt>
-					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> Header data</dd>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$data Header data</dd>
 					<dt><var>$token</var></dt>
-					<dd><code>string</code><br> Token delimiter</dd>
+					<dd><code>string</code><br>$token Token delimiter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -488,6 +494,7 @@ a string separated by a token.</p>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if data is not an array or Collection<br />
 				</div>
+
 
 
 		</div>
@@ -521,13 +528,14 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$asObjects</var></dt>
-					<dd><code>boolean</code><br> Set to true to retrieve a collection of Header objects</dd>
+					<dd><code>boolean</code><br>$asObjects Set to true to retrieve a collection of Header objects</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>Returns a <code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> of all headers<br />
 				</div>
+
 
 
 
@@ -567,6 +575,7 @@ a string separated by a token.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -598,13 +607,14 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> The header to check.</dd>
+					<dd><code>string</code><br>$header The header to check.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br>Returns TRUE or FALSE if the header is present<br />
 				</div>
+
 
 
 
@@ -639,13 +649,14 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> HTTP header to remove.</dd>
+					<dd><code>string</code><br>$header HTTP header to remove.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.MessageInterface.html">Guzzle\Http\Message\MessageInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -680,15 +691,16 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Name of the header to set.</dd>
+					<dd><code>string</code><br>$header Name of the header to set.</dd>
 					<dt><var>$value</var></dt>
-					<dd><code>mixed</code><br> Value to set.</dd>
+					<dd><code>mixed</code><br>$value Value to set.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.MessageInterface.html">Guzzle\Http\Message\MessageInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -723,13 +735,14 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$headers</var></dt>
-					<dd><code>array</code><br> Associative array of header data.</dd>
+					<dd><code>array</code><br>$headers Associative array of header data.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.MessageInterface.html">Guzzle\Http\Message\MessageInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -769,6 +782,7 @@ a string separated by a token.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -800,13 +814,14 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$directive</var></dt>
-					<dd><code>string</code><br> Directive to retrieve</dd>
+					<dd><code>string</code><br>$directive Directive to retrieve</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>null|string</code><br />
 				</div>
+
 
 
 
@@ -841,13 +856,14 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$directive</var></dt>
-					<dd><code>string</code><br> Directive to check</dd>
+					<dd><code>string</code><br>$directive Directive to check</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br />
 				</div>
+
 
 
 
@@ -882,15 +898,16 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$directive</var></dt>
-					<dd><code>string</code><br> Directive to set</dd>
+					<dd><code>string</code><br>$directive Directive to set</dd>
 					<dt><var>$value</var></dt>
-					<dd><code>boolean|string</code><br> Value to set</dd>
+					<dd><code>boolean|string</code><br>$value Value to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.MessageInterface.html">Guzzle\Http\Message\MessageInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -925,13 +942,14 @@ a string separated by a token.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$directive</var></dt>
-					<dd><code>string</code><br> Directive to remove</dd>
+					<dd><code>string</code><br>$directive Directive to remove</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.MessageInterface.html">Guzzle\Http\Message\MessageInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -949,10 +967,18 @@ a string separated by a token.</p>
 
 
 
+
+
+
+
+
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

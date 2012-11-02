@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Interface Guzzle\Http\Message\RequestFactoryInterface | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -223,6 +223,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="fromMessage" id="_fromMessage">
@@ -253,13 +254,14 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$message</var></dt>
-					<dd><code>string</code><br> HTTP message as a string</dd>
+					<dd><code>string</code><br>$message HTTP message as a string</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -294,26 +296,27 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$method</var></dt>
-					<dd><code>string</code><br> HTTP method (GET, POST, PUT, HEAD, DELETE, etc)</dd>
+					<dd><code>string</code><br>$method HTTP method (GET, POST, PUT, HEAD, DELETE, etc)</dd>
 					<dt><var>$urlParts</var></dt>
-					<dd><code>array</code><br> URL parts containing the same keys as parse_url() - scheme: e.g. http - host:
-e.g. <a href="http://www.guzzle-project.com">www.guzzle-project.com</a> - port:
-e.g. 80 - user: e.g. michael - pass: e.g. rocks - path: e.g. / OR /index.html -
-query: after the question mark ?</dd>
+					<dd><code>array</code><br>$urlParts URL parts containing the same keys as parse_url() - scheme: e.g. http
+- host: e.g. <a href="http://www.guzzle-project.com">www.guzzle-project.com</a>
+- port: e.g. 80 - user: e.g. michael - pass: e.g. rocks - path: e.g. / OR
+/index.html - query: after the question mark ?</dd>
 					<dt><var>$headers</var></dt>
-					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> HTTP headers</dd>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
 					<dt><var>$body</var></dt>
-					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br> Body to send in the request</dd>
+					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Body to send in the request</dd>
 					<dt><var>$protocol</var></dt>
-					<dd><code>string</code><br> Protocol (HTTP, SPYDY, etc)</dd>
+					<dd><code>string</code><br>$protocol Protocol (HTTP, SPYDY, etc)</dd>
 					<dt><var>$protocolVersion</var></dt>
-					<dd><code>string</code><br> 1.0, 1.1, etc</dd>
+					<dd><code>string</code><br>$protocolVersion 1.0, 1.1, etc</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -348,19 +351,20 @@ query: after the question mark ?</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$method</var></dt>
-					<dd><code>string</code><br> HTTP method (GET, POST, PUT, PATCH, HEAD, DELETE, ...)</dd>
+					<dd><code>string</code><br>$method HTTP method (GET, POST, PUT, PATCH, HEAD, DELETE, ...)</dd>
 					<dt><var>$url</var></dt>
-					<dd><code>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br> HTTP URL to connect to</dd>
+					<dd><code>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br>$url HTTP URL to connect to</dd>
 					<dt><var>$headers</var></dt>
-					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> HTTP headers</dd>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
 					<dt><var>$body</var></dt>
-					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br> Body to send in the request</dd>
+					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Body to send in the request</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -378,10 +382,18 @@ query: after the question mark ?</dd>
 
 
 
+
+
+
+
+
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

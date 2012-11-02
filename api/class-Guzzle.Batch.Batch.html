@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Batch\Batch | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -236,6 +236,7 @@ transferring any previously created batches or queued items.</p>
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="__construct" id="___construct">
@@ -262,10 +263,11 @@ transferring any previously created batches or queued items.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$transferStrategy</var></dt>
-					<dd><code><code><a href="class-Guzzle.Batch.BatchTransferInterface.html">Guzzle\Batch\BatchTransferInterface</a></code></code><br> Strategy used to transfer items</dd>
+					<dd><code><code><a href="class-Guzzle.Batch.BatchTransferInterface.html">Guzzle\Batch\BatchTransferInterface</a></code></code><br>$transferStrategy Strategy used to transfer items</dd>
 					<dt><var>$divisionStrategy</var></dt>
-					<dd><code><code><a href="class-Guzzle.Batch.BatchDivisorInterface.html">Guzzle\Batch\BatchDivisorInterface</a></code></code><br> Divisor used to create batches</dd>
+					<dd><code><code><a href="class-Guzzle.Batch.BatchDivisorInterface.html">Guzzle\Batch\BatchDivisorInterface</a></code></code><br>$divisionStrategy Divisor used to create batches</dd>
 				</dl></div>
+
 
 
 
@@ -277,7 +279,7 @@ transferring any previously created batches or queued items.</p>
 
 		<td class="attributes"><code>
 			 public 
-			self
+			<code><a href="class-Guzzle.Batch.Batch.html">Guzzle\Batch\Batch</a></code>
 			
 			</code>
 		</td>
@@ -301,18 +303,19 @@ transferring any previously created batches or queued items.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$item</var></dt>
-					<dd><code>mixed</code><br> Item to add</dd>
+					<dd><code>mixed</code><br>$item Item to add</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Batch.Batch.html">Guzzle\Batch\Batch</a></code></code><br />
 				</div>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Batch.BatchInterface.html#_add">Guzzle\Batch\BatchInterface::add</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Batch.BatchInterface.html#_add">Guzzle\Batch\BatchInterface::add()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -349,8 +352,9 @@ transferring any previously created batches or queued items.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Batch.BatchInterface.html#_flush">Guzzle\Batch\BatchInterface::flush</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Batch.BatchInterface.html#_flush">Guzzle\Batch\BatchInterface::flush()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -387,8 +391,9 @@ transferring any previously created batches or queued items.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Batch.BatchInterface.html#_isEmpty">Guzzle\Batch\BatchInterface::isEmpty</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Batch.BatchInterface.html#_isEmpty">Guzzle\Batch\BatchInterface::isEmpty()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -421,6 +426,7 @@ transferring any previously created batches or queued items.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -432,12 +438,16 @@ transferring any previously created batches or queued items.</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="queue" id="$queue">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-SplQueue.html">SplQueue</a></code>
 		</code></td>
 
@@ -462,9 +472,8 @@ transferring any previously created batches or queued items.</p>
 		</div></td>
 	</tr>
 	<tr data-order="dividedBatches" id="$dividedBatches">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			array
 		</code></td>
 
@@ -489,9 +498,8 @@ transferring any previously created batches or queued items.</p>
 		</div></td>
 	</tr>
 	<tr data-order="transferStrategy" id="$transferStrategy">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Batch.BatchTransferInterface.html">Guzzle\Batch\BatchTransferInterface</a></code>
 		</code></td>
 
@@ -512,9 +520,8 @@ transferring any previously created batches or queued items.</p>
 		</div></td>
 	</tr>
 	<tr data-order="divisionStrategy" id="$divisionStrategy">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Batch.BatchDivisorInterface.html">Guzzle\Batch\BatchDivisorInterface</a></code>
 		</code></td>
 
@@ -538,10 +545,13 @@ transferring any previously created batches or queued items.</p>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

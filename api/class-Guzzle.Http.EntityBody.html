@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\EntityBody | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -139,6 +139,7 @@
 				<li class="active"><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
 				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
@@ -233,6 +234,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="factory" id="_factory">
@@ -263,9 +265,9 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$resource</var></dt>
-					<dd><code>resource|string|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br> Entity body data</dd>
+					<dd><code>resource|string|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br>$resource Entity body data</dd>
 					<dt><var>$size</var></dt>
-					<dd><code>integer</code><br> Size of the data contained in the resource</dd>
+					<dd><code>integer</code><br>$size Size of the data contained in the resource</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -279,6 +281,96 @@
 				</div>
 
 
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setRewindFunction" id="_setRewindFunction">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setRewindFunction">#</a>
+		<code>setRewindFunction( <span>mixed <var>$callable</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Specify a custom callback used to rewind a non-seekable stream. This can be
+useful entity enclosing requests that are redirected.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Specify a custom callback used to rewind a non-seekable stream. This can be
+useful entity enclosing requests that are redirected.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callable</var></dt>
+					<dd><code>mixed</code><br>$callable Callable to invoke to rewind a non-seekable stream. The callback must
+accept an EntityBodyInterface object, perform the rewind if possible, and return
+a boolean representing whether or not the rewind was successful.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_setRewindFunction">Guzzle\Http\EntityBodyInterface::setRewindFunction()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rewind" id="_rewind">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rewind">#</a>
+		<code>rewind( )</code>
+
+		<div class="description short">
+			
+<p>Rewind to the beginning of the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Rewind to the beginning of the stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Returns true on success or false on failure<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.Stream.html#_rewind">Guzzle\Stream\Stream::rewind()</a></code></div>
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_rewind">Guzzle\Stream\StreamInterface::rewind()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -310,13 +402,14 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$string</var></dt>
-					<dd><code>string</code><br> String of data</dd>
+					<dd><code>string</code><br>$string String of data</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br />
 				</div>
+
 
 
 
@@ -355,7 +448,7 @@ then becomes the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$filter</var></dt>
-					<dd><code>string</code><br> Compression filter</dd>
+					<dd><code>string</code><br>$filter Compression filter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -365,8 +458,9 @@ then becomes the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_compress">Guzzle\Http\EntityBodyInterface::compress</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_compress">Guzzle\Http\EntityBodyInterface::compress()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -400,7 +494,7 @@ then used as the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$filter</var></dt>
-					<dd><code>string</code><br> De-compression filter</dd>
+					<dd><code>string</code><br>$filter De-compression filter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -410,8 +504,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_uncompress">Guzzle\Http\EntityBodyInterface::uncompress</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_uncompress">Guzzle\Http\EntityBodyInterface::uncompress()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -448,8 +543,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentLength">Guzzle\Http\EntityBodyInterface::getContentLength</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentLength">Guzzle\Http\EntityBodyInterface::getContentLength()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -486,8 +582,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentType">Guzzle\Http\EntityBodyInterface::getContentType</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentType">Guzzle\Http\EntityBodyInterface::getContentType()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -519,9 +616,10 @@ then used as the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$rawOutput</var></dt>
-					<dd><code>boolean</code><br> Whether or not to use raw output</dd>
+					<dd><code>boolean</code><br>$rawOutput Whether or not to use raw output</dd>
 					<dt><var>$base64Encode</var></dt>
-					<dd><code>boolean</code><br> Whether or not to base64 encode raw output (only if raw output is true)</dd>
+					<dd><code>boolean</code><br>$base64Encode Whether or not to base64 encode raw output (only if raw output is
+true)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -531,8 +629,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentMd5">Guzzle\Http\EntityBodyInterface::getContentMd5</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentMd5">Guzzle\Http\EntityBodyInterface::getContentMd5()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -564,17 +663,19 @@ then used as the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$body</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br> Entity body to calcutate the hash for</dd>
+					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Entity body to calcutate the hash for</dd>
 					<dt><var>$rawOutput</var></dt>
-					<dd><code>boolean</code><br> Whether or not to use raw output</dd>
+					<dd><code>boolean</code><br>$rawOutput Whether or not to use raw output</dd>
 					<dt><var>$base64Encode</var></dt>
-					<dd><code>boolean</code><br> Whether or not to base64 encode raw output (only if raw output is true)</dd>
+					<dd><code>boolean</code><br>$base64Encode Whether or not to base64 encode raw output (only if raw output is
+true)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean|string</code><br>Returns an MD5 string on success or FALSE on failure<br />
 				</div>
+
 
 
 
@@ -592,7 +693,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setStreamFilterContentEncoding">#</a>
-		<code>setStreamFilterContentEncoding( <span> <var>$streamFilterContentEncoding</var></span> )</code>
+		<code>setStreamFilterContentEncoding( <span>mixed <var>$streamFilterContentEncoding</var></span> )</code>
 
 		<div class="description short">
 			
@@ -600,6 +701,7 @@ then used as the wrapped stream.</p>
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -642,8 +744,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentEncoding">Guzzle\Http\EntityBodyInterface::getContentEncoding</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentEncoding">Guzzle\Http\EntityBodyInterface::getContentEncoding()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -658,7 +761,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_handleCompression">#</a>
-		<code>handleCompression( <span> <var>$filter</var></span>, <span> <var>$offsetStart</var> = <span class="php-num">0</span></span> )</code>
+		<code>handleCompression( <span>mixed <var>$filter</var></span>, <span>mixed <var>$offsetStart</var> = <span class="php-num">0</span></span> )</code>
 
 		<div class="description short">
 			
@@ -666,6 +769,7 @@ then used as the wrapped stream.</p>
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -709,6 +813,10 @@ then used as the wrapped stream.</p>
 
 
 
+
+
+
+
 	<table class="summary inherited">
 	<caption>Constants inherited from <a href="class-Guzzle.Stream.Stream.html#constants">Guzzle\Stream\Stream</a></caption>
 	<tr>
@@ -724,12 +832,12 @@ then used as the wrapped stream.</p>
 	</table>
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="contentEncoding" id="$contentEncoding">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
@@ -753,6 +861,32 @@ then used as the wrapped stream.</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="rewindFunction" id="$rewindFunction">
+		<td class="attributes"><code>
+			protected  
+			callable
+		</code></td>
+
+		<td class="name">
+<var>$rewindFunction</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$rewindFunction" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Method to invoke for rewinding a stream</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Method to invoke for rewinding a stream</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	</table>
 
 	<table class="summary inherited">
@@ -768,10 +902,13 @@ then used as the wrapped stream.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

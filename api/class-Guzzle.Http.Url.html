@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\Url | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -139,6 +139,7 @@
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Url.html">Url</a></li>
 				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
@@ -216,6 +217,7 @@ parts are not validated.</p>
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="factory" id="_factory">
@@ -246,13 +248,14 @@ parts are not validated.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$url</var></dt>
-					<dd><code>string</code><br> Full URL used to create a Url object</dd>
+					<dd><code>string</code><br>$url Full URL used to create a Url object</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -289,13 +292,14 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$parts</var></dt>
-					<dd><code>array</code><br> Array of parse_url parts</dd>
+					<dd><code>array</code><br>$parts Array of parse_url parts</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string</code><br />
 				</div>
+
 
 
 
@@ -330,22 +334,23 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$scheme</var></dt>
-					<dd><code>string</code><br> Scheme of the URL</dd>
+					<dd><code>string</code><br>$scheme Scheme of the URL</dd>
 					<dt><var>$host</var></dt>
-					<dd><code>string</code><br> Host of the URL</dd>
+					<dd><code>string</code><br>$host Host of the URL</dd>
 					<dt><var>$username</var></dt>
-					<dd><code>string</code><br> Username of the URL</dd>
+					<dd><code>string</code><br>$username Username of the URL</dd>
 					<dt><var>$password</var></dt>
-					<dd><code>string</code><br> Password of the URL</dd>
+					<dd><code>string</code><br>$password Password of the URL</dd>
 					<dt><var>$port</var></dt>
-					<dd><code>integer</code><br> Port of the URL</dd>
+					<dd><code>integer</code><br>$port Port of the URL</dd>
 					<dt><var>$path</var></dt>
-					<dd><code>string</code><br> Path of the URL</dd>
+					<dd><code>string</code><br>$path Path of the URL</dd>
 					<dt><var>$query</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array|string</code><br> Query string of the URL</dd>
+					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array|string</code><br>$query Query string of the URL</dd>
 					<dt><var>$fragment</var></dt>
-					<dd><code>string</code><br> Fragment of the URL</dd>
+					<dd><code>string</code><br>$fragment Fragment of the URL</dd>
 				</dl></div>
+
 
 
 
@@ -375,6 +380,7 @@ a scheme or host are not provided.</p>
 		<div class="description detailed hidden">
 			
 <p>Clone the URL</p>
+
 
 
 
@@ -418,6 +424,7 @@ a scheme or host are not provided.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -454,6 +461,7 @@ a scheme or host are not provided.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -485,13 +493,15 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$host</var></dt>
-					<dd><code>string</code><br> Host to set (e.g. <a href="http://www.yahoo.com">www.yahoo.com</a>, yahoo.com)</dd>
+					<dd><code>string</code><br>$host Host to set (e.g. <a href="http://www.yahoo.com">www.yahoo.com</a>,
+yahoo.com)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -531,6 +541,7 @@ a scheme or host are not provided.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -562,13 +573,14 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$scheme</var></dt>
-					<dd><code>string</code><br> Scheme to set</dd>
+					<dd><code>string</code><br>$scheme Scheme to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -608,6 +620,7 @@ a scheme or host are not provided.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -639,13 +652,14 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$port</var></dt>
-					<dd><code>integer</code><br> Port to set</dd>
+					<dd><code>integer</code><br>$port Port to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -687,6 +701,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -718,13 +733,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$path</var></dt>
-					<dd><code>array|string</code><br> Path string or array of path segments</dd>
+					<dd><code>array|string</code><br>$path Path string or array of path segments</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -764,6 +780,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -795,13 +812,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$relativePath</var></dt>
-					<dd><code>string</code><br> Relative path to add</dd>
+					<dd><code>string</code><br>$relativePath Relative path to add</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -841,6 +859,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -877,6 +896,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -908,13 +928,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$password</var></dt>
-					<dd><code>string</code><br> Password to set</dd>
+					<dd><code>string</code><br>$password Password to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -954,6 +975,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -985,13 +1007,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$username</var></dt>
-					<dd><code>string</code><br> Username to set</dd>
+					<dd><code>string</code><br>$username Username to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -1031,6 +1054,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1067,6 +1091,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1098,13 +1123,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$query</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|string|array</code><br> Query to set</dd>
+					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|string|array</code><br>$query Query to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -1144,6 +1170,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1175,13 +1202,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$fragment</var></dt>
-					<dd><code>string</code><br> Fragment to set</dd>
+					<dd><code>string</code><br>$fragment Fragment to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -1221,6 +1249,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1254,7 +1283,7 @@ supersede parts in the current URL.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$url</var></dt>
-					<dd><code>string</code><br> Relative URL to combine with</dd>
+					<dd><code>string</code><br>$url Relative URL to combine with</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1268,6 +1297,7 @@ supersede parts in the current URL.</p>
 				</div>
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1279,13 +1309,17 @@ supersede parts in the current URL.</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="scheme" id="$scheme">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1305,10 +1339,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="host" id="$host">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1328,10 +1361,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="port" id="$port">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1351,10 +1383,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="username" id="$username">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1374,10 +1405,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="password" id="$password">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1397,9 +1427,8 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="path" id="$path">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
@@ -1420,10 +1449,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="fragment" id="$fragment">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1443,9 +1471,8 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="query" id="$query">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>
 		</code></td>
 
@@ -1473,10 +1500,13 @@ supersede parts in the current URL.</p>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

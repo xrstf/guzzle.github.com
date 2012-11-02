@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Service\Resource\ResourceIterator | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -232,6 +232,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="getAllEvents" id="_getAllEvents">
@@ -267,8 +268,11 @@
 
 
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Common.AbstractHasDispatcher.html#_getAllEvents">Guzzle\Common\AbstractHasDispatcher::getAllEvents()</a></code></div>
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -300,14 +304,15 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$command</var></dt>
-					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br> Initial command used for iteration</dd>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Initial command used for iteration</dd>
 					<dt><var>$data</var></dt>
-					<dd><code>array</code><br> Associative array of additional parameters. You may specify any number of
+					<dd><code>array</code><br>$data Associative array of additional parameters. You may specify any number of
 custom options for an iterator. Among these options, you may also specify the
 following values: - limit: Attempt to limit the maximum number of resources to
 this amount - page_size: Attempt to retrieve this number of resources per
 request</dd>
 				</dl></div>
+
 
 
 
@@ -350,8 +355,9 @@ number of requests)</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_toArray">Guzzle\Service\Resource\ResourceIteratorInterface::toArray</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_toArray">Guzzle\Service\Resource\ResourceIteratorInterface::toArray()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -383,7 +389,7 @@ number of requests)</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$limit</var></dt>
-					<dd><code>integer</code><br> Limit amount</dd>
+					<dd><code>integer</code><br>$limit Limit amount</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -393,8 +399,9 @@ number of requests)</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_setLimit">Guzzle\Service\Resource\ResourceIteratorInterface::setLimit</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_setLimit">Guzzle\Service\Resource\ResourceIteratorInterface::setLimit()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -428,7 +435,7 @@ iterator.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$pageSize</var></dt>
-					<dd><code>integer</code><br> Limit amount</dd>
+					<dd><code>integer</code><br>$pageSize Limit amount</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -438,8 +445,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_setPageSize">Guzzle\Service\Resource\ResourceIteratorInterface::setPageSize</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_setPageSize">Guzzle\Service\Resource\ResourceIteratorInterface::setPageSize()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -471,7 +479,7 @@ iterator.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$key</var></dt>
-					<dd><code>string</code><br> Key of the option to retrieve</dd>
+					<dd><code>string</code><br>$key Key of the option to retrieve</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -481,8 +489,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_get">Guzzle\Service\Resource\ResourceIteratorInterface::get</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_get">Guzzle\Service\Resource\ResourceIteratorInterface::get()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -514,9 +523,9 @@ iterator.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$key</var></dt>
-					<dd><code>string</code><br> Key of the option to set</dd>
+					<dd><code>string</code><br>$key Key of the option to set</dd>
 					<dt><var>$value</var></dt>
-					<dd><code>mixed</code><br> Value to set for the option</dd>
+					<dd><code>mixed</code><br>$value Value to set for the option</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -526,8 +535,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_set">Guzzle\Service\Resource\ResourceIteratorInterface::set</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_set">Guzzle\Service\Resource\ResourceIteratorInterface::set()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -564,8 +574,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Iterator.html#_current">Iterator::current</a></code></div>
+				<div class="list"><code><a href="class-Iterator.html#_current">Iterator::current()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -602,8 +613,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Iterator.html#_key">Iterator::key</a></code></div>
+				<div class="list"><code><a href="class-Iterator.html#_key">Iterator::key()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -640,8 +652,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Countable.html#_count">Countable::count</a></code></div>
+				<div class="list"><code><a href="class-Countable.html#_count">Countable::count()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -678,6 +691,7 @@ iterator.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -710,8 +724,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Iterator.html#_rewind">Iterator::rewind</a></code></div>
+				<div class="list"><code><a href="class-Iterator.html#_rewind">Iterator::rewind()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -748,8 +763,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Iterator.html#_valid">Iterator::valid</a></code></div>
+				<div class="list"><code><a href="class-Iterator.html#_valid">Iterator::valid()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -782,8 +798,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Iterator.html#_next">Iterator::next</a></code></div>
+				<div class="list"><code><a href="class-Iterator.html#_next">Iterator::next()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -820,8 +837,9 @@ iterator.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_getNextToken">Guzzle\Service\Resource\ResourceIteratorInterface::getNextToken</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html#_getNextToken">Guzzle\Service\Resource\ResourceIteratorInterface::getNextToken()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -862,6 +880,7 @@ the number of items retrieved + pageSize &lt; hard limit</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -887,6 +906,7 @@ the number of items retrieved + pageSize &lt; hard limit</p>
 		<div class="description detailed hidden">
 			
 <p>Reset the internal state of the iterator without triggering a rewind()</p>
+
 
 
 
@@ -932,6 +952,7 @@ implement.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -954,12 +975,16 @@ implement.</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="command" id="$command">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code>
 		</code></td>
 
@@ -984,9 +1009,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="originalCommand" id="$originalCommand">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code>
 		</code></td>
 
@@ -1011,9 +1035,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="resources" id="$resources">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			array
 		</code></td>
 
@@ -1038,9 +1061,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="retrievedCount" id="$retrievedCount">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
@@ -1065,9 +1087,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="iteratedCount" id="$iteratedCount">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
@@ -1092,9 +1113,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="nextToken" id="$nextToken">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
@@ -1119,9 +1139,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="pageSize" id="$pageSize">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
@@ -1146,9 +1165,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="limit" id="$limit">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
@@ -1173,9 +1191,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="requestCount" id="$requestCount">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
@@ -1200,9 +1217,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="data" id="$data">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			array
 		</code></td>
 
@@ -1227,9 +1243,8 @@ implement.</p>
 		</div></td>
 	</tr>
 	<tr data-order="invalid" id="$invalid">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
@@ -1267,10 +1282,13 @@ sendRequest() returns 0 resources)</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\Curl\RequestMediator | Guzzle</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1004749584"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
+	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -211,6 +211,7 @@
 	</div>
 
 
+
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="__construct" id="___construct">
@@ -237,8 +238,9 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br> Request to mediate</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to mediate</dd>
 				</dl></div>
+
 
 
 
@@ -274,13 +276,14 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$handle</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code></code><br> Curl handle</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code></code><br>$handle Curl handle</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Curl.RequestMediator.html">Guzzle\Http\Curl\RequestMediator</a></code></code><br />
 				</div>
+
 
 
 
@@ -315,15 +318,16 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$curl</var></dt>
-					<dd><code>resource</code><br> Curl handle</dd>
+					<dd><code>resource</code><br>$curl Curl handle</dd>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Received header</dd>
+					<dd><code>string</code><br>$header Received header</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>integer</code><br />
 				</div>
+
 
 
 
@@ -358,14 +362,15 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$downloadSize</var></dt>
-					<dd><code>integer</code><br> Total download size</dd>
+					<dd><code>integer</code><br>$downloadSize Total download size</dd>
 					<dt><var>$downloaded</var></dt>
-					<dd><code>integer</code><br> Amount of bytes downloaded</dd>
+					<dd><code>integer</code><br>$downloaded Amount of bytes downloaded</dd>
 					<dt><var>$uploadSize</var></dt>
-					<dd><code>integer</code><br> Total upload size</dd>
+					<dd><code>integer</code><br>$uploadSize Total upload size</dd>
 					<dt><var>$uploaded</var></dt>
-					<dd><code>integer</code><br> Amount of bytes uploaded</dd>
+					<dd><code>integer</code><br>$uploaded Amount of bytes uploaded</dd>
 				</dl></div>
+
 
 
 
@@ -401,15 +406,16 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$curl</var></dt>
-					<dd><code>resource</code><br> Curl handle</dd>
+					<dd><code>resource</code><br>$curl Curl handle</dd>
 					<dt><var>$write</var></dt>
-					<dd><code>string</code><br> Data that was received</dd>
+					<dd><code>string</code><br>$write Data that was received</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>integer</code><br />
 				</div>
+
 
 
 
@@ -444,17 +450,18 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$ch</var></dt>
-					<dd><code>resource</code><br> Curl handle</dd>
+					<dd><code>resource</code><br>$ch Curl handle</dd>
 					<dt><var>$fd</var></dt>
-					<dd><code>resource</code><br> File descriptor</dd>
+					<dd><code>resource</code><br>$fd File descriptor</dd>
 					<dt><var>$length</var></dt>
-					<dd><code>integer</code><br> Amount of data to read</dd>
+					<dd><code>integer</code><br>$length Amount of data to read</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string</code><br />
 				</div>
+
 
 
 
@@ -469,12 +476,16 @@
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="request" id="$request">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
 		</code></td>
 
@@ -495,9 +506,8 @@
 		</div></td>
 	</tr>
 	<tr data-order="emitIo" id="$emitIo">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
@@ -522,9 +532,8 @@
 		</div></td>
 	</tr>
 	<tr data-order="curlHandle" id="$curlHandle">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code>
 		</code></td>
 
@@ -548,10 +557,13 @@
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Guzzle API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>
