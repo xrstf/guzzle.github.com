@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://guzzlephp.org/pear</id>
-    <updated>2012-10-25T03:12:10-07:00</updated>
+    <updated>2012-11-04T12:56:02-08:00</updated>
     <title>Guzzle PEAR channel Latest Releases</title>
     <link href="http://guzzlephp.org/pear/feed.xml" rel="self" />
     <author>
@@ -9,6 +9,24 @@
     </author>
 
     <entry>
+        <title>Guzzle 3.0.3 (stable)</title>
+        <link href="http://guzzlephp.org/pear/get/Guzzle-3.0.3.tgz" />
+        <id>http://guzzlephp.org/pear/get/Guzzle-3.0.3.tgz</id>
+        <author>
+            <name>mtdowling</name>
+        </author>
+        <updated>2012-11-04T12:55:32-08:00</updated>
+        <content>
+            
+* Implementing redirects in PHP rather than cURL
+* Added PECL URI template extension and using as default parser if available
+* Bug: Fixed Content-Length parsing of Response factory
+* Adding rewind() method to entity bodies and streams. Allows for custom rewinding of non-repeatable streams.
+* Adding ToArrayInterface throughout library
+* Fixing OauthPlugin to create unique nonce values per request
+ 
+        </content>
+    </entry>    <entry>
         <title>Guzzle 3.0.2 (stable)</title>
         <link href="http://guzzlephp.org/pear/get/Guzzle-3.0.2.tgz" />
         <id>http://guzzlephp.org/pear/get/Guzzle-3.0.2.tgz</id>

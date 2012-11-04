@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release http://pear.php.net/dtd/rest.release.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>3.0.3</v>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Object-oriented PHP HTTP Client for PHP 5.3+</s>
+    <d>Guzzle is a PHP HTTP client library and framework for building RESTful web service clients</d>
+    <da>2012-11-04 12:55:32</da>
+    <n>
+* Implementing redirects in PHP rather than cURL
+* Added PECL URI template extension and using as default parser if available
+* Bug: Fixed Content-Length parsing of Response factory
+* Adding rewind() method to entity bodies and streams. Allows for custom rewinding of non-repeatable streams.
+* Adding ToArrayInterface throughout library
+* Fixing OauthPlugin to create unique nonce values per request
+ </n>
+    <f>266254</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-3.0.3</g>
+    <x xlink:href="package.3.0.3.xml"/>
+</r>
