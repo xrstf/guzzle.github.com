@@ -11,9 +11,9 @@
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap.css?v=4" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css?v=7" type="text/css" />
-    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=3" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css?v=5" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css?v=8" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -81,54 +81,51 @@
     // Patch the global and local TOC's to be bootstrap-compliant.
     patchToc($("span.globaltoc"), 1);
     patchToc($("span.localtoc"), 2);
-
-    // Activate.
-    $('#topbar').dropdown();
   });
 }());
 </script>
 
   </head>
   <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <a class="brand" href="../index.html">Guzzle</a>
-        <ul class="nav">
-          <li>
-            <a href="../index.html">Home</a>
-          </li>
-          <li>
-            <a href="../docs.html">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/guzzle/guzzle">GitHub</a>
-          </li>
-          <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-          </li>
-          <li>
-            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-          </li>
-        </ul>
-        <ul class="nav secondary-nav">
-          
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="../index.html">Guzzle</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="../docs.html">Docs</a>
+              </li>
+              <li class="">
+                <a href="https://github.com/guzzle/guzzle">GitHub</a>
+              </li>
+              <li class="">
+                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+              </li>
+              <li>
+                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
+              </li>
+            </ul>
             
-<form class="pull-left" action="../search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
+              
+<form class="navbar-search pull-right" action="../search.html" method="get" placehold="Search">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
-          
-        </ul>
+            
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-<div class="container">
-   
-     
-       <div class="guzzle-sidebar">
+  
+    <div class="container">
+      
+        <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
@@ -179,9 +176,9 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
-     
-     <div class="content">
-       
+      
+      <div class="content">
+        
   <div class="section" id="http-client-for-php">
 <h1>HTTP client for PHP<a class="headerlink" href="#http-client-for-php" title="Permalink to this headline">¶</a></h1>
 <p>Guzzle gives PHP developers complete control over HTTP requests while utilizing HTTP/1.1 best practices.  Guzzle&#8217;s HTTP functionality is a robust framework built on top of the <a class="reference external" href="http://www.php.net/curl">PHP libcurl bindings</a>.</p>
@@ -495,7 +492,7 @@
 </div>
 <div class="section" id="request-and-response-headers">
 <h3>Request and response headers<a class="headerlink" href="#request-and-response-headers" title="Permalink to this headline">¶</a></h3>
-<p>HTTP message headers are case insensitive, multiple occurences of any header can be present in an HTTP message (whether it&#8217;s valid or not), and some servers require specific casing of particular headers.  Because of this, request and response headers are stored in <tt class="docutils literal"><span class="pre">Guzzle\Http\Messsage\Header</span></tt> objects.  The Header object can be cast as a string, counted, or iterated to retrieve each value from the header.  Casting a Header object to a string will return all of the header values concatenated together using a glue string (typically &#8216;, &#8216;).  Let&#8217;s take the following example to see what is returned:</p>
+<p>HTTP message headers are case insensitive, multiple occurrences of any header can be present in an HTTP message (whether it&#8217;s valid or not), and some servers require specific casing of particular headers.  Because of this, request and response headers are stored in <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Header</span></tt> objects.  The Header object can be cast as a string, counted, or iterated to retrieve each value from the header.  Casting a Header object to a string will return all of the header values concatenated together using a glue string (typically &#8216;, &#8216;).  Let&#8217;s take the following example to see what is returned:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.example.com&#39;</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;Foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">);</span>
@@ -507,7 +504,7 @@
 <span class="c1">// You can count the number of headers of a particular case insensitive name (2 in this example)</span>
 <span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;foO&#39;</span><span class="p">));</span>
 
-<span class="c1">// You can interate over Header objects</span>
+<span class="c1">// You can iterate over Header objects</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$header</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="nv">$header</span><span class="p">;</span>
 <span class="p">}</span>
@@ -552,7 +549,7 @@
 </div>
 <div class="section" id="low-level-curl-access">
 <h3>Low level cURL access<a class="headerlink" href="#low-level-curl-access" title="Permalink to this headline">¶</a></h3>
-<p>Most of the functionality implemented in the libcurl bindings has been simplified and abstracted by Guzzle. Developers who need access to <a class="reference external" href="http://www.php.net/curl_setopt">cURL specific functionality</a> that is not abstracted by Guzzle (e.g. proxies and some SSL options) can still add cURL handle specific behavior to Guzzle HTTP requests by modifiying the cURL options collection of a request:</p>
+<p>Most of the functionality implemented in the libcurl bindings has been simplified and abstracted by Guzzle. Developers who need access to <a class="reference external" href="http://www.php.net/curl_setopt">cURL specific functionality</a> that is not abstracted by Guzzle (e.g. proxies and some SSL options) can still add cURL handle specific behavior to Guzzle HTTP requests by modifying the cURL options collection of a request:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getCurlOptions</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nx">CURLOPT_SSL_VERIFYHOST</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -630,7 +627,7 @@
 <div class="section" id="plugins-for-common-http-request-behavior">
 <h2>Plugins for common HTTP request behavior<a class="headerlink" href="#plugins-for-common-http-request-behavior" title="Permalink to this headline">¶</a></h2>
 <p>Guzzle provides easy to use request plugins that add behavior to requests based on signal slot event notifications.</p>
-<p>View the plugin documention here: <a class="reference internal" href="../guide/plugins.html"><em>Guzzle Plugins</em></a></p>
+<p>View the plugin documentation here: <a class="reference internal" href="../guide/plugins.html"><em>Guzzle Plugins</em></a></p>
 </div>
 <div class="section" id="cookies">
 <h2>Cookies<a class="headerlink" href="#cookies" title="Permalink to this headline">¶</a></h2>
@@ -646,13 +643,13 @@
 </div>
 
 
-       
-         
+        
+          
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
   <a class="btn info" href="installation.html" title="previous chapter">&laquo; Installation</a>
   <a class="btn info" href="using_services.html" title="next chapter">Consuming web services using web service clients &raquo;</a>
 </div>
-         <div id="comments">
+          <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
@@ -666,10 +663,10 @@
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-       
-     </div>
-   
-</div>
+        
+      </div>
+    </div>
+  
 <footer class="footer">
   <div class="container">
     <p class="pull-right"><a href="#">Back to top</a></p>

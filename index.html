@@ -11,9 +11,9 @@
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap.css?v=4" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css?v=7" type="text/css" />
-    <link rel="stylesheet" href="_static/prettify/prettify.css?v=3" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap.css?v=5" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css?v=8" type="text/css" />
+    <link rel="stylesheet" href="_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -79,159 +79,156 @@
     // Patch the global and local TOC's to be bootstrap-compliant.
     patchToc($("span.globaltoc"), 1);
     patchToc($("span.localtoc"), 2);
-
-    // Activate.
-    $('#topbar').dropdown();
   });
 }());
 </script>
 
   </head>
   <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <a class="brand" href="#">Guzzle</a>
-        <ul class="nav">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="docs.html">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/guzzle/guzzle">GitHub</a>
-          </li>
-          <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-          </li>
-          <li>
-            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-          </li>
-        </ul>
-        <ul class="nav secondary-nav">
-          
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Guzzle</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="#">Home</a>
+              </li>
+              <li class="">
+                <a href="docs.html">Docs</a>
+              </li>
+              <li class="">
+                <a href="https://github.com/guzzle/guzzle">GitHub</a>
+              </li>
+              <li class="">
+                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+              </li>
+              <li>
+                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
+              </li>
+            </ul>
             
-<form class="pull-left" action="search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
+              
+<form class="navbar-search pull-right" action="search.html" method="get" placehold="Search">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
-          
-        </ul>
+            
+          </div>
+        </div>
       </div>
     </div>
+
+  
+    
+    <div class="jumbotron masthead">
+  <div class="container">
+    <img src="_static/logo.png" alt="guzzle" width="199" height="260" />
+    <h1>Guzzle</h1>
+    <p>Guzzle is a PHP HTTP client<br />&amp; framework for building RESTful web service clients.</p>
+    <p>
+        <a class="btn btn-primary btn-large" href="https://github.com/guzzle/guzzle">View Guzzle on GitHub</a>
+        <a class="btn btn-large" href="docs.html">Read the docs</a>
+    </p>
   </div>
+</div>
+
+<div class="social">
+  <ul class="social-buttons">
+    <li>
+      <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+    </li>
+    <li>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Guzzle, PHP HTTP client &amp; framework for building RESTful web service clients.">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </li>
+    <li>
+        <a href="https://twitter.com/mtdowling" class="twitter-follow-button" data-show-count="false">Follow @mtdowling</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </li>
+  </ul>
+</div>
 
 <div class="container">
-   
-     
-     <div class="content">
-  <div class="hero-unit">
-    <img src="_static/guzzle.png" alt="guzzle" width="199" height="260" />
-    <h1>Guzzle, HTTP client for PHP</h1>
-    <p>Guzzle is a PHP HTTP client &amp; framework for building RESTful web service clients.</p>
-    <ul>
-        <li>Extremely powerful API provides all the power of cURL with a simple interface.</li>
-        <li>Truly take advantage of HTTP/1.1 with persistent connections, connection pooling, and parallel requests.</li>
-        <li>Service description DSL allows you build awesome web service clients faster.</li>
-        <li>Symfony2 event-based plugin system allows you to completely modify the behavior of a request.</li>
-        <li>Includes a custom node.js webserver to test your clients.</li>
-        <li>Unit-tested with PHPUnit with 100% code coverage.</li>
-    </ul>
-    <div class="buttons">
-      <a class="btn primary large" href="https://github.com/guzzle/guzzle">Guzzle on GitHub</a> &nbsp;
-      <a class="btn secondary large" href="http://guzzlephp.org/guzzle.phar">Download Phar</a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="span7">
-        <h2>About</h2>
-        <p>Guzzle is a game changer in the world of PHP HTTP clients. Guzzle allows you to truly reap the benefits of the HTTP/1.1 spec. No other library makes persistent connection management or sending requests in parallel easier.</p>
-        <p>In addition to taking the pain out of HTTP, Guzzle provides a lightweight framework for creating web service clients. Most web service clients follow a specific pattern: create a client class, create methods for each action, create and execute a cURL handle, parse the response, implement error handling, and return the result. Guzzle takes the redundancy out of this process and gives you the tools you need to quickly build a web service client.</p>
-        <p>Start <strong>truly</strong> consuming HTTP with Guzzle.</p>
-    </div>
-
-    <div class="span9">
-      <h2>Installation</h2>
-      <p>Just download the <a href="http://guzzlephp.org/guzzle.phar">guzzle phar file</a>
-        and include it in your PHP scripts:</p>
-      <pre class="prettyprint linenums">&lt;?php
-require_once '/path/to/guzzle.phar';
-$client = new Guzzle\Service\Client('http://test.com/');
-$response = $client->get('/resource.xml')->send();</pre>
-      <p>You can also install guzzle using <a href="http://packagist.org/about-composer">composer</a> by creating a composer.json file in your project root:</p>
-      <pre class="prettyprint">{
-  "require": {
-    "guzzle/guzzle": "*"
-  }
-}</pre>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="span15">
-      <div class="other-buttons">
-        <a class="btn" href="docs.html">View documentation</a> &nbsp;
-        <a class="btn" href="http://packagist.org/packages/guzzle/guzzle">View on Packagist</a>
-      </div>
-    </div>
-  </div>
+  <div class="content">
 
     <div class="row">
-      <h2>HTTP basics</h2>
-      <pre class="prettyprint linenums">&lt;?php
+      <div class="span12">
+        <div class="alert alert-info">
+          Guzzle now powers the official <a href="https://github.com/aws/aws-sdk-php">Amazon Web Services SDK for PHP</a>, including service descriptions, iterators, and batching
+        </div>
+      </div>
+    </div>
 
-use Guzzle\Service\Client;
+    <div class="row">
+      <div class="span4 homepage-features">
+        <h3>Introducing Guzzle</h3>
+        <p>Guzzle takes the pain out of sending HTTP requests and the redundancy
+        out of creating web service clients. Guzzle is a framework that includes
+        the tools needed to create a robust web service client, including:
+        Service descriptions for defining the inputs and outputs of an API,
+        resource iterators for traversing paginated resources, batching for
+        sending a large number of requests as efficiently as possible.</p>
+        <hr />
+        <ul>
+          <li>All the power of cURL with a simple interface.</li>
+          <li>Persistent connections and parallel requests.</li>
+          <li><a href="guide/service/service_descriptions.html">Service descriptions</a> for quickly building clients.</li>
+          <li>Powered by the Symfony2 EventDispatcher.</li>
+          <li>Use all of the code or only <a href="https://packagist.org/packages/guzzle/">specific components</a>.</li>
+          <li><a href="guide/plugins.html">Plugins</a> for caching, logging, OAuth, mocks, and more</a>
+          <li>Includes a custom node.js webserver to <a href="guide/service/testing_clients.html">test your clients</a>.</li>
+        </ul>
+      </div>
+      <div class="span8">
+          <pre class="prettyprint linenums">&lt;?php
+require_once 'vendor/autoload.php';
+use Guzzle\Http\Client;
 
-$client = new Client('http://www.example.com/api/v1/key/{key}', array(
-    'key' => '***'
-));
-
-// Issue a path using a relative URL to the client's base URL
-// Sends to http://www.example.com/api/v1/key/***/users
-$request = $client->get('users');
+// Create a client and provide a base URL
+$client = new Client('https://api.github.com');
+// Create a request with basic Auth
+$request = $client->get('/user')->setAuth('user', 'pass');
+// Send the request and get the response
 $response = $request->send();
+echo $response->getBody();
+// >>> {"type":"User", ...
+echo $response->getHeader('Content-Length');
+// >>> 792
 
-// Relative URL that overwrites the path of the base URL
-$request = $client->get('/test/123.php?a=b');
-
-// Issue a head request on the base URL
-$response = $client->head()->send();
-$response = $client->delete('users/123')->send();
-
-// Send a PUT request with custom headers
-$response = $client->put('upload/text', array(
-    'X-Header' => 'My Header'
-), 'body of the request')->send();
-
-// Send a PUT request using the contents of a PHP stream as the body
-// Send using an absolute URL (overrides the base URL)
-$response = $client->put('http://www.example.com/upload', array(
-    'X-Header' => 'My Header'
-), fopen('http://www.test.com/', 'r'));
-
-// Create a POST request with a file upload (notice the @ symbol):
-$request = $client->post('http://localhost:8983/solr/update', null, array (
-    'custom_field' => 'my value',
-    'file' => '@/path/to/documents.xml'
+// Create a client to work with the Twitter API
+$client = new Client('https://api.twitter.com/{version}', array(
+    'version' => '1.1'
 ));
 
-// Create a POST request and add the POST files manually
-$request = $client->post('http://localhost:8983/solr/update')
-    ->addPostFiles(array(
-        'file' => '/path/to/documents.xml'
-    ));
+// Sign all requests with the OauthPlugin
+$client->addSubscriber(new Guzzle\Plugin\Oauth\OauthPlugin(array(
+    'consumer_key'    => '***',
+    'consumer_secret' => '***',
+    'token'           => '***',
+    'token_secret'    => '***'
+)));
 
-// Responses are objects
-echo $response->getStatusCode() . ' ' . $response->getReasonPhrase() . "\n";
-// Requests and responses can be cast to a string to show the raw HTTP message
-echo $request . "\n\n" . $response;
-  </div>
+echo $client->get('statuses/user_timeline.json')->send()->getBody();
+// >>> {"public_gists":6,"type":"User" ...
+
+// Create a tweet using POST
+$request = $client->post('statuses/update.json', null, array(
+    'status' => 'Tweeted with Guzzle, http://guzzlephp.org'
+));
+
+// Send the request and parse the JSON response into an array
+$data = $request->send()->json();
+echo $data['text'];
+// >>> Tweeted with Guzzle, http://t.co/kngJMfRk
+</pre>
+      </div>
+    </div>
+
 </div>
-   
-</div>
+  
 <footer class="footer">
   <div class="container">
     <p class="pull-right"><a href="#">Back to top</a></p>

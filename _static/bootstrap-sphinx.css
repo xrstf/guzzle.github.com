@@ -6,7 +6,7 @@
 */
 
 body {
-  padding-top: 60px;
+  padding-top: 40px;
   background-color: #FFFFFF;
   position: relative;
 }
@@ -38,7 +38,7 @@ p {
 .hero-unit p {
     font-size: 17px;
 }
-.hero-unit img {
+.masthead img {
   float: left;
   margin-right: 17px;
 }
@@ -54,33 +54,18 @@ p {
     text-align: center;
 }
 
-.topbar-inner, .topbar .fill {
-    background-color: #222;
-    background-color: #222222;
-    background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(#444444), to(#111111));
-    background-image: -moz-linear-gradient(top, #444444, #111111);
-    background-image: -ms-linear-gradient(top, #444444, #111111);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #444444), color-stop(100%, #111111));
-    background-image: -webkit-linear-gradient(top, #444444, #111111);
-    background-image: -o-linear-gradient(top, #444444, #111111);
-    background-image: linear-gradient(top, #444444, #111111);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#111111', GradientType=0);
-    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+    color: #ccc;
+    font-size: 15px;
 }
 
-.topbar {
-  font-size: 14px;
-}
-
-.topbar .brand {
+.navbar .brand {
   font-weight: bold !important;
   color: #FFFFFF;
   font-family: Helvetica,sans-serif;
   margin: 10px 12px 0 0;
   padding: 0;
+  font-size: 20px;
 }
 
 div.documentwrapper {
@@ -102,12 +87,12 @@ div.documentwrapper {
 .highlight { background: none; }
 
 tt {
-  background-color: #ECF0F3;
-  color: #222222;
+  background-color: #F2F7FA;
+  color: #333;
   padding: 1px;
   font-family: 'Consolas','Menlo','Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace
   font-size: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #d0d0d0;
   border-radius: 2px;
 }
 
@@ -121,4 +106,102 @@ div.note {
   box-shadow: none;
   padding: 10px 30px;
   margin-bottom: 18px;
+}
+
+.jumbotron {
+  position: relative;
+  padding: 40px 0;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+  background: #00312F;
+  background: -moz-linear-gradient(45deg, #002F31 0%, #335A6D 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#00312D), color-stop(100%,#33566D));
+  background: -webkit-linear-gradient(45deg, #020031 0%,#334F6D 100%);
+  background: -o-linear-gradient(45deg, #002D31 0%,#334D6D 100%);
+  background: -ms-linear-gradient(45deg, #002F31 0%,#33516D 100%);
+  background: linear-gradient(45deg, #020031 0%,#33516D 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
+  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
+  -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
+}
+.jumbotron h1 {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.jumbotron p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+.masthead {
+  padding: 40px 0 30px;
+  margin-bottom: 0;
+  color: #fff;
+}
+.masthead h1 {
+  display: none;
+}
+.masthead p {
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 1.25;
+}
+
+.masthead .btn {
+  padding: 19px 24px;
+  font-size: 24px;
+  font-weight: 200;
+  border: 0;
+}
+
+.social {
+  padding: 8px 0;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 20px 0;
+}
+
+.social-buttons {
+  margin-left: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+  *display: inline;
+  *zoom: 1;
+}
+
+h1, h2, h3, h4, h5 { margin: 30px 0 10px 0; color: #333; }
+h2 { border-bottom: 1px solid #e0e0e0; margin: 30px 0 30px 0; }
+h1 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 44px;
+}
+
+.homepage-features h3 {
+    margin-top: 0;
+}
+
+.homepage-features ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.homepage-features ul li {
+    padding: 5px 0;
+    margin: 0 0 12px 0;
+    border-bottom: 1px solid #eee;
 }

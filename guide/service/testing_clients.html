@@ -11,9 +11,9 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap.css?v=4" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=7" type="text/css" />
-    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=3" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap.css?v=5" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=8" type="text/css" />
+    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -81,54 +81,51 @@
     // Patch the global and local TOC's to be bootstrap-compliant.
     patchToc($("span.globaltoc"), 1);
     patchToc($("span.localtoc"), 2);
-
-    // Activate.
-    $('#topbar').dropdown();
   });
 }());
 </script>
 
   </head>
   <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <a class="brand" href="../../index.html">Guzzle</a>
-        <ul class="nav">
-          <li>
-            <a href="../../index.html">Home</a>
-          </li>
-          <li>
-            <a href="../../docs.html">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/guzzle/guzzle">GitHub</a>
-          </li>
-          <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-          </li>
-          <li>
-            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-          </li>
-        </ul>
-        <ul class="nav secondary-nav">
-          
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="../../index.html">Guzzle</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../../index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="../../docs.html">Docs</a>
+              </li>
+              <li class="">
+                <a href="https://github.com/guzzle/guzzle">GitHub</a>
+              </li>
+              <li class="">
+                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+              </li>
+              <li>
+                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
+              </li>
+            </ul>
             
-<form class="pull-left" action="../../search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
+              
+<form class="navbar-search pull-right" action="../../search.html" method="get" placehold="Search">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
-          
-        </ul>
+            
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-<div class="container">
-   
-     
-       <div class="guzzle-sidebar">
+  
+    <div class="container">
+      
+        <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
@@ -166,9 +163,9 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
-     
-     <div class="content">
-       
+      
+      <div class="content">
+        
   <div class="section" id="unit-testing-web-service-clients">
 <h1>Unit Testing Web Service Clients<a class="headerlink" href="#unit-testing-web-service-clients" title="Permalink to this headline">¶</a></h1>
 <p>Guzzle provides several tools that will enable you to easily unit test your web service clients.</p>
@@ -217,7 +214,7 @@
 </div>
 <div class="section" id="api-credentials">
 <h4>API credentials<a class="headerlink" href="#api-credentials" title="Permalink to this headline">¶</a></h4>
-<p>If API  credentials are required to run your integration tests, you must add <tt class="docutils literal"><span class="pre">&lt;php&gt;</span></tt> parameters to your phpunit.xml.dist file and extract these parameters in your boostrap.php file.</p>
+<p>If API  credentials are required to run your integration tests, you must add <tt class="docutils literal"><span class="pre">&lt;php&gt;</span></tt> parameters to your phpunit.xml.dist file and extract these parameters in your bootstrap.php file.</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;phpunit</span> <span class="na">bootstrap=</span><span class="s">&quot;./tests/bootstrap.php&quot;</span> <span class="na">colors=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;php&gt;</span>
@@ -275,7 +272,7 @@ Content-Type: application/xml
 <div class="section" id="node-js-web-server-for-integration-testing">
 <h2>node.js web server for integration testing<a class="headerlink" href="#node-js-web-server-for-integration-testing" title="Permalink to this headline">¶</a></h2>
 <p>Using mock responses is usually enough when testing a web service client.  If your client needs to add custom cURL options to requests, then you should use the node.js test web server to ensure that your HTTP request message is being created correctly.</p>
-<p>Guzzle is based around PHP&#8217;s libcurl bindings.  cURL sometimes modifies an HTTP request message based on <tt class="docutils literal"><span class="pre">CURLOPT_*</span></tt> options.  Headers that are added to your request by cURL will not be accounted for if you inject mock responses into your tests.  Additionally, some request entity bodies cannot be loaded by the client before transmitting it to the sever (for example, when using a client as a sort of proxy and streaming content from a remote server).  You might also need to inspect the entity body of a <tt class="docutils literal"><span class="pre">mutlipart/form-data</span></tt> POST request.</p>
+<p>Guzzle is based around PHP&#8217;s libcurl bindings.  cURL sometimes modifies an HTTP request message based on <tt class="docutils literal"><span class="pre">CURLOPT_*</span></tt> options.  Headers that are added to your request by cURL will not be accounted for if you inject mock responses into your tests.  Additionally, some request entity bodies cannot be loaded by the client before transmitting it to the sever (for example, when using a client as a sort of proxy and streaming content from a remote server).  You might also need to inspect the entity body of a <tt class="docutils literal"><span class="pre">multipart/form-data</span></tt> POST request.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You can skip all of the tests that require the node.js test web server by excluding the <tt class="docutils literal"><span class="pre">server</span></tt> group: <tt class="docutils literal"><span class="pre">phpunit</span> <span class="pre">--exclude-group</span> <span class="pre">server</span></tt></p>
@@ -301,13 +298,13 @@ Content-Type: application/xml
 </div>
 
 
-       
-         
+        
+          
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
   <a class="btn info" href="../plugins.html" title="previous chapter">&laquo; Plugins</a>
   <a class="btn info" href="../http/creating_plugins.html" title="next chapter">Creating Plugins and Observers &raquo;</a>
 </div>
-         <div id="comments">
+          <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
@@ -321,10 +318,10 @@ Content-Type: application/xml
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-       
-     </div>
-   
-</div>
+        
+      </div>
+    </div>
+  
 <footer class="footer">
   <div class="container">
     <p class="pull-right"><a href="#">Back to top</a></p>

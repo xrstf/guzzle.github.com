@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Plugin\Cookie\Cookie | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<script type="text/javascript" src="elementlist.js?3361419169"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -83,6 +83,8 @@
 				<li class="active"><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
@@ -187,6 +189,15 @@
 
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Plugin\Cookie\Cookie</span></b>			
+			 implements 
+				<a href="class-Guzzle.Common.ToArrayInterface.html"><span>Guzzle\Common\ToArrayInterface</span></a>
+			
+			
+		</dd>
+	</dl>
 
 
 
@@ -208,6 +219,43 @@
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="getInvalidCharacters" id="_getInvalidCharacters">
+
+		<td class="attributes"><code>
+			 protected static
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getInvalidCharacters">#</a>
+		<code>getInvalidCharacters( )</code>
+
+		<div class="description short">
+			
+<p>Gets an array of invalid cookie characters</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Gets an array of invalid cookie characters</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="__construct" id="___construct">
 
 		<td class="attributes"><code>
@@ -276,6 +324,8 @@
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Common.ToArrayInterface.html#_toArray">Guzzle\Common\ToArrayInterface::toArray()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1592,6 +1642,43 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="validate" id="_validate">
+
+		<td class="attributes"><code>
+			 public 
+			boolean|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validate">#</a>
+		<code>validate( )</code>
+
+		<div class="description short">
+			
+<p>Check if the cookie is valid according to RFC 6265</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the cookie is valid according to RFC 6265</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean|string</code><br>Returns true if valid or an error message if invalid<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
 
@@ -1628,6 +1715,40 @@
 			<div class="description detailed hidden">
 				
 <p>Cookie data</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="invalidCharString" id="$invalidCharString">
+		<td class="attributes"><code>
+			protected static 
+			string
+		</code></td>
+
+		<td class="name">
+<var>$invalidCharString</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$invalidCharString" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>ASCII codes not valid for for use in a cookie name</p>
+
+<p>Cookie names are defined as 'token', according to RFC 2616, Section 2.2 A
+valid token may contain any CHAR except CTLs (ASCII 0 - 31 or 127) or any of the
+following separators</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>ASCII codes not valid for for use in a cookie name</p>
+
+<p>Cookie names are defined as 'token', according to RFC 2616, Section 2.2 A
+valid token may contain any CHAR except CTLs (ASCII 0 - 31 or 127) or any of the
+following separators</p>
 
 
 			</div>

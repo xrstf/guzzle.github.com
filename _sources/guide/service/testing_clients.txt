@@ -60,7 +60,7 @@ You can then `run PHPUnit tests <http://www.phpunit.de/manual/current/en/textui.
 API credentials
 ^^^^^^^^^^^^^^^
 
-If API  credentials are required to run your integration tests, you must add ``<php>`` parameters to your phpunit.xml.dist file and extract these parameters in your boostrap.php file.
+If API  credentials are required to run your integration tests, you must add ``<php>`` parameters to your phpunit.xml.dist file and extract these parameters in your bootstrap.php file.
 
 .. code-block:: xml
 
@@ -126,7 +126,7 @@ node.js web server for integration testing
 
 Using mock responses is usually enough when testing a web service client.  If your client needs to add custom cURL options to requests, then you should use the node.js test web server to ensure that your HTTP request message is being created correctly.
 
-Guzzle is based around PHP's libcurl bindings.  cURL sometimes modifies an HTTP request message based on ``CURLOPT_*`` options.  Headers that are added to your request by cURL will not be accounted for if you inject mock responses into your tests.  Additionally, some request entity bodies cannot be loaded by the client before transmitting it to the sever (for example, when using a client as a sort of proxy and streaming content from a remote server).  You might also need to inspect the entity body of a ``mutlipart/form-data`` POST request.
+Guzzle is based around PHP's libcurl bindings.  cURL sometimes modifies an HTTP request message based on ``CURLOPT_*`` options.  Headers that are added to your request by cURL will not be accounted for if you inject mock responses into your tests.  Additionally, some request entity bodies cannot be loaded by the client before transmitting it to the sever (for example, when using a client as a sort of proxy and streaming content from a remote server).  You might also need to inspect the entity body of a ``multipart/form-data`` POST request.
 
 .. note::
 

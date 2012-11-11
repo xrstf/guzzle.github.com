@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<script type="text/javascript" src="elementlist.js?3361419169"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -83,6 +83,8 @@
 				<li class="active"><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
 						<ul>
 				<li class="active"><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
@@ -227,6 +229,84 @@
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code>__construct( <span>boolean <var>$strictMode</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$strictMode</var></dt>
+					<dd><code>boolean</code><br>$strictMode Set to true to throw exceptions when invalid cookies are added to
+the cookie jar</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setStrictMode" id="_setStrictMode">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Plugin.Cookie.CookieJar.ArrayCookieJar.html">Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setStrictMode">#</a>
+		<code>setStrictMode( <span>boolean <var>$strictMode</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Enable or disable strict mode on the cookie jar</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Enable or disable strict mode on the cookie jar</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$strictMode</var></dt>
+					<dd><code>boolean</code><br>$strictMode Set to true to throw exceptions when invalid cookies are added.
+False to ignore them.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Plugin.Cookie.CookieJar.ArrayCookieJar.html">Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="remove" id="_remove">
 
 		<td class="attributes"><code>
@@ -721,6 +801,34 @@
 			<div class="description detailed hidden">
 				
 <p>Loaded cookie data</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="strictMode" id="$strictMode">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+<var>$strictMode</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$strictMode" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Whether or not strict mode is enabled. When enabled, exceptions will be
+thrown for invalid cookies</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Whether or not strict mode is enabled. When enabled, exceptions will be
+thrown for invalid cookies</p>
 
 
 			</div>

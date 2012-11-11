@@ -306,7 +306,7 @@ The entity body of a response can be retrieved by calling ``$response->getBody()
 Request and response headers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-HTTP message headers are case insensitive, multiple occurences of any header can be present in an HTTP message (whether it's valid or not), and some servers require specific casing of particular headers.  Because of this, request and response headers are stored in ``Guzzle\Http\Messsage\Header`` objects.  The Header object can be cast as a string, counted, or iterated to retrieve each value from the header.  Casting a Header object to a string will return all of the header values concatenated together using a glue string (typically ', ').  Let's take the following example to see what is returned::
+HTTP message headers are case insensitive, multiple occurrences of any header can be present in an HTTP message (whether it's valid or not), and some servers require specific casing of particular headers.  Because of this, request and response headers are stored in ``Guzzle\Http\Message\Header`` objects.  The Header object can be cast as a string, counted, or iterated to retrieve each value from the header.  Casting a Header object to a string will return all of the header values concatenated together using a glue string (typically ', ').  Let's take the following example to see what is returned::
 
     $request = new Request('GET', 'http://www.example.com');
     $request->addHeader('Foo', 'bar');
@@ -319,7 +319,7 @@ HTTP message headers are case insensitive, multiple occurences of any header can
     // You can count the number of headers of a particular case insensitive name (2 in this example)
     echo count($request->getHeader('foO'));
 
-    // You can interate over Header objects
+    // You can iterate over Header objects
     foreach ($request->getHeader('foo') as $header) {
         echo $header;
     }
@@ -367,7 +367,7 @@ All HTTP requests sent through Guzzle are sent using the same cURL multi handle.
 Low level cURL access
 ~~~~~~~~~~~~~~~~~~~~~
 
-Most of the functionality implemented in the libcurl bindings has been simplified and abstracted by Guzzle. Developers who need access to `cURL specific functionality <http://www.php.net/curl_setopt>`_ that is not abstracted by Guzzle (e.g. proxies and some SSL options) can still add cURL handle specific behavior to Guzzle HTTP requests by modifiying the cURL options collection of a request::
+Most of the functionality implemented in the libcurl bindings has been simplified and abstracted by Guzzle. Developers who need access to `cURL specific functionality <http://www.php.net/curl_setopt>`_ that is not abstracted by Guzzle (e.g. proxies and some SSL options) can still add cURL handle specific behavior to Guzzle HTTP requests by modifying the cURL options collection of a request::
 
     $request->getCurlOptions()->set(CURLOPT_SSL_VERIFYHOST, true);
 
@@ -454,7 +454,7 @@ Plugins for common HTTP request behavior
 
 Guzzle provides easy to use request plugins that add behavior to requests based on signal slot event notifications.
 
-View the plugin documention here: :doc:`Guzzle Plugins </guide/plugins>`
+View the plugin documentation here: :doc:`Guzzle Plugins </guide/plugins>`
 
 Cookies
 -------

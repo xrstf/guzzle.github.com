@@ -114,7 +114,7 @@ Guzzle can leverage HTTP's caching specifications using the ``Guzzle\Plugin\Cach
     $client->get('http://www.wikipedia.org/')->send();
 
     // The next request will revalidate against the origin server to see if it
-    // has been modified. If a 304 response is recieved the response will be
+    // has been modified. If a 304 response is received the response will be
     // served from cache
     $client->get('http://www.wikipedia.org/')->send();
 

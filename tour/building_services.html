@@ -11,9 +11,9 @@
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap.css?v=4" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css?v=7" type="text/css" />
-    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=3" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap.css?v=5" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css?v=8" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -81,54 +81,51 @@
     // Patch the global and local TOC's to be bootstrap-compliant.
     patchToc($("span.globaltoc"), 1);
     patchToc($("span.localtoc"), 2);
-
-    // Activate.
-    $('#topbar').dropdown();
   });
 }());
 </script>
 
   </head>
   <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <a class="brand" href="../index.html">Guzzle</a>
-        <ul class="nav">
-          <li>
-            <a href="../index.html">Home</a>
-          </li>
-          <li>
-            <a href="../docs.html">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/guzzle/guzzle">GitHub</a>
-          </li>
-          <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-          </li>
-          <li>
-            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-          </li>
-        </ul>
-        <ul class="nav secondary-nav">
-          
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="../index.html">Guzzle</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="../docs.html">Docs</a>
+              </li>
+              <li class="">
+                <a href="https://github.com/guzzle/guzzle">GitHub</a>
+              </li>
+              <li class="">
+                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+              </li>
+              <li>
+                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
+              </li>
+            </ul>
             
-<form class="pull-left" action="../search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
+              
+<form class="navbar-search pull-right" action="../search.html" method="get" placehold="Search">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
-          
-        </ul>
+            
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-<div class="container">
-   
-     
-       <div class="guzzle-sidebar">
+  
+    <div class="container">
+      
+        <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
@@ -154,9 +151,9 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
-     
-     <div class="content">
-       
+      
+      <div class="content">
+        
   <div class="section" id="building-web-service-clients">
 <h1>Building web service clients<a class="headerlink" href="#building-web-service-clients" title="Permalink to this headline">¶</a></h1>
 <p>Building web service clients using commands and <a class="reference internal" href="../guide/service/service_descriptions.html"><em>service description</em></a> is better than creating requests manually. A command-based web service client that abstracts away the HTTP request and response makes a client more future-proof; if the API you are interacting with changes (for example, adds a required field), then you would only have to update the command in one place rather than every single file in your project that interacts with the web service. Guzzle uses the <a class="reference external" href="http://en.wikipedia.org/wiki/Command_pattern">command pattern</a> for building requests and processing responses. Abstracting the underlying implementation helps new developers to quickly send requests to an API using any of the best-practices coded into the command itself, rather than assuming that every developer on your team has an intricate understanding of the web service.</p>
@@ -288,13 +285,13 @@ of a response. Keep each HTTP response in a separate file.</td>
 </div>
 
 
-       
-         
+        
+          
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
   <a class="btn info" href="using_services.html" title="previous chapter">&laquo; Consuming web services using web service clients</a>
   <a class="btn info" href="../guide/index.html" title="next chapter">Guides &raquo;</a>
 </div>
-         <div id="comments">
+          <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
@@ -308,10 +305,10 @@ of a response. Keep each HTTP response in a separate file.</td>
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-       
-     </div>
-   
-</div>
+        
+      </div>
+    </div>
+  
 <footer class="footer">
   <div class="container">
     <p class="pull-right"><a href="#">Back to top</a></p>

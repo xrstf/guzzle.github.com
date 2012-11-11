@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Service\Resource\ResourceIteratorInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1731662636"></script>
+	<script type="text/javascript" src="elementlist.js?3361419169"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -83,6 +83,8 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
@@ -201,6 +203,8 @@ retrieve the entire matching result set</p>
 		<dd style="padding-left:0px">
 <b><span>Guzzle\Service\Resource\ResourceIteratorInterface</span></b>			
 			 implements 
+				<a href="class-Guzzle.Common.ToArrayInterface.html"><span>Guzzle\Common\ToArrayInterface</span></a>, 
+			
 				<a href="class-Guzzle.Common.HasDispatcherInterface.html"><span>Guzzle\Common\HasDispatcherInterface</span></a>, 
 			
 				<a href="class-Iterator.html"><span>Iterator</span></a>, 
@@ -235,45 +239,6 @@ retrieve the entire matching result set</p>
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="toArray" id="_toArray">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_toArray">#</a>
-		<code>toArray( )</code>
-
-		<div class="description short">
-			
-<p>Get all of the resources as an array (Warning: this could issue a large
-number of requests)</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get all of the resources as an array (Warning: this could issue a large
-number of requests)</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="getNextToken" id="_getNextToken">
 
 		<td class="attributes"><code>
@@ -492,6 +457,14 @@ specify no page size limitation.</p>
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Common.ToArrayInterface.html#methods">Guzzle\Common\ToArrayInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.ToArrayInterface.html#_toArray">toArray()</a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Guzzle.Common.HasDispatcherInterface.html#methods">Guzzle\Common\HasDispatcherInterface</a></caption>
 	<tr>

@@ -11,9 +11,9 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap.css?v=4" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=7" type="text/css" />
-    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=3" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap.css?v=5" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=8" type="text/css" />
+    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -81,54 +81,51 @@
     // Patch the global and local TOC's to be bootstrap-compliant.
     patchToc($("span.globaltoc"), 1);
     patchToc($("span.localtoc"), 2);
-
-    // Activate.
-    $('#topbar').dropdown();
   });
 }());
 </script>
 
   </head>
   <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <a class="brand" href="../../index.html">Guzzle</a>
-        <ul class="nav">
-          <li>
-            <a href="../../index.html">Home</a>
-          </li>
-          <li>
-            <a href="../../docs.html">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/guzzle/guzzle">GitHub</a>
-          </li>
-          <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-          </li>
-          <li>
-            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-          </li>
-        </ul>
-        <ul class="nav secondary-nav">
-          
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="../../index.html">Guzzle</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../../index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="../../docs.html">Docs</a>
+              </li>
+              <li class="">
+                <a href="https://github.com/guzzle/guzzle">GitHub</a>
+              </li>
+              <li class="">
+                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+              </li>
+              <li>
+                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
+              </li>
+            </ul>
             
-<form class="pull-left" action="../../search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
+              
+<form class="navbar-search pull-right" action="../../search.html" method="get" placehold="Search">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
-          
-        </ul>
+            
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-<div class="container">
-   
-     
-       <div class="guzzle-sidebar">
+  
+    <div class="container">
+      
+        <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
@@ -158,9 +155,9 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
-     
-     <div class="content">
-       
+      
+      <div class="content">
+        
   <div class="section" id="resource-iterators">
 <h1>Resource iterators<a class="headerlink" href="#resource-iterators" title="Permalink to this headline">¶</a></h1>
 <p>Web services often implement pagination in their responses which requires the end-user to issue a series of consecutive requests in order to fetch all of the data they asked for.  Users of your web service client should not be responsible for implementing the logic involved in iterating through pages of results.  Guzzle provides a simple resource iterator foundation to make it easier on web service client developers to offer a useful abstraction layer.</p>
@@ -255,13 +252,13 @@
 </div>
 
 
-       
-         
+        
+          
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
   <a class="btn info" href="../http/caching.html" title="previous chapter">&laquo; Caching</a>
   <a class="btn info" href="../faq.html" title="next chapter">FAQ &raquo;</a>
 </div>
-         <div id="comments">
+          <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
@@ -275,10 +272,10 @@
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-       
-     </div>
-   
-</div>
+        
+      </div>
+    </div>
+  
 <footer class="footer">
   <div class="container">
     <p class="pull-right"><a href="#">Back to top</a></p>

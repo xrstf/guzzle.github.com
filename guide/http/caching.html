@@ -11,9 +11,9 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap.css?v=4" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=7" type="text/css" />
-    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=3" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap.css?v=5" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css?v=8" type="text/css" />
+    <link rel="stylesheet" href="../../_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -81,54 +81,51 @@
     // Patch the global and local TOC's to be bootstrap-compliant.
     patchToc($("span.globaltoc"), 1);
     patchToc($("span.localtoc"), 2);
-
-    // Activate.
-    $('#topbar').dropdown();
   });
 }());
 </script>
 
   </head>
   <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <a class="brand" href="../../index.html">Guzzle</a>
-        <ul class="nav">
-          <li>
-            <a href="../../index.html">Home</a>
-          </li>
-          <li>
-            <a href="../../docs.html">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/guzzle/guzzle">GitHub</a>
-          </li>
-          <li>
-            <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-          </li>
-          <li>
-            <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-          </li>
-        </ul>
-        <ul class="nav secondary-nav">
-          
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="../../index.html">Guzzle</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../../index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="../../docs.html">Docs</a>
+              </li>
+              <li class="">
+                <a href="https://github.com/guzzle/guzzle">GitHub</a>
+              </li>
+              <li class="">
+                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
+              </li>
+              <li>
+                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
+              </li>
+            </ul>
             
-<form class="pull-left" action="../../search.html" method="get">
-  <input type="text" name="q" placeholder="Search" />
+              
+<form class="navbar-search pull-right" action="../../search.html" method="get" placehold="Search">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
-          
-        </ul>
+            
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-<div class="container">
-   
-     
-       <div class="guzzle-sidebar">
+  
+    <div class="container">
+      
+        <div class="guzzle-sidebar">
   <div class="well">
       <h4>Table of contents</h4>
       <ul>
@@ -162,9 +159,9 @@
     <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
   </div>
 </div>
-     
-     <div class="content">
-       
+      
+      <div class="content">
+        
   <div class="section" id="caching">
 <h1>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h1>
 <p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt>.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior, cache lifetime, and supports automatic ETag and Last-Modified based revalidation.</p>
@@ -182,7 +179,7 @@
 <span class="nv">$response1</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
 
 <span class="c1">// The next request will revalidate against the origin server to see if it</span>
-<span class="c1">// has been modified.  If a 304 response is recieved the response will be</span>
+<span class="c1">// has been modified.  If a 304 response is received the response will be</span>
 <span class="c1">// served from cache</span>
 <span class="nv">$response2</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
@@ -268,13 +265,13 @@
 </div>
 
 
-       
-         
+        
+          
 <div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
   <a class="btn info" href="../batching.html" title="previous chapter">&laquo; Batching</a>
   <a class="btn info" href="../service/resource_iterators.html" title="next chapter">Resource iterators &raquo;</a>
 </div>
-         <div id="comments">
+          <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'guzzle';
@@ -288,10 +285,10 @@
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-       
-     </div>
-   
-</div>
+        
+      </div>
+    </div>
+  
 <footer class="footer">
   <div class="container">
     <p class="pull-right"><a href="#">Back to top</a></p>
