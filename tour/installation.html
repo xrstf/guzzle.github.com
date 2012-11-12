@@ -133,11 +133,10 @@
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#installing-guzzle">Installing Guzzle</a><ul>
 <li><a class="reference internal" href="#composer">Composer</a></li>
-<li><a class="reference internal" href="#github">Github</a></li>
 <li><a class="reference internal" href="#pear">PEAR</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#running-the-unit-tests">Running the unit tests</a></li>
+<li><a class="reference internal" href="#contributing-to-guzzle">Contributing to Guzzle</a></li>
 <li><a class="reference internal" href="#framework-integrations">Framework integrations</a><ul>
 <li><a class="reference internal" href="#using-guzzle-with-symfony">Using Guzzle with Symfony</a></li>
 <li><a class="reference internal" href="#using-guzzle-with-silex">Using Guzzle with Silex</a></li>
@@ -167,9 +166,6 @@
 <ol class="arabic simple">
 <li>PHP 5.3.2+ compiled with the cURL extension</li>
 <li>A recent version of cURL 7.16.2+ compiled with OpenSSL and zlib</li>
-<li><a class="reference external" href="http://www.phpunit.de/manual/3.6/en/installation.html">PHPUnit</a> is required to run the unit tests</li>
-<li><a class="reference external" href="http://nodejs.org">node.js</a> is required to run the unit tests</li>
-<li><a class="reference external" href="http://www.phing.info/trac/">Phing</a> is required to run the build scripts</li>
 </ol>
 </div>
 <div class="section" id="installing-guzzle">
@@ -177,9 +173,9 @@
 <div class="section" id="composer">
 <h3>Composer<a class="headerlink" href="#composer" title="Permalink to this headline">¶</a></h3>
 <p>Create composer.json file in the project root:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;require&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;guzzle/guzzle&quot;</span><span class="o">:</span> <span class="s2">&quot;3.0.*&quot;</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;require&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;guzzle/guzzle&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.*&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -189,32 +185,26 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="github">
-<h3>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h3>
-<p>Guzzle can be installed from source by cloning the Guzzle GitHub repository and installing the dependencies using composer:</p>
-<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/guzzle/guzzle.git
-<span class="nb">cd </span>guzzle
-curl -s http://getcomposer.org/installer | php <span class="o">&amp;&amp;</span> ./composer.phar install --dev
-</pre></div>
-</div>
-</div>
 <div class="section" id="pear">
 <h3>PEAR<a class="headerlink" href="#pear" title="Permalink to this headline">¶</a></h3>
-<p>Guzzle can be installed through PEAR</p>
-<div class="highlight-bash"><div class="highlight"><pre>pear channel-discover guzzlephp.org/pear
-pear install guzzle/guzzle
+<p>Guzzle can be installed through PEAR:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pear -D <span class="nv">auto_discover</span><span class="o">=</span>1 install guzzlephp.org/pear/guzzle
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="running-the-unit-tests">
-<h2>Running the unit tests<a class="headerlink" href="#running-the-unit-tests" title="Permalink to this headline">¶</a></h2>
-<p>Guzzle is unit tested with PHPUnit. You will need to create your own phpunit.xml file in order to run the unit tests. You can customize this file to suit your testing needs:</p>
-<div class="highlight-bash"><div class="highlight"><pre>cp phpunit.xml.dist phpunit.xml
-phpunit
+<div class="section" id="contributing-to-guzzle">
+<h2>Contributing to Guzzle<a class="headerlink" href="#contributing-to-guzzle" title="Permalink to this headline">¶</a></h2>
+<p>In order to contribute, you&#8217;ll need to checkout the source from GitHub and install Guzzle&#8217;s dependencies using Composer:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/guzzle/guzzle.git
+<span class="nb">cd </span>guzzle <span class="o">&amp;&amp;</span> curl -s http://getcomposer.org/installer | php <span class="o">&amp;&amp;</span> ./composer.phar install --dev
 </pre></div>
 </div>
-<p>You will need to install node.js v0.5.0 or newer in order to test the cURL implementation.</p>
+<p>Guzzle is unit tested with PHPUnit. You will need to create your own phpunit.xml file in order to run the unit tests (or just copy phpunit.xml.dist to phpunit.xml). Run the tests using the vendored PHPUnit binary:</p>
+<div class="highlight-bash"><div class="highlight"><pre>vendor/bin/phpunit
+</pre></div>
+</div>
+<p>You&#8217;ll need to install node.js v0.5.0 or newer in order to test the cURL implementation.</p>
 </div>
 <div class="section" id="framework-integrations">
 <h2>Framework integrations<a class="headerlink" href="#framework-integrations" title="Permalink to this headline">¶</a></h2>
