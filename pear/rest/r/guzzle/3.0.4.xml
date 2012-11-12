@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<r xmlns="http://pear.php.net/dtd/rest.release" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release http://pear.php.net/dtd/rest.release.xsd">
+    <p xlink:href="/rest/p/guzzle">Guzzle</p>
+    <c>guzzlephp.org/pear</c>
+    <v>3.0.4</v>
+    <st>stable</st>
+    <l>MIT</l>
+    <m>mtdowling</m>
+    <s>Object-oriented PHP HTTP Client for PHP 5.3+</s>
+    <d>Guzzle is a PHP HTTP client library and framework for building RESTful web service clients</d>
+    <da>2012-11-11 16:16:10</da>
+    <n>
+* Bug: Fixed a bug when adding multiple cookies to a request to use the correct glue value
+* Bug: Cookies can now be added that have a name, domain, or value set to &quot;0&quot;
+* Bug: Using the system cacert bundle when using the Phar
+* Added json and xml methods to Response to make it easier to parse JSON and XML response data into data structures
+* Enhanced cookie jar de-duplication
+* Added the ability to enable strict cookie jars that throw exceptions when invalid cookies are added
+* Added setStream to StreamInterface to actually make it possible to implement custom rewind behavior for entity bodies
+* Added the ability to create any sort of hash for a stream rather than just an MD5 hash
+ </n>
+    <f>267701</f>
+    <g>http://guzzlephp.org/pear/get/Guzzle-3.0.4</g>
+    <x xlink:href="package.3.0.4.xml"/>
+</r>

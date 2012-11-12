@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://guzzlephp.org/pear</id>
-    <updated>2012-11-04T12:56:02-08:00</updated>
+    <updated>2012-11-11T16:16:43-08:00</updated>
     <title>Guzzle PEAR channel Latest Releases</title>
     <link href="http://guzzlephp.org/pear/feed.xml" rel="self" />
     <author>
@@ -9,6 +9,26 @@
     </author>
 
     <entry>
+        <title>Guzzle 3.0.4 (stable)</title>
+        <link href="http://guzzlephp.org/pear/get/Guzzle-3.0.4.tgz" />
+        <id>http://guzzlephp.org/pear/get/Guzzle-3.0.4.tgz</id>
+        <author>
+            <name>mtdowling</name>
+        </author>
+        <updated>2012-11-11T16:16:10-08:00</updated>
+        <content>
+            
+* Bug: Fixed a bug when adding multiple cookies to a request to use the correct glue value
+* Bug: Cookies can now be added that have a name, domain, or value set to &quot;0&quot;
+* Bug: Using the system cacert bundle when using the Phar
+* Added json and xml methods to Response to make it easier to parse JSON and XML response data into data structures
+* Enhanced cookie jar de-duplication
+* Added the ability to enable strict cookie jars that throw exceptions when invalid cookies are added
+* Added setStream to StreamInterface to actually make it possible to implement custom rewind behavior for entity bodies
+* Added the ability to create any sort of hash for a stream rather than just an MD5 hash
+ 
+        </content>
+    </entry>    <entry>
         <title>Guzzle 3.0.3 (stable)</title>
         <link href="http://guzzlephp.org/pear/get/Guzzle-3.0.3.tgz" />
         <id>http://guzzlephp.org/pear/get/Guzzle-3.0.3.tgz</id>
