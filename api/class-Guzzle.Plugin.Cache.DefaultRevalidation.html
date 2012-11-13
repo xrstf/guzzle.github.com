@@ -245,7 +245,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span><code><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">Guzzle\Plugin\Cache\CacheKeyProviderInterface</a></code> <var>$cacheKey</var></span>, <span><code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">Guzzle\Plugin\Cache\CacheStorageInterface</a></code> <var>$cache</var></span> )</code>
+		<code>__construct( <span><code><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">Guzzle\Plugin\Cache\CacheKeyProviderInterface</a></code> <var>$cacheKey</var></span>, <span><code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">Guzzle\Plugin\Cache\CacheStorageInterface</a></code> <var>$cache</var></span>, <span><code><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">Guzzle\Plugin\Cache\CachePlugin</a></code> <var>$plugin</var></span> )</code>
 
 		<div class="description short">
 			
@@ -255,13 +255,18 @@
 			
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cacheKey</var></dt>
+					<dd><code><code><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">Guzzle\Plugin\Cache\CacheKeyProviderInterface</a></code></code><br>$cacheKey Cache key strategy</dd>
+					<dt><var>$cache</var></dt>
+					<dd><code><code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">Guzzle\Plugin\Cache\CacheStorageInterface</a></code></code><br>$storage Cache storage</dd>
+					<dt><var>$plugin</var></dt>
+					<dd><code><code><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">Guzzle\Plugin\Cache\CachePlugin</a></code></code><br>$plugin Cache plugin to remove from revalidation requests</dd>
+				</dl></div>
 
 
 
-				<h4>Var</h4>
-				<div class="list">
-						CacheKeyProviderInterface $cacheKey Cache key strategy<br />
-				</div>
 
 
 		</div>
@@ -554,6 +559,28 @@ support validation, so use this response.</p>
 				
 <p>Cache object storing cache data</p>
 
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="plugin" id="$plugin">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">Guzzle\Plugin\Cache\CachePlugin</a></code>
+		</code></td>
+
+		<td class="name">
+<var>$plugin</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$plugin" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
 
 			</div>
 		</div></td>

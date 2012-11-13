@@ -55,7 +55,7 @@ The following JSON service description implements this simple web service:
                     "id": {
                         "location": "uri",
                         "description": "User to retrieve by ID",
-                        "required": "true"
+                        "required": true
                     }
                 }
             },
@@ -68,7 +68,7 @@ The following JSON service description implements this simple web service:
                     "id": {
                         "location": "uri",
                         "description": "User to delete by ID",
-                        "required": "true"
+                        "required": true
                     }
                 }
             }
