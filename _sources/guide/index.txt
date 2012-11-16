@@ -11,6 +11,7 @@ Guides
     batching
     http/caching
     service/resource_iterators
+    contributing
     faq
 
 .. toctree::
