@@ -3,6 +3,11 @@
     <p>Guzzle</p>
     <c>guzzlephp.org/pear</c>
     <r>
+        <v>3.0.5</v>
+        <s>stable</s>
+        <m>5.3.2</m>
+    </r>
+    <r>
         <v>3.0.4</v>
         <s>stable</s>
         <m>5.3.2</m>
