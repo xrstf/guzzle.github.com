@@ -186,6 +186,8 @@ Operations are comprised of the following attributes:
 +------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Attribute        | Description                                                                                                           |
 +==================+=======================================================================================================================+
+| extends          | (string) Extend from another operation by name. The parent operation must be defined before the child.                |
++------------------+-----------------------------------------------------------------------------------------------------------------------+
 | httpMethod       | (string) HTTP method used with the operation (e.g. GET, POST, PUT, DELETE, PATCH, etc)                                |
 +------------------+-----------------------------------------------------------------------------------------------------------------------+
 | uri              | (string) URI of the operation. The uri attribute can contain URI templates. The variables of the URI template are     |

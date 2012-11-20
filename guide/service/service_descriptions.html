@@ -357,36 +357,39 @@ GET/DELETE /users/:id</pre>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>httpMethod</td>
+<tr class="row-even"><td>extends</td>
+<td>(string) Extend from another operation by name. The parent operation must be defined before the child.</td>
+</tr>
+<tr class="row-odd"><td>httpMethod</td>
 <td>(string) HTTP method used with the operation (e.g. GET, POST, PUT, DELETE, PATCH, etc)</td>
 </tr>
-<tr class="row-odd"><td>uri</td>
+<tr class="row-even"><td>uri</td>
 <td>(string) URI of the operation. The uri attribute can contain URI templates. The variables of the URI template are
 parameters of the operation with a location value of <tt class="docutils literal"><span class="pre">uri</span></tt></td>
 </tr>
-<tr class="row-even"><td>class</td>
+<tr class="row-odd"><td>class</td>
 <td>(string) Custom class to instantiate instead of the default <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\OperationCommand</span></tt></td>
 </tr>
-<tr class="row-odd"><td>responseClass</td>
+<tr class="row-even"><td>responseClass</td>
 <td>(string) This is what is returned from the method. Can be a primitive, PSR-0 compliant class name, or model name.</td>
 </tr>
-<tr class="row-even"><td>responseNotes</td>
+<tr class="row-odd"><td>responseNotes</td>
 <td>(string) Information about the response returned by the operation</td>
 </tr>
-<tr class="row-odd"><td>responseType</td>
+<tr class="row-even"><td>responseType</td>
 <td>(string) One of &#8216;primitive&#8217;, &#8216;class&#8217;, &#8216;model&#8217;, or &#8216;documentation&#8217;. If not specified, this value will be automatically
 inferred based on whether or not there is a model matching the name, if a matching PSR-0 compliant class name is
 found, or set to &#8216;primitive&#8217; by default.</td>
 </tr>
-<tr class="row-even"><td>deprecated</td>
+<tr class="row-odd"><td>deprecated</td>
 <td>(bool) Set to true if this is a deprecated operation</td>
 </tr>
-<tr class="row-odd"><td>errorResponses</td>
+<tr class="row-even"><td>errorResponses</td>
 <td>(array) Errors that could occur when executing the command. Array of hashes, each with a &#8216;code&#8217; (the HTTP response
 code), &#8216;phrase&#8217; (response reason phrase or description of the error), and &#8216;class&#8217; (a custom exception class that
 would be thrown if the error is encountered).</td>
 </tr>
-<tr class="row-even"><td>data</td>
+<tr class="row-odd"><td>data</td>
 <td>(array) Any extra data that might be used to help build or serialize the operation</td>
 </tr>
 </tbody>
