@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://guzzlephp.org/pear</id>
-    <updated>2012-12-09T21:44:07-08:00</updated>
+    <updated>2012-12-19T15:25:06-08:00</updated>
     <title>Guzzle PEAR channel Latest Releases</title>
     <link href="http://guzzlephp.org/pear/feed.xml" rel="self" />
     <author>
@@ -9,6 +9,22 @@
     </author>
 
     <entry>
+        <title>Guzzle 3.0.7 (stable)</title>
+        <link href="http://guzzlephp.org/pear/get/Guzzle-3.0.7.tgz" />
+        <id>http://guzzlephp.org/pear/get/Guzzle-3.0.7.tgz</id>
+        <author>
+            <name>mtdowling</name>
+        </author>
+        <updated>2012-12-19T15:24:37-08:00</updated>
+        <content>
+            
+* Fixing phar detection when forcing a cacert to system if null or true
+* Allowing filename to be passed to `Guzzle\Http\Message\Request::setResponseBody()`
+* Cleaning up `Guzzle\Common\Collection::inject` method
+* Adding a response_body location to service descriptions
+ 
+        </content>
+    </entry>    <entry>
         <title>Guzzle 3.0.6 (stable)</title>
         <link href="http://guzzlephp.org/pear/get/Guzzle-3.0.6.tgz" />
         <id>http://guzzlephp.org/pear/get/Guzzle-3.0.6.tgz</id>
