@@ -193,6 +193,8 @@ Operations are comprised of the following attributes:
 | uri              | (string) URI of the operation. The uri attribute can contain URI templates. The variables of the URI template are     |
 |                  | parameters of the operation with a location value of ``uri``                                                          |
 +------------------+-----------------------------------------------------------------------------------------------------------------------+
+| summary          | (string) Short summary of what the operation does                                                                     |
++------------------+-----------------------------------------------------------------------------------------------------------------------+
 | class            | (string) Custom class to instantiate instead of the default ``Guzzle\Service\Command\OperationCommand``               |
 +------------------+-----------------------------------------------------------------------------------------------------------------------+
 | responseClass    | (string) This is what is returned from the method. Can be a primitive, PSR-0 compliant class name, or model name.     |
@@ -319,7 +321,7 @@ Models are used in service descriptions to provide valuable output to an operati
 location
 ^^^^^^^^
 
-The location field of top-level parameters in a model tell response parsers how date is retrieved from a response.
+The location field of top-level parameters in a model tell response parsers how data is retrieved from a response.
 
 - ``statusCode``: Retrieves the status code of the response.
 - ``reasonPhrase``: Retrieves the reason phrase of the response.

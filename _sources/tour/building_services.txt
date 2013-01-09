@@ -59,6 +59,7 @@ Let's start get started on our client. First we will extend the ``Guzzle\Service
 
     use Guzzle\Common\Collection;
     use Guzzle\Service\Client;
+    use Guzzle\Service\Description\ServiceDescription;
 
     /**
      * My example web service client
@@ -89,7 +90,8 @@ Let's start get started on our client. First we will extend the ``Guzzle\Service
 
             $client = new self($config->get('base_url'), $config);
             // Attach a service description to the client
-            $client->setDescription(__DIR__ . '/client.php');
+            $description = ServiceDescription::factory(__DIR__ . '/client.php');
+            $client->setDescription($description);
 
             return $client;
         }

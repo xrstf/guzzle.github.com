@@ -167,7 +167,7 @@
 <p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt>.  The CachePlugin provides a private transparent proxy cache that caches HTTP responses.  The caching logic, based on <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior, cache lifetime, and supports automatic ETag and Last-Modified based revalidation.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\CachePlugin</span><span class="p">;</span>
 
 <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">());</span>
@@ -195,6 +195,7 @@
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;cache.override_ttl&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>If a response doesn&#8217;t specify any freshness policy, it will be kept in cache for 3600 seconds by default.</p>
 </div>
 <div class="section" id="custom-caching-decision">
 <h3>Custom caching decision<a class="headerlink" href="#custom-caching-decision" title="Permalink to this headline">¶</a></h3>
@@ -241,7 +242,7 @@
 <div class="section" id="doctrine">
 <h3>Doctrine<a class="headerlink" href="#doctrine" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\CachePlugin</span><span class="p">;</span>
 
 <span class="nv">$backend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">();</span>
@@ -252,7 +253,7 @@
 </div>
 <div class="section" id="zend-framework">
 <h3>Zend Framework<a class="headerlink" href="#zend-framework" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Cache\ZendCacheAdapter</span><span class="p">;</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Cache\ZendCacheAdapter</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Zend\Cache\Backend\TestBackend</span><span class="p">;</span>
 
 <span class="nv">$backend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TestBackend</span><span class="p">();</span>

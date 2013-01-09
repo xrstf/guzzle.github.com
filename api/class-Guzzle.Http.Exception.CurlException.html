@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Exception\CurlException | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1131337423"></script>
+	<script type="text/javascript" src="elementlist.js?3796415573"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -147,6 +147,7 @@
 				<li><a href="class-Guzzle.Http.Exception.ClientErrorResponseException.html">ClientErrorResponseException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.CouldNotRewindStreamException.html">CouldNotRewindStreamException</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Exception.CurlException.html">CurlException</a></li>
+				<li><a href="class-Guzzle.Http.Exception.MultiTransferException.html">MultiTransferException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.RequestException.html">RequestException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.ServerErrorResponseException.html">ServerErrorResponseException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.TooManyRedirectsException.html">TooManyRedirectsException</a></li>
@@ -392,7 +393,7 @@
 
 		<td class="attributes"><code>
 			 public 
-			string
+			string|null
 			
 			</code>
 		</td>
@@ -416,7 +417,7 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string</code><br />
+					<code>string|null</code><br />
 				</div>
 
 
@@ -429,7 +430,7 @@
 
 		<td class="attributes"><code>
 			 public 
-			integer
+			integer|null
 			
 			</code>
 		</td>
@@ -453,10 +454,93 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>integer</code><br />
+					<code>integer|null</code><br />
 				</div>
 
 
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCurlInfo" id="_getCurlInfo">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCurlInfo">#</a>
+		<code>getCurlInfo( )</code>
+
+		<div class="description short">
+			
+<p>Returns curl information about the transfer</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns curl information about the transfer</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCurlInfo" id="_setCurlInfo">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Exception.CurlException.html">Guzzle\Http\Exception\CurlException</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCurlInfo">#</a>
+		<code>setCurlInfo( <span>array <var>$info</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set curl transfer information</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set curl transfer information</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$info</var></dt>
+					<dd><code>array</code><br>$info Array of curl transfer information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Exception.CurlException.html">Guzzle\Http\Exception\CurlException</a></code></code><br />
+				</div>
+
+
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://php.net/manual/en/function.curl-getinfo.php">http://php.net/manual/en/function.curl-getinfo.php</a><br />
+				</div>
 
 
 		</div>

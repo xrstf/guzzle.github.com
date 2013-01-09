@@ -215,6 +215,7 @@ of a response. Keep each HTTP response in a separate file.</td>
 
 <span class="k">use</span> <span class="nx">Guzzle\Common\Collection</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Service\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Description\ServiceDescription</span><span class="p">;</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * My example web service client</span>
@@ -245,7 +246,8 @@ of a response. Keep each HTTP response in a separate file.</td>
 
         <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;base_url&#39;</span><span class="p">),</span> <span class="nv">$config</span><span class="p">);</span>
         <span class="c1">// Attach a service description to the client</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/client.php&#39;</span><span class="p">);</span>
+        <span class="nv">$description</span> <span class="o">=</span> <span class="nx">ServiceDescription</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/client.php&#39;</span><span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="nv">$description</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
     <span class="p">}</span>

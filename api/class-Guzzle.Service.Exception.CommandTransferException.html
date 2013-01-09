@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Guzzle\Service\Exception\ValidationException | Guzzle</title>
+	<title>Class Guzzle\Service\Exception\CommandTransferException | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
 	<script type="text/javascript" src="elementlist.js?3796415573"></script>
@@ -140,12 +140,12 @@
 			<h3>Exceptions</h3>
 			<ul>
 				<li><a href="class-Guzzle.Service.Exception.CommandException.html">CommandException</a></li>
-				<li><a href="class-Guzzle.Service.Exception.CommandTransferException.html">CommandTransferException</a></li>
+				<li class="active"><a href="class-Guzzle.Service.Exception.CommandTransferException.html">CommandTransferException</a></li>
 				<li><a href="class-Guzzle.Service.Exception.DescriptionBuilderException.html">DescriptionBuilderException</a></li>
 				<li><a href="class-Guzzle.Service.Exception.InconsistentClientTransferException.html">InconsistentClientTransferException</a></li>
 				<li><a href="class-Guzzle.Service.Exception.ServiceBuilderException.html">ServiceBuilderException</a></li>
 				<li><a href="class-Guzzle.Service.Exception.ServiceNotFoundException.html">ServiceNotFoundException</a></li>
-				<li class="active"><a href="class-Guzzle.Service.Exception.ValidationException.html">ValidationException</a></li>
+				<li><a href="class-Guzzle.Service.Exception.ValidationException.html">ValidationException</a></li>
 			</ul>
 
 
@@ -185,12 +185,12 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class ValidationException</h1>
+	<h1>Class CommandTransferException</h1>
 
 
 	<div class="description">
 	
-<p>Guzzle exception</p>
+<p>Exception thrown when transferring commands in parallel</p>
 
 	</div>
 
@@ -203,23 +203,27 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-RuntimeException.html"><span>RuntimeException</span></a>
+			<a href="class-Guzzle.Common.Exception.ExceptionCollection.html"><span>Guzzle\Common\Exception\ExceptionCollection</span></a>
 			
+			 implements 
+				<a href="class-Guzzle.Common.Exception.GuzzleException.html"><span>Guzzle\Common\Exception\GuzzleException</span></a>, 
+			
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
 			
 			
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-Guzzle.Common.Exception.RuntimeException.html"><span>Guzzle\Common\Exception\RuntimeException</span></a>
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html"><span>Guzzle\Http\Exception\MultiTransferException</span></a>
 			
-			 implements 
-				<a href="class-Guzzle.Common.Exception.GuzzleException.html"><span>Guzzle\Common\Exception\GuzzleException</span></a>
 			
 			
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Guzzle\Service\Exception\ValidationException</span></b>			
+<b><span>Guzzle\Service\Exception\CommandTransferException</span></b>			
 			
 			
 		</dd>
@@ -238,44 +242,48 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Service.html">Service</a>\<a href="namespace-Guzzle.Service.Exception.html">Exception</a><br />
 		
 
-		<b>Located at</b> Guzzle/Service/Exception/ValidationException.php<br />
+		<b>Located at</b> Guzzle/Service/Exception/CommandTransferException.php<br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="setErrors" id="_setErrors">
+	<tr data-order="fromMultiTransferException" id="_fromMultiTransferException">
 
 		<td class="attributes"><code>
-			 public 
-			
+			 public static
+			<code><a href="class-Guzzle.Service.Exception.CommandTransferException.html">Guzzle\Service\Exception\CommandTransferException</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setErrors">#</a>
-		<code>setErrors( <span>array <var>$errors</var></span> )</code>
+		<a class="anchor" href="#_fromMultiTransferException">#</a>
+		<code>fromMultiTransferException( <span><code><a href="class-Guzzle.Http.Exception.MultiTransferException.html">Guzzle\Http\Exception\MultiTransferException</a></code> <var>$e</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Set the validation error messages</p>
+<p>Creates a new CommandTransferException from a MultiTransferException</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Set the validation error messages</p>
+<p>Creates a new CommandTransferException from a MultiTransferException</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$errors</var></dt>
-					<dd><code>array</code><br>$errors Array of validation errors</dd>
+					<dt><var>$e</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Exception.MultiTransferException.html">Guzzle\Http\Exception\MultiTransferException</a></code></code><br>$e Exception to base a new exception on</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Exception.CommandTransferException.html">Guzzle\Service\Exception\CommandTransferException</a></code></code><br />
+				</div>
 
 
 
@@ -283,7 +291,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getErrors" id="_getErrors">
+	<tr data-order="getAllCommands" id="_getAllCommands">
 
 		<td class="attributes"><code>
 			 public 
@@ -293,18 +301,176 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getErrors">#</a>
-		<code>getErrors( )</code>
+		<a class="anchor" href="#_getAllCommands">#</a>
+		<code>getAllCommands( )</code>
 
 		<div class="description short">
 			
-<p>Get any validation errors</p>
+<p>Get all of the commands in the transfer</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get any validation errors</p>
+<p>Get all of the commands in the transfer</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addSuccessfulCommand" id="_addSuccessfulCommand">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Exception.CommandTransferException.html">Guzzle\Service\Exception\CommandTransferException</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addSuccessfulCommand">#</a>
+		<code>addSuccessfulCommand( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add to the array of successful commands</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add to the array of successful commands</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Successful command</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Exception.CommandTransferException.html">Guzzle\Service\Exception\CommandTransferException</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addFailedCommand" id="_addFailedCommand">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Exception.CommandTransferException.html">Guzzle\Service\Exception\CommandTransferException</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addFailedCommand">#</a>
+		<code>addFailedCommand( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add to the array of failed commands</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add to the array of failed commands</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Failed command</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Exception.CommandTransferException.html">Guzzle\Service\Exception\CommandTransferException</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSuccessfulCommands" id="_getSuccessfulCommands">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSuccessfulCommands">#</a>
+		<code>getSuccessfulCommands( )</code>
+
+		<div class="description short">
+			
+<p>Get an array of successful commands</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get an array of successful commands</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getFailedCommands" id="_getFailedCommands">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFailedCommands">#</a>
+		<code>getFailedCommands( )</code>
+
+		<div class="description short">
+			
+<p>Get an array of failed commands</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get an array of failed commands</p>
 
 
 
@@ -322,6 +488,32 @@
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Http.Exception.MultiTransferException.html#methods">Guzzle\Http\Exception\MultiTransferException</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#_addFailedRequest">addFailedRequest()</a>, 
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#_addSuccessfulRequest">addSuccessfulRequest()</a>, 
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#_getAllRequests">getAllRequests()</a>, 
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#_getFailedRequests">getFailedRequests()</a>, 
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#_getSuccessfulRequests">getSuccessfulRequests()</a>, 
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#_setFailedRequests">setFailedRequests()</a>, 
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#_setSuccessfulRequests">setSuccessfulRequests()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Common.Exception.ExceptionCollection.html#methods">Guzzle\Common\Exception\ExceptionCollection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.Exception.ExceptionCollection.html#_add">add()</a>, 
+			<a href="class-Guzzle.Common.Exception.ExceptionCollection.html#_count">count()</a>, 
+			<a href="class-Guzzle.Common.Exception.ExceptionCollection.html#_getFirst">getFirst()</a>, 
+			<a href="class-Guzzle.Common.Exception.ExceptionCollection.html#_getIterator">getIterator()</a>, 
+			<a href="class-Guzzle.Common.Exception.ExceptionCollection.html#_setExceptions">setExceptions()</a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Exception.html#methods">Exception</a></caption>
 	<tr>
@@ -351,17 +543,39 @@
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="errors" id="$errors">
+	<tr data-order="successfulCommands" id="$successfulCommands">
 		<td class="attributes"><code>
 			protected  
 			array
 		</code></td>
 
 		<td class="name">
-<var>$errors</var>		</td>
+<var>$successfulCommands</var>		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
-			<a href="#$errors" class="anchor">#</a>
+			<a href="#$successfulCommands" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="failedCommands" id="$failedCommands">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+<var>$failedCommands</var>		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$failedCommands" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -375,6 +589,23 @@
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Guzzle.Http.Exception.MultiTransferException.html#properties">Guzzle\Http\Exception\MultiTransferException</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#$failedRequests"><var>$failedRequests</var></a>, 
+			<a href="class-Guzzle.Http.Exception.MultiTransferException.html#$successfulRequests"><var>$successfulRequests</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Guzzle.Common.Exception.ExceptionCollection.html#properties">Guzzle\Common\Exception\ExceptionCollection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.Exception.ExceptionCollection.html#$exceptions"><var>$exceptions</var></a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-Exception.html#properties">Exception</a></caption>
 	<tr>
