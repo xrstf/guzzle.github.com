@@ -187,7 +187,7 @@ You can easily parse and use a JSON response as an array using the ``json()`` me
     $data = $response->json();
     echo gettype($data);
     // >>> array
-    
+
 XML Responses
 ^^^^^^^^^^^^^
 
@@ -241,22 +241,24 @@ By default, Guzzle will automatically follow redirects using the non-RFC complia
     $request->getParams()->set('redirect.strict', true);
     // Set globally on a client so that all requests use strict redirects
     $client->getConfig()->set('request.params', array('redirect.strict' => true));
-    
+
 By default, Guzzle will redirect up to 5 times before throwing a ``Guzzle\Http\Exception\TooManyRedirectsException``. You can raise or lower this value using the ``redirect.max`` parameter of a request object::
 
     $request->getParams()->set('redirect.max', 2);
-    
+
 You can get the full chain of request/response objects that were sent to complete an HTTP transaction using the ``getPreviousResponse()`` method of a response object.::
 
-    while ($response->getPreviousResponse()) {
-        echo $response . "\n\n";
+    $response = $request->send();
+
+    do {
+        echo "{$response}\n\n";
         $response = $response->getPreviousResponse();
-    }
+    } while ($response);
 
 You can disable redirects on a client by passing a configuration option in the client's constructor::
 
     $client = new Client(null, array('redirect.disable' => true));
-    
+
 You can also disable redirects per request::
 
     $request->getParams()->set('redirect.disable', true);

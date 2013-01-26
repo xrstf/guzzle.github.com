@@ -7,7 +7,7 @@
 	<title>Tree | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3796415573"></script>
+	<script type="text/javascript" src="elementlist.js?3807927395"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -172,6 +172,7 @@
 				<li><a href="class-Guzzle.Http.Curl.CurlVersion.html">Guzzle\Http\Curl\CurlVersion</a></li>
 				<li><a href="class-Guzzle.Http.Curl.RequestMediator.html">Guzzle\Http\Curl\RequestMediator</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">Guzzle\Http\IoEmittingEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">Guzzle\Http\Message\AbstractMessage</a></li>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></li>
 				<li><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></li>
@@ -222,7 +223,6 @@
 				<li><a href="class-Guzzle.Plugin.Backoff.LinearBackoffStrategy.html">Guzzle\Plugin\Backoff\LinearBackoffStrategy</a></li>
 				<li><a href="class-Guzzle.Plugin.Backoff.ReasonPhraseBackoffStrategy.html">Guzzle\Plugin\Backoff\ReasonPhraseBackoffStrategy</a></li>
 				<li><a href="class-Guzzle.Plugin.Backoff.TruncatedBackoffStrategy.html">Guzzle\Plugin\Backoff\TruncatedBackoffStrategy</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.AbstractCallbackStrategy.html">Guzzle\Plugin\Cache\AbstractCallbackStrategy</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">Guzzle\Plugin\Cache\CachePlugin</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html">Guzzle\Plugin\Cache\CallbackCacheKeyProvider</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html">Guzzle\Plugin\Cache\CallbackCanCacheStrategy</a></li>
@@ -273,7 +273,7 @@
 				<li><a href="class-Guzzle.Service.Command.LocationVisitor.Response.ReasonPhraseVisitor.html">Guzzle\Service\Command\LocationVisitor\Response\ReasonPhraseVisitor</a></li>
 				<li><a href="class-Guzzle.Service.Command.LocationVisitor.Response.StatusCodeVisitor.html">Guzzle\Service\Command\LocationVisitor\Response\StatusCodeVisitor</a></li>
 				<li><a href="class-Guzzle.Service.Command.LocationVisitor.Response.XmlVisitor.html">Guzzle\Service\Command\LocationVisitor\Response\XmlVisitor</a></li>
-				<li><a href="class-Guzzle.Service.Command.NoTranslationOperationResponseParser.html">Guzzle\Service\Command\NoTranslationOperationResponseParser</a></li>
+				<li><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html">Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</a></li>
 				<li><a href="class-Guzzle.Service.Command.OperationCommand.html">Guzzle\Service\Command\OperationCommand</a></li>
 				<li><a href="class-Guzzle.Service.Command.OperationResponseParser.html">Guzzle\Service\Command\OperationResponseParser</a></li>
 				<li><a href="class-Guzzle.Service.Description.Operation.html">Guzzle\Service\Description\Operation</a></li>
@@ -283,6 +283,7 @@
 				<li><a href="class-Guzzle.Service.Description.ServiceDescription.html">Guzzle\Service\Description\ServiceDescription</a></li>
 				<li><a href="class-Guzzle.Service.Description.ServiceDescriptionLoader.html">Guzzle\Service\Description\ServiceDescriptionLoader</a></li>
 				<li><a href="class-Guzzle.Service.Resource.AbstractResourceIteratorFactory.html">Guzzle\Service\Resource\AbstractResourceIteratorFactory</a></li>
+				<li><a href="class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html">Guzzle\Service\Resource\CompositeResourceIteratorFactory</a></li>
 				<li><a href="class-Guzzle.Service.Resource.MapResourceIteratorFactory.html">Guzzle\Service\Resource\MapResourceIteratorFactory</a></li>
 				<li><a href="class-Guzzle.Service.Resource.Model.html">Guzzle\Service\Resource\Model</a></li>
 				<li><a href="class-Guzzle.Service.Resource.ResourceIterator.html">Guzzle\Service\Resource\ResourceIterator</a></li>
@@ -777,6 +778,15 @@
 
 				<ul>
 
+			<li><div class="notlast"><a href="class-Guzzle.Http.IoEmittingEntityBody.html"><span>Guzzle\Http\IoEmittingEntityBody</span></a>
+			 implements 
+				<a href="class-Guzzle.Common.HasDispatcherInterface.html"><span>Guzzle\Common\HasDispatcherInterface</span></a>
+			
+			
+			</div>
+
+				</li>
+
 			<li class="last"><div class="last"><a href="class-Guzzle.Http.ReadLimitEntityBody.html"><span>Guzzle\Http\ReadLimitEntityBody</span></a>
 			
 			
@@ -1143,34 +1153,18 @@
 
 				</li>
 
-			<li><div class="notlast"><a href="class-Guzzle.Plugin.Cache.AbstractCallbackStrategy.html"><span>Guzzle\Plugin\Cache\AbstractCallbackStrategy</span></a>
-			
-			
-			</div>
-
-				<ul>
-
-			<li><div class="notlast"><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html"><span>Guzzle\Plugin\Cache\CallbackCacheKeyProvider</span></a>
+			<li><div class="notlast"><a href="class-Guzzle.Plugin.Cache.CachePlugin.html"><span>Guzzle\Plugin\Cache\CachePlugin</span></a>
 			 implements 
-				<a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html"><span>Guzzle\Plugin\Cache\CacheKeyProviderInterface</span></a>
+<span>Symfony\Component\EventDispatcher\EventSubscriberInterface</span>
 			
 			
 			</div>
 
 				</li>
 
-			<li class="last"><div class="last"><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html"><span>Guzzle\Plugin\Cache\CallbackCanCacheStrategy</span></a>
+			<li><div class="notlast"><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html"><span>Guzzle\Plugin\Cache\CallbackCacheKeyProvider</span></a>
 			 implements 
-				<a href="class-Guzzle.Plugin.Cache.CanCacheStrategyInterface.html"><span>Guzzle\Plugin\Cache\CanCacheStrategyInterface</span></a>
-			
-			
-			</div>
-
-				</ul></li>
-
-			<li><div class="notlast"><a href="class-Guzzle.Plugin.Cache.CachePlugin.html"><span>Guzzle\Plugin\Cache\CachePlugin</span></a>
-			 implements 
-<span>Symfony\Component\EventDispatcher\EventSubscriberInterface</span>
+				<a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html"><span>Guzzle\Plugin\Cache\CacheKeyProviderInterface</span></a>
 			
 			
 			</div>
@@ -1202,7 +1196,14 @@
 			
 			</div>
 
-				</li>
+				<ul>
+
+			<li class="last"><div class="last"><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html"><span>Guzzle\Plugin\Cache\CallbackCanCacheStrategy</span></a>
+			
+			
+			</div>
+
+				</ul></li>
 
 			<li><div class="notlast"><a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html"><span>Guzzle\Plugin\Cache\DefaultRevalidation</span></a>
 			 implements 
@@ -1380,14 +1381,7 @@
 			
 			</div>
 
-				<ul>
-
-			<li class="last"><div class="last"><a href="class-Guzzle.Service.Command.NoTranslationOperationResponseParser.html"><span>Guzzle\Service\Command\NoTranslationOperationResponseParser</span></a>
-			
-			
-			</div>
-
-				</ul></li></ul></li>
+				</ul></li>
 
 			<li><div class="notlast"><a href="class-Guzzle.Service.Command.Factory.AliasFactory.html"><span>Guzzle\Service\Command\Factory\AliasFactory</span></a>
 			 implements 
@@ -1554,6 +1548,13 @@
 
 				</ul></li>
 
+			<li><div class="notlast"><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html"><span>Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</span></a>
+			
+			
+			</div>
+
+				</li>
+
 			<li><div class="notlast"><a href="class-Guzzle.Service.Description.Operation.html"><span>Guzzle\Service\Description\Operation</span></a>
 			 implements 
 				<a href="class-Guzzle.Service.Description.OperationInterface.html"><span>Guzzle\Service\Description\OperationInterface</span></a>
@@ -1617,6 +1618,15 @@
 			</div>
 
 				</ul></li>
+
+			<li><div class="notlast"><a href="class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html"><span>Guzzle\Service\Resource\CompositeResourceIteratorFactory</span></a>
+			 implements 
+				<a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html"><span>Guzzle\Service\Resource\ResourceIteratorFactoryInterface</span></a>
+			
+			
+			</div>
+
+				</li>
 
 			<li><div class="notlast"><a href="class-Guzzle.Stream.Stream.html"><span>Guzzle\Stream\Stream</span></a>
 			 implements 
@@ -2320,7 +2330,7 @@
 
 				<ul>
 
-			<li class="last"><div class="last"><a href="class-Guzzle.Http.Exception.BadResponseException.html"><span>Guzzle\Http\Exception\BadResponseException</span></a>
+			<li><div class="notlast"><a href="class-Guzzle.Http.Exception.BadResponseException.html"><span>Guzzle\Http\Exception\BadResponseException</span></a>
 			
 			
 			</div>
@@ -2328,13 +2338,6 @@
 				<ul>
 
 			<li><div class="notlast"><a href="class-Guzzle.Http.Exception.ClientErrorResponseException.html"><span>Guzzle\Http\Exception\ClientErrorResponseException</span></a>
-			
-			
-			</div>
-
-				</li>
-
-			<li><div class="notlast"><a href="class-Guzzle.Http.Exception.CurlException.html"><span>Guzzle\Http\Exception\CurlException</span></a>
 			
 			
 			</div>
@@ -2353,7 +2356,14 @@
 			
 			</div>
 
-				</ul></li></ul></li>
+				</ul></li>
+
+			<li class="last"><div class="last"><a href="class-Guzzle.Http.Exception.CurlException.html"><span>Guzzle\Http\Exception\CurlException</span></a>
+			
+			
+			</div>
+
+				</ul></li>
 
 			<li><div class="notlast"><a href="class-Guzzle.Service.Exception.CommandException.html"><span>Guzzle\Service\Exception\CommandException</span></a>
 			

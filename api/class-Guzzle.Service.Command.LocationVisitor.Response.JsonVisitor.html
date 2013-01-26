@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Service\Command\LocationVisitor\Response\JsonVisitor | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3796415573"></script>
+	<script type="text/javascript" src="elementlist.js?3807927395"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -242,6 +242,53 @@ example converting timestamps to DateTime objects).</p>
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="before" id="_before">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_before">#</a>
+		<code>before( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span>, <span>array <var>&amp; $result</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Called before visiting all parameters. This can be used for seeding the
+result of a command with default data (e.g. populating with JSON data in the
+response then adding to the parsed data).</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Called before visiting all parameters. This can be used for seeding the
+result of a command with default data (e.g. populating with JSON data in the
+response then adding to the parsed data).</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Command being visited</dd>
+					<dt><var>$result</var></dt>
+					<dd><code>array</code><br>$result Result value to update if needed (e.g. parsing XML or JSON into an
+array)</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Command.LocationVisitor.Response.AbstractResponseVisitor.html#_before">Guzzle\Service\Command\LocationVisitor\Response\AbstractResponseVisitor::before()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="visit" id="_visit">
 
 		<td class="attributes"><code>

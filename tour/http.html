@@ -445,10 +445,12 @@
 </pre></div>
 </div>
 <p>You can get the full chain of request/response objects that were sent to complete an HTTP transaction using the <tt class="docutils literal"><span class="pre">getPreviousResponse()</span></tt> method of a response object.:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getPreviousResponse</span><span class="p">())</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="nv">$response</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$response</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">;</span>
     <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getPreviousResponse</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>You can disable redirects on a client by passing a configuration option in the client&#8217;s constructor:</p>

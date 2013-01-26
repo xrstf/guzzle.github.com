@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Common\Collection | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3796415573"></script>
+	<script type="text/javascript" src="elementlist.js?3807927395"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -1263,6 +1263,104 @@ Collection</dd>
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPath" id="_getPath">
+
+		<td class="attributes"><code>
+			 public 
+			mixed|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPath">#</a>
+		<code>getPath( <span>string <var>$path</var></span>, <span>string <var>$separator</var> = <span class="php-quote">'/'</span></span>, <span>mixed <var>$data</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Gets a value from the collection using an array path (e.g. foo/baz/bar would
+retrieve bar from two nested arrays) Allows for wildcard searches which
+recursively combine matches up to the level at which the wildcard occurs. This
+can be useful for accepting any key of a sub-array and combining matching keys
+from each diverging path.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Gets a value from the collection using an array path (e.g. foo/baz/bar would
+retrieve bar from two nested arrays) Allows for wildcard searches which
+recursively combine matches up to the level at which the wildcard occurs. This
+can be useful for accepting any key of a sub-array and combining matching keys
+from each diverging path.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd><code>string</code><br>$path Path to traverse and retrieve a value from</dd>
+					<dt><var>$separator</var></dt>
+					<dd><code>string</code><br>$separator Character used to add depth to the search</dd>
+					<dt><var>$data</var></dt>
+					<dd><code>mixed</code><br>$data Optional data to descend into (used when wildcards are encountered)</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="overwriteWith" id="_overwriteWith">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_overwriteWith">#</a>
+		<code>overwriteWith( <span>array|<code><a href="class-Traversable.html">Traversable</a></code> <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Over write key value pairs in this collection with all of the data from an
+array or collection.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Over write key value pairs in this collection with all of the data from an
+array or collection.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><code>array|<code><a href="class-Traversable.html">Traversable</a></code></code><br>$data Values to override over this config</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
 				</div>
 
 

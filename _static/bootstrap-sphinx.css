@@ -205,3 +205,12 @@ h1 {
     margin: 0 0 12px 0;
     border-bottom: 1px solid #eee;
 }
+
+.center-announcement {
+    text-align: center;
+    font-size: 23px;
+    display: block;
+    padding: 12px;
+    margin: 12px 0 32px 0;
+    background-color: rgb(242, 245, 250);
+}

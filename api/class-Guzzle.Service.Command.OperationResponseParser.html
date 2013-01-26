@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Service\Command\OperationResponseParser | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3796415573"></script>
+	<script type="text/javascript" src="elementlist.js?3807927395"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -140,7 +140,6 @@
 				<li><a href="class-Guzzle.Service.Command.ClosureCommand.html">ClosureCommand</a></li>
 				<li><a href="class-Guzzle.Service.Command.DefaultRequestSerializer.html">DefaultRequestSerializer</a></li>
 				<li><a href="class-Guzzle.Service.Command.DefaultResponseParser.html">DefaultResponseParser</a></li>
-				<li><a href="class-Guzzle.Service.Command.NoTranslationOperationResponseParser.html">NoTranslationOperationResponseParser</a></li>
 				<li><a href="class-Guzzle.Service.Command.OperationCommand.html">OperationCommand</a></li>
 				<li class="active"><a href="class-Guzzle.Service.Command.OperationResponseParser.html">OperationResponseParser</a></li>
 			</ul>
@@ -219,10 +218,6 @@ based on models in a service description</p>
 	</dl>
 
 
-	<div>
-		<h4>Direct known subclasses</h4>
-			<a href="class-Guzzle.Service.Command.NoTranslationOperationResponseParser.html">Guzzle\Service\Command\NoTranslationOperationResponseParser</a>
-	</div>
 
 
 
@@ -257,13 +252,15 @@ based on models in a service description</p>
 
 		<div class="description short">
 			
-<p>Get a default instance that includes that default location visitors</p>
+<p>Get a cached default instance of the Operation response parser that uses
+default visitors</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get a default instance that includes that default location visitors</p>
+<p>Get a cached default instance of the Operation response parser that uses
+default visitors</p>
 
 
 
@@ -295,7 +292,7 @@ based on models in a service description</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span>array <var>$visitors</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code>__construct( <span><code><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html">Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</a></code> <var>$factory</var></span> )</code>
 
 		<div class="description short">
 			
@@ -307,8 +304,8 @@ based on models in a service description</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$visitors</var></dt>
-					<dd><code>array</code><br>$visitors Visitors to attach</dd>
+					<dt><var>$factory</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html">Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</a></code></code><br>$factory Factory to use when creating visitors</dd>
 				</dl></div>
 
 
@@ -362,18 +359,18 @@ based on models in a service description</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="parseForContentType" id="_parseForContentType">
+	<tr data-order="handleParsing" id="_handleParsing">
 
 		<td class="attributes"><code>
-			 public 
+			 protected 
 			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_parseForContentType">#</a>
-		<code>parseForContentType( <span><code><a href="class-Guzzle.Service.Command.AbstractCommand.html">Guzzle\Service\Command\AbstractCommand</a></code> <var>$command</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>mixed <var>$contentType</var></span> )</code>
+		<a class="anchor" href="#_handleParsing">#</a>
+		<code>handleParsing( <span><code><a href="class-Guzzle.Service.Command.AbstractCommand.html">Guzzle\Service\Command\AbstractCommand</a></code> <var>$command</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>mixed <var>$contentType</var></span> )</code>
 
 		<div class="description short">
 			
@@ -388,7 +385,7 @@ based on models in a service description</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Guzzle.Service.Command.DefaultResponseParser.html#_parseForContentType">Guzzle\Service\Command\DefaultResponseParser::parseForContentType()</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Service.Command.DefaultResponseParser.html#_handleParsing">Guzzle\Service\Command\DefaultResponseParser::handleParsing()</a></code></div>
 
 		</div>
 		</div></td>
@@ -397,14 +394,14 @@ based on models in a service description</p>
 
 		<td class="attributes"><code>
 			 protected 
-			
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_visitResult">#</a>
-		<code>visitResult( <span><code><a href="class-Guzzle.Service.Description.Parameter.html">Guzzle\Service\Description\Parameter</a></code> <var>$model</var></span>, <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>array <var>&amp; $result</var></span>, <span>mixed <var>$context</var> = <span class="php-keyword1">null</span> </span> )</code>
+		<code>visitResult( <span><code><a href="class-Guzzle.Service.Description.Parameter.html">Guzzle\Service\Description\Parameter</a></code> <var>$model</var></span>, <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -426,12 +423,12 @@ based on models in a service description</p>
 					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Command that performed the operation</dd>
 					<dt><var>$response</var></dt>
 					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response received</dd>
-					<dt><var>$result</var></dt>
-					<dd><code>array</code><br>$result Result array</dd>
-					<dt><var>$context</var></dt>
-					<dd><code>mixed</code><br>$context Parsing context</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Returns the array of result data<br />
+				</div>
 
 
 
@@ -462,27 +459,27 @@ based on models in a service description</p>
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="visitors" id="$visitors">
+	<tr data-order="factory" id="$factory">
 		<td class="attributes"><code>
 			protected  
-			array
+			<code><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html">Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</a></code>
 		</code></td>
 
 		<td class="name">
-<var>$visitors</var>		</td>
-		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+<var>$factory</var>		</td>
+		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$visitors" class="anchor">#</a>
+			<a href="#$factory" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>Location visitors attached to the command</p>
+<p>$factory Visitor factory</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Location visitors attached to the command</p>
+<p>$factory Visitor factory</p>
 
 
 			</div>
@@ -491,7 +488,7 @@ based on models in a service description</p>
 	<tr data-order="instance" id="$instance">
 		<td class="attributes"><code>
 			protected static 
-			array
+			<code><a href="class-Guzzle.Service.Command.OperationResponseParser.html">Guzzle\Service\Command\OperationResponseParser</a></code>
 		</code></td>
 
 		<td class="name">
@@ -502,14 +499,10 @@ based on models in a service description</p>
 
 			<div class="description short">
 				
-<p>Cached instance with default visitors</p>
-
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Cached instance with default visitors</p>
-
 
 			</div>
 		</div></td>
