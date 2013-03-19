@@ -159,11 +159,19 @@
         
   <div class="section" id="creating-plugins-and-observers">
 <h1>Creating Plugins and Observers<a class="headerlink" href="#creating-plugins-and-observers" title="Permalink to this headline">¶</a></h1>
-<p>Guzzle is extremely extendable because of the behavioral modifications that can be added to requests, clients, and commands using an event system.  Before and after the majority of actions are taken in the library, an event is emitted with the name of the event and context surrounding the event.  Observers can subscribe to a subject and modify the subject based on the events received.  Guzzle&#8217;s event system utilizes the Symfony2 EventDispatcher and is the backbone of it&#8217;s plugin architecture.</p>
+<p>Guzzle is extremely extendable because of the behavioral modifications that can be added to requests, clients, and
+commands using an event system. Before and after the majority of actions are taken in the library, an event is emitted
+with the name of the event and context surrounding the event. Observers can subscribe to a subject and modify the
+subject based on the events received. Guzzle&#8217;s event system utilizes the Symfony2 EventDispatcher and is the backbone
+of it&#8217;s plugin architecture.</p>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Plugins must implement the <tt class="docutils literal"><span class="pre">Symfony\Component\EventDispatcher\EventSubscriberInterface</span></tt> interface.  The EventSubscriberInterface requires that your class implements a static method, <tt class="docutils literal"><span class="pre">getSubscribedEvents()</span></tt>, that returns an associative array mapping events to methods on the object.  See the <a class="reference external" href="http://symfony.com/doc/2.0/book/internals.html#the-event-dispatcher">Symfony2 documentation</a> for more information.</p>
-<p>Plugins can be attached to any subject, or object in Guzzle that implements that <tt class="docutils literal"><span class="pre">Guzzle\Common\HasDispatcherInterface</span></tt>.</p>
+<p>Plugins must implement the <tt class="docutils literal"><span class="pre">Symfony\Component\EventDispatcher\EventSubscriberInterface</span></tt> interface. The
+<tt class="docutils literal"><span class="pre">EventSubscriberInterface</span></tt> requires that your class implements a static method, <tt class="docutils literal"><span class="pre">getSubscribedEvents()</span></tt>, that
+returns an associative array mapping events to methods on the object. See the
+<a class="reference external" href="http://symfony.com/doc/2.0/book/internals.html#the-event-dispatcher">Symfony2 documentation</a> for more information.</p>
+<p>Plugins can be attached to any subject, or object in Guzzle that implements that
+<tt class="docutils literal"><span class="pre">Guzzle\Common\HasDispatcherInterface</span></tt>.</p>
 <div class="section" id="subscribing-to-a-subject">
 <h3>Subscribing to a subject<a class="headerlink" href="#subscribing-to-a-subject" title="Permalink to this headline">¶</a></h3>
 <p>You can subscribe an instantiated observer to an event by calling <tt class="docutils literal"><span class="pre">addSubscriber</span></tt> on a subject.</p>
@@ -178,11 +186,14 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">Guzzle\Common\Event</span></tt> objects are passed to notified functions.  The Event object has a <tt class="docutils literal"><span class="pre">getName()</span></tt> method which return the name of the emitted event and may contain contextual information that can be accessed like an array.</p>
+<p><tt class="docutils literal"><span class="pre">Guzzle\Common\Event</span></tt> objects are passed to notified functions.  The Event object has a <tt class="docutils literal"><span class="pre">getName()</span></tt> method which
+return the name of the emitted event and may contain contextual information that can be accessed like an array.</p>
 </div>
 <div class="section" id="knowing-what-events-to-listen-to">
 <h3>Knowing what events to listen to<a class="headerlink" href="#knowing-what-events-to-listen-to" title="Permalink to this headline">¶</a></h3>
-<p>Any class that implements the <tt class="docutils literal"><span class="pre">Guzzle\Common\HasDispatcherInterface</span></tt> must implement a static method, <tt class="docutils literal"><span class="pre">getAllEvents()</span></tt>, that returns an array of the events that are emitted from the object.  You can browse the source to see each event, or you can call the static method directly in your code to get a list of available events.</p>
+<p>Any class that implements the <tt class="docutils literal"><span class="pre">Guzzle\Common\HasDispatcherInterface</span></tt> must implement a static method,
+<tt class="docutils literal"><span class="pre">getAllEvents()</span></tt>, that returns an array of the events that are emitted from the object.  You can browse the source
+to see each event, or you can call the static method directly in your code to get a list of available events.</p>
 </div>
 </div>
 <div class="section" id="event-hooks">
@@ -281,7 +292,7 @@ received.</td>
 </tr>
 <tr class="row-odd"><td>curl.callback.progress</td>
 <td>cURL progress event (only
-dispatched when curl.emit_io is
+dispatched when emit_io is
 set on a request&#8217;s curl options</td>
 <td><ul class="first last simple">
 <li>request: Request</li>
@@ -399,7 +410,8 @@ exception</li>
 <h2>Examples of the event system<a class="headerlink" href="#examples-of-the-event-system" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="simple-echo-plugin">
 <h3>Simple Echo plugin<a class="headerlink" href="#simple-echo-plugin" title="Permalink to this headline">¶</a></h3>
-<p>This simple plugin echos a string containing the request that is about to be sent by listening to the <tt class="docutils literal"><span class="pre">request.before_send</span></tt> event:</p>
+<p>This simple plugin echos a string containing the request that is about to be sent by listening to the
+<tt class="docutils literal"><span class="pre">request.before_send</span></tt> event:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">class</span> <span class="nc">EchoPlugin</span> <span class="k">implements</span> <span class="nx">Symfony\Component\EventDispatcher\EventSubscriberInterface</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getSubscribedEvents</span><span class="p">()</span>

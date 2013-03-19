@@ -163,10 +163,15 @@
         
   <div class="section" id="service-descriptions">
 <h1>Service Descriptions<a class="headerlink" href="#service-descriptions" title="Permalink to this headline">¶</a></h1>
-<p>Guzzle allows you to create commands for your web service client based on a document called a service description. As seen in <a class="reference internal" href="../../tour/building_services.html"><em>Building Web Service Clients</em></a>, Guzzle web service clients execute commands on a web service. Service descriptions make it easy to define a web service that can be consumed directly by a Guzzle client or used to produce documentation. Service description based clients are encouraged over creating concrete commands for every web service operation.</p>
+<p>Guzzle allows you to create commands for your web service client based on a document called a service description. As
+seen in <a class="reference internal" href="../../tour/building_services.html"><em>Building Web Service Clients</em></a>, Guzzle web service clients execute commands on
+a web service. Service descriptions make it easy to define a web service that can be consumed directly by a Guzzle
+client or used to produce documentation. Service description based clients are encouraged over creating concrete
+commands for every web service operation.</p>
 <div class="section" id="creating-a-service-description">
 <h2>Creating a service description<a class="headerlink" href="#creating-a-service-description" title="Permalink to this headline">¶</a></h2>
-<p>Service descriptions can be representing using a PHP array or JSON document. Guzzle&#8217;s service descriptions are heavily inspired by <a class="reference external" href="http://swagger.wordnik.com/">Swagger</a>.</p>
+<p>Service descriptions can be representing using a PHP array or JSON document. Guzzle&#8217;s service descriptions are heavily
+inspired by <a class="reference external" href="http://swagger.wordnik.com/">Swagger</a>.</p>
 <p>Let&#8217;s say you&#8217;re interacting with a web service called &#8216;Foo&#8217; that allows for the following routes and methods:</p>
 <div class="highlight-python"><pre>GET/POST   /users
 GET/DELETE /users/:id</pre>
@@ -284,7 +289,8 @@ GET/DELETE /users/:id</pre>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you attach this service description to a client, you would completely configure the client to interact with the Foo web service and provide valuable response models for each operation.</p>
+<p>If you attach this service description to a client, you would completely configure the client to interact with the
+Foo web service and provide valuable response models for each operation.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Description\ServiceDescription</span><span class="p">;</span>
 
 <span class="nv">$description</span> <span class="o">=</span> <span class="nx">ServiceDescription</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;/path/to/client.json&#39;</span><span class="p">);</span>
@@ -339,12 +345,18 @@ GET/DELETE /users/:id</pre>
 </table>
 <div class="section" id="baseurl">
 <h3>baseUrl<a class="headerlink" href="#baseurl" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">baseUrl</span></tt> attribute, aliased also as <tt class="docutils literal"><span class="pre">basePath</span></tt>, can be used to add a custom baseUrl to a client when the service description is associated with the client. Some clients require custom logic to determine the baseUrl. In those cases, it is best to not include a baseUrl in the service description, but rather allow the factory method of the client to configure the client&#8217;s baseUrl.</p>
-<p>Any operation using a relative URI (e.g. /foo, baz/bar) will generate a URL that extends from the baseUrl attribute of the service description.</p>
+<p>The <tt class="docutils literal"><span class="pre">baseUrl</span></tt> attribute, aliased also as <tt class="docutils literal"><span class="pre">basePath</span></tt>, can be used to add a custom baseUrl to a client when the
+service description is associated with the client. Some clients require custom logic to determine the baseUrl. In
+those cases, it is best to not include a baseUrl in the service description, but rather allow the factory method of the
+client to configure the client&#8217;s baseUrl.</p>
+<p>Any operation using a relative URI (e.g. /foo, baz/bar) will generate a URL that extends from the baseUrl attribute of
+the service description.</p>
 </div>
 <div class="section" id="operations">
 <h3>operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
-<p>Operations are the actions that can be taken on a service. Each operation has a distinct endpoint and HTTP method. Operations are created and referenced by name. For example, if an API has a <tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/users/:id</span></tt> operation, a satisfactory operation name might be <tt class="docutils literal"><span class="pre">DeleteUser</span></tt> with a parameter of <tt class="docutils literal"><span class="pre">id</span></tt> that is inserted into the URI.</p>
+<p>Operations are the actions that can be taken on a service. Each operation has a distinct endpoint and HTTP method.
+Operations are created and referenced by name. For example, if an API has a <tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/users/:id</span></tt> operation, a
+satisfactory operation name might be <tt class="docutils literal"><span class="pre">DeleteUser</span></tt> with a parameter of <tt class="docutils literal"><span class="pre">id</span></tt> that is inserted into the URI.</p>
 <p>Operations are comprised of the following attributes:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -399,7 +411,8 @@ would be thrown if the error is encountered).</td>
 </table>
 <div class="section" id="parameters">
 <h4>parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h4>
-<p>Parameters in both operations and models are represented using the <a class="reference external" href="http://tools.ietf.org/id/draft-zyp-json-schema-03.html">JSON schema</a> syntax.</p>
+<p>Parameters in both operations and models are represented using the
+<a class="reference external" href="http://tools.ietf.org/id/draft-zyp-json-schema-03.html">JSON schema</a> syntax.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -437,7 +450,8 @@ the provided value, then the value is valid.</td>
 </tr>
 <tr class="row-odd"><td>location</td>
 <td>(string) The location of a request used to apply a parameter. Custom locations can be registered
-with a command, but the defaults are uri, query, header, body, json, xml, postField, postFile.</td>
+with a command, but the defaults are uri, query, statusCode, reasonPhrase, header, body, json, xml,
+postField, postFile, response_body</td>
 </tr>
 <tr class="row-even"><td>sentAs</td>
 <td>(string) Specifies how the data being modeled is sent over the wire. For example, you may wish
@@ -506,6 +520,9 @@ Supported values: date-time, date, time, timestamp, date-time-http</td>
 <td>(string) String referencing a service description model. The parameter is replaced by the
 schema contained in the model.</td>
 </tr>
+<tr class="row-even"><td>extends</td>
+<td>(string) String referencing a service description model that this parameter should extend from.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -514,13 +531,20 @@ schema contained in the model.</td>
 <p>The location field of top-level parameters control how a parameter is serialized when generating a request.</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">uri</span></tt> parameters are injected into any matching URI template value of an operation</li>
-<li><tt class="docutils literal"><span class="pre">query</span></tt> parameters are injected into the query string of a request. Query values can be nested, which would result in a PHP style nested query string.</li>
-<li><tt class="docutils literal"><span class="pre">header</span></tt> parameters are injected as headers on an HTTP request. Headers that are of type <tt class="docutils literal"><span class="pre">object</span></tt> will be added as multiple headers to a request using the key of the input array as the header key. Setting a <tt class="docutils literal"><span class="pre">sentAs</span></tt> attribute along with a type <tt class="docutils literal"><span class="pre">object</span></tt> will use the value of <tt class="docutils literal"><span class="pre">sentAs</span></tt> as a prefix for each header key.</li>
-<li><tt class="docutils literal"><span class="pre">body</span></tt> parameters are injected as the body of a request. The input of these parameters may be anything that can be cast to a string or a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntityBodyInterface</span></tt> object</li>
+<li><tt class="docutils literal"><span class="pre">query</span></tt> parameters are injected into the query string of a request. Query values can be nested, which would result
+in a PHP style nested query string.</li>
+<li><tt class="docutils literal"><span class="pre">header</span></tt> parameters are injected as headers on an HTTP request. Headers that are of type <tt class="docutils literal"><span class="pre">object</span></tt> will be added
+as multiple headers to a request using the key of the input array as the header key. Setting a <tt class="docutils literal"><span class="pre">sentAs</span></tt> attribute
+along with a type <tt class="docutils literal"><span class="pre">object</span></tt> will use the value of <tt class="docutils literal"><span class="pre">sentAs</span></tt> as a prefix for each header key.</li>
+<li><tt class="docutils literal"><span class="pre">body</span></tt> parameters are injected as the body of a request. The input of these parameters may be anything that can
+be cast to a string or a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntityBodyInterface</span></tt> object</li>
 <li><tt class="docutils literal"><span class="pre">postField</span></tt> parameters are inserted as POST fields in a request. Nested values may be supplied.</li>
-<li><tt class="docutils literal"><span class="pre">postFile</span></tt> parameters are added as POST files. A postFile value may be a string pointing to a local filename or a <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\PostFileInterface</span></tt> object.</li>
-<li><tt class="docutils literal"><span class="pre">json</span></tt> parameters flag a parameter as a top level key to add to a JSON object in the body. Nested values may be specified, with any number of nested <tt class="docutils literal"><span class="pre">Guzzle\Common\ToArrayInterface</span></tt> objects.</li>
+<li><tt class="docutils literal"><span class="pre">postFile</span></tt> parameters are added as POST files. A postFile value may be a string pointing to a local filename or
+a <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\PostFileInterface</span></tt> object.</li>
+<li><tt class="docutils literal"><span class="pre">json</span></tt> parameters flag a parameter as a top level key to add to a JSON object in the body. Nested values may be
+specified, with any number of nested <tt class="docutils literal"><span class="pre">Guzzle\Common\ToArrayInterface</span></tt> objects.</li>
 <li><tt class="docutils literal"><span class="pre">xml</span></tt> parameters flag a parameter as a top level element to add to an XML document in the body.</li>
+<li><tt class="docutils literal"><span class="pre">response_body</span></tt> Allow for an operation parameter to be used as the EntityBody used to store the body of a response.</li>
 <li>(no location): If a parameter has no location attribute, then the parameter is simply used as a data value.</li>
 </ul>
 <div class="admonition note">
@@ -531,7 +555,8 @@ schema contained in the model.</td>
 </div>
 <div class="section" id="models">
 <h3>models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
-<p>Models are used in service descriptions to provide valuable output to an operation or to share snippets of JSON schemas throughout a service description. Models use the exact syntax and attributes used in parameters.</p>
+<p>Models are used in service descriptions to provide valuable output to an operation or to share snippets of JSON
+schemas throughout a service description. Models use the exact syntax and attributes used in parameters.</p>
 <div class="section" id="id1">
 <h4>location<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>The location field of top-level parameters in a model tell response parsers how data is retrieved from a response.</p>

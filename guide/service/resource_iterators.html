@@ -160,12 +160,20 @@
         
   <div class="section" id="resource-iterators">
 <h1>Resource iterators<a class="headerlink" href="#resource-iterators" title="Permalink to this headline">¶</a></h1>
-<p>Web services often implement pagination in their responses which requires the end-user to issue a series of consecutive requests in order to fetch all of the data they asked for.  Users of your web service client should not be responsible for implementing the logic involved in iterating through pages of results.  Guzzle provides a simple resource iterator foundation to make it easier on web service client developers to offer a useful abstraction layer.</p>
+<p>Web services often implement pagination in their responses which requires the end-user to issue a series of consecutive
+requests in order to fetch all of the data they asked for. Users of your web service client should not be responsible
+for implementing the logic involved in iterating through pages of results. Guzzle provides a simple resource iterator
+foundation to make it easier on web service client developers to offer a useful abstraction layer.</p>
 <div class="section" id="getting-an-iterator-from-a-client">
 <h2>Getting an iterator from a client<a class="headerlink" href="#getting-an-iterator-from-a-client" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>ResourceIteratorInterface GuzzleServiceClient::getIterator($command [, array $commandOptions, array $iteratorOptions ])</div></blockquote>
-<p>The <tt class="docutils literal"><span class="pre">getIterator</span></tt> method of a <tt class="docutils literal"><span class="pre">Guzzle\Service\ClientInterface</span></tt> object provides a convenient interface for instantiating a resource iterator for a specific command.  This method implicitly uses a <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</span></tt> object to create resource iterators.  Pass an instantiated command object or the name of a command in the first argument.  When passing the name of a command, the command factory of the client will create the command by name using the <tt class="docutils literal"><span class="pre">$commandOptions</span></tt> array.  The third argument may be used to pass an array of options to the constructor of the instantiated <tt class="docutils literal"><span class="pre">ResourceIteratorInterface</span></tt> object.</p>
+<p>The <tt class="docutils literal"><span class="pre">getIterator</span></tt> method of a <tt class="docutils literal"><span class="pre">Guzzle\Service\ClientInterface</span></tt> object provides a convenient interface for
+instantiating a resource iterator for a specific command. This method implicitly uses a
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</span></tt> object to create resource iterators. Pass an
+instantiated command object or the name of a command in the first argument. When passing the name of a command, the
+command factory of the client will create the command by name using the <tt class="docutils literal"><span class="pre">$commandOptions</span></tt> array. The third argument
+may be used to pass an array of options to the constructor of the instantiated <tt class="docutils literal"><span class="pre">ResourceIteratorInterface</span></tt> object.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$iterator</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getIterator</span><span class="p">(</span><span class="s1">&#39;get_users&#39;</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$iterator</span> <span class="k">as</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
@@ -173,36 +181,64 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The above code sample might execute a single request or a thousand requests.  As a consumer of a web service, I don&#8217;t care.  I just want to iterate over all of the users.</p>
+<p>The above code sample might execute a single request or a thousand requests. As a consumer of a web service, I don&#8217;t
+care. I just want to iterate over all of the users.</p>
 <div class="section" id="iterator-options">
 <h3>Iterator options<a class="headerlink" href="#iterator-options" title="Permalink to this headline">¶</a></h3>
-<p>The two universal options that iterators should support are <tt class="docutils literal"><span class="pre">limit</span></tt> and <tt class="docutils literal"><span class="pre">page_size</span></tt>.  Using the <tt class="docutils literal"><span class="pre">limit</span></tt> option tells the resource iterator to attempt to limit the total number of iterated resources to a specific amount.  Keep in mind that this is not always possible due to limitations that may be inherent to a web service.  The <tt class="docutils literal"><span class="pre">page_size</span></tt> option is used to tell a resource iterator how many resources to request per page of results.  Much like the <tt class="docutils literal"><span class="pre">limit</span></tt> option, you can not rely on getting back exactly the number of resources your specify in the <tt class="docutils literal"><span class="pre">page_size</span></tt> option.</p>
+<p>The two universal options that iterators should support are <tt class="docutils literal"><span class="pre">limit</span></tt> and <tt class="docutils literal"><span class="pre">page_size</span></tt>. Using the <tt class="docutils literal"><span class="pre">limit</span></tt> option
+tells the resource iterator to attempt to limit the total number of iterated resources to a specific amount. Keep in
+mind that this is not always possible due to limitations that may be inherent to a web service. The <tt class="docutils literal"><span class="pre">page_size</span></tt>
+option is used to tell a resource iterator how many resources to request per page of results. Much like the <tt class="docutils literal"><span class="pre">limit</span></tt>
+option, you can not rely on getting back exactly the number of resources your specify in the <tt class="docutils literal"><span class="pre">page_size</span></tt> option.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">limit</span></tt> and <tt class="docutils literal"><span class="pre">page_size</span></tt> options can also be specified on an iterator using the <tt class="docutils literal"><span class="pre">setLimit($limit)</span></tt> and <tt class="docutils literal"><span class="pre">setPageSize($pageSize)</span></tt> methods.</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">limit</span></tt> and <tt class="docutils literal"><span class="pre">page_size</span></tt> options can also be specified on an iterator using the <tt class="docutils literal"><span class="pre">setLimit($limit)</span></tt> and
+<tt class="docutils literal"><span class="pre">setPageSize($pageSize)</span></tt> methods.</p>
 </div>
 </div>
 <div class="section" id="resolving-iterator-class-names">
 <h3>Resolving iterator class names<a class="headerlink" href="#resolving-iterator-class-names" title="Permalink to this headline">¶</a></h3>
-<p>The default resource iterator factory of a client object expects that your iterators are stored under the <tt class="docutils literal"><span class="pre">Model</span></tt> folder of your client and that an iterator is names after the CamelCase name of a command followed by the word &#8220;Iterator&#8221;.  For example, if you wanted to create an iterator for the <tt class="docutils literal"><span class="pre">get_users</span></tt> command, then your iterator class would be <tt class="docutils literal"><span class="pre">Model\GetUsersIterator</span></tt> and would be stored in <tt class="docutils literal"><span class="pre">Model/GetUsersIterator.php</span></tt>.</p>
+<p>The default resource iterator factory of a client object expects that your iterators are stored under the <tt class="docutils literal"><span class="pre">Model</span></tt>
+folder of your client and that an iterator is names after the CamelCase name of a command followed by the word
+&#8220;Iterator&#8221;. For example, if you wanted to create an iterator for the <tt class="docutils literal"><span class="pre">get_users</span></tt> command, then your iterator class
+would be <tt class="docutils literal"><span class="pre">Model\GetUsersIterator</span></tt> and would be stored in <tt class="docutils literal"><span class="pre">Model/GetUsersIterator.php</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="creating-an-iterator">
 <h2>Creating an iterator<a class="headerlink" href="#creating-an-iterator" title="Permalink to this headline">¶</a></h2>
-<p>While not required, resource iterators in Guzzle typically iterate using a <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandInterface</span></tt> object.  <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIterator</span></tt>, the default iterator implementation that you should extend, accepts a command object and array of iterator options in its constructor.  The command object passed to the resource iterator is expected to be ready to execute and not previously executed.  The resource iterator keeps a reference of this command and clones the original command each time a subsequent request needs to be made to fetch more data.</p>
+<p>While not required, resource iterators in Guzzle typically iterate using a <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandInterface</span></tt>
+object. <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIterator</span></tt>, the default iterator implementation that you should extend,
+accepts a command object and array of iterator options in its constructor. The command object passed to the resource
+iterator is expected to be ready to execute and not previously executed. The resource iterator keeps a reference of
+this command and clones the original command each time a subsequent request needs to be made to fetch more data.</p>
 <div class="section" id="implement-the-sendrequest-method">
 <h3>Implement the sendRequest method<a class="headerlink" href="#implement-the-sendrequest-method" title="Permalink to this headline">¶</a></h3>
-<p>The most important thing (and usually the only thing) you need to do when creating a resource iterator is to implement the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method of the resource iterator.  The <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is called when you begin iterating or if there are no resources left to iterate and it you expect to retrieve more resources by making a subsequent request.  The <tt class="docutils literal"><span class="pre">$this-&gt;command</span></tt> property of the resource iterator is updated with a cloned copy of the original command object passed into the constructor of the iterator.  Use this command object to issue your subsequent requests.</p>
-<p>The <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method must return an array of the resources you retrieved from making the subsequent call.  Returning an empty array will stop the iteration.  If you suspect that your web service client will occasionally return an empty result set but still requires further iteration, then you must implement a sort of loop in your <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method that will continue to issue subsequent requests until your reach the end of the paginated result set or until additional resources are retrieved from the web service.</p>
+<p>The most important thing (and usually the only thing) you need to do when creating a resource iterator is to implement
+the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method of the resource iterator. The <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is called when you begin
+iterating or if there are no resources left to iterate and it you expect to retrieve more resources by making a
+subsequent request. The <tt class="docutils literal"><span class="pre">$this-&gt;command</span></tt> property of the resource iterator is updated with a cloned copy of the
+original command object passed into the constructor of the iterator. Use this command object to issue your subsequent
+requests.</p>
+<p>The <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method must return an array of the resources you retrieved from making the subsequent call.
+Returning an empty array will stop the iteration. If you suspect that your web service client will occasionally return
+an empty result set but still requires further iteration, then you must implement a sort of loop in your
+<tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method that will continue to issue subsequent requests until your reach the end of the paginated
+result set or until additional resources are retrieved from the web service.</p>
 </div>
 <div class="section" id="update-the-nexttoken-property">
 <h3>Update the nextToken property<a class="headerlink" href="#update-the-nexttoken-property" title="Permalink to this headline">¶</a></h3>
-<p>Beyond fetching more results, the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is responsible for updating the <tt class="docutils literal"><span class="pre">$this-&gt;nextToken</span></tt> property of the iterator.  Setting this property to anything other than null tells the iterator that issuing a subsequent request using the nextToken value will probably return more results.  You must continually update this value in your <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method as each response is received from the web service.</p>
+<p>Beyond fetching more results, the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is responsible for updating the <tt class="docutils literal"><span class="pre">$this-&gt;nextToken</span></tt>
+property of the iterator. Setting this property to anything other than null tells the iterator that issuing a
+subsequent request using the nextToken value will probably return more results. You must continually update this
+value in your <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method as each response is received from the web service.</p>
 </div>
 </div>
 <div class="section" id="example-iterator">
 <h2>Example iterator<a class="headerlink" href="#example-iterator" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s say you want to implement a resource iterator for the <tt class="docutils literal"><span class="pre">get_users</span></tt> command of your web service.  The <tt class="docutils literal"><span class="pre">get_users</span></tt> command receives a response that contains a list of users, and if there are more pages of results to retrieve, returns a value called <tt class="docutils literal"><span class="pre">next_user</span></tt>.  This return value is known as the <strong>next token</strong> and should be used to issue subsequent requests.</p>
+<p>Let&#8217;s say you want to implement a resource iterator for the <tt class="docutils literal"><span class="pre">get_users</span></tt> command of your web service. The
+<tt class="docutils literal"><span class="pre">get_users</span></tt> command receives a response that contains a list of users, and if there are more pages of results to
+retrieve, returns a value called <tt class="docutils literal"><span class="pre">next_user</span></tt>. This return value is known as the <strong>next token</strong> and should be used to
+issue subsequent requests.</p>
 <p>Assume the response to a <tt class="docutils literal"><span class="pre">get_users</span></tt> command returns JSON data that looks like this:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;users&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -214,7 +250,9 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Assume that because there is a <tt class="docutils literal"><span class="pre">next_user</span></tt> value, there will be more users if a subsequent request is issued.  If the <tt class="docutils literal"><span class="pre">next_user</span></tt> value is missing or null, then we know there are no more results to fetch.  Let&#8217;s implement a resource iterator for this command.</p>
+<p>Assume that because there is a <tt class="docutils literal"><span class="pre">next_user</span></tt> value, there will be more users if a subsequent request is issued. If the
+<tt class="docutils literal"><span class="pre">next_user</span></tt> value is missing or null, then we know there are no more results to fetch. Let&#8217;s implement a resource
+iterator for this command.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">MyService\Model</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">Guzzle\Service\Resource\ResourceIterator</span><span class="p">;</span>
@@ -242,10 +280,14 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>As you can see, it&#8217;s pretty simple to implement an iterator.  There are a few things that you should notice from this example:</p>
+<p>As you can see, it&#8217;s pretty simple to implement an iterator. There are a few things that you should notice from this
+example:</p>
 <ol class="arabic simple">
-<li>You do not need to create a new command in the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method.  A new command object is cloned from the original command passed into the constructor of the iterator before the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is called.  Remember that the resource iterator expects a command that has not been executed.</li>
-<li>When the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is first called, you will not have a <tt class="docutils literal"><span class="pre">$this-&gt;nextToken</span></tt> value, so always check before setting it on a command.  Notice that the next token is being updated each time a request is sent.</li>
+<li>You do not need to create a new command in the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method. A new command object is cloned from the
+original command passed into the constructor of the iterator before the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is called.
+Remember that the resource iterator expects a command that has not been executed.</li>
+<li>When the <tt class="docutils literal"><span class="pre">sendRequest()</span></tt> method is first called, you will not have a <tt class="docutils literal"><span class="pre">$this-&gt;nextToken</span></tt> value, so always check
+before setting it on a command. Notice that the next token is being updated each time a request is sent.</li>
 <li>After fetching more resources from the service, always return an array of resources.</li>
 </ol>
 </div>

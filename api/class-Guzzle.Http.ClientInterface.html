@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Http\ClientInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3807927395"></script>
+	<script type="text/javascript" src="elementlist.js?4062151815"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -54,6 +54,8 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
 						</li>
@@ -89,6 +91,11 @@
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
 						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
 						</li>
 				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
@@ -145,7 +152,6 @@
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -747,15 +753,13 @@ followed by template variables<br />
 
 		<div class="description short">
 			
-<p>Set the name of your application and application version that will be
-appended to the User-Agent header of all requests.</p>
+<p>Set the User-Agent header to be used on all requests from the client</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Set the name of your application and application version that will be
-appended to the User-Agent header of all requests.</p>
+<p>Set the User-Agent header to be used on all requests from the client</p>
 
 
 
@@ -764,7 +768,8 @@ appended to the User-Agent header of all requests.</p>
 					<dt><var>$userAgent</var></dt>
 					<dd><code>string</code><br>$userAgent User agent string</dd>
 					<dt><var>$includeDefault</var></dt>
-					<dd><code>boolean</code><br>$includeDefault Set to TRUE to append the default Guzzle use agent</dd>
+					<dd><code>boolean</code><br>$includeDefault Set to true to prepend the value to Guzzle's default user agent
+string</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1329,6 +1334,29 @@ transferring requests.</p>
 
 			<div class="description detailed hidden">
 				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="HTTP_DATE" id="HTTP_DATE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+<b>HTTP_DATE</b>		</code></td>
+		<td class="value"><code><span class="php-quote">'D, d M Y H:i:s \G\M\T'</span></code></td>
+		<td class="description"><div>
+			<a href="#HTTP_DATE" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>RFC 1123 HTTP-Date</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>RFC 1123 HTTP-Date</p>
+
 
 			</div>
 		</div></td>

@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Client | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3807927395"></script>
+	<script type="text/javascript" src="elementlist.js?4062151815"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -54,6 +54,8 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
 						</li>
@@ -89,6 +91,11 @@
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
 						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
 						</li>
 				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
@@ -145,7 +152,6 @@
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -826,7 +832,7 @@ followed by template variables<br />
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			<code><a href="class-Guzzle.Http.Client.html">Guzzle\Http\Client</a></code>
 			
 			</code>
 		</td>
@@ -837,15 +843,13 @@ followed by template variables<br />
 
 		<div class="description short">
 			
-<p>Set the name of your application and application version that will be
-appended to the User-Agent header of all requests.</p>
+<p>Set the User-Agent header to be used on all requests from the client</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Set the name of your application and application version that will be
-appended to the User-Agent header of all requests.</p>
+<p>Set the User-Agent header to be used on all requests from the client</p>
 
 
 
@@ -854,12 +858,13 @@ appended to the User-Agent header of all requests.</p>
 					<dt><var>$userAgent</var></dt>
 					<dd><code>string</code><br>$userAgent User agent string</dd>
 					<dt><var>$includeDefault</var></dt>
-					<dd><code>boolean</code><br>$includeDefault Set to TRUE to append the default Guzzle use agent</dd>
+					<dd><code>boolean</code><br>$includeDefault Set to true to prepend the value to Guzzle's default user agent
+string</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+					<code><code><a href="class-Guzzle.Http.Client.html">Guzzle\Http\Client</a></code></code><br />
 				</div>
 
 
@@ -867,6 +872,43 @@ appended to the User-Agent header of all requests.</p>
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-Guzzle.Http.ClientInterface.html#_setUserAgent">Guzzle\Http\ClientInterface::setUserAgent()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDefaultUserAgent" id="_getDefaultUserAgent">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDefaultUserAgent">#</a>
+		<code>getDefaultUserAgent( )</code>
+
+		<div class="description short">
+			
+<p>Get the default User-Agent string to use with Guzzle</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the default User-Agent string to use with Guzzle</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
 		</div>
 		</div></td>
 	</tr>
@@ -1525,7 +1567,8 @@ behaviors and properties to the request.</p>
 	<caption>Constants inherited from <a href="class-Guzzle.Http.ClientInterface.html#constants">Guzzle\Http\ClientInterface</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Guzzle.Http.ClientInterface.html#CREATE_REQUEST"><b>CREATE_REQUEST</b></a>
+			<a href="class-Guzzle.Http.ClientInterface.html#CREATE_REQUEST"><b>CREATE_REQUEST</b></a>, 
+			<a href="class-Guzzle.Http.ClientInterface.html#HTTP_DATE"><b>HTTP_DATE</b></a>
 		</code></td>
 	</tr>
 	</table>

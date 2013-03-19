@@ -168,13 +168,18 @@
         
   <div class="section" id="consuming-web-services-using-web-service-clients">
 <h1>Consuming web services using web service clients<a class="headerlink" href="#consuming-web-services-using-web-service-clients" title="Permalink to this headline">¶</a></h1>
-<p>Guzzle&#8217;s awesome HTTP support provides the raw materials needed to build robust web service clients. Guzzle&#8217;s service layer provides the glue needed to bring it all together.</p>
+<p>Guzzle&#8217;s awesome HTTP support provides the raw materials needed to build robust web service clients. Guzzle&#8217;s service
+layer provides the glue needed to bring it all together.</p>
 <div class="section" id="command-based-web-service-clients">
 <h2>Command based web service clients<a class="headerlink" href="#command-based-web-service-clients" title="Permalink to this headline">¶</a></h2>
-<p>Command based web service clients help to hide the underlying implementation of an API by following the <a class="reference external" href="http://en.wikipedia.org/wiki/Command_pattern">command pattern</a> and giving a concrete class or service description to each operation that can be made on a web service.</p>
+<p>Command based web service clients help to hide the underlying implementation of an API by following the
+<a class="reference external" href="http://en.wikipedia.org/wiki/Command_pattern">command pattern</a> and giving a concrete class or service description
+to each operation that can be made on a web service.</p>
 <div class="section" id="instantiating-web-service-clients-using-a-servicebuilder">
 <h3>Instantiating web service clients using a ServiceBuilder<a class="headerlink" href="#instantiating-web-service-clients-using-a-servicebuilder" title="Permalink to this headline">¶</a></h3>
-<p>The best way to instantiate Guzzle web service clients is to let Guzzle handle building the clients for you using a ServiceBuilder. A ServiceBuilder is responsible for creating concrete client objects based on configuration settings and helps to manage credentials for different environments.</p>
+<p>The best way to instantiate Guzzle web service clients is to let Guzzle handle building the clients for you using a
+ServiceBuilder. A ServiceBuilder is responsible for creating concrete client objects based on configuration settings
+and helps to manage credentials for different environments.</p>
 <p>A ServiceBuilder can source information from an array, an PHP include file that returns an array, or a JSON file:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="p">;</span>
 
@@ -182,7 +187,10 @@
 <span class="nv">$builder</span> <span class="o">=</span> <span class="nx">ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;services.json&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Clients are referenced using a customizable name you provide in your service definition. The ServiceBuilder is a sort of multiton object&#8211; it will only instantiate a client once and return that client for subsequent retrievals. You can get a &#8220;throwaway&#8221; client (a client that is not persisted by the ServiceBuilder) by passing <tt class="docutils literal"><span class="pre">true</span></tt> in the second argument of <tt class="docutils literal"><span class="pre">ServiceBuilder::get()</span></tt>.</p>
+<p>Clients are referenced using a customizable name you provide in your service definition. The ServiceBuilder is a sort
+of multiton object&#8211; it will only instantiate a client once and return that client for subsequent retrievals. You can
+get a &#8220;throwaway&#8221; client (a client that is not persisted by the ServiceBuilder) by passing <tt class="docutils literal"><span class="pre">true</span></tt> in the second
+argument of <tt class="docutils literal"><span class="pre">ServiceBuilder::get()</span></tt>.</p>
 <p>Here&#8217;s an example of retrieving an Unfuddle client from your ServiceBuilder:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;unfuddle&#39;</span><span class="p">);</span>
 <span class="c1">// You can also use the ServiceBuilder object as an array</span>
@@ -191,7 +199,9 @@
 </div>
 <div class="section" id="sourcing-data-from-an-array">
 <h4>Sourcing data from an array<a class="headerlink" href="#sourcing-data-from-an-array" title="Permalink to this headline">¶</a></h4>
-<p>Parameters need to be specified in each <tt class="docutils literal"><span class="pre">&lt;service&gt;</span></tt> element to tell a <tt class="docutils literal"><span class="pre">Guzzle\Service\Builder\ServiceBuilder</span></tt> object how to build the web service client. Clients are given names which are handy for using multiple accounts for the same service or creating development clients vs. production clients.</p>
+<p>Parameters need to be specified in each <tt class="docutils literal"><span class="pre">&lt;service&gt;</span></tt> element to tell a <tt class="docutils literal"><span class="pre">Guzzle\Service\Builder\ServiceBuilder</span></tt>
+object how to build the web service client. Clients are given names which are handy for using multiple accounts for
+the same service or creating development clients vs. production clients.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$services</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;includes&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;/path/to/other/services.json&#39;</span><span class="p">,</span>
@@ -216,11 +226,12 @@
 </pre></div>
 </div>
 <p>A service builder configuration array contains two top-level array keys:</p>
-<ul>
-<li><p class="first">includes: Array of paths to JSON or PHP include files to include in the configuration.</p>
-</li>
-<li><dl class="first docutils">
-<dt>services: Associative array of defined services that can be created by the service builder. Each service can contain the following keys:</dt>
+<ul class="simple">
+<li>includes: Array of paths to JSON or PHP include files to include in the configuration.</li>
+<li>services: Associative array of defined services that can be created by the service builder. Each service can contain</li>
+</ul>
+<dl class="docutils">
+<dt>the following keys:</dt>
 <dd><ul class="first last simple">
 <li>class: The concrete class to instantiate that implements the <tt class="docutils literal"><span class="pre">Guzzle\Common\FromConfigInterface</span></tt>.</li>
 <li>extends: The name of a previously defined service to extend from</li>
@@ -228,14 +239,20 @@
 </ul>
 </dd>
 </dl>
-</li>
-</ul>
-<p>The first client defined, <tt class="docutils literal"><span class="pre">abstract.foo</span></tt>, is used as a placeholder of shared configuration values. Any service extending abstract.foo will inherit its params. As an example, this can be useful when clients share the same username and password.</p>
-<p>The next client, <tt class="docutils literal"><span class="pre">bar</span></tt>, extends from <tt class="docutils literal"><span class="pre">abstract.foo</span></tt> using the <tt class="docutils literal"><span class="pre">extends</span></tt> attribute referencing the client from which to extend. Additional parameters can be merged into the original service definition when extending a parent service. Each client that you intend to instantiate must specify a <tt class="docutils literal"><span class="pre">class</span></tt> attribute that references the full class name of the client being created.</p>
+<p>The first client defined, <tt class="docutils literal"><span class="pre">abstract.foo</span></tt>, is used as a placeholder of shared configuration values. Any service
+extending abstract.foo will inherit its params. As an example, this can be useful when clients share the same username
+and password.</p>
+<p>The next client, <tt class="docutils literal"><span class="pre">bar</span></tt>, extends from <tt class="docutils literal"><span class="pre">abstract.foo</span></tt> using the <tt class="docutils literal"><span class="pre">extends</span></tt> attribute referencing the client from
+which to extend. Additional parameters can be merged into the original service definition when extending a parent
+service. Each client that you intend to instantiate must specify a <tt class="docutils literal"><span class="pre">class</span></tt> attribute that references the full class
+name of the client being created.</p>
 </div>
 <div class="section" id="sourcing-from-a-php-include">
 <h4>Sourcing from a PHP include<a class="headerlink" href="#sourcing-from-a-php-include" title="Permalink to this headline">¶</a></h4>
-<p>You can create service builder configurations using a PHP include file. This can be useful if you wish to take advantage of an opcode cache like APC to speed up the process of loading and processing the configuration. The PHP include file is the same format as an array, but you simply create a PHP script that returns an array and save the file with the .php file extension:</p>
+<p>You can create service builder configurations using a PHP include file. This can be useful if you wish to take
+advantage of an opcode cache like APC to speed up the process of loading and processing the configuration. The PHP
+include file is the same format as an array, but you simply create a PHP script that returns an array and save the
+file with the .php file extension:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;services&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;...&#39;</span><span class="p">);</span>
 <span class="c1">// Saved as config.php</span>
 </pre></div>
@@ -247,7 +264,8 @@
 </div>
 <div class="section" id="sourcing-from-a-json-document">
 <h4>Sourcing from a JSON document<a class="headerlink" href="#sourcing-from-a-json-document" title="Permalink to this headline">¶</a></h4>
-<p>You can use JSON documents to serialize your service descriptions. The JSON format uses the exact same structure as the PHP array syntax, but it&#8217;s just serialized using JSON.</p>
+<p>You can use JSON documents to serialize your service descriptions. The JSON format uses the exact same structure as
+the PHP array syntax, but it&#8217;s just serialized using JSON.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;includes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/other/services.json&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/other/php_services.php&quot;</span><span class="p">],</span>
     <span class="s2">&quot;services&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -271,7 +289,8 @@
 </div>
 <div class="section" id="referencing-other-clients-in-parameters">
 <h4>Referencing other clients in parameters<a class="headerlink" href="#referencing-other-clients-in-parameters" title="Permalink to this headline">¶</a></h4>
-<p>If one of your clients depends on another client as one of its parameters, you can reference that client by name by enclosing the client&#8217;s reference key in <tt class="docutils literal"><span class="pre">{}</span></tt>.</p>
+<p>If one of your clients depends on another client as one of its parameters, you can reference that client by name by
+enclosing the client&#8217;s reference key in <tt class="docutils literal"><span class="pre">{}</span></tt>.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;services&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -291,28 +310,38 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>When <tt class="docutils literal"><span class="pre">client</span></tt> is constructed by the service builder, the service builder will first create the <tt class="docutils literal"><span class="pre">token</span></tt> service and then inject the token service into <tt class="docutils literal"><span class="pre">client</span></tt>&#8216;s factory method in the <tt class="docutils literal"><span class="pre">token_client</span></tt> parameter.</p>
+<p>When <tt class="docutils literal"><span class="pre">client</span></tt> is constructed by the service builder, the service builder will first create the <tt class="docutils literal"><span class="pre">token</span></tt> service
+and then inject the token service into <tt class="docutils literal"><span class="pre">client</span></tt>&#8216;s factory method in the <tt class="docutils literal"><span class="pre">token_client</span></tt> parameter.</p>
 </div>
 </div>
 </div>
 <div class="section" id="using-client-objects">
 <h2>Using Client objects<a class="headerlink" href="#using-client-objects" title="Permalink to this headline">¶</a></h2>
-<p>Web service clients are the central point of interaction with a web service. They hold service configuration data and help to ready HTTP requests to be sent to a web service. Web service clients don&#8217;t know much about the service itself&#8211; they just create requests and execute commands. Configuration settings can be retrieved from a client by passing a configuration key to the <tt class="docutils literal"><span class="pre">getConfig()</span></tt> method of a client (e.g. <tt class="docutils literal"><span class="pre">$token</span> <span class="pre">=</span> <span class="pre">$client-&gt;getConfig('devpay_product_token')</span></tt>).</p>
-<p>Client&#8217;s can contain special options that alter the behavior of the client (including the options available to <tt class="docutils literal"><span class="pre">Guzzle\Http\Client</span></tt>):</p>
+<p>Web service clients are the central point of interaction with a web service. They hold service configuration data and
+help to ready HTTP requests to be sent to a web service. Web service clients don&#8217;t know much about the service
+itself&#8211; they just create requests and execute commands. Configuration settings can be retrieved from a client by
+passing a configuration key to the <tt class="docutils literal"><span class="pre">getConfig()</span></tt> method of a client
+(e.g. <tt class="docutils literal"><span class="pre">$token</span> <span class="pre">=</span> <span class="pre">$client-&gt;getConfig('devpay_product_token')</span></tt>).</p>
+<p>Client&#8217;s can contain special options that alter the behavior of the client (including the options available to
+<tt class="docutils literal"><span class="pre">Guzzle\Http\Client</span></tt>):</p>
 <ul class="simple">
 <li>command.params: Associative array of parameters to set on every command created by the client</li>
 </ul>
 <div class="section" id="executing-commands-using-a-client">
 <h3>Executing commands using a client<a class="headerlink" href="#executing-commands-using-a-client" title="Permalink to this headline">¶</a></h3>
 <p>Commands are used to take action on a web service and format the response from the web service into something useful.</p>
-<p>Commands can be instantiated and configured by a client by calling the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method on a client and using the command&#8217;s name.</p>
-<p>By default, a client will attempt to find concrete command classes using the short form of a command&#8217;s name. This is calculated based on the folder hierarchy of a command and converting the CamelCased named commands into snake_case. Here are some examples on how the command names are calculated:</p>
+<p>Commands can be instantiated and configured by a client by calling the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method on a client and using
+the command&#8217;s name.</p>
+<p>By default, a client will attempt to find concrete command classes using the short form of a command&#8217;s name. This is
+calculated based on the folder hierarchy of a command and converting the CamelCased named commands into snake_case.
+Here are some examples on how the command names are calculated:</p>
 <ol class="arabic simple">
 <li><tt class="docutils literal"><span class="pre">Foo\Command\JarJar</span></tt> <strong>-&gt;</strong> jar_jar</li>
 <li><tt class="docutils literal"><span class="pre">Foo\Command\Test</span></tt> <strong>-&gt;</strong> test</li>
 <li><tt class="docutils literal"><span class="pre">Foo\Command\People\GetCurrentPerson</span></tt> <strong>-&gt;</strong> people.get_current_person</li>
 </ol>
-<p>Notice how any sub-namespace beneath <tt class="docutils literal"><span class="pre">Command</span></tt> is converted from <tt class="docutils literal"><span class="pre">\</span></tt> to <tt class="docutils literal"><span class="pre">.</span></tt> (a period). CamelCasing is converted to lowercased snake_casing (e.g. JarJar == jar_jar).</p>
+<p>Notice how any sub-namespace beneath <tt class="docutils literal"><span class="pre">Command</span></tt> is converted from <tt class="docutils literal"><span class="pre">\</span></tt> to <tt class="docutils literal"><span class="pre">.</span></tt> (a period). CamelCasing is converted
+to lowercased snake_casing (e.g. JarJar == jar_jar).</p>
 <p>Here&#8217;s how you would get the Foo client from the ServiceBuilder and execute a JarJar command:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Retrieve the client by name</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="nv">$serviceBuilder</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">];</span>
@@ -330,25 +359,36 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The format and notation used to retrieve commands from a client can be customized by injecting a custom command factory, <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt>, on the client using
+<p class="last">The format and notation used to retrieve commands from a client can be customized by injecting a custom command
+factory, <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt>, on the client using
 <tt class="docutils literal"><span class="pre">$client-&gt;setCommandFactory()</span></tt>.</p>
 </div>
 <div class="section" id="special-command-options">
 <h4>Special command options<a class="headerlink" href="#special-command-options" title="Permalink to this headline">¶</a></h4>
-<p>Command results can contain various types based on the command&#8217;s implementation. Some commands might set the result to a Response object, some might use an array, SimpleXMLElement, or <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt>. Check the client&#8217;s documentation or service description to see what the result format of a particular operation will be. To some extent, you can control the behavior of a command and what return types are created for a command by setting special options on the command. Any command that extends from <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt> should honor these values.</p>
+<p>Command results can contain various types based on the command&#8217;s implementation. Some commands might set the result to
+a Response object, some might use an array, SimpleXMLElement, or <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt>. Check the client&#8217;s
+documentation or service description to see what the result format of a particular operation will be. To some extent,
+you can control the behavior of a command and what return types are created for a command by setting special options
+on the command. Any command that extends from <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt> should honor these values.</p>
 <ul>
 <li><p class="first">command.headers: Associative array of headers to send with the request created by the command</p>
 </li>
-<li><p class="first">command.on_complete: Function to execute when the command successfully completes. The function should accept a command object.</p>
+<li><p class="first">command.on_complete: Function to execute when the command successfully completes. The function should accept a
+command object.</p>
 </li>
-<li><p class="first">command.disable_validation: Set to true to disable validation of the schema of the command against the input data. Note: some validations also perform transformations and filtering, so this may break your client. This should only be used in a controlled script to squeeze out more performance</p>
+<li><p class="first">command.disable_validation: Set to true to disable validation of the schema of the command against the input data.
+Note: some validations also perform transformations and filtering, so this may break your client. This should only
+be used in a controlled script to squeeze out more performance</p>
 </li>
 <li><dl class="first docutils">
 <dt>command.response_processing: Alters how results are processed. Can be set to one of:</dt>
 <dd><ul class="first last simple">
 <li>raw: Does not processing on the result and the result will simply be a <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Response</span></tt> object.</li>
 <li>native: Will convert JSON responses into arrays and XML responses into SimpleXMLElement objects.</li>
-<li>model: Will attempt to use the associated responseClass model of the operation and the result will be a <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt> object. This is the default setting, and if no model is found, Guzzle attempts to return a native response. If no native response can be used, then Guzzle will set the result to raw response.</li>
+<li>model: Will attempt to use the associated responseClass model of the operation and the result will be a
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt> object. This is the default setting, and if no model is found, Guzzle
+attempts to return a native response. If no native response can be used, then Guzzle will set the result to
+raw response.</li>
 </ul>
 </dd>
 </dl>
@@ -356,7 +396,8 @@
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Understand that changing how inputs are validated and how results are processed removes all guarantees that higher level abstractions like iterators and batching will still work.</p>
+<p class="last">Understand that changing how inputs are validated and how results are processed removes all guarantees that higher
+level abstractions like iterators and batching will still work.</p>
 </div>
 </div>
 </div>
@@ -381,7 +422,8 @@
 </div>
 <div class="section" id="next-steps">
 <h3>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h3>
-<p>Check the documentation of the web service client you are using to see the available commands and operations of the client.</p>
+<p>Check the documentation of the web service client you are using to see the available commands and operations of the
+client.</p>
 </div>
 </div>
 </div>

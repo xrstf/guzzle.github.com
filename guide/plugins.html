@@ -163,7 +163,10 @@
 <p>Guzzle ships with a number of plugins that typically deal with the <tt class="docutils literal"><span class="pre">Guzzle\Http</span></tt> namespace.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Any event subscriber attached to the <tt class="docutils literal"><span class="pre">EventDispatcher</span></tt> of a <tt class="docutils literal"><span class="pre">Guzzle\Http\Client</span></tt> or <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object will automatically be attached to all request objects created by the client. This allows you to attach, for example, a  HistoryPlugin to a client object, and from that point on, every request sent through that client will utilize the HistoryPlugin.</p>
+<p class="last">Any event subscriber attached to the <tt class="docutils literal"><span class="pre">EventDispatcher</span></tt> of a <tt class="docutils literal"><span class="pre">Guzzle\Http\Client</span></tt> or <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt>
+object will automatically be attached to all request objects created by the client. This allows you to attach, for
+example, a  HistoryPlugin to a client object, and from that point on, every request sent through that client will
+utilize the HistoryPlugin.</p>
 </div>
 <p>Guzzle provides easy to use request plugins that add behavior to requests based on signal slot event notifications.</p>
 <div class="section" id="log-plugin">
@@ -188,8 +191,13 @@
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://google.com&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>The code sample above wraps a <tt class="docutils literal"><span class="pre">Zend_Log</span></tt> object using a <tt class="docutils literal"><span class="pre">Guzzle\Log\Zf1LogAdapter</span></tt>. After attaching the plugin to the client, all data sent over the wire will be logged to stdout.</p>
-<p>The first argument of the LogPlugin&#8217;s constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Log\LogAdapterInterface</span></tt> object. This object is an adapter that allows you to use the logging capabilities of your favorite log implementation. The second argument of the constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Log\MessageFormatter</span></tt> or a log messaged format string. The format string uses variable substitution and allows you to define the log data that is important to your application. The different variables that can be injected are as follows:</p>
+<p>The code sample above wraps a <tt class="docutils literal"><span class="pre">Zend_Log</span></tt> object using a <tt class="docutils literal"><span class="pre">Guzzle\Log\Zf1LogAdapter</span></tt>. After attaching the plugin to
+the client, all data sent over the wire will be logged to stdout.</p>
+<p>The first argument of the LogPlugin&#8217;s constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Log\LogAdapterInterface</span></tt> object. This object is
+an adapter that allows you to use the logging capabilities of your favorite log implementation. The second argument of
+the constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Log\MessageFormatter</span></tt> or a log messaged format string. The format string uses
+variable substitution and allows you to define the log data that is important to your application. The different
+variables that can be injected are as follows:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -272,7 +280,8 @@
 </tr>
 </tbody>
 </table>
-<p>The LogPlugin has a helper method that can be used when debugging that will output the full HTTP request and response of a transaction:</p>
+<p>The LogPlugin has a helper method that can be used when debugging that will output the full HTTP request and
+response of a transaction:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nx">LogPlugin</span><span class="o">::</span><span class="na">getDebugPlugin</span><span class="p">());</span>
 </pre></div>
 </div>
@@ -291,11 +300,17 @@
 <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$backoffPlugin</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The BackoffPlugin&#8217;s constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Backoff\BackoffStrategyInterface</span></tt> object that is used to determine when a retry should be issued and how long to delay between retries. The above code example shows how to attach a BackoffPlugn to a client that is pre-configured to retry failed 500 and 503 responses using truncated exponential backoff (emulating the behavior of Guzzle 2&#8217;s ExponentialBackoffPlugin).</p>
+<p>The BackoffPlugin&#8217;s constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Backoff\BackoffStrategyInterface</span></tt> object that is used to
+determine when a retry should be issued and how long to delay between retries. The above code example shows how to
+attach a BackoffPlugn to a client that is pre-configured to retry failed 500 and 503 responses using truncated
+exponential backoff (emulating the behavior of Guzzle 2&#8217;s ExponentialBackoffPlugin).</p>
 </div>
 <div class="section" id="cache-plugin">
 <h2>Cache plugin<a class="headerlink" href="#cache-plugin" title="Permalink to this headline">¶</a></h2>
-<p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt>. The CachePlugin provides a private transparent proxy cache that caches HTTP responses. The caching logic, based on <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior, cache lifetime, and supports ETag and Last-Modified based revalidation:</p>
+<p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt>. The CachePlugin
+provides a private transparent proxy cache that caches HTTP responses. The caching logic, based on
+<a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior,
+cache lifetime, and supports ETag and Last-Modified based revalidation:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
@@ -317,12 +332,16 @@
 <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.wikipedia.org/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Guzzle doesn&#8217;t try to reinvent the wheel when it comes to caching or logging. Plenty of other frameworks have excellent solutions in place that you are probably already using in your applications. Guzzle uses adapters for caching and logging. Guzzle currently supports log adapters for the Zend Framework 1.0/2.0 and Monolog, and cache adapters for <a class="reference external" href="http://www.doctrine-project.org/">Doctrine 2.0</a> and the Zend Framework 1.0/2.0.</p>
+<p>Guzzle doesn&#8217;t try to reinvent the wheel when it comes to caching or logging. Plenty of other frameworks have
+excellent solutions in place that you are probably already using in your applications. Guzzle uses adapters for
+caching and logging. Guzzle currently supports log adapters for the Zend Framework 1.0/2.0 and Monolog, and cache
+adapters for <a class="reference external" href="http://www.doctrine-project.org/">Doctrine 2.0</a> and the Zend Framework 1.0/2.0.</p>
 <p>See <a class="reference internal" href="http/caching.html"><em>Caching</em></a> for more information on the caching plugin.</p>
 </div>
 <div class="section" id="cookie-plugin">
 <h2>Cookie plugin<a class="headerlink" href="#cookie-plugin" title="Permalink to this headline">¶</a></h2>
-<p>Some web services require a Cookie in order to maintain a session. The <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cookie\CookiePlugin</span></tt> will add cookies to requests and parse cookies from responses using a CookieJar object:</p>
+<p>Some web services require a Cookie in order to maintain a session. The <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cookie\CookiePlugin</span></tt> will add
+cookies to requests and parse cookies from responses using a CookieJar object:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Cookie\CookiePlugin</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar</span><span class="p">;</span>
@@ -350,7 +369,11 @@
 </div>
 <div class="section" id="md5-validator-plugin">
 <h2>MD5 validator plugin<a class="headerlink" href="#md5-validator-plugin" title="Permalink to this headline">¶</a></h2>
-<p>Entity bodies can sometimes be modified over the wire due to a faulty TCP transport or misbehaving proxy. If an HTTP response contains a Content-MD5 header, then a MD5 hash of the entity body of a response can be compared against the Content-MD5 header of the response to determine if the response was delivered intact. The <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Md5\Md5ValidatorPlugin</span></tt> will throw an <tt class="docutils literal"><span class="pre">UnexpectedValueException</span></tt> if the calculated MD5 hash does not match the Content-MD5 header value:</p>
+<p>Entity bodies can sometimes be modified over the wire due to a faulty TCP transport or misbehaving proxy. If an HTTP
+response contains a Content-MD5 header, then a MD5 hash of the entity body of a response can be compared against the
+Content-MD5 header of the response to determine if the response was delivered intact. The
+<tt class="docutils literal"><span class="pre">Guzzle\Plugin\Md5\Md5ValidatorPlugin</span></tt> will throw an <tt class="docutils literal"><span class="pre">UnexpectedValueException</span></tt> if the calculated MD5 hash does
+not match the Content-MD5 header value:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Md5\Md5ValidatorPlugin</span><span class="p">;</span>
 
@@ -365,11 +388,15 @@
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Calculating the MD5 hash of a large entity body or an entity body that was transferred using a Content-Encoding is an expensive operation. When working in high performance applications, you might consider skipping the MD5 hash validation for entity bodies bigger than a certain size or Content-Encoded entity bodies (see <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Md5\Md5ValidatorPlugin</span></tt> for more information).</p>
+<p>Calculating the MD5 hash of a large entity body or an entity body that was transferred using a Content-Encoding is an
+expensive operation. When working in high performance applications, you might consider skipping the MD5 hash
+validation for entity bodies bigger than a certain size or Content-Encoded entity bodies
+(see <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Md5\Md5ValidatorPlugin</span></tt> for more information).</p>
 </div>
 <div class="section" id="history-plugin">
 <h2>History plugin<a class="headerlink" href="#history-plugin" title="Permalink to this headline">¶</a></h2>
-<p>The history plugin tracks all of the requests and responses sent through a request or client. This plugin can be useful for crawling or unit testing. By default, the history plugin stores up to 10 requests and responses.</p>
+<p>The history plugin tracks all of the requests and responses sent through a request or client. This plugin can be
+useful for crawling or unit testing. By default, the history plugin stores up to 10 requests and responses.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\History\HistoryPlugin</span><span class="p">;</span>
 
@@ -390,7 +417,8 @@
 </div>
 <div class="section" id="mock-plugin">
 <h2>Mock Plugin<a class="headerlink" href="#mock-plugin" title="Permalink to this headline">¶</a></h2>
-<p>The mock plugin is useful for testing Guzzle clients. The mock plugin allows you to queue an array of responses that will satisfy requests sent from a client by consuming the request queue in FIFO order.</p>
+<p>The mock plugin is useful for testing Guzzle clients. The mock plugin allows you to queue an array of responses that
+will satisfy requests sent from a client by consuming the request queue in FIFO order.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Mock\MockPlugin</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Http\Message\Response</span><span class="p">;</span>
@@ -414,7 +442,8 @@
 </div>
 <div class="section" id="curl-auth-plugin">
 <span id="curl-auth"></span><h2>Curl Auth Plugin<a class="headerlink" href="#curl-auth-plugin" title="Permalink to this headline">¶</a></h2>
-<p>If your web service client requires basic authorization, then you can use the CurlAuthPlugin to easily add an Authorization header to each request sent by the client.</p>
+<p>If your web service client requires basic authorization, then you can use the CurlAuthPlugin to easily add an
+Authorization header to each request sent by the client.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\CurlAuth\CurlAuthPlugin</span><span class="p">;</span>
 
@@ -434,7 +463,8 @@
 </div>
 <div class="section" id="oauth-1-0-plugin">
 <h2>OAuth 1.0 Plugin<a class="headerlink" href="#oauth-1-0-plugin" title="Permalink to this headline">¶</a></h2>
-<p>Guzzle ships with an OAuth 1.0 plugin that can sign requests using a consumer key, consumer secret, OAuth token, and OAuth secret. Here&#8217;s an example showing how to send an authenticated request to the Twitter REST API:</p>
+<p>Guzzle ships with an OAuth 1.0 plugin that can sign requests using a consumer key, consumer secret, OAuth token,
+and OAuth secret. Here&#8217;s an example showing how to send an authenticated request to the Twitter REST API:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Oauth\OauthPlugin</span><span class="p">;</span>
 
@@ -450,7 +480,9 @@
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;statuses/public_timeline.json&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>If you need to use a custom signing method, you can pass a <tt class="docutils literal"><span class="pre">signature_method</span></tt> configuration option in the constructor of the OAuth plugin. The <tt class="docutils literal"><span class="pre">signature_method</span></tt> option must be a callable variable that accepts a string to sign and signing key and returns a signed string.</p>
+<p>If you need to use a custom signing method, you can pass a <tt class="docutils literal"><span class="pre">signature_method</span></tt> configuration option in the
+constructor of the OAuth plugin. The <tt class="docutils literal"><span class="pre">signature_method</span></tt> option must be a callable variable that accepts a string to
+sign and signing key and returns a signed string.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You can omit the <tt class="docutils literal"><span class="pre">token</span></tt> and <tt class="docutils literal"><span class="pre">token_secret</span></tt> options to use two-legged OAuth.</p>
@@ -458,7 +490,11 @@
 </div>
 <div class="section" id="async-plugin">
 <h2>Async Plugin<a class="headerlink" href="#async-plugin" title="Permalink to this headline">¶</a></h2>
-<p>The AsyncPlugin allows you to send requests that do not wait on a response. This is handled through cURL by utilizing the progress event. When a request has sent all of its data to the remote server, Guzzle adds a 1ms timeout on the request and instructs cURL to not download the body of the response. The async plugin then catches the exception and adds a mock response to the request, along with an X-Guzzle-Async header to let you know that the response was not fully downloaded.</p>
+<p>The AsyncPlugin allows you to send requests that do not wait on a response. This is handled through cURL by utilizing
+the progress event. When a request has sent all of its data to the remote server, Guzzle adds a 1ms timeout on the
+request and instructs cURL to not download the body of the response. The async plugin then catches the exception and
+adds a mock response to the request, along with an X-Guzzle-Async header to let you know that the response was not
+fully downloaded.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Async\AsyncPlugin</span><span class="p">;</span>
 

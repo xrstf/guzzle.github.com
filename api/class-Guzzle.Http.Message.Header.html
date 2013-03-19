@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\Header | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3807927395"></script>
+	<script type="text/javascript" src="elementlist.js?4062151815"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -54,6 +54,8 @@
 						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
 						</li>
@@ -89,6 +91,11 @@
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
 						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
 						</li>
 				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
@@ -487,22 +494,26 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_normalize">#</a>
-		<code>normalize( )</code>
+		<code>normalize( <span>boolean <var>$explodeOnGlue</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Normalize the header into a single standard header with an array of
-values</p>
+<p>Normalize the header to be a single header with an array of values</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Normalize the header into a single standard header with an array of
-values</p>
+<p>Normalize the header to be a single header with an array of values</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$explodeOnGlue</var></dt>
+					<dd><code>boolean</code><br>$explodeOnGlue Set to true to explode each header value on the glue of the
+header</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -637,7 +648,7 @@ method to check to see if a header was set using 'foo' (true), 'Foo' (true),
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$searchValue</var></dt>
-					<dd><code>string</code><br>$value Value to remove</dd>
+					<dd><code>string</code><br>$searchValue Value to remove</dd>
 				</dl></div>
 
 				<h4>Returns</h4>

@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\QueryString | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3807927395"></script>
+	<script type="text/javascript" src="elementlist.js?4062151815"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -54,6 +54,8 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
 						</li>
@@ -89,6 +91,11 @@
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
 						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
 						</li>
 				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
@@ -145,7 +152,6 @@
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -325,149 +331,6 @@ aggregating those parameters together as a string.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="aggregateUsingPhp" id="_aggregateUsingPhp">
-
-		<td class="attributes"><code>
-			 public static
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_aggregateUsingPhp">#</a>
-		<code>aggregateUsingPhp( <span>string <var>$key</var></span>, <span>array <var>$value</var></span>, <span>boolean <var>$encode</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Aggregate multi-valued parameters using PHP style syntax</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Aggregate multi-valued parameters using PHP style syntax</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key The name of the query string parameter</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>array</code><br>$value The values of the parameter</dd>
-					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br>$encode Set to TRUE to encode field names and values</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of the combined values<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="aggregateUsingComma" id="_aggregateUsingComma">
-
-		<td class="attributes"><code>
-			 public static
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_aggregateUsingComma">#</a>
-		<code>aggregateUsingComma( <span>string <var>$key</var></span>, <span>array <var>$value</var></span>, <span>boolean <var>$encode</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Aggregate multi-valued parameters by joining the values using a comma</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Aggregate multi-valued parameters by joining the values using a comma</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key The name of the query string parameter</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>array</code><br>$value The values of the parameter</dd>
-					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br>$encode Set to TRUE to encode field names and values</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of the combined values<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="aggregateUsingDuplicates" id="_aggregateUsingDuplicates">
-
-		<td class="attributes"><code>
-			 public static
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_aggregateUsingDuplicates">#</a>
-		<code>aggregateUsingDuplicates( <span>string <var>$key</var></span>, <span>array <var>$value</var></span>, <span>boolean <var>$encode</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Aggregate multi-valued parameters using duplicate values in a query
-string</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Aggregate multi-valued parameters using duplicate values in a query
-string</p>
-
-<p>Example: <a
-href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key The name of the query string parameter</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>array</code><br>$value The values of the parameter</dd>
-					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br>$encode Set to TRUE to encode field names and values</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of the combined values<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="getFieldSeparator" id="_getFieldSeparator">
 
 		<td class="attributes"><code>
@@ -490,43 +353,6 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 		<div class="description detailed hidden">
 			
 <p>Get the query string field separator</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getPrefix" id="_getPrefix">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getPrefix">#</a>
-		<code>getPrefix( )</code>
-
-		<div class="description short">
-			
-<p>Get the query string prefix</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the query string prefix</p>
 
 
 
@@ -579,6 +405,45 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getUrlEncoding" id="_getUrlEncoding">
+
+		<td class="attributes"><code>
+			 public 
+			boolean|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUrlEncoding">#</a>
+		<code>getUrlEncoding( )</code>
+
+		<div class="description short">
+			
+<p>Returns the type of URL encoding used by the query string</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns the type of URL encoding used by the query string</p>
+
+<p>One of: false, "RFC 3986", or "application/x-www-form-urlencoded"</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean|string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="isUrlEncoding" id="_isUrlEncoding">
 
 		<td class="attributes"><code>
@@ -594,13 +459,13 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 
 		<div class="description short">
 			
-<p>Returns whether or not field names and values will be urlencoded</p>
+<p>Returns true or false if using URL encoding</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns whether or not field names and values will be urlencoded</p>
+<p>Returns true or false if using URL encoding</p>
 
 
 
@@ -616,7 +481,7 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setAggregateFunction" id="_setAggregateFunction">
+	<tr data-order="setAggregator" id="_setAggregator">
 
 		<td class="attributes"><code>
 			 public 
@@ -626,8 +491,8 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setAggregateFunction">#</a>
-		<code>setAggregateFunction( <span>callable|null <var>$callback</var></span> )</code>
+		<a class="anchor" href="#_setAggregator">#</a>
+		<code>setAggregator( <span><code><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html">Guzzle\Http\QueryAggregator\QueryAggregatorInterface</a></code> <var>$aggregator</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -645,10 +510,11 @@ single or multiple fields</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$callback</var></dt>
-					<dd><code>callable|null</code><br>$callback A function or callback array that accepts a $key, $value,
-$encodeFields, and $encodeValues as arguments and returns an associative array
-containing the combined values. Set to null to remove any custom aggregator.</dd>
+					<dt><var>$aggregator</var></dt>
+					<dd><code>null|<code><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html">Guzzle\Http\QueryAggregator\QueryAggregatorInterface</a></code></code><br>$aggregator Pass in a QueryAggregatorInterface object to handle converting
+deeply nested query string variables into a flattened array. Pass null to use
+the default PHP style aggregator. For legacy reasons, this function accepts a
+callable that must accepts a $key, $value, and query object.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -659,7 +525,7 @@ containing the combined values. Set to null to remove any custom aggregator.</dd
 
 				<h4>See</h4>
 				<div class="list">
-						<code><code><a href="class-Guzzle.Http.QueryString.html#_aggregateUsingComma">Guzzle\Http\QueryString::aggregateUsingComma()</a></code></code><br />
+						\Guzzle\Http\QueryString::aggregateUsingComma()<br />
 				</div>
 
 
@@ -677,7 +543,7 @@ containing the combined values. Set to null to remove any custom aggregator.</dd
 
 		<td class="name"><div>
 		<a class="anchor" href="#_useUrlEncoding">#</a>
-		<code>useUrlEncoding( <span>boolean <var>$encode</var></span> )</code>
+		<code>useUrlEncoding( <span>boolean|string <var>$encode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -694,7 +560,9 @@ containing the combined values. Set to null to remove any custom aggregator.</dd
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br>$encode Set whether or not to encode</dd>
+					<dd><code>boolean|string</code><br>$encode Set to TRUE to use RFC 3986 encoding (rawurlencode), false to disable
+encoding, or form_urlencoding to use application/x-www-form-urlencoded encoding
+(urlencode)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -737,48 +605,6 @@ containing the combined values. Set to null to remove any custom aggregator.</dd
 				<div class="list"><dl>
 					<dt><var>$separator</var></dt>
 					<dd><code>string</code><br>$separator The query string separator that will separate fields</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setPrefix" id="_setPrefix">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setPrefix">#</a>
-		<code>setPrefix( <span>string <var>$prefix</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Set the query string prefix</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Set the query string prefix</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$prefix</var></dt>
-					<dd><code>string</code><br>$prefix Prefix to use with the query string (e.g. '?')</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -871,7 +697,51 @@ containing the combined values. Set to null to remove any custom aggregator.</dd
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="encodeData" id="_encodeData">
+	<tr data-order="encodeValue" id="_encodeValue">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_encodeValue">#</a>
+		<code>encodeValue( <span>string <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>URL encodes a value based on the url encoding type of the query string
+object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>URL encodes a value based on the url encoding type of the query string
+object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$value</var></dt>
+					<dd><code>string</code><br>$value Value to encode</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="prepareData" id="_prepareData">
 
 		<td class="attributes"><code>
 			 protected 
@@ -881,23 +751,20 @@ containing the combined values. Set to null to remove any custom aggregator.</dd
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_encodeData">#</a>
-		<code>encodeData( <span>array <var>$data</var></span> )</code>
+		<a class="anchor" href="#_prepareData">#</a>
+		<code>prepareData( <span>array <var>$data</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Url encode parameter data.</p>
+<p>Url encode parameter data and convert nested query strings into a flattened
+hash.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Url encode parameter data.</p>
-
-<p>If a parameter value is an array and no aggregator has been set, the values
-of the array will be converted into a PHP compatible form array. If an
-aggregator is set, the values will be converted using the aggregator
-function</p>
+<p>Url encode parameter data and convert nested query strings into a flattened
+hash.</p>
 
 
 
@@ -962,6 +829,52 @@ function</p>
 
 	<table class="summary" id="constants">
 	<caption>Constants summary</caption>
+	<tr data-order="RFC_3986" id="RFC_3986">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+<b>RFC_3986</b>		</code></td>
+		<td class="value"><code><span class="php-quote">'RFC 3986'</span></code></td>
+		<td class="description"><div>
+			<a href="#RFC_3986" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Used to URL encode with rawurlencode</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Used to URL encode with rawurlencode</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="FORM_URLENCODED" id="FORM_URLENCODED">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+<b>FORM_URLENCODED</b>		</code></td>
+		<td class="value"><code><span class="php-quote">'application/x-www-form-urlencoded'</span></code></td>
+		<td class="description"><div>
+			<a href="#FORM_URLENCODED" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Used to encode with urlencode</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Used to encode with urlencode</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="BLANK" id="BLANK">
 
 		<td class="attributes"><code>string</code></td>
@@ -1044,32 +957,6 @@ function</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="prefix" id="$prefix">
-		<td class="attributes"><code>
-			protected  
-			string
-		</code></td>
-
-		<td class="name">
-<var>$prefix</var>		</td>
-		<td class="value"><code><span class="php-quote">'?'</span></code></td>
-		<td class="description"><div>
-			<a href="#$prefix" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>The query string prefix</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>The query string prefix</p>
-
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="urlEncode" id="$urlEncode">
 		<td class="attributes"><code>
 			protected  
@@ -1078,7 +965,7 @@ function</p>
 
 		<td class="name">
 <var>$urlEncode</var>		</td>
-		<td class="value"><code><span class="php-keyword1">true</span></code></td>
+		<td class="value"><code><span class="php-quote">'RFC 3986'</span></code></td>
 		<td class="description"><div>
 			<a href="#$urlEncode" class="anchor">#</a>
 
@@ -1099,24 +986,46 @@ function</p>
 	<tr data-order="aggregator" id="$aggregator">
 		<td class="attributes"><code>
 			protected  
-			callable
+			<code><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html">Guzzle\Http\QueryAggregator\QueryAggregatorInterface</a></code>
 		</code></td>
 
 		<td class="name">
 <var>$aggregator</var>		</td>
-		<td class="value"><code><span class="php-keyword1">array</span>(__CLASS__, <span class="php-quote">'aggregateUsingPhp'</span>)</code></td>
+		<td class="value"><code></code></td>
 		<td class="description"><div>
 			<a href="#$aggregator" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>A callback function for combining multi-valued query string values</p>
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="defaultAggregator" id="$defaultAggregator">
+		<td class="attributes"><code>
+			protected static 
+			array
+		</code></td>
+
+		<td class="name">
+<var>$defaultAggregator</var>		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$defaultAggregator" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Cached PHP aggregator</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>A callback function for combining multi-valued query string values</p>
+<p>Cached PHP aggregator</p>
 
 
 			</div>

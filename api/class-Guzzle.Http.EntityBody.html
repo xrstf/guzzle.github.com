@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\EntityBody | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3807927395"></script>
+	<script type="text/javascript" src="elementlist.js?4062151815"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -54,6 +54,8 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
 						</li>
@@ -89,6 +91,11 @@
 							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
 						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
 						</li>
 				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
@@ -145,7 +152,6 @@
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -745,7 +751,10 @@ true)</dd>
 			<a href="class-Guzzle.Stream.Stream.html#___construct">__construct()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#___destruct">__destruct()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#___toString">__toString()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_close">close()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_feof">feof()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_ftell">ftell()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_getCustomData">getCustomData()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_getHash">getHash()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_getMetaData">getMetaData()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_getSize">getSize()</a>, 
@@ -760,8 +769,10 @@ true)</dd>
 			<a href="class-Guzzle.Stream.Stream.html#_isSeekable">isSeekable()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_isWritable">isWritable()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_read">read()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_readLine">readLine()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_rebuildCache">rebuildCache()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_seek">seek()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_setCustomData">setCustomData()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_setSize">setSize()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_setStream">setStream()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_write">write()</a>
@@ -853,6 +864,7 @@ true)</dd>
 	<tr>
 		<td><code>
 			<a href="class-Guzzle.Stream.Stream.html#$cache"><var>$cache</var></a>, 
+			<a href="class-Guzzle.Stream.Stream.html#$customData"><var>$customData</var></a>, 
 			<a href="class-Guzzle.Stream.Stream.html#$readWriteHash"><var>$readWriteHash</var></a>, 
 			<a href="class-Guzzle.Stream.Stream.html#$size"><var>$size</var></a>, 
 			<a href="class-Guzzle.Stream.Stream.html#$stream"><var>$stream</var></a>
