@@ -7,12 +7,10 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Guzzle Documentation &mdash; Guzzle 3.0.0 documentation</title>
+    <title>Guzzle | PHP HTTP client and framework for consuming RESTful web services &mdash; Guzzle 3.0.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap.css?v=5" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css?v=9" type="text/css" />
     <link rel="stylesheet" href="_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
@@ -28,202 +26,190 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="index.html" />
-    <link rel="next" title="Tour" href="tour/index.html" />
+    <link rel="next" title="Welcome to Guzzle" href="getting-started/overview.html" />
     <link rel="prev" title="&lt;no title&gt;" href="index.html" />
-
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($span, minLevel) {
-    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
-      findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 10 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          // Add list element.
-          $tocList.append($("<li/>").append($item));
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    // Start construction and return.
-    findA($span);
-
-    // Wipe out old list and patch in new one.
-    return $span.empty("ul").append($tocList);
-  };
-
-  $(document).ready(function () {
-    // Patch the global and local TOC's to be bootstrap-compliant.
-    patchToc($("span.globaltoc"), 1);
-    patchToc($("span.localtoc"), 2);
-  });
-}());
-</script>
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
 
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="index.html">Guzzle</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="index.html">Home</a>
-              </li>
-              <li class="">
-                <a href="#">Docs</a>
-              </li>
-              <li class="">
-                <a href="https://github.com/guzzle/guzzle">GitHub</a>
-              </li>
-              <li class="">
-                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-              </li>
-              <li>
-                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-              </li>
-            </ul>
-            
-              
-<form class="navbar-search pull-right" action="search.html" method="get" placehold="Search">
-  <input type="text" name="q" placeholder="Search" class="search-query" />
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-            
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="index.html">Guzzle</a>
           </div>
-        </div>
+          <ul id="main-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
       </div>
-    </div>
+  </div>
+  
 
   
-    <div class="container">
       
-        <div class="guzzle-sidebar">
-  <div class="well">
-      <h4>Table of contents</h4>
-      <ul>
-<li><a class="reference internal" href="#">Guzzle Documentation</a><ul>
-<li><a class="reference internal" href="#tour">Tour</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#guides">Guides</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#api">API</a></li>
-</ul>
-</li>
-</ul>
 
-  </div>
-  <div class="well">
-    <h4>Need support?</h4>
-    <p>Please post to our <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">google group</a> if you need support or have a technical question.</p>
-    <h4>Found an error?</h4>
-    <p>If you find an error in the documentation, please <a href="https://github.com/guzzle/guzzle-docs">file a ticket</a> or <a href="https://github.com/guzzle/guzzle-docs">submit a pull request</a>.</p>
-    <h4>Wanna help?</h4>
-    <p>Clone the <a href="https://github.com/guzzle/guzzle-docs">guzzle-docs</a> repo and submit pull requests.</p>
-  </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="toctree-wrapper compound">
 </div>
-      
-      <div class="content">
-        
-  <div class="section" id="guzzle-documentation">
+<div class="section" id="guzzle-documentation">
 <h1>Guzzle Documentation<a class="headerlink" href="#guzzle-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="tour">
-<h2>Tour<a class="headerlink" href="#tour" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="tour/installation.html"><em>Installation</em></a></li>
-<li><a class="reference internal" href="tour/http.html"><em>HTTP client for PHP</em></a></li>
-<li><a class="reference internal" href="tour/using_services.html"><em>Consuming web services using web service clients</em></a></li>
-<li><a class="reference internal" href="tour/building_services.html"><em>Building web service clients</em></a></li>
-</ul>
-</div>
-<div class="section" id="guides">
-<h2>Guides<a class="headerlink" href="#guides" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-</div>
-<ul class="simple">
-<li><a class="reference internal" href="guide/service/service_descriptions.html"><em>Service descriptions</em></a></li>
-<li><a class="reference internal" href="guide/plugins.html"><em>Plugins</em></a></li>
-<li><a class="reference internal" href="guide/service/testing_clients.html"><em>Unit testing web service clients</em></a></li>
-<li><a class="reference internal" href="guide/http/creating_plugins.html"><em>Creating plugins and observers</em></a></li>
-<li><a class="reference internal" href="guide/service/resource_iterators.html"><em>Resource iterators</em></a></li>
-<li><a class="reference internal" href="guide/http/caching.html"><em>Caching</em></a></li>
-<li><a class="reference internal" href="guide/batching.html"><em>Batching requests and commands</em></a></li>
-<li><a class="reference internal" href="guide/contributing.html"><em>Contributing</em></a></li>
-<li><a class="reference internal" href="guide/faq.html"><em>FAQ</em></a></li>
-</ul>
-</div>
-<div class="section" id="api">
-<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<li><a class="reference internal" href="getting-started/overview.html"><em>Welcome to Guzzle</em></a></li>
+<li><a class="reference internal" href="getting-started/installation.html"><em>Installation</em></a></li>
+<li><a class="reference internal" href="getting-started/faq.html"><em>FAQ</em></a></li>
 <li><a class="reference external" href="http://guzzlephp.org/api/index.html">Read the API docs</a></li>
 </ul>
 </div>
+<div class="section" id="the-http-client">
+<h2>The HTTP client<a class="headerlink" href="#the-http-client" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="http-client/client.html"><em>The Guzzle HTTP client</em></a></li>
+<li><a class="reference internal" href="http-client/request.html"><em>Using Request objects</em></a></li>
+<li><a class="reference internal" href="http-client/response.html"><em>Using Response objects</em></a></li>
+<li><a class="reference internal" href="http-client/entity-bodies.html"><em>Request and response bodies</em></a></li>
+<li><a class="reference internal" href="http-client/http-redirects.html"><em>HTTP redirects</em></a></li>
+</ul>
+</div>
+<div class="section" id="plugins">
+<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="plugins/plugins-overview.html"><em>Plugin system overview</em></a></li>
+<li><a class="reference internal" href="plugins/creating-plugins.html"><em>Creating plugins</em></a></li>
+</ul>
+</div>
+<div class="section" id="the-web-service-client">
+<h2>The web service client<a class="headerlink" href="#the-web-service-client" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="webservice-client/webservice-client.html"><em>The web service client</em></a></li>
+<li><a class="reference internal" href="webservice-client/using-the-service-builder.html"><em>Using a service builder</em></a></li>
+<li><a class="reference internal" href="webservice-client/guzzle-service-descriptions.html"><em>Guzzle service descriptions</em></a></li>
+<li><a class="reference internal" href="batching/batching.html"><em>Batching</em></a></li>
+<li><a class="reference internal" href="iterators/resource-iterators.html"><em>Resource iterators</em></a></li>
+<li><a class="reference internal" href="iterators/guzzle-iterators.html"><em>Guzzle iterators</em></a></li>
+</ul>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="testing/unit-testing.html"><em>Unit Testing Guzzle clients</em></a></li>
+</ul>
+</div>
 </div>
 
 
-        
-          
-<div class="breadcrumb" style="margin: 24px 0; color:#999; text-align: center;">
-  <a class="btn info" href="tour/index.html" title="next chapter">Tour &raquo;</a>
-</div>
-          <div id="comments">
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname = 'guzzle';
-    var disqus_identifier = 'docs';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-        
+          </div>
+        </div>
       </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="getting-started/overview.html" title="next chapter">Welcome to Guzzle &gt;</a></li>
+</ul>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Guzzle Documentation</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#the-http-client">The HTTP client</a></li>
+<li><a class="reference internal" href="#plugins">Plugins</a></li>
+<li><a class="reference internal" href="#the-web-service-client">The web service client</a></li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="getting-started/overview.html" title="next chapter">Next: Welcome to Guzzle</a>
+    <a href="index.html" title="previous chapter">Prev: &lt;no title&gt;</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'docs';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
     </div>
   
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right"><a href="#">Back to top</a></p>
-    <p>
-    </p>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="getting-started/overview.html" title="Welcome to Guzzle"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="&lt;no title&gt;"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Guzzle</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
+  
   <script type="text/javascript">
     
     
   </script>
-</footer>
   </body>
 </html>

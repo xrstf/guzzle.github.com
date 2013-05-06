@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Client | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?4062151815"></script>
+	<script type="text/javascript" src="elementlist.js?1186530155"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -144,6 +144,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
+				<li><a href="class-Guzzle.Http.CachingEntityBody.html">CachingEntityBody</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Client.html">Client</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
 				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
@@ -1419,6 +1420,54 @@ transferring requests.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="preparePharCacert" id="_preparePharCacert">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_preparePharCacert">#</a>
+		<code>preparePharCacert( <span>boolean <var>$md5Check</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Copy the cacert.pem file from the phar if it is not in the temp folder and
+validate the MD5 checksum</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Copy the cacert.pem file from the phar if it is not in the temp folder and
+validate the MD5 checksum</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$md5Check</var></dt>
+					<dd><code>boolean</code><br>$md5Check Set to false to not perform the MD5 validation</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>Returns the path to the extracted cacert<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.RuntimeException.html">Guzzle\Common\Exception\RuntimeException</a></code></code><br>if the file cannot be copied or there is a MD5 mismatch<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="prepareRequest" id="_prepareRequest">
 
 		<td class="attributes"><code>
@@ -1456,6 +1505,39 @@ behaviors and properties to the request.</p>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
 				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="initSsl" id="_initSsl">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_initSsl">#</a>
+		<code>initSsl( )</code>
+
+		<div class="description short">
+			
+<p>Initializes SSL settings</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Initializes SSL settings</p>
+
+
+
+
 
 
 

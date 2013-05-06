@@ -1,0 +1,309 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Request and response bodies &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="HTTP redirects" href="http-redirects.html" />
+    <link rel="prev" title="Using Response objects" href="response.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="request-and-response-bodies">
+<h1>Request and response bodies<a class="headerlink" href="#request-and-response-bodies" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html">Entity body</a> is the term used for the body of an HTTP
+message. The entity body of requests and responses is inherently a
+<a class="reference external" href="http://php.net/manual/en/book.stream.php">PHP stream</a> in Guzzle. The body of the request can be either a string or
+a PHP stream which are converted into a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntityBody</span></tt> object using its factory method. When using a
+string, the entity body is stored in a <a class="reference external" href="http://www.php.net/manual/en/wrappers.php.php">temp PHP stream</a>. The use of
+temp PHP streams helps to protect your application from running out of memory when sending or receiving large entity
+bodies in your messages. When more than 2MB of data is stored in a temp stream, it automatically stores the data on
+disk rather than in memory.</p>
+<p>EntityBody objects provide a great deal of functionality: compression, decompression, calculate the Content-MD5,
+calculate the Content-Length (when the resource is repeatable), guessing the Content-Type, and more. Guzzle doesn&#8217;t
+need to load an entire entity body into a string when sending or retrieving data; entity bodies are streamed when
+being uploaded and downloaded.</p>
+<p>Here&#8217;s an example of gzip compressing a text file then sending the file to a URL:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
+
+<span class="nv">$body</span> <span class="o">=</span> <span class="nx">EntityBody</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/path/to/file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">));</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">SEEK_END</span><span class="p">);</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">write</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">ftell</span><span class="p">();</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">rewind</span><span class="p">();</span>
+
+<span class="c1">// Send a request using the body</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;http://localhost:8080/uploads&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$body</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The body of the request can be specified in the <tt class="docutils literal"><span class="pre">Client::put()</span></tt> or <tt class="docutils literal"><span class="pre">Client::post()</span></tt>  method, or, you can specify
+the body of the request by calling the <tt class="docutils literal"><span class="pre">setBody()</span></tt> method of any
+<tt class="docutils literal"><span class="pre">Guzzle\Http\Message\EntityEnclosingRequestInterface</span></tt> object.</p>
+<div class="section" id="compression">
+<h2>Compression<a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h2>
+<p>You can compress the contents of an EntityBody object using the <tt class="docutils literal"><span class="pre">compress()</span></tt> method. The compress method accepts a
+filter that must match to one of the supported
+<a class="reference external" href="http://www.php.net/manual/en/filters.compression.php">PHP stream filters</a> on your system (e.g. <cite>zlib.deflate</cite>,
+<tt class="docutils literal"><span class="pre">bzip2.compress</span></tt>, etc). Compressing an entity body will stream the entire entity body through a stream compression
+filter into a temporary PHP stream. You can uncompress an entity body using the <tt class="docutils literal"><span class="pre">uncompress()</span></tt> method and passing
+the PHP stream filter to use when decompressing the stream (e.g. <tt class="docutils literal"><span class="pre">zlib.inflate</span></tt>).</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
+
+<span class="nv">$body</span> <span class="o">=</span> <span class="nx">EntityBody</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">));</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 1048576</span>
+
+<span class="c1">// Compress using the default zlib.deflate filter</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">compress</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 314572</span>
+
+<span class="c1">// Decompress the stream</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">uncompress</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 1048576</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="decorators">
+<h2>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h2>
+<p>Guzzle provides several EntityBody decorators that can be used to add functionality to an EntityBody at runtime.</p>
+<div class="section" id="ioemittingentitybody">
+<h3>IoEmittingEntityBody<a class="headerlink" href="#ioemittingentitybody" title="Permalink to this headline">¶</a></h3>
+<p>This decorator will emity events when data is read from a stream or written to a stream. Add an event subscriber to the
+entity body&#8217;s <tt class="docutils literal"><span class="pre">body.read</span></tt> or <tt class="docutils literal"><span class="pre">body.write</span></tt> methods to receive notifications when data data is transferred.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\IoEmittingEntityBody</span><span class="p">;</span>
+
+<span class="nv">$original</span> <span class="o">=</span> <span class="nx">EntityBody</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">));</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IoEmittingEntityBody</span><span class="p">(</span><span class="nv">$original</span><span class="p">);</span>
+
+<span class="c1">// Listen for read events</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">getEventDispatcher</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="s1">&#39;body.read&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Grab data from the event</span>
+    <span class="nv">$entityBody</span> <span class="o">=</span> <span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">];</span>
+    <span class="c1">// Amount of data retrieved from the body</span>
+    <span class="nv">$lengthOfData</span> <span class="o">=</span> <span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">];</span>
+    <span class="c1">// The actual data that was read</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;read&#39;</span><span class="p">];</span>
+<span class="p">});</span>
+
+<span class="c1">// Listen for write events</span>
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">getEventDispatcher</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="s1">&#39;body.write&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Grab data from the event</span>
+    <span class="nv">$entityBody</span> <span class="o">=</span> <span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">];</span>
+    <span class="c1">// The data that was written</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;write&#39;</span><span class="p">];</span>
+    <span class="c1">// The actual amount of data that was written</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;read&#39;</span><span class="p">];</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="readlimitentitybody">
+<h3>ReadLimitEntityBody<a class="headerlink" href="#readlimitentitybody" title="Permalink to this headline">¶</a></h3>
+<p>The ReadLimitEntityBody decorator can be used to transfer a subset or slice of an existing EntityBody object. This can
+be useful for breaking a large file into smaller pieces to be sent in chunks (e.g. Amazon S3&#8217;s multipart upload API).</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\ReadLimitEntityBody</span><span class="p">;</span>
+
+<span class="nv">$original</span> <span class="o">=</span> <span class="nx">EntityBody</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/tmp/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">));</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 1048576</span>
+
+<span class="c1">// Limit the size of the body to 1024 bytes and start reading from byte 2048</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReadLimitEntityBody</span><span class="p">(</span><span class="nv">$original</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">2048</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 1024</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">ftell</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cachingentitybody">
+<h3>CachingEntityBody<a class="headerlink" href="#cachingentitybody" title="Permalink to this headline">¶</a></h3>
+<p>The CachingEntityBody decorator is used to allow seeking over previously read bytes on non-seekable read streams. This
+can be useful when transferring a non-seekable entity body fails due to needing to rewind the stream (for example,
+resulting from a redirect). Data that is read from the remote stream will be buffered in a PHP temp stream so that
+previously read bytes are cached first in memory, then on disk.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\CachingEntityBody</span><span class="p">;</span>
+
+<span class="nv">$original</span> <span class="o">=</span> <span class="nx">EntityBody</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;http://www.google.com&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">));</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachingEntityBody</span><span class="p">(</span><span class="nv">$original</span><span class="p">);</span>
+
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">ftell</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 1024</span>
+
+<span class="nv">$body</span><span class="o">-&gt;</span><span class="na">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">ftell</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="response.html" title="previous chapter">&lt; Using Response objects</a></li>
+      <li><a href="http-redirects.html" title="next chapter">HTTP redirects &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Request and response bodies</a><ul>
+<li><a class="reference internal" href="#compression">Compression</a></li>
+<li><a class="reference internal" href="#decorators">Decorators</a><ul>
+<li><a class="reference internal" href="#ioemittingentitybody">IoEmittingEntityBody</a></li>
+<li><a class="reference internal" href="#readlimitentitybody">ReadLimitEntityBody</a></li>
+<li><a class="reference internal" href="#cachingentitybody">CachingEntityBody</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="http-redirects.html" title="next chapter">Next: HTTP redirects</a>
+    <a href="response.html" title="previous chapter">Prev: Using Response objects</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'http-client/entity-bodies';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-redirects.html" title="HTTP redirects"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="response.html" title="Using Response objects"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

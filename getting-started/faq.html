@@ -1,0 +1,195 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FAQ &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="The Guzzle HTTP client" href="../http-client/client.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-should-i-do-if-i-get-this-error-fatal-error-maximum-function-nesting-level-of-100-reached-aborting">
+<h2>What should I do if I get this error: Fatal error: Maximum function nesting level of &#8216;100&#8217; reached, aborting!<a class="headerlink" href="#what-should-i-do-if-i-get-this-error-fatal-error-maximum-function-nesting-level-of-100-reached-aborting" title="Permalink to this headline">¶</a></h2>
+<p>You could run into this error if you have the XDebug extension installed and you execute a lot of requests in
+callbacks.  This error message comes specifically from the XDebug extension. PHP itself does not have a function
+nesting limit. Change this setting in your php.ini to increase the limit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xdebug</span><span class="o">.</span><span class="n">max_nesting_level</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>[<a class="reference external" href="http://stackoverflow.com/a/4293870/151504">source</a>]</p>
+</div>
+<div class="section" id="how-can-i-speed-up-my-client">
+<h2>How can I speed up my client?<a class="headerlink" href="#how-can-i-speed-up-my-client" title="Permalink to this headline">¶</a></h2>
+<p>There are several things you can do to speed up your client:</p>
+<ol class="arabic simple">
+<li>Utilize a C based HTTP message parser (e.g. <tt class="docutils literal"><span class="pre">Guzzle\Http\Parser\Message\PeclHttpMessageParser</span></tt>)</li>
+<li>Disable operation validation by setting the <tt class="docutils literal"><span class="pre">command.disable_validation</span></tt> option to true on a command</li>
+</ol>
+</div>
+<div class="section" id="why-am-i-getting-a-417-error-response">
+<h2>Why am I getting a 417 error response?<a class="headerlink" href="#why-am-i-getting-a-417-error-response" title="Permalink to this headline">¶</a></h2>
+<p>This can occur for a number of reasons, but if you are sending PUT, POST, or PATCH requests with an
+<tt class="docutils literal"><span class="pre">Expect:</span> <span class="pre">100-Continue</span></tt> header, a server that does not support this header will return a 417 response. You can work
+around this by calling <tt class="docutils literal"><span class="pre">$request-&gt;removeHeader('Expect');</span></tt> after setting the entity body of a request.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="installation.html" title="previous chapter">&lt; Installation</a></li>
+      <li><a href="../http-client/client.html" title="next chapter">The Guzzle HTTP client &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">FAQ</a><ul>
+<li><a class="reference internal" href="#what-should-i-do-if-i-get-this-error-fatal-error-maximum-function-nesting-level-of-100-reached-aborting">What should I do if I get this error: Fatal error: Maximum function nesting level of &#8216;100&#8217; reached, aborting!</a></li>
+<li><a class="reference internal" href="#how-can-i-speed-up-my-client">How can I speed up my client?</a></li>
+<li><a class="reference internal" href="#why-am-i-getting-a-417-error-response">Why am I getting a 417 error response?</a></li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="../http-client/client.html" title="next chapter">Next: The Guzzle HTTP client</a>
+    <a href="installation.html" title="previous chapter">Prev: Installation</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'getting-started/faq';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../http-client/client.html" title="The Guzzle HTTP client"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

@@ -1,0 +1,792 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The web service client &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Using a service builder" href="using-the-service-builder.html" />
+    <link rel="prev" title="OAuth plugin" href="../plugins/oauth-plugin.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-web-service-client">
+<h1>The web service client<a class="headerlink" href="#the-web-service-client" title="Permalink to this headline">¶</a></h1>
+<p>The <tt class="docutils literal"><span class="pre">Guzzle\Service</span></tt> namespace contains various abstractions that help to make it easier to interact with a web
+service API, including commands, service descriptions, and resource iterators.</p>
+<p>In this chapter, we&#8217;ll build a simple <a class="reference external" href="https://dev.twitter.com/docs/api/1.1">Twitter API client</a>.</p>
+<div class="section" id="creating-a-client">
+<h2>Creating a client<a class="headerlink" href="#creating-a-client" title="Permalink to this headline">¶</a></h2>
+<p>A class that extends from <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> or implements <tt class="docutils literal"><span class="pre">Guzzle\Service\ClientInterface</span></tt> must implement a
+<tt class="docutils literal"><span class="pre">factory()</span></tt> method in order to be used with a <a class="reference internal" href="using-the-service-builder.html"><em>service builder</em></a>.</p>
+<div class="section" id="factory-method">
+<h3>Factory method<a class="headerlink" href="#factory-method" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <tt class="docutils literal"><span class="pre">factory()</span></tt> method of a client directly if you do not need a service builder.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">mtdowling\TwitterClient</span><span class="p">;</span>
+
+<span class="c1">// Create a client and pass an array of configuration data</span>
+<span class="nv">$twitter</span> <span class="o">=</span> <span class="nx">TwitterClient</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;consumer_key&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;****&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;consumer_secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;****&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;token&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;****&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;token_secret&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;****&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you&#8217;d like to follow along, here&#8217;s how to get your Twitter API credentials:</p>
+<ol class="last arabic simple">
+<li>Visit <a class="reference external" href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></li>
+<li>Click on an application that you&#8217;ve created</li>
+<li>Click on the &#8220;OAuth tool&#8221; tab</li>
+<li>Copy all of the settings under &#8220;OAuth Settings&#8221;</li>
+</ol>
+</div>
+</div>
+<div class="section" id="implementing-a-factory-method">
+<h3>Implementing a factory method<a class="headerlink" href="#implementing-a-factory-method" title="Permalink to this headline">¶</a></h3>
+<p>Creating a client and its factory method is pretty simple. You just need to implement <tt class="docutils literal"><span class="pre">Guzzle\Service\ClientInterface</span></tt>
+or extend from <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">mtdowling</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Guzzle\Common\Collection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Oauth\OauthPlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Description\ServiceDescription</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * A simple Twitter API client</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">TwitterClient</span> <span class="k">extends</span> <span class="nx">Client</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">factory</span><span class="p">(</span><span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="c1">// Provide a hash of default client configuration options</span>
+        <span class="nv">$default</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;base_url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https://api.twitter.com/1.1&#39;</span><span class="p">);</span>
+
+        <span class="c1">// The following values are required when creating the client</span>
+        <span class="nv">$required</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;base_url&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;consumer_key&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;consumer_secret&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;token&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;token_secret&#39;</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Merge in default settings and validate the config</span>
+        <span class="nv">$config</span> <span class="o">=</span> <span class="nx">Collection</span><span class="o">::</span><span class="na">fromConfig</span><span class="p">(</span><span class="nv">$config</span><span class="p">,</span> <span class="nv">$default</span><span class="p">,</span> <span class="nv">$required</span><span class="p">);</span>
+
+        <span class="c1">// Create a new Twitter client</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;base_url&#39;</span><span class="p">),</span> <span class="nv">$config</span><span class="p">);</span>
+
+        <span class="c1">// Ensure that the OauthPlugin is attached to the client</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="k">new</span> <span class="nx">OauthPlugin</span><span class="p">(</span><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">()));</span>
+
+        <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="service-builder">
+<h3>Service Builder<a class="headerlink" href="#service-builder" title="Permalink to this headline">¶</a></h3>
+<p>A service builder is used to easily create web service clients, provides a simple configuration driven approach to
+creating clients, and allows you to share configuration settings across multiple clients. You can find out more about
+Guzzle&#8217;s service builder in <a class="reference internal" href="using-the-service-builder.html"><em>Using a service builder</em></a>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="p">;</span>
+
+<span class="c1">// Create a service builder and provide client configuration data</span>
+<span class="nv">$builder</span> <span class="o">=</span> <span class="nx">ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;/path/to/client_config.json&#39;</span><span class="p">);</span>
+
+<span class="c1">// Get the client from the service builder by name</span>
+<span class="nv">$twitter</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;twitter&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The above example assumes you have JSON data similar to the following stored in &#8220;/path/to/client_config.json&#8221;:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;services&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;twitter&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;mtdowling\TwitterClient&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;consumer_key&quot;</span><span class="p">:</span> <span class="s2">&quot;****&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;consumer_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;****&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;****&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;token_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;****&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A service builder becomes much more valuable when using multiple web service clients in a single application or
+if you need to utilize the same client with varying configuration settings (e.g. multiple accounts).</p>
+</div>
+</div>
+</div>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<p>Commands are a concept in Guzzle that helps to hide the underlying implementation of an API by providing an easy to use
+parameter driven object for each action of an API. A command is responsible for accepting an array of configuration
+parameters, serializing an HTTP request, and parsing an HTTP response. Following the
+<a class="reference external" href="http://en.wikipedia.org/wiki/Command_pattern">command pattern</a>, commands in Guzzle offer a greater level of
+flexibility when implementing and utilizing a web service client.</p>
+<div class="section" id="executing-commands">
+<h3>Executing commands<a class="headerlink" href="#executing-commands" title="Permalink to this headline">¶</a></h3>
+<p>You must explicitly execute a command after creating a command using the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method. A command has an
+<tt class="docutils literal"><span class="pre">execute()</span></tt> method that may be called, or you can use the <tt class="docutils literal"><span class="pre">execute()</span></tt> method of a client object and pass in the
+command object. Calling either of these execute methods will return the result value of the command. The result value is
+the result of parsing the HTTP response with the <tt class="docutils literal"><span class="pre">process()</span></tt> method.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Get a command from the client and pass an array of parameters</span>
+<span class="nv">$command</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;getMentions&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;count&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span>
+<span class="p">));</span>
+
+<span class="c1">// Other parameters can be set on the command after it is created</span>
+<span class="nv">$command</span><span class="p">[</span><span class="s1">&#39;trim_user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="c1">// Execute the command using the command object.</span>
+<span class="c1">// The result value contains an array of JSON data from the response</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="c1">// You can retrieve the result of the command later too</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">()</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Command object also contains methods that allow you to inspect the HTTP request and response that was utilized with
+the command.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">();</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The format and notation used to retrieve commands from a client can be customized by injecting a custom command
+factory, <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt>, on the client using <tt class="docutils literal"><span class="pre">$client-&gt;setCommandFactory()</span></tt>.</p>
+</div>
+<div class="section" id="executing-with-magic-methods">
+<h4>Executing with magic methods<a class="headerlink" href="#executing-with-magic-methods" title="Permalink to this headline">¶</a></h4>
+<p>When using method missing magic methods with a command, the command will be executed right away and the result of the
+command is returned.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$jsonData</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getMentions</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;count&#39;</span>     <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;trim_user&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-commands">
+<h3>Creating commands<a class="headerlink" href="#creating-commands" title="Permalink to this headline">¶</a></h3>
+<p>Commands are created using either the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method of a client or a magic missing method of a client. Using
+the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method allows you to create a command without executing it, allowing for customization of the
+command or the request serialized by the command.</p>
+<p>When a client attempts to create a command, it uses the client&#8217;s <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt>.
+By default, Guzzle will utilize a command factory that first looks for a concrete class for a particular command
+(concrete commands) followed by a command defined by a service description (operation commands). We&#8217;ll learn more about
+concrete commands and operation commands later in this chapter.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Get a command from the twitter client.</span>
+<span class="nv">$command</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;getMentions&#39;</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Unless you&#8217;ve skipped ahead, running the above code will throw an exception.</p>
+<blockquote>
+<div>PHP Fatal error:  Uncaught exception &#8216;GuzzleCommonExceptionInvalidArgumentException&#8217; with message
+&#8216;Command was not found matching getMentions&#8217;</div></blockquote>
+<p>This exception was thrown because the &#8220;getMentions&#8221; command has not yet been implemented. Let&#8217;s implement one now.</p>
+<div class="section" id="concrete-commands">
+<h4>Concrete commands<a class="headerlink" href="#concrete-commands" title="Permalink to this headline">¶</a></h4>
+<p>Commands can be created in one of two ways: create a concrete command class that extends
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt> or
+<a class="reference internal" href="guzzle-service-descriptions.html"><em>create an OperationCommand based on a service description</em></a>. The recommended
+approach is to use a service description to define your web service, but you can use concrete commands when custom
+logic must be implemented for marshaling or unmarshaling a HTTP message.</p>
+<p>Commands are the method in which you abstract away the underlying format of the requests that need to be sent to take
+action on a web service. Commands in Guzzle are meant to be built by executing a series of setter methods on a command
+object. Commands are only validated right before they are executed. A <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object is responsible
+for executing commands. Commands created for your web service must implement
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandInterface</span></tt>, but it&#8217;s easier to extend the <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt>
+class, implement the <tt class="docutils literal"><span class="pre">build()</span></tt> method, and optionally implement the <tt class="docutils literal"><span class="pre">process()</span></tt> method.</p>
+<div class="section" id="serializing-requests">
+<h5>Serializing requests<a class="headerlink" href="#serializing-requests" title="Permalink to this headline">¶</a></h5>
+<p>The <tt class="docutils literal"><span class="pre">build()</span></tt> method of a command is responsible for using the arguments of the command to build and serialize a
+HTTP request and set the request on the <tt class="docutils literal"><span class="pre">$request</span></tt> property of the command object. This step is usually taken care of
+for you when using a service description driven command that uses the default
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\OperationCommand</span></tt>. You may wish to implement the process method yourself when you aren&#8217;t
+using a service description or need to implement more complex request serialization.</p>
+<p>The following example shows how to implement the <tt class="docutils literal"><span class="pre">getMentions</span></tt>
+<a class="reference external" href="https://dev.twitter.com/docs/api/1.1/get/statuses/mentions_timeline">Twitter API</a> method using a concrete command.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">mtdowling\Twitter\Command</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\AbstractCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">GetMentions</span> <span class="k">extends</span> <span class="nx">AbstractCommand</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">build</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Create the request property of the command</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;statuses/mentions_timeline.json&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Grab the query object of the request because we will use it for</span>
+        <span class="c1">// serializing command parameters on the request</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;since_id&#39;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;since_id&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;since_id&#39;</span><span class="p">]);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;max_id&#39;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;max_id&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;max_id&#39;</span><span class="p">]);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;trim_user&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;trim_user&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;trim_user&#39;</span><span class="p">]</span> <span class="o">?</span> <span class="s1">&#39;true&#39;</span> <span class="o">:</span> <span class="s1">&#39;false&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;contributor_details&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;contributor_details&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;contributor_details&#39;</span><span class="p">]</span> <span class="o">?</span> <span class="s1">&#39;true&#39;</span> <span class="o">:</span> <span class="s1">&#39;false&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;include_entities&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;include_entities&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">[</span><span class="s1">&#39;include_entities&#39;</span><span class="p">]</span> <span class="o">?</span> <span class="s1">&#39;true&#39;</span> <span class="o">:</span> <span class="s1">&#39;false&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By default, a client will attempt to find concrete command classes under the <tt class="docutils literal"><span class="pre">Command</span></tt> namespace of a client. First
+the client will attempt to find an exact match for the name of the command to the name of the command class. If an
+exact match is not found, the client will calculate a class name using inflection. This is calculated based on the
+folder hierarchy of a command and converting the CamelCased named commands into snake_case. Here are some examples on
+how the command names are calculated:</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">Foo\Command\JarJar</span></tt> <strong>-&gt;</strong> jar_jar</li>
+<li><tt class="docutils literal"><span class="pre">Foo\Command\Test</span></tt> <strong>-&gt;</strong> test</li>
+<li><tt class="docutils literal"><span class="pre">Foo\Command\People\GetCurrentPerson</span></tt> <strong>-&gt;</strong> people.get_current_person</li>
+</ol>
+<p>Notice how any sub-namespace beneath <tt class="docutils literal"><span class="pre">Command</span></tt> is converted from <tt class="docutils literal"><span class="pre">\</span></tt> to <tt class="docutils literal"><span class="pre">.</span></tt> (a period). CamelCasing is converted
+to lowercased snake_casing (e.g. JarJar == jar_jar).</p>
+</div>
+<div class="section" id="parsing-responses">
+<h5>Parsing responses<a class="headerlink" href="#parsing-responses" title="Permalink to this headline">¶</a></h5>
+<p>The <tt class="docutils literal"><span class="pre">process()</span></tt> method of a command is responsible for converting an HTTP response into something more useful. For
+example, a service description operation that has specified a model object in the <tt class="docutils literal"><span class="pre">responseClass</span></tt> attribute of the
+operation will set a <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt> object as the result of the command. This behavior can be
+completely modified as needed&#8211; even if you are using operations and responseClass models. Simply implement a custom
+<tt class="docutils literal"><span class="pre">process()</span></tt> method that sets the <tt class="docutils literal"><span class="pre">$this-&gt;result</span></tt> class property to whatever you choose. You can reuse parts of the
+default Guzzle response parsing functionality or get inspiration from existing code by using
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\OperationResponseParser</span></tt> and <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\DefaultResponseParser</span></tt> classes.</p>
+<p>If you do not implement a custom <tt class="docutils literal"><span class="pre">process()</span></tt> method and are not using a service description, then Guzzle will attempt
+to guess how a response should be processed based on the Content-Type header of the response. Because the Twitter API
+sets a <tt class="docutils literal"><span class="pre">Content-Type:</span> <span class="pre">application/json</span></tt> header on this response, we do not need to implement any custom response
+parsing.</p>
+</div>
+</div>
+<div class="section" id="operation-commands">
+<h4>Operation commands<a class="headerlink" href="#operation-commands" title="Permalink to this headline">¶</a></h4>
+<p>Operation commands are commands in which the serialization of an HTTP request and the parsing of an HTTP response are
+driven by a Guzzle service description. Because request serialization, validation, and response parsing are
+described using a DSL, creating operation commands is a much faster process than writing concrete commands.</p>
+<p>Creating operation commands for our Twitter client can remove a great deal of redundancy from the previous concrete
+command, and allows for a deeper runtime introspection of the API. Here&#8217;s an example service description we can use to
+create the Twitter API client:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Twitter&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.twitter.com/1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Twitter REST API client&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetMentions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;statuses/mentions_timeline.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Returns the 20 most recent mentions for the authenticating user.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;GetMentionsOutput&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Specifies the number of tweets to try and retrieve&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;since_id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Returns results with an ID greater than the specified ID&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;max_id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Returns results with an ID less than or equal to the specified ID.&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;trim_user&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Limits the amount of data returned for each user&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;contributor_details&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Adds more data to contributor elements&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;include_entities&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The entities node will be disincluded when set to false.&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;models&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetMentionsOutput&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you&#8217;re lazy, you can define the API in a less descriptive manner using <tt class="docutils literal"><span class="pre">additionalParameters</span></tt>.
+<tt class="docutils literal"><span class="pre">additionalParameters</span></tt> define the serialization and validation rules of parameters that are not explicitly defined
+in a service description.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Twitter&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.twitter.com/1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Twitter REST API client&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetMentions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;statuses/mentions_timeline.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Returns the 20 most recent mentions for the authenticating user.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;GetMentionsOutput&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;additionalParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;models&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetMentionsOutput&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You should attach the service description to the client at the end of the client&#8217;s factory method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="k">class</span> <span class="nc">TwitterClient</span> <span class="k">extends</span> <span class="nx">Client</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">factory</span><span class="p">(</span><span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="c1">// ... same code as before ...</span>
+
+        <span class="c1">// Set the service description</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="nx">ServiceDescription</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;path/to/twitter.json&#39;</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The client can now use operations defined in the service description instead of requiring you to create concrete
+command classes. Feel free to delete the concrete command class we created earlier.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$jsonData</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getMentions</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;count&#39;</span>     <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;trim_user&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="executing-commands-in-parallel">
+<h3>Executing commands in parallel<a class="headerlink" href="#executing-commands-in-parallel" title="Permalink to this headline">¶</a></h3>
+<p>Much like HTTP requests, Guzzle allows you to send mutliple commands in parallel. You can send commands in parallel by
+passing an array of command objects to a client&#8217;s <tt class="docutils literal"><span class="pre">execute()</span></tt> method. The client will serialize each request and
+send them all in parallel. If an error is encountered during the transfer, then a
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Exception\CommandTransferException</span></tt> is thrown, which allows you to retrieve a list of commands that
+succeeded and a list of commands that failed.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Exception\CommandTransferException</span><span class="p">;</span>
+
+<span class="nv">$commands</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="nv">$commands</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;getMentions&#39;</span><span class="p">);</span>
+<span class="nv">$commands</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;otherCommandName&#39;</span><span class="p">);</span>
+<span class="c1">// etc...</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$commands</span><span class="p">);</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$result</span> <span class="k">as</span> <span class="nv">$command</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;: &#39;</span> <span class="o">.</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">CommandTransferException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Get an array of the commands that succeeded</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getSuccessfulCommands</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$command</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; succeeded</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// Get an array of the commands that failed</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getFailedCommands</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$command</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; failed</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All commands executed from a client using an array must originate from the same client.</p>
+</div>
+</div>
+<div class="section" id="special-command-options">
+<h3>Special command options<a class="headerlink" href="#special-command-options" title="Permalink to this headline">¶</a></h3>
+<p>Guzzle exposes several options that help to control how commands are validated, serialized, and parsed.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>command.headers</td>
+<td>Additional <tt class="docutils literal"><span class="pre">Collection</span></tt> of headers to add to the serialized request</td>
+</tr>
+<tr class="row-even"><td>command.on_complete</td>
+<td>Function to execute when the command has been executed and the response has been parsed</td>
+</tr>
+<tr class="row-odd"><td>command.disable_validation</td>
+<td>Set to true to disable JSON schema validation of the command&#8217;s input parameters</td>
+</tr>
+<tr class="row-even"><td>command.response_processing</td>
+<td>Determines how the default response parser will parse the command. One of &#8220;raw&#8221; no parsing,
+&#8220;model&#8221; (the default method used to parse commands using response models defined in service
+descriptions)</td>
+</tr>
+<tr class="row-odd"><td>command.response_body</td>
+<td>Tells the command object which EntityBody object should be used to store the response body
+of a request that will be serialized by the command</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="advanced-client-configuration">
+<h2>Advanced client configuration<a class="headerlink" href="#advanced-client-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-command-parameters">
+<h3>Default command parameters<a class="headerlink" href="#default-command-parameters" title="Permalink to this headline">¶</a></h3>
+<p>When creating a client object, you can specify default command parameters to pass into all commands. Any key value pair
+present in the <tt class="docutils literal"><span class="pre">command.options</span></tt> settings of a client will be added as default parameters to any command created
+by the client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Service\Client</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;command.options&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;default_1&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;another&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="magic-methods">
+<h3>Magic methods<a class="headerlink" href="#magic-methods" title="Permalink to this headline">¶</a></h3>
+<p>Client objects will, by default, attempt to create and execute commands when a missing method is invoked on a client.
+This powerful concept applies to both concrete commands and operation commands powered by a service description. This
+makes it appear to the end user that you have defined actual methods on a client object, when in fact, the methods are
+invoked using PHP&#8217;s magic <tt class="docutils literal"><span class="pre">__call</span></tt> method.</p>
+<p>The <tt class="docutils literal"><span class="pre">__call</span></tt> method uses the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method of a client, which uses the client&#8217;s internal
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt> object. The default command factory allows you to instantiate
+operations defined in a client&#8217;s service description. The method in which a client determines which command to
+execute is defined as follows:</p>
+<ol class="arabic simple">
+<li>The client will first try to find a literal match for an operation in the service description.</li>
+<li>If the literal match is not found, the client will try to uppercase the first character of the operation and find
+the match again.</li>
+<li>If a match is still not found, the command factory will inflect the method name from CamelCase to snake_case and
+attempt to find a matching command.</li>
+<li>If a command still does not match, an exception is thrown.</li>
+</ol>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Use the magic method</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getMentions</span><span class="p">();</span>
+
+<span class="c1">// This is exactly the same as:</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;getMentions&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>You can disable magic methods on a client by passing <tt class="docutils literal"><span class="pre">false</span></tt> to the <tt class="docutils literal"><span class="pre">enableMagicMethod()</span></tt> method.</p>
+</div>
+<div class="section" id="custom-command-factory">
+<h3>Custom command factory<a class="headerlink" href="#custom-command-factory" title="Permalink to this headline">¶</a></h3>
+<p>A client by default uses the <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\CompositeFactory</span></tt> which allows multiple command
+factories to attempt to create a command by a certain name. The default CompositeFactory uses a <tt class="docutils literal"><span class="pre">ConcreteClassFactory</span></tt>
+and a <tt class="docutils literal"><span class="pre">ServiceDescriptionFactory</span></tt> if a service description is specified on a client. You can specify a custom
+command factory if your client requires custom command creation logic using the <tt class="docutils literal"><span class="pre">setCommandFactory()</span></tt> method of
+a client.</p>
+</div>
+<div class="section" id="custom-resource-iterator-factory">
+<h3>Custom resource Iterator factory<a class="headerlink" href="#custom-resource-iterator-factory" title="Permalink to this headline">¶</a></h3>
+<p>Resource iterators can be retrieved from a client using the <tt class="docutils literal"><span class="pre">getIterator($name)</span></tt> method of a client. This method uses
+a client&#8217;s internal <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</span></tt> object. A client by default uses a
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIteratorClassFactory</span></tt> to attempt to find concrete classes that implement resource
+iterators. The default factory will first look for matching iterators in the <tt class="docutils literal"><span class="pre">Iterator</span></tt> subdirectory of the client
+followed by the <tt class="docutils literal"><span class="pre">Model</span></tt> subdirectory of a client. Use the <tt class="docutils literal"><span class="pre">setResourceIteratorFactory()</span></tt> method of a client to
+specify a custom resource iterator factory.</p>
+</div>
+</div>
+<div class="section" id="plugins-and-events">
+<h2>Plugins and events<a class="headerlink" href="#plugins-and-events" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> exposes various events that allow you to hook in custom logic. A client object owns a
+<tt class="docutils literal"><span class="pre">Symfony\Component\EventDispatcher\EventDispatcher</span></tt> object that can be accessed by calling
+<tt class="docutils literal"><span class="pre">$client-&gt;getEventDispatcher()</span></tt>. You can use the event dispatcher to add listeners (a simple callback function) or
+event subscribers (classes that listen to specific events of a dispatcher).</p>
+<div class="section" id="events-emitted-from-a-service-client">
+<span id="service-client-events"></span><h3>Events emitted from a Service Client<a class="headerlink" href="#events-emitted-from-a-service-client" title="Permalink to this headline">¶</a></h3>
+<p>A <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object emits the following events:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="38%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event name</th>
+<th class="head">Description</th>
+<th class="head">Event data</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>client.command.create</td>
+<td>The client created a command object</td>
+<td><ul class="first last simple">
+<li>client: Client object</li>
+<li>command: Command object</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>command.before_prepare</td>
+<td>The client created a command object</td>
+<td><ul class="first last simple">
+<li>command: Command being prepared</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>command.after_prepare</td>
+<td>The client created a command object</td>
+<td><ul class="first last simple">
+<li>command: Command that was prepared</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>command.before_send</td>
+<td>The client is about to execute a prepared
+command</td>
+<td><ul class="first last simple">
+<li>command: Command to execute</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>command.after_send</td>
+<td>The client successfully completed
+executing a command</td>
+<td><ul class="first last simple">
+<li>command: The command that was executed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="../plugins/oauth-plugin.html" title="previous chapter">&lt; OAuth plugin</a></li>
+      <li><a href="using-the-service-builder.html" title="next chapter">Using a service builder &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The web service client</a><ul>
+<li><a class="reference internal" href="#creating-a-client">Creating a client</a><ul>
+<li><a class="reference internal" href="#factory-method">Factory method</a></li>
+<li><a class="reference internal" href="#implementing-a-factory-method">Implementing a factory method</a></li>
+<li><a class="reference internal" href="#service-builder">Service Builder</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commands">Commands</a><ul>
+<li><a class="reference internal" href="#executing-commands">Executing commands</a><ul>
+<li><a class="reference internal" href="#executing-with-magic-methods">Executing with magic methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-commands">Creating commands</a><ul>
+<li><a class="reference internal" href="#concrete-commands">Concrete commands</a><ul>
+<li><a class="reference internal" href="#serializing-requests">Serializing requests</a></li>
+<li><a class="reference internal" href="#parsing-responses">Parsing responses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operation-commands">Operation commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#executing-commands-in-parallel">Executing commands in parallel</a></li>
+<li><a class="reference internal" href="#special-command-options">Special command options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-client-configuration">Advanced client configuration</a><ul>
+<li><a class="reference internal" href="#default-command-parameters">Default command parameters</a></li>
+<li><a class="reference internal" href="#magic-methods">Magic methods</a></li>
+<li><a class="reference internal" href="#custom-command-factory">Custom command factory</a></li>
+<li><a class="reference internal" href="#custom-resource-iterator-factory">Custom resource Iterator factory</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plugins-and-events">Plugins and events</a><ul>
+<li><a class="reference internal" href="#events-emitted-from-a-service-client">Events emitted from a Service Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="using-the-service-builder.html" title="next chapter">Next: Using a service builder</a>
+    <a href="../plugins/oauth-plugin.html" title="previous chapter">Prev: OAuth plugin</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'webservice-client/webservice-client';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="using-the-service-builder.html" title="Using a service builder"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../plugins/oauth-plugin.html" title="OAuth plugin"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

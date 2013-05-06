@@ -9,10 +9,8 @@
     
     <title>Guzzle | PHP HTTP client and framework for consuming RESTful web services &mdash; Guzzle 3.0.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap.css?v=5" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css?v=9" type="text/css" />
     <link rel="stylesheet" href="_static/prettify/prettify.css?v=4" type="text/css" />
     
     <script type="text/javascript">
@@ -28,164 +26,98 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="#" />
     <link rel="next" title="Guzzle Documentation" href="docs.html" />
-
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($span, minLevel) {
-    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
-      findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 10 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          // Add list element.
-          $tocList.append($("<li/>").append($item));
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    // Start construction and return.
-    findA($span);
-
-    // Wipe out old list and patch in new one.
-    return $span.empty("ul").append($tocList);
-  };
-
-  $(document).ready(function () {
-    // Patch the global and local TOC's to be bootstrap-compliant.
-    patchToc($("span.globaltoc"), 1);
-    patchToc($("span.localtoc"), 2);
-  });
-}());
-</script>
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
 
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="#">Guzzle</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="#">Home</a>
-              </li>
-              <li class="">
-                <a href="docs.html">Docs</a>
-              </li>
-              <li class="">
-                <a href="https://github.com/guzzle/guzzle">GitHub</a>
-              </li>
-              <li class="">
-                <a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a>
-              </li>
-              <li>
-                <a href="irc:irc.freenode.com/#guzzlephp">IRC</a>
-              </li>
-            </ul>
-            
-              
-<form class="navbar-search pull-right" action="search.html" method="get" placehold="Search">
-  <input type="text" name="q" placeholder="Search" class="search-query" />
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-            
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="#">Guzzle</a>
           </div>
-        </div>
+          <ul id="main-menu">
+              <li><a href="#">Home</a></li>
+              <li><a href="docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
       </div>
-    </div>
+  </div>
+  
 
   
     
     <div class="jumbotron masthead">
-  <div class="container">
-    <img src="_static/logo.png" alt="guzzle" width="199" height="260" />
-    <h1>Guzzle</h1>
-    <p>Guzzle is a PHP HTTP client<br />&amp; framework for building RESTful web service clients.</p>
-    <p>
-        <a class="btn btn-primary btn-large" href="https://github.com/guzzle/guzzle">View Guzzle on GitHub</a>
-        <a class="btn btn-large" href="docs.html">Read the docs</a>
-    </p>
-  </div>
+    <div class="container">
+        <img src="_static/logo.png" alt="guzzle" width="199" height="260" />
+        <h1>Guzzle</h1>
+        <p>Guzzle is a PHP HTTP client<br />&amp; framework for building RESTful web service clients.</p>
+        <p>
+            <a class="btn btn-primary btn-large" href="https://github.com/guzzle/guzzle">View Guzzle on GitHub</a>
+            <a class="btn btn-large" href="docs.html">Read the docs</a>
+        </p>
+    </div>
 </div>
 
 <div class="social">
-  <ul class="social-buttons">
-    <li>
-      <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true"
-        allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-    </li>
-    <li>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://guzzlephp.org" data-text="Guzzle, PHP HTTP client &amp; framework for building RESTful web service clients" data-via="mtdowling">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    </li>
-    <li>
-        <a href="https://twitter.com/mtdowling" class="twitter-follow-button" data-show-count="false">Follow @mtdowling</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    </li>
-  </ul>
+    <ul class="social-buttons">
+        <li>
+            <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true"
+                    allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </li>
+        <li>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://guzzlephp.org" data-text="Guzzle, PHP HTTP client &amp; framework for building RESTful web service clients" data-via="mtdowling">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </li>
+        <li>
+            <a href="https://twitter.com/mtdowling" class="twitter-follow-button" data-show-count="false">Follow @mtdowling</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </li>
+    </ul>
 </div>
 
 <div class="container">
-  <div class="content">
 
-    <div class="row">
-      <div class="span12">
-        <div class="center-announcement">
-          Guzzle is now part of Drupal 8 core and powers the official <a href="https://github.com/aws/aws-sdk-php">AWS SDK for PHP</a>
-        </div>
-      </div>
+    <h1>Introducing Guzzle</h1>
+    <p>Guzzle takes the pain out of sending HTTP requests and the redundancy out of creating web service clients. It's
+    a framework that includes the tools needed to create a robust web service client, including:
+    Service descriptions for defining the inputs and outputs of an API, resource iterators for traversing
+    paginated resources, batching for sending a large number of requests as efficiently as possible.</p>
+
+    <ul>
+        <li>All the power of cURL with a simple interface.</li>
+        <li>Persistent connections and parallel requests.</li>
+        <li>Streams request and response bodies</li>
+        <li><a href="guide/service/service_descriptions.html">Service descriptions</a> for quickly building clients.</li>
+        <li>Powered by the Symfony2 EventDispatcher.</li>
+        <li>Use all of the code or only <a href="https://packagist.org/packages/guzzle/">specific components</a>.</li>
+        <li><a href="guide/plugins.html">Plugins</a> for caching, logging, OAuth, mocks, and more</a>
+        <li>Includes a custom node.js webserver to <a href="guide/service/testing_clients.html">test your clients</a>.</li>
+    </ul>
+
+    <div class="center-announcement">
+        Guzzle is now part of Drupal 8 core and powers the official <a href="https://github.com/aws/aws-sdk-php">AWS SDK for PHP</a>
     </div>
 
-    <div class="row">
-      <div class="span4 homepage-features">
-        <h3>Introducing Guzzle</h3>
-        <p>Guzzle takes the pain out of sending HTTP requests and the redundancy
-        out of creating web service clients.</p>
-        <p>Guzzle is a framework that includes
-        the tools needed to create a robust web service client, including:
-        Service descriptions for defining the inputs and outputs of an API,
-        resource iterators for traversing paginated resources, batching for
-        sending a large number of requests as efficiently as possible.</p>
-        <hr />
-        <ul>
-          <li>All the power of cURL with a simple interface.</li>
-          <li>Persistent connections and parallel requests.</li>
-          <li>Streams request and response bodies</li>
-          <li><a href="guide/service/service_descriptions.html">Service descriptions</a> for quickly building clients.</li>
-          <li>Powered by the Symfony2 EventDispatcher.</li>
-          <li>Use all of the code or only <a href="https://packagist.org/packages/guzzle/">specific components</a>.</li>
-          <li><a href="guide/plugins.html">Plugins</a> for caching, logging, OAuth, mocks, and more</a>
-          <li>Includes a custom node.js webserver to <a href="guide/service/testing_clients.html">test your clients</a>.</li>
-        </ul>
-      </div>
-      <div class="span8">
-          <pre class="prettyprint">&lt;?php
+    <h2>Quick Twitter example</h2>
+
+    <pre class="prettyprint">&lt;?php
 require_once 'vendor/autoload.php';
 use Guzzle\Http\Client;
 
@@ -226,23 +158,33 @@ $data = $request->send()->json();
 echo $data['text'];
 // >>> Tweeted with Guzzle, http://t.co/kngJMfRk
 </pre>
-      </div>
-    </div>
-
 </div>
   
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right"><a href="#">Back to top</a></p>
-    <p>
-    </p>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="docs.html" title="Guzzle Documentation"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">Guzzle</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
+  
+  </div>
+  
   <script type="text/javascript">
     
     
-    prettyPrint();
+      prettyPrint();
     
   </script>
-</footer>
   </body>
 </html>

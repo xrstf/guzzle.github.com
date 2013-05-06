@@ -1,31 +1,80 @@
+.. title:: Guzzle | PHP HTTP client and framework for consuming RESTful web services
+
+.. toctree::
+    :hidden:
+
+    getting-started/overview
+    getting-started/installation
+    getting-started/faq
+
+    http-client/client
+    http-client/request
+    http-client/response
+    http-client/entity-bodies
+    http-client/http-redirects
+
+    plugins/plugins-overview
+    plugins/creating-plugins
+    plugins/async-plugin
+    plugins/backoff-plugin
+    plugins/cache-plugin
+    plugins/cookie-plugin
+    plugins/curl-auth-plugin
+    plugins/history-plugin
+    plugins/log-plugin
+    plugins/md5-validator-plugin
+    plugins/mock-plugin
+    plugins/oauth-plugin
+
+    webservice-client/webservice-client
+    webservice-client/using-the-service-builder
+    webservice-client/guzzle-service-descriptions
+
+    batching/batching
+
+    iterators/resource-iterators
+    iterators/guzzle-iterators
+
+    testing/unit-testing.rst
+
 ====================
 Guzzle Documentation
 ====================
 
-Tour
-----
+Getting started
+---------------
 
-.. toctree::
-    :hidden:
-
-    tour/index
-
-* :doc:`tour/installation`
-* :doc:`tour/http`
-* :doc:`tour/using_services`
-* :doc:`tour/building_services`
-
-Guides
-------
-
-.. toctree::
-    :hidden:
-
-    guide/index.rst
-
-.. include:: guide/contents.rst.inc
-
-API
----
-
+* :doc:`getting-started/overview`
+* :doc:`getting-started/installation`
+* :doc:`getting-started/faq`
 * `Read the API docs <http://guzzlephp.org/api/index.html>`_
+
+The HTTP client
+---------------
+
+* :doc:`http-client/client`
+* :doc:`http-client/request`
+* :doc:`http-client/response`
+* :doc:`http-client/entity-bodies`
+* :doc:`http-client/http-redirects`
+
+Plugins
+-------
+
+* :doc:`plugins/plugins-overview`
+* :doc:`plugins/creating-plugins`
+
+The web service client
+----------------------
+
+* :doc:`webservice-client/webservice-client`
+* :doc:`webservice-client/using-the-service-builder`
+* :doc:`webservice-client/guzzle-service-descriptions`
+* :doc:`batching/batching`
+* :doc:`iterators/resource-iterators`
+* :doc:`iterators/guzzle-iterators`
+
+Testing
+-------
+
+* :doc:`testing/unit-testing`

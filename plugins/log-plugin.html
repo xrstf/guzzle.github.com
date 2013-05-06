@@ -1,0 +1,275 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Log plugin &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="MD5 validator plugin" href="md5-validator-plugin.html" />
+    <link rel="prev" title="History plugin" href="history-plugin.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="log-plugin">
+<h1>Log plugin<a class="headerlink" href="#log-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Use the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Log\LogPlugin</span></tt> to view all data sent over the wire, including entity bodies and redirects.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Log\Zf1LogAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Log\LogPlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Log\MessageFormatter</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">);</span>
+
+<span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Zf1LogAdapter</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">\Zend_Log</span><span class="p">(</span><span class="k">new</span> <span class="nx">\Zend_Log_Writer_Stream</span><span class="p">(</span><span class="s1">&#39;php://output&#39;</span><span class="p">))</span>
+<span class="p">);</span>
+<span class="nv">$logPlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LogPlugin</span><span class="p">(</span><span class="nv">$adapter</span><span class="p">,</span> <span class="nx">MessageFormatter</span><span class="o">::</span><span class="na">DEBUG_FORMAT</span><span class="p">);</span>
+
+<span class="c1">// Attach the plugin to the client, which will in turn be attached to all</span>
+<span class="c1">// requests generated by the client</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$logPlugin</span><span class="p">);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://google.com&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The code sample above wraps a <tt class="docutils literal"><span class="pre">Zend_Log</span></tt> object using a <tt class="docutils literal"><span class="pre">Guzzle\Log\Zf1LogAdapter</span></tt>. After attaching the plugin to
+the client, all data sent over the wire will be logged to stdout.</p>
+<p>The first argument of the LogPlugin&#8217;s constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Log\LogAdapterInterface</span></tt> object. This object is
+an adapter that allows you to use the logging capabilities of your favorite log implementation. The second argument of
+the constructor accepts a <tt class="docutils literal"><span class="pre">Guzzle\Log\MessageFormatter</span></tt> or a log messaged format string. The format string uses
+variable substitution and allows you to define the log data that is important to your application. The different
+variables that can be injected are as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variable</th>
+<th class="head">Substitution</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>{request}</td>
+<td>Full HTTP request message</td>
+</tr>
+<tr class="row-odd"><td>{response}</td>
+<td>Full HTTP response message</td>
+</tr>
+<tr class="row-even"><td>{ts}</td>
+<td>Timestamp</td>
+</tr>
+<tr class="row-odd"><td>{host}</td>
+<td>Host of the request</td>
+</tr>
+<tr class="row-even"><td>{method}</td>
+<td>Method of the request</td>
+</tr>
+<tr class="row-odd"><td>{url}</td>
+<td>URL of the request</td>
+</tr>
+<tr class="row-even"><td>{host}</td>
+<td>Host of the request</td>
+</tr>
+<tr class="row-odd"><td>{protocol}</td>
+<td>Request protocol</td>
+</tr>
+<tr class="row-even"><td>{version}</td>
+<td>Protocol version</td>
+</tr>
+<tr class="row-odd"><td>{resource}</td>
+<td>Resource of the request (path + query + fragment)</td>
+</tr>
+<tr class="row-even"><td>{port}</td>
+<td>Port of the request</td>
+</tr>
+<tr class="row-odd"><td>{hostname}</td>
+<td>Hostname of the machine that sent the request</td>
+</tr>
+<tr class="row-even"><td>{code}</td>
+<td>Status code of the response (if available)</td>
+</tr>
+<tr class="row-odd"><td>{phrase}</td>
+<td>Reason phrase of the response  (if available)</td>
+</tr>
+<tr class="row-even"><td>{curl_error}</td>
+<td>Curl error message (if available)</td>
+</tr>
+<tr class="row-odd"><td>{curl_code}</td>
+<td>Curl error code (if available)</td>
+</tr>
+<tr class="row-even"><td>{curl_stderr}</td>
+<td>Curl standard error (if available)</td>
+</tr>
+<tr class="row-odd"><td>{connect_time}</td>
+<td>Time in seconds it took to establish the connection (if available)</td>
+</tr>
+<tr class="row-even"><td>{total_time}</td>
+<td>Total transaction time in seconds for last transfer (if available)</td>
+</tr>
+<tr class="row-odd"><td>{req_header_*}</td>
+<td>Replace <cite>*</cite> with the lowercased name of a request header to add to the message</td>
+</tr>
+<tr class="row-even"><td>{res_header_*}</td>
+<td>Replace <cite>*</cite> with the lowercased name of a response header to add to the message</td>
+</tr>
+<tr class="row-odd"><td>{req_body}</td>
+<td>Request body</td>
+</tr>
+<tr class="row-even"><td>{res_body}</td>
+<td>Response body</td>
+</tr>
+</tbody>
+</table>
+<p>The LogPlugin has a helper method that can be used when debugging that will output the full HTTP request and
+response of a transaction:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nx">LogPlugin</span><span class="o">::</span><span class="na">getDebugPlugin</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="history-plugin.html" title="previous chapter">&lt; History plugin</a></li>
+      <li><a href="md5-validator-plugin.html" title="next chapter">MD5 validator plugin &gt;</a></li>
+</ul><h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="md5-validator-plugin.html" title="next chapter">Next: MD5 validator plugin</a>
+    <a href="history-plugin.html" title="previous chapter">Prev: History plugin</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'plugins/log-plugin';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="md5-validator-plugin.html" title="MD5 validator plugin"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="history-plugin.html" title="History plugin"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

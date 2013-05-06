@@ -1,0 +1,1035 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guzzle service descriptions &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Batching" href="../batching/batching.html" />
+    <link rel="prev" title="Using a service builder" href="using-the-service-builder.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="guzzle-service-descriptions">
+<h1>Guzzle service descriptions<a class="headerlink" href="#guzzle-service-descriptions" title="Permalink to this headline">¶</a></h1>
+<p>Guzzle allows you to serialize HTTP requests and parse HTTP responses using a DSL called a service descriptions.
+Service descriptions define web service APIs by documenting each operation, the operation&#8217;s parameters, validation
+options for each parameter, an operation&#8217;s response, how the response is parsed, and any errors that can be raised for
+an operation. Writing a service description for a web service allows you to more quickly consume a web service than
+writing concrete commands for each web service operation.</p>
+<p>Guzzle service descriptions can be representing using a PHP array or JSON document. Guzzle&#8217;s service descriptions are
+heavily inspired by <a class="reference external" href="http://swagger.wordnik.com/">Swagger</a>.</p>
+<div class="section" id="service-description-schema">
+<h2>Service description schema<a class="headerlink" href="#service-description-schema" title="Permalink to this headline">¶</a></h2>
+<p>A Guzzle Service description must match the following JSON schema document. This document can also serve as a guide when
+implementing a Guzzle service description.</p>
+<p>Download the schema here: <a class="reference download internal" href="../_downloads/guzzle-schema-1.0.json"><tt class="xref download docutils literal"><span class="pre">Guzzle</span> <span class="pre">JSON</span> <span class="pre">schema</span> <span class="pre">document</span></tt></a></p>
+<div class="service-description highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Name of the web service&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;number&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Version identifier that the service description is compatible with&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Base URL of the web service. Any relative URI specified in an operation will be merged with the baseUrl using the process defined in RFC 2396&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;basePath&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Alias of baseUrl&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;_description&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Short summary of the web service. This is actually called &#39;description&#39; but this JSON schema wont validate using just description.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Operations of the web service&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;extends&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Extend from another operation by name. The parent operation must be defined before the child.&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP method used with the operation (e.g. GET, POST, PUT, DELETE, PATCH, etc)&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;URI of the operation. The uri attribute can contain URI templates. The variables of the URI template are parameters of the operation with a location value of uri&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Short summary of what the operation does&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom class to instantiate instead of the default Guzzle\\Service\\Command\\OperationCommand&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;This is what is returned from the method. Can be a primitive, class name, or model name.&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;responseNotes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A description of the response returned by the operation&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;responseType&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The type of response that the operation creates. If not specified, this value will be automatically inferred based on whether or not there is a model matching the name, if a matching class name is found, or set to &#39;primitive&#39; by default.&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;primitive&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;documentation&quot;</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;deprecated&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Whether or not the operataion is deprecated&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;errorResponses&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Errors that could occur while executing the operation&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+                            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP response status code of the error&quot;</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;phrase&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Response reason phrase or description of the error&quot;</span>
+                        <span class="p">},</span>
+                        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A custom exception class that would be thrown if the error is encountered&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;parameters&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Parameters of the operation. Parameters are used to define how input data is serialized into a HTTP request.&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;models&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Schema models that can be referenced throughout the service description. Models can be used to define how an HTTP response is parsed into a Guzzle\\Service\\Resource\\Model object.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;parameters&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Parameters of the model. When a model is referenced in a responseClass attribute of an operation, parameters define how a HTTP response message is parsed into a Guzzle\\Service\\Resource\\Model.&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;includes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Service description files to include and extend from (can be a .json, .js, or .php file)&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;.+\\.(js|json|php)$&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;definitions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;extends&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/schema&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;parameters&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Unique name of the parameter&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;array&quot;</span><span class="p">],</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Type of variable (string, number, integer, boolean, object, array, numeric, null, any). Types are using for validation and determining the structure of a parameter. You can use a union type by providing an array of simple types. If one of the union types matches the provided value, then the value is valid.&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;instanceOf&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;When the type is an object, you can specify the class that the object must implement&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Whether or not the parameter is required&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Default value to use if no value is supplied&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;static&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Set to true to specify that the parameter value cannot be changed from the default setting&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Documentation of the parameter&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The location of a request used to apply a parameter. Custom locations can be registered with a command, but the defaults are uri, query, statusCode, reasonPhrase, header, body, json, xml, postField, postFile, responseBody&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;sentAs&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Specifies how the data being modeled is sent over the wire. For example, you may wish to include certain headers in a response model that have a normalized casing of FooBar, but the actual header is x-foo-bar. In this case, sentAs would be set to x-foo-bar.&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;filters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Array of static method names to to run a parameter value through. Each value in the array must be a string containing the full class path to a static method or an array of complex filter information. You can specify static methods of classes using the full namespace class name followed by ‘::’ (e.g. FooBar::baz()). Some filters require arguments in order to properly filter a value. For complex filters, use a hash containing a ‘method’ key pointing to a static method, and an ‘args’ key containing an array of positional arguments to pass to the method. Arguments can contain keywords that are replaced when filtering a value: &#39;@value‘ is replaced with the value being validated, &#39;@api‘ is replaced with the Parameter object.&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nt">&quot;object&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PHP function to call&quot;</span><span class="p">,</span>
+                                    <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span>
+                                <span class="p">},</span>
+                                <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="top-level-attributes">
+<h3>Top-level attributes<a class="headerlink" href="#top-level-attributes" title="Permalink to this headline">¶</a></h3>
+<p>Service descriptions are comprised of the following top-level attributes:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;string|number&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;models&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;includes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;string.php&quot;</span><span class="p">,</span> <span class="s2">&quot;string.json&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="14%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property Name</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Name of the web service</td>
+</tr>
+<tr class="row-odd"><td>apiVersion</td>
+<td>string|number</td>
+<td>Version identifier that the service description is compatible with</td>
+</tr>
+<tr class="row-even"><td>baseUrl or basePath</td>
+<td>string</td>
+<td>Base URL of the web service. Any relative URI specified in an operation will be merged with the baseUrl using the
+process defined in RFC 2396. Some clients require custom logic to determine the baseUrl. In those cases, it is best
+to not include a baseUrl in the service description, but rather allow the factory method of the client to configure
+the client’s baseUrl.</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>Short summary of the web service</td>
+</tr>
+<tr class="row-even"><td>operations</td>
+<td>object containing
+<a class="reference internal" href="#operation-schema"><em>Operations</em></a></td>
+<td>Operations of the service. The key is the name of the operation and value is the attributes of the operation.</td>
+</tr>
+<tr class="row-odd"><td>models</td>
+<td>object containing
+<a class="reference internal" href="#model-schema"><em>Model Schema</em></a></td>
+<td>Schema models that can be referenced throughout the service description. Models can be used to define how an HTTP
+response is parsed into a <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt> object when an operation uses a <tt class="docutils literal"><span class="pre">model</span></tt> <tt class="docutils literal"><span class="pre">responseType</span></tt></td>
+</tr>
+<tr class="row-even"><td>includes</td>
+<td>array of .js,
+.json, or .php
+files.</td>
+<td>Service description files to include and extend from (can be a .json, .js, or .php file)</td>
+</tr>
+<tr class="row-odd"><td>(any additional properties)</td>
+<td>mixed</td>
+<td>Any additional properties specified as top-level attributes are allowed and will be treated as arbitrary data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="operations">
+<span id="operation-schema"></span><h3>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
+<p>Operations are the actions that can be taken on a service. Each operation is given a unique name and has a distinct
+endpoint and HTTP method. If an API has a <tt class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/users/:id</span></tt> operation, a satisfactory operation name might be
+<tt class="docutils literal"><span class="pre">DeleteUser</span></tt> with a parameter of <tt class="docutils literal"><span class="pre">id</span></tt> that is inserted into the URI.</p>
+<div class="small-service-description highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;operationName&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;extends&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET|POST|PUT|DELETE|PATCH|string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseNotes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseType&quot;</span><span class="p">:</span> <span class="s2">&quot;primitive|class|(model by name)|documentation|(string)&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;deprecated&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;errorResponses&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+                    <span class="nt">&quot;phrase&quot;</span><span class="p">:</span> <span class="s2">&quot;Unexpected Error&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;foo&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;baz&quot;</span><span class="p">:</span> <span class="s2">&quot;bam&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="15%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property Name</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>extends</td>
+<td>string</td>
+<td>Extend from another operation by name. The parent operation must be defined before the child.</td>
+</tr>
+<tr class="row-odd"><td>httpMethod</td>
+<td>string</td>
+<td>HTTP method used with the operation (e.g. GET, POST, PUT, DELETE, PATCH, etc)</td>
+</tr>
+<tr class="row-even"><td>uri</td>
+<td>string</td>
+<td>URI of the operation. The uri attribute can contain URI templates. The variables of the URI template are parameters of the operation with a location value of uri</td>
+</tr>
+<tr class="row-odd"><td>summary</td>
+<td>string</td>
+<td>Short summary of what the operation does</td>
+</tr>
+<tr class="row-even"><td>class</td>
+<td>string</td>
+<td>Custom class to instantiate instead of the default Guzzle\Service\Command\OperationCommand. Using this attribute allows you to define an operation using a service description, but allows more customized logic to be implemented in user-land code.</td>
+</tr>
+<tr class="row-odd"><td>responseClass</td>
+<td>string</td>
+<td>Defined what is returned from the method. Can be a primitive, class name, or model name. You can specify the name of a class to return a more customized result from the operation (for example, a domain model object). When using the name of a PHP class, the class must implement <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\ResponseClassInterface</span></tt>.</td>
+</tr>
+<tr class="row-even"><td>responseNotes</td>
+<td>string</td>
+<td>A description of the response returned by the operation</td>
+</tr>
+<tr class="row-odd"><td>responseType</td>
+<td>string</td>
+<td>The type of response that the operation creates: one of primitive, class, model, or documentation. If not specified, this value will be automatically inferred based on whether or not there is a model matching the name, if a matching class name is found, or set to &#8216;primitive&#8217; by default.</td>
+</tr>
+<tr class="row-even"><td>deprecated</td>
+<td>boolean</td>
+<td>Whether or not the operataion is deprecated</td>
+</tr>
+<tr class="row-odd"><td>errorResponses</td>
+<td>array</td>
+<td>Errors that could occur while executing the operation. Each item of the array is an object that can contain a &#8216;code&#8217; (HTTP response status code of the error), &#8216;phrase&#8217; (reason phrase or description of the error), and &#8216;class&#8217; (an exception class that will be raised when this error is encountered)</td>
+</tr>
+<tr class="row-even"><td>data</td>
+<td>object</td>
+<td>Any arbitrary data to associate with the operation</td>
+</tr>
+<tr class="row-odd"><td>parameters</td>
+<td>object containing <a class="reference internal" href="#parameter-schema"><em>Parameter schema</em></a> objects</td>
+<td>Parameters of the operation. Parameters are used to define how input data is serialized into a HTTP request.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="responseclass">
+<h4>responseClass<a class="headerlink" href="#responseclass" title="Permalink to this headline">¶</a></h4>
+<p>The <tt class="docutils literal"><span class="pre">responseClass</span></tt> attribute is used to define the return value of an operation (what is returned by calling the
+<tt class="docutils literal"><span class="pre">getResult()</span></tt> method of a command object). The value set in the responseClass attribute can be one of &#8220;primitive&#8221;
+(meaning the result with be primitive type like a string), a class name meaning the result will be an instance of a
+specific user-land class, or a model name meaning the result will be a <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt> object that
+uses a <a class="reference internal" href="#model-schema"><em>model schema</em></a> to define how the HTTP response is parsed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Using a class name with a <tt class="docutils literal"><span class="pre">responseClass</span></tt> will only work if it is supported by the <tt class="docutils literal"><span class="pre">class</span></tt> that is instantiated
+for the operation. Keep this in mind when specifying a custom <tt class="docutils literal"><span class="pre">class</span></tt> attribute that points to a custom
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandInterface</span></tt> class. The default <tt class="docutils literal"><span class="pre">class</span></tt>,
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\OperationCommand</span></tt>, does support setting custom <tt class="docutils literal"><span class="pre">class</span></tt> attributes.</p>
+</div>
+<p>You can specify the name of a class to return a more customized result from the operation (for example, a domain model
+object). When using the name of a PHP class, the class must implement <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\ResponseClassInterface</span></tt>.
+Here&#8217;s a very simple example of implementing a custom responseClass object.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;MyApplication\\User&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">MyApplication</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\ResponseClassInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\OperationCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">implements</span> <span class="nx">ResponseClassInterface</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fromCommand</span><span class="p">(</span><span class="nx">OperationCommand</span> <span class="nv">$command</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+        <span class="nv">$xml</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">xml</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="domain-objects-that-use-model-parsing">
+<h5>Domain objects that use model parsing<a class="headerlink" href="#domain-objects-that-use-model-parsing" title="Permalink to this headline">¶</a></h5>
+<p>Here&#8217;s a slightly more complex example that still utilizes Guzzle default response parsing using a service description
+definition, but adds some custom logic.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">namespace</span> <span class="nx">MyApplication</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Guzzle\Service\Resource\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\OperationResponseParser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\ResponseClassInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Command\OperationCommand</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">implements</span> <span class="nx">ResponseClassInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fromCommand</span><span class="p">(</span><span class="nx">OperationCommand</span> <span class="nv">$command</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$parser</span> <span class="o">=</span> <span class="nx">OperationResponseParser</span><span class="o">::</span><span class="na">getInstance</span><span class="p">();</span>
+        <span class="nv">$parsedModel</span> <span class="o">=</span> <span class="nv">$parser</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$parsedModel</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Model</span> <span class="nv">$parsedModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Do something with the parsed model object</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="errorresponses">
+<h4>errorResponses<a class="headerlink" href="#errorresponses" title="Permalink to this headline">¶</a></h4>
+<p><tt class="docutils literal"><span class="pre">errorResponses</span></tt> is an array containing objects that define the errors that could occur while executing the
+operation. Each item of the array is an object that can contain a &#8216;code&#8217; (HTTP response status code of the error),
+&#8216;phrase&#8217; (reason phrase or description of the error), and &#8216;class&#8217; (an exception class that will be raised when this
+error is encountered).</p>
+<div class="section" id="errorresponseplugin">
+<h5>ErrorResponsePlugin<a class="headerlink" href="#errorresponseplugin" title="Permalink to this headline">¶</a></h5>
+<p>Error responses are by default only used for documentation. If you don&#8217;t need very complex exception logic for your web
+service errors, then you can use the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\ErrorResponse\ErrorResponsePlugin</span></tt> to automatically throw defined
+exceptions when one of the <tt class="docutils literal"><span class="pre">errorResponse</span></tt> rules are matched. The error response plugin will listen for the
+<tt class="docutils literal"><span class="pre">request.complete</span></tt> event of a request created by a command object. Every response (including a successful response) is
+checked against the list of error responses for an exact match using the following order of checks:</p>
+<ol class="arabic simple">
+<li>Does the errorResponse have a defined <tt class="docutils literal"><span class="pre">class</span></tt>?</li>
+<li>Is the errorResponse <tt class="docutils literal"><span class="pre">code</span></tt> equal to the status code of the response?</li>
+<li>Is the errorResponse <tt class="docutils literal"><span class="pre">phrase</span></tt> equal to the reason phrase of the response?</li>
+<li>Throw the exception stored in the <tt class="docutils literal"><span class="pre">class</span></tt> attribute of the errorResponse.</li>
+</ol>
+<p>The <tt class="docutils literal"><span class="pre">class</span></tt> attribute must point to a class that implements
+<tt class="docutils literal"><span class="pre">Guzzle\Plugin\ErrorResponse\ErrorResponseExceptionInterface</span></tt>. This interface requires that an error response class
+implements <tt class="docutils literal"><span class="pre">public</span> <span class="pre">static</span> <span class="pre">function</span> <span class="pre">fromCommand(CommandInterface</span> <span class="pre">$command,</span> <span class="pre">Response</span> <span class="pre">$response)</span></tt>. This method must
+return an object that extends from <tt class="docutils literal"><span class="pre">\Exception</span></tt>. After an exception is returned, it is thrown by the plugin.</p>
+</div>
+</div>
+</div>
+<div class="section" id="parameter-schema">
+<span id="id1"></span><h3>Parameter schema<a class="headerlink" href="#parameter-schema" title="Permalink to this headline">¶</a></h3>
+<p>Parameters in both operations and models are represented using the
+<a class="reference external" href="http://tools.ietf.org/id/draft-zyp-json-schema-04.html">JSON schema</a> syntax.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="15%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property Name</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Unique name of the parameter</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string|array</td>
+<td>Type of variable (string, number, integer, boolean, object, array, numeric, null, any). Types are using for validation and determining the structure of a parameter. You can use a union type by providing an array of simple types. If one of the union types matches the provided value, then the value is valid.</td>
+</tr>
+<tr class="row-even"><td>instanceOf</td>
+<td>string</td>
+<td>When the type is an object, you can specify the class that the object must implement</td>
+</tr>
+<tr class="row-odd"><td>required</td>
+<td>boolean</td>
+<td>Whether or not the parameter is required</td>
+</tr>
+<tr class="row-even"><td>default</td>
+<td>mixed</td>
+<td>Default value to use if no value is supplied</td>
+</tr>
+<tr class="row-odd"><td>static</td>
+<td>boolean</td>
+<td>Set to true to specify that the parameter value cannot be changed from the default setting</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>Documentation of the parameter</td>
+</tr>
+<tr class="row-odd"><td>location</td>
+<td>string</td>
+<td>The location of a request used to apply a parameter. Custom locations can be registered with a command, but the defaults are uri, query, statusCode, reasonPhrase, header, body, json, xml, postField, postFile, responseBody</td>
+</tr>
+<tr class="row-even"><td>sentAs</td>
+<td>string</td>
+<td>Specifies how the data being modeled is sent over the wire. For example, you may wish to include certain headers in a response model that have a normalized casing of FooBar, but the actual header is x-foo-bar. In this case, sentAs would be set to x-foo-bar.</td>
+</tr>
+<tr class="row-odd"><td>filters</td>
+<td>array</td>
+<td>Array of functions to to run a parameter value through.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="filters">
+<h4>filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h4>
+<p>Each value in the array must be a string containing the full class path to a static method or an array of complex
+filter information. You can specify static methods of classes using the full namespace class name followed by
+&#8221;::&#8221; (e.g. <tt class="docutils literal"><span class="pre">FooBar::baz()</span></tt>). Some filters require arguments in order to properly filter a value. For complex filters,
+use an object containing a <tt class="docutils literal"><span class="pre">method</span></tt> attribute pointing to a function, and an <tt class="docutils literal"><span class="pre">args</span></tt> attribute containing an
+array of positional arguments to pass to the function. Arguments can contain keywords that are replaced when filtering
+a value: <tt class="docutils literal"><span class="pre">&#64;value</span></tt> is replaced with the value being filtered, and <tt class="docutils literal"><span class="pre">&#64;api</span></tt> is replaced with the actual Parameter
+object.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;strtolower&quot;</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;MyClass::convertString&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;@value&quot;</span><span class="p">,</span> <span class="s2">&quot;@api&quot;</span> <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above example will filter a parameter using <tt class="docutils literal"><span class="pre">strtolower</span></tt>. It will then call the <tt class="docutils literal"><span class="pre">convertString</span></tt> static method
+of <tt class="docutils literal"><span class="pre">MyClass</span></tt>, passing in &#8220;test&#8221;, the actual value of the parameter, and a the <tt class="docutils literal"><span class="pre">Guzzle\Service\Description\Parameter</span></tt>
+object.</p>
+</div>
+<div class="section" id="operation-parameter-location-attributes">
+<h4>Operation parameter location attributes<a class="headerlink" href="#operation-parameter-location-attributes" title="Permalink to this headline">¶</a></h4>
+<p>The location field of top-level parameters control how a parameter is serialized when generating a request.</p>
+<div class="section" id="uri-location">
+<h5>uri location<a class="headerlink" href="#uri-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are injected into the <tt class="docutils literal"><span class="pre">uri</span></tt> attribute of the operation using
+<a class="reference external" href="http://tools.ietf.org/html/rfc6570">URI-template expansion</a>.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;uriTest&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/test/{testValue}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;testValue&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;uri&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="query-location">
+<h5>query location<a class="headerlink" href="#query-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are injected into the query string of a request. Query values can be nested, which would result in a PHP
+style nested query string. The name of a parameter is the default name of the query string parameter added to the
+request. You can override this behavior by specifying the <tt class="docutils literal"><span class="pre">sentAs</span></tt> attribute on the parameter.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;queryTest&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;testValue&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;sentAs&quot;</span><span class="p">:</span> <span class="s2">&quot;test_value&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-location">
+<h5>header location<a class="headerlink" href="#header-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are injected as headers on an HTTP request. The name of the parameter is used as the name of the header by
+default. You can change the name of the header created by the parameter using the <tt class="docutils literal"><span class="pre">sentAs</span></tt> attribute.</p>
+<p>Headers that are of type <tt class="docutils literal"><span class="pre">object</span></tt> will be added as multiple headers to a request using the key of the input array as
+the header key. Setting a <tt class="docutils literal"><span class="pre">sentAs</span></tt> attribute along with a type <tt class="docutils literal"><span class="pre">object</span></tt> will use the value of <tt class="docutils literal"><span class="pre">sentAs</span></tt> as a
+prefix for each header key.</p>
+</div>
+<div class="section" id="body-location">
+<h5>body location<a class="headerlink" href="#body-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are injected as the body of a request. The input of these parameters may be anything that can be cast to a
+string or a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntityBodyInterface</span></tt> object.</p>
+</div>
+<div class="section" id="postfield-location">
+<h5>postField location<a class="headerlink" href="#postfield-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are inserted as POST fields in a request. Nested values may be supplied and will be represented using
+PHP style nested query strings. The POST field name is the same as the parameter name by default. You can use the
+<tt class="docutils literal"><span class="pre">sentAs</span></tt> parameter to override the POST field name.</p>
+</div>
+<div class="section" id="postfile-location">
+<h5>postFile location<a class="headerlink" href="#postfile-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are added as POST files. A postFile value may be a string pointing to a local filename or a
+<tt class="docutils literal"><span class="pre">Guzzle\Http\Message\PostFileInterface</span></tt> object. The name of the POST file will be the name of the parameter by
+default. You can use a custom POST file name by using the <tt class="docutils literal"><span class="pre">sentAs</span></tt> attribute.</p>
+<p>Supports &#8220;string&#8221; and &#8220;array&#8221; types.</p>
+</div>
+<div class="section" id="json-location">
+<h5>json location<a class="headerlink" href="#json-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are added to the body of a request as top level keys of a JSON document. Nested values may be specified,
+with any number of nested <tt class="docutils literal"><span class="pre">Guzzle\Common\ToArrayInterface</span></tt> objects. When JSON parameters are specified, the
+<tt class="docutils literal"><span class="pre">Content-Type</span></tt> of the request will change to <tt class="docutils literal"><span class="pre">application/json</span></tt> if a <tt class="docutils literal"><span class="pre">Content-Type</span></tt> has not already been specified
+on the request.</p>
+</div>
+<div class="section" id="xml-location">
+<h5>xml location<a class="headerlink" href="#xml-location" title="Permalink to this headline">¶</a></h5>
+<p>Parameters are added to the body of a request as top level nodes of an XML document. Nested values may be specified,
+with any number of nested <tt class="docutils literal"><span class="pre">Guzzle\Common\ToArrayInterface</span></tt> objects. When XML parameters are specified, the
+<tt class="docutils literal"><span class="pre">Content-Type</span></tt> of the request will change to <tt class="docutils literal"><span class="pre">application/xml</span></tt> if a <tt class="docutils literal"><span class="pre">Content-Type</span></tt> has not already been specified
+on the request.</p>
+</div>
+<div class="section" id="responsebody-location">
+<h5>responseBody location<a class="headerlink" href="#responsebody-location" title="Permalink to this headline">¶</a></h5>
+<p>Specifies the EntityBody of a response. This can be used to download the response body to a file or a custom Guzzle
+EntityBody object.</p>
+</div>
+<div class="section" id="no-location">
+<h5>No location<a class="headerlink" href="#no-location" title="Permalink to this headline">¶</a></h5>
+<p>If a parameter has no location attribute, then the parameter is simply used as a data value.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Custom locations can be registered as new locations or override default locations if needed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-schema">
+<span id="id2"></span><h3>Model Schema<a class="headerlink" href="#model-schema" title="Permalink to this headline">¶</a></h3>
+<p>Models are used in service descriptions to provide generic JSON schema definitions that can be extended from or used in
+<tt class="docutils literal"><span class="pre">$ref</span></tt> attributes. Models can also be referenced in a <tt class="docutils literal"><span class="pre">responseClass</span></tt> attribute to provide valuable output to an
+operation. Models are JSON schema documents and use the exact syntax and attributes used in parameters.</p>
+<div class="section" id="response-models">
+<h4>Response Models<a class="headerlink" href="#response-models" title="Permalink to this headline">¶</a></h4>
+<p>Response models describe how a response is parsed into a <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt> object. Response models are
+always modeled as JSON schema objects. When an HTTP response is parsed using a response model, the rules specified on
+each property of a response model will translate 1:1 as keys in a PHP associative array. When a <tt class="docutils literal"><span class="pre">sentAs</span></tt> attribute is
+found in response model parameters, the value retrieved from the HTTP response is retrieved using the <tt class="docutils literal"><span class="pre">sentAs</span></tt>
+parameter but stored in the response model using the name of the parameter.</p>
+<p>The location field of top-level parameters in a response model tell response parsers how data is retrieved from a
+response.</p>
+<div class="section" id="statuscode-location">
+<h5>statusCode location<a class="headerlink" href="#statuscode-location" title="Permalink to this headline">¶</a></h5>
+<p>Retrieves the status code of the response.</p>
+</div>
+<div class="section" id="reasonphrase-location">
+<h5>reasonPhrase location<a class="headerlink" href="#reasonphrase-location" title="Permalink to this headline">¶</a></h5>
+<p>Retrieves the reason phrase of the response.</p>
+</div>
+<div class="section" id="id3">
+<h5>header location<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<p>Retrieves a header from the HTTP response.</p>
+</div>
+<div class="section" id="id4">
+<h5>body location<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<p>Retrieves the body of an HTTP response.</p>
+</div>
+<div class="section" id="id5">
+<h5>json location<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
+<p>Retrieves a top-level parameter from a JSON document contained in an HTTP response.</p>
+</div>
+<div class="section" id="id6">
+<h5>xml location<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
+<p>Retrieves a top-level node value from an XML document contained in an HTTP response.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Custom locations can be registered as new locations or override default locations if needed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-service-description">
+<h3>Example service description<a class="headerlink" href="#example-service-description" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s say you&#8217;re interacting with a web service called &#8216;Foo&#8217; that allows for the following routes and methods:</p>
+<div class="highlight-python"><pre>GET/POST   /users
+GET/DELETE /users/:id</pre>
+</div>
+<p>The following JSON service description implements this simple web service:</p>
+<div class="service-description highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Foo&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-14&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://api.foo.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Foo is an API that allows you to Baz Bar&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetUsers&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Gets a list of users&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;GetUsersOutput&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;CreateUser&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Creates a new user&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;CreateUserOutput&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;age&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;GetUser&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/users/{id}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Retrieves a single user&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;GetUserOutput&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;uri&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;User to retrieve by ID&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;DeleteUser&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;/users/{id}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Deletes a user&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;DeleteUserOutput&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;uri&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;User to delete by ID&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;required&quot;</span><span class="p">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;models&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetUsersOutput&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+                    <span class="p">},</span>
+                    <span class="nt">&quot;age&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;CreateUserOutput&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;header&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;sentAs&quot;</span><span class="p">:</span> <span class="s2">&quot;Location&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;GetUserOutput&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;age&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;DeleteUserOutput&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;statusCode&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you attach this service description to a client, you would completely configure the client to interact with the
+Foo web service and provide valuable response models for each operation.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Description\ServiceDescription</span><span class="p">;</span>
+
+<span class="nv">$description</span> <span class="o">=</span> <span class="nx">ServiceDescription</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;/path/to/client.json&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="nv">$description</span><span class="p">);</span>
+
+<span class="nv">$command</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;DeleteUser&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">123</span><span class="p">));</span>
+<span class="nv">$responseModel</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$command</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$responseModel</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">];</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can add the service description to your client&#8217;s factory method or constructor.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="using-the-service-builder.html" title="previous chapter">&lt; Using a service builder</a></li>
+      <li><a href="../batching/batching.html" title="next chapter">Batching &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Guzzle service descriptions</a><ul>
+<li><a class="reference internal" href="#service-description-schema">Service description schema</a><ul>
+<li><a class="reference internal" href="#top-level-attributes">Top-level attributes</a></li>
+<li><a class="reference internal" href="#operations">Operations</a><ul>
+<li><a class="reference internal" href="#responseclass">responseClass</a><ul>
+<li><a class="reference internal" href="#domain-objects-that-use-model-parsing">Domain objects that use model parsing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#errorresponses">errorResponses</a><ul>
+<li><a class="reference internal" href="#errorresponseplugin">ErrorResponsePlugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameter-schema">Parameter schema</a><ul>
+<li><a class="reference internal" href="#filters">filters</a></li>
+<li><a class="reference internal" href="#operation-parameter-location-attributes">Operation parameter location attributes</a><ul>
+<li><a class="reference internal" href="#uri-location">uri location</a></li>
+<li><a class="reference internal" href="#query-location">query location</a></li>
+<li><a class="reference internal" href="#header-location">header location</a></li>
+<li><a class="reference internal" href="#body-location">body location</a></li>
+<li><a class="reference internal" href="#postfield-location">postField location</a></li>
+<li><a class="reference internal" href="#postfile-location">postFile location</a></li>
+<li><a class="reference internal" href="#json-location">json location</a></li>
+<li><a class="reference internal" href="#xml-location">xml location</a></li>
+<li><a class="reference internal" href="#responsebody-location">responseBody location</a></li>
+<li><a class="reference internal" href="#no-location">No location</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-schema">Model Schema</a><ul>
+<li><a class="reference internal" href="#response-models">Response Models</a><ul>
+<li><a class="reference internal" href="#statuscode-location">statusCode location</a></li>
+<li><a class="reference internal" href="#reasonphrase-location">reasonPhrase location</a></li>
+<li><a class="reference internal" href="#id3">header location</a></li>
+<li><a class="reference internal" href="#id4">body location</a></li>
+<li><a class="reference internal" href="#id5">json location</a></li>
+<li><a class="reference internal" href="#id6">xml location</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-service-description">Example service description</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="../batching/batching.html" title="next chapter">Next: Batching</a>
+    <a href="using-the-service-builder.html" title="previous chapter">Prev: Using a service builder</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'webservice-client/guzzle-service-descriptions';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../batching/batching.html" title="Batching"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="using-the-service-builder.html" title="Using a service builder"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Curl\CurlMulti | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?4062151815"></script>
+	<script type="text/javascript" src="elementlist.js?1186530155"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -145,6 +145,7 @@
 			<ul>
 				<li><a href="class-Guzzle.Http.Curl.CurlHandle.html">CurlHandle</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Curl.CurlMulti.html">CurlMulti</a></li>
+				<li><a href="class-Guzzle.Http.Curl.CurlMultiProxy.html">CurlMultiProxy</a></li>
 				<li><a href="class-Guzzle.Http.Curl.CurlVersion.html">CurlVersion</a></li>
 				<li><a href="class-Guzzle.Http.Curl.RequestMediator.html">RequestMediator</a></li>
 			</ul>
@@ -200,15 +201,6 @@
 	
 <p>Send <code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> objects in parallel using curl_multi</p>
 
-<p>This implementation allows callers to send blocking requests that return back
-to the caller when their requests complete, regardless of whether or not
-previously sending requests in the curl_multi object have completed. The
-implementation relies on managing the recursion scope in which a caller adds a
-request to the CurlMulti object, and tracking the requests in the current scope
-until they complete. Although the CurlMulti object only tracks whether or not
-requests in the current scope have completed, it still sends all requests added
-to the object in parallel.</p>
-
 	</div>
 
 	<dl class="tree">
@@ -250,47 +242,6 @@ to the object in parallel.</p>
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="getAllEvents" id="_getAllEvents">
-
-		<td class="attributes"><code>
-			 public static
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getAllEvents">#</a>
-		<code>getAllEvents( )</code>
-
-		<div class="description short">
-			
-<p>Get a list of all of the events emitted from the class</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get a list of all of the events emitted from the class</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.AbstractHasDispatcher.html#_getAllEvents">Guzzle\Common\AbstractHasDispatcher::getAllEvents()</a></code></div>
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">Guzzle\Common\HasDispatcherInterface::getAllEvents()</a></code></div>
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="__construct" id="___construct">
 
 		<td class="attributes"><code>
@@ -353,14 +304,14 @@ to the object in parallel.</p>
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Curl.CurlMulti.html">Guzzle\Http\Curl\CurlMulti</a></code>
+			<code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_add">#</a>
-		<code>add( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>boolean <var>$async</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code>add( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
 
 		<div class="description short">
 			
@@ -372,27 +323,17 @@ to the object in parallel.</p>
 			
 <p>Add a request to the pool.</p>
 
-<p>Adds a request to a batch of requests to be sent in parallel.</p>
-
-<p>Async requests adds a request to the current scope to be executed in parallel
-with any currently executing cURL handles. You may only add an async request
-while other requests are transferring. Attempting to add an async request while
-no requests are transferring will add the request normally in the next available
-scope (e.g. 0).</p>
-
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$request</var></dt>
 					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to add</dd>
-					<dt><var>$async</var></dt>
-					<dd><code>boolean</code><br>$async Set to TRUE to add to the current scope</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Curl.CurlMulti.html">Guzzle\Http\Curl\CurlMulti</a></code></code><br />
+					<code><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code></code><br />
 				</div>
 
 
@@ -442,50 +383,11 @@ scope (e.g. 0).</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getState" id="_getState">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getState">#</a>
-		<code>getState( )</code>
-
-		<div class="description short">
-			
-<p>Get the current state of the Pool</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the current state of the Pool</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
-
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#_getState">Guzzle\Http\Curl\CurlMultiInterface::getState()</a></code></div>
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="remove" id="_remove">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code>
+			boolean
 			
 			</code>
 		</td>
@@ -514,7 +416,7 @@ scope (e.g. 0).</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code></code><br />
+					<code>boolean</code><br>Returns true on success or false on failure<br />
 				</div>
 
 
@@ -635,42 +537,44 @@ scope (e.g. 0).</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="buildMultiTransferException" id="_buildMultiTransferException">
+	<tr data-order="throwMultiException" id="_throwMultiException">
 
 		<td class="attributes"><code>
 			 protected 
-			<code><a href="class-Guzzle.Http.Exception.MultiTransferException.html">Guzzle\Http\Exception\MultiTransferException</a></code>|null
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_buildMultiTransferException">#</a>
-		<code>buildMultiTransferException( <span>array <var>$requestsInScope</var></span> )</code>
+		<a class="anchor" href="#_throwMultiException">#</a>
+		<code>throwMultiException( <span>array <var>$exceptions</var></span>, <span>array <var>$successful</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Build a MultiTransferException if needed</p>
+<p>Build and throw a MultiTransferException</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Build a MultiTransferException if needed</p>
+<p>Build and throw a MultiTransferException</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$requestsInScope</var></dt>
-					<dd><code>array</code><br>$requestsInScope All requests in the previous scope</dd>
+					<dt><var>$exceptions</var></dt>
+					<dd><code>array</code><br>$exceptions Exceptions encountered</dd>
+					<dt><var>$successful</var></dt>
+					<dd><code>array</code><br>$successful Successful requests</dd>
 				</dl></div>
 
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Exception.MultiTransferException.html">Guzzle\Http\Exception\MultiTransferException</a></code>|null</code><br />
-				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Exception.MultiTransferException.html">Guzzle\Http\Exception\MultiTransferException</a></code></code><br />
+				</div>
 
 
 
@@ -709,6 +613,10 @@ scope (e.g. 0).</p>
 				</dl></div>
 
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br>on error preparing the request<br />
+				</div>
 
 
 
@@ -801,7 +709,7 @@ scope (e.g. 0).</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_removeErroredRequest">#</a>
-		<code>removeErroredRequest( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Exception.html">Exception</a></code> <var>$e</var></span> )</code>
+		<code>removeErroredRequest( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Exception.html">Exception</a></code> <var>$e</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$buffer</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			
@@ -821,6 +729,8 @@ scope (e.g. 0).</p>
 					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to remove</dd>
 					<dt><var>$e</var></dt>
 					<dd><code><code><a href="class-Exception.html">Exception</a></code></code><br>$e Exception encountered</dd>
+					<dt><var>$buffer</var></dt>
+					<dd><code>boolean</code><br>$buffer Set to false to not buffer the exception</dd>
 				</dl></div>
 
 
@@ -899,11 +809,6 @@ scope (e.g. 0).</p>
 			
 <p>Remove a curl handle from the curl multi object</p>
 
-<p>Nasty things (bus errors, segmentation faults) can sometimes occur when
-removing curl handles when in a callback or a recursive scope. Here we are
-queueing all curl handles that need to be removed and closed so that this
-happens only in the outermost scope when everything has completed sending.</p>
-
 
 
 				<h4>Parameters</h4>
@@ -927,6 +832,7 @@ happens only in the outermost scope when everything has completed sending.</p>
 		<td><code>
 			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_addSubscriber">addSubscriber()</a>, 
 			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_dispatch">dispatch()</a>, 
+			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_getAllEvents">getAllEvents()</a>, 
 			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_getEventDispatcher">getEventDispatcher()</a>, 
 			<a href="class-Guzzle.Common.AbstractHasDispatcher.html#_setEventDispatcher">setEventDispatcher()</a>
 		</code></td>
@@ -945,15 +851,10 @@ happens only in the outermost scope when everything has completed sending.</p>
 	<tr>
 		<td><code>
 			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#ADD_REQUEST"><b>ADD_REQUEST</b></a>, 
-			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#BEFORE_SEND"><b>BEFORE_SEND</b></a>, 
 			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#BLOCKING"><b>BLOCKING</b></a>, 
-			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#COMPLETE"><b>COMPLETE</b></a>, 
 			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#MULTI_EXCEPTION"><b>MULTI_EXCEPTION</b></a>, 
 			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#POLLING_REQUEST"><b>POLLING_REQUEST</b></a>, 
-			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#REMOVE_REQUEST"><b>REMOVE_REQUEST</b></a>, 
-			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#STATE_COMPLETE"><b>STATE_COMPLETE</b></a>, 
-			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#STATE_IDLE"><b>STATE_IDLE</b></a>, 
-			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#STATE_SENDING"><b>STATE_SENDING</b></a>
+			<a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#REMOVE_REQUEST"><b>REMOVE_REQUEST</b></a>
 		</code></td>
 	</tr>
 	</table>
@@ -988,32 +889,6 @@ happens only in the outermost scope when everything has completed sending.</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="state" id="$state">
-		<td class="attributes"><code>
-			protected  
-			string
-		</code></td>
-
-		<td class="name">
-<var>$state</var>		</td>
-		<td class="value"><code><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html#STATE_IDLE">Guzzle\Http\Curl\CurlMultiInterface::<b>STATE_IDLE</b></a></code></code></td>
-		<td class="description"><div>
-			<a href="#$state" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>The current state of the pool</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>The current state of the pool</p>
-
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="requests" id="$requests">
 		<td class="attributes"><code>
 			protected  
@@ -1040,32 +915,6 @@ happens only in the outermost scope when everything has completed sending.</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="requestCache" id="$requestCache">
-		<td class="attributes"><code>
-			protected  
-			array
-		</code></td>
-
-		<td class="name">
-<var>$requestCache</var>		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$requestCache" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Cache of all requests currently in any scope</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Cache of all requests currently in any scope</p>
-
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="handles" id="$handles">
 		<td class="attributes"><code>
 			protected  
@@ -1080,13 +929,13 @@ happens only in the outermost scope when everything has completed sending.</p>
 
 			<div class="description short">
 				
-<p><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> to <code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code> storage</p>
+<p>RequestInterface to CurlHandle hash</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> to <code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code> storage</p>
+<p>RequestInterface to CurlHandle hash</p>
 
 
 			</div>
@@ -1144,27 +993,27 @@ happens only in the outermost scope when everything has completed sending.</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="removeHandles" id="$removeHandles">
+	<tr data-order="successful" id="$successful">
 		<td class="attributes"><code>
 			protected  
 			array
 		</code></td>
 
 		<td class="name">
-<var>$removeHandles</var>		</td>
-		<td class="value"><code></code></td>
+<var>$successful</var>		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
-			<a href="#$removeHandles" class="anchor">#</a>
+			<a href="#$successful" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>Queue of handles to remove once everything completes</p>
+<p>Requests that succeeded</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Queue of handles to remove once everything completes</p>
+<p>Requests that succeeded</p>
 
 
 			</div>

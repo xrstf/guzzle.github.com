@@ -1,0 +1,286 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Response objects &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Request and response bodies" href="entity-bodies.html" />
+    <link rel="prev" title="Using Request objects" href="request.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-response-objects">
+<h1>Using Response objects<a class="headerlink" href="#using-response-objects" title="Permalink to this headline">¶</a></h1>
+<p>Sending a request will return a <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Response</span></tt> object. You can view the raw  HTTP response message by
+casting the Response object to a string. Casting the response to a string will return the entity body of the response
+as a string too, so this might be an expensive operation if the entity body is stored in a file or network stream. If
+you only want to see the response headers, you can call <tt class="docutils literal"><span class="pre">getRawHeaders()</span></tt>.</p>
+<div class="section" id="response-status-line">
+<h2>Response status line<a class="headerlink" href="#response-status-line" title="Permalink to this headline">¶</a></h2>
+<p>The different parts of a response&#8217;s <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1">status line</a>
+(the first line of the response HTTP message) are easily retrievable.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.amazon.com&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>      <span class="c1">// &gt;&gt;&gt; 200</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getReasonPhrase</span><span class="p">();</span>    <span class="c1">// &gt;&gt;&gt; OK</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getProtocol</span><span class="p">();</span>        <span class="c1">// &gt;&gt;&gt; HTTP</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getProtocolVersion</span><span class="p">();</span> <span class="c1">// &gt;&gt;&gt; 1.1</span>
+</pre></div>
+</div>
+<p>You can determine the type of the response using several helper methods:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">isSuccessful</span><span class="p">();</span> <span class="c1">// true</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">isInformational</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">isRedirect</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">isClientError</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">isServerError</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response-headers">
+<h2>Response headers<a class="headerlink" href="#response-headers" title="Permalink to this headline">¶</a></h2>
+<p>The Response object contains helper methods for retrieving common response headers. These helper methods normalize the
+variations of HTTP response headers.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getCacheControl</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContentType</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContentLength</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContentEncoding</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContentMd5</span><span class="p">();</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getEtag</span><span class="p">();</span>
+<span class="c1">// etc... There are methods for every known response header</span>
+</pre></div>
+</div>
+<p>You can interact withe Response headers using the same exact methods used to interact with Request headers. See
+<a class="reference internal" href="request.html#http-message-headers"><em>HTTP Message Headers</em></a> for more information.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeaders</span><span class="p">()[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">];</span> <span class="c1">// PHP 5.4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response-body">
+<h2>Response body<a class="headerlink" href="#response-body" title="Permalink to this headline">¶</a></h2>
+<p>The entity body object of a response can be retrieved by calling <tt class="docutils literal"><span class="pre">$response-&gt;getBody()</span></tt>. The response EntityBody can
+be cast to a string, or you can pass <tt class="docutils literal"><span class="pre">true</span></tt> to this method to retrieve the body as a string.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.amazon.com&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="entity-bodies.html"><em>Request and response bodies</em></a> for more information on entity bodies.</p>
+<div class="section" id="json-responses">
+<h3>JSON Responses<a class="headerlink" href="#json-responses" title="Permalink to this headline">¶</a></h3>
+<p>You can easily parse and use a JSON response as an array using the <tt class="docutils literal"><span class="pre">json()</span></tt> method of a response. This method will
+always return an array if the response is valid JSON or if the response body is empty. You will get an exception if you
+call this method and the response is not valid JSON.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nb">gettype</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+<span class="c1">// &gt;&gt;&gt; array</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xml-responses">
+<h3>XML Responses<a class="headerlink" href="#xml-responses" title="Permalink to this headline">¶</a></h3>
+<p>You can easily parse and use a XML response as SimpleXMLElement object using the <tt class="docutils literal"><span class="pre">xml()</span></tt> method of a response. This
+method will always return a SimpleXMLElement object if the response is valid XML or if the response body is empty. You
+will get an exception if you call this method and the response is not valid XML.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$xml</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">xml</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">;</span>
+<span class="c1">// &gt;&gt;&gt; Bar!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="streaming-responses">
+<h2>Streaming responses<a class="headerlink" href="#streaming-responses" title="Permalink to this headline">¶</a></h2>
+<p>Some web services provide streaming APIs that allow a client to keep a HTTP request open for an extended period of
+time while polling and reading. Guzzle provides a simple way to convert HTTP request messages into
+<tt class="docutils literal"><span class="pre">Guzzle\Stream\Stream</span></tt> objects so that you can send the initial headers of a request, read the response headers, and
+pull in the response body manually as needed.</p>
+<p>Here&#8217;s an example using the Twitter Streaming API to track the keyword &#8220;beiber&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Stream\PhpStreamRequestFactory</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;https://stream.twitter.com/1&#39;</span><span class="p">);</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;statuses/filter.json&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;track&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bieber&#39;</span>
+<span class="p">));</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setAuth</span><span class="p">(</span><span class="s1">&#39;myusername&#39;</span><span class="p">,</span> <span class="s1">&#39;mypassword&#39;</span><span class="p">);</span>
+
+<span class="nv">$factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PhpStreamRequestFactory</span><span class="p">();</span>
+<span class="nv">$stream</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">fromRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+<span class="c1">// Read until the stream is closed</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nv">$stream</span><span class="o">-&gt;</span><span class="na">feof</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// Read a line from the stream</span>
+    <span class="nv">$line</span> <span class="o">=</span> <span class="nv">$stream</span><span class="o">-&gt;</span><span class="na">readLine</span><span class="p">();</span>
+    <span class="c1">// JSON decode the line of data</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$line</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="request.html" title="previous chapter">&lt; Using Request objects</a></li>
+      <li><a href="entity-bodies.html" title="next chapter">Request and response bodies &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using Response objects</a><ul>
+<li><a class="reference internal" href="#response-status-line">Response status line</a></li>
+<li><a class="reference internal" href="#response-headers">Response headers</a></li>
+<li><a class="reference internal" href="#response-body">Response body</a><ul>
+<li><a class="reference internal" href="#json-responses">JSON Responses</a></li>
+<li><a class="reference internal" href="#xml-responses">XML Responses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#streaming-responses">Streaming responses</a></li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="entity-bodies.html" title="next chapter">Next: Request and response bodies</a>
+    <a href="request.html" title="previous chapter">Prev: Using Request objects</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'http-client/response';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="entity-bodies.html" title="Request and response bodies"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="request.html" title="Using Request objects"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

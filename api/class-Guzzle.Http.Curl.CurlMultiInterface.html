@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Http\Curl\CurlMultiInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?4062151815"></script>
+	<script type="text/javascript" src="elementlist.js?1186530155"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -145,6 +145,7 @@
 			<ul>
 				<li><a href="class-Guzzle.Http.Curl.CurlHandle.html">CurlHandle</a></li>
 				<li><a href="class-Guzzle.Http.Curl.CurlMulti.html">CurlMulti</a></li>
+				<li><a href="class-Guzzle.Http.Curl.CurlMultiProxy.html">CurlMultiProxy</a></li>
 				<li><a href="class-Guzzle.Http.Curl.CurlVersion.html">CurlVersion</a></li>
 				<li><a href="class-Guzzle.Http.Curl.RequestMediator.html">RequestMediator</a></li>
 			</ul>
@@ -207,9 +208,9 @@ parallel</p>
 		<dd style="padding-left:0px">
 <b><span>Guzzle\Http\Curl\CurlMultiInterface</span></b>			
 			 implements 
-				<a href="class-Guzzle.Common.HasDispatcherInterface.html"><span>Guzzle\Common\HasDispatcherInterface</span></a>, 
+				<a href="class-Countable.html"><span>Countable</span></a>, 
 			
-				<a href="class-Countable.html"><span>Countable</span></a>
+				<a href="class-Guzzle.Common.HasDispatcherInterface.html"><span>Guzzle\Common\HasDispatcherInterface</span></a>
 			
 			
 		</dd>
@@ -220,7 +221,8 @@ parallel</p>
 
 	<div>
 		<h4>Direct known implementers</h4>
-			<a href="class-Guzzle.Http.Curl.CurlMulti.html">Guzzle\Http\Curl\CurlMulti</a>
+			<a href="class-Guzzle.Http.Curl.CurlMulti.html">Guzzle\Http\Curl\CurlMulti</a>, 
+			<a href="class-Guzzle.Http.Curl.CurlMultiProxy.html">Guzzle\Http\Curl\CurlMultiProxy</a>
 	</div>
 
 
@@ -318,48 +320,11 @@ parallel</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getState" id="_getState">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getState">#</a>
-		<code>getState( )</code>
-
-		<div class="description short">
-			
-<p>Get the current state of the Pool</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the current state of the Pool</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="remove" id="_remove">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code>
+			boolean
 			
 			</code>
 		</td>
@@ -388,7 +353,7 @@ parallel</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code></code><br />
+					<code>boolean</code><br>Returns true on success or false on failure<br />
 				</div>
 
 
@@ -475,6 +440,14 @@ parallel</p>
 	</table>
 
 	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Countable.html#methods">Countable</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Countable.html#_count">count()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Guzzle.Common.HasDispatcherInterface.html#methods">Guzzle\Common\HasDispatcherInterface</a></caption>
 	<tr>
 		<td><code>
@@ -483,14 +456,6 @@ parallel</p>
 			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">getAllEvents()</a>, 
 			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_getEventDispatcher">getEventDispatcher()</a>, 
 			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_setEventDispatcher">setEventDispatcher()</a>
-		</code></td>
-	</tr>
-	</table>
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Countable.html#methods">Countable</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Countable.html#_count">count()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -503,25 +468,6 @@ parallel</p>
 
 	<table class="summary" id="constants">
 	<caption>Constants summary</caption>
-	<tr data-order="BEFORE_SEND" id="BEFORE_SEND">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-<b>BEFORE_SEND</b>		</code></td>
-		<td class="value"><code><span class="php-quote">'curl_multi.before_send'</span></code></td>
-		<td class="description"><div>
-			<a href="#BEFORE_SEND" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="POLLING_REQUEST" id="POLLING_REQUEST">
 
 		<td class="attributes"><code>string</code></td>
@@ -530,25 +476,6 @@ parallel</p>
 		<td class="value"><code><span class="php-quote">'curl_multi.polling_request'</span></code></td>
 		<td class="description"><div>
 			<a href="#POLLING_REQUEST" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="COMPLETE" id="COMPLETE">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-<b>COMPLETE</b>		</code></td>
-		<td class="value"><code><span class="php-quote">'curl_multi.complete'</span></code></td>
-		<td class="description"><div>
-			<a href="#COMPLETE" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -625,63 +552,6 @@ parallel</p>
 		<td class="value"><code><span class="php-quote">'curl_multi.blocking'</span></code></td>
 		<td class="description"><div>
 			<a href="#BLOCKING" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="STATE_IDLE" id="STATE_IDLE">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-<b>STATE_IDLE</b>		</code></td>
-		<td class="value"><code><span class="php-quote">'idle'</span></code></td>
-		<td class="description"><div>
-			<a href="#STATE_IDLE" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="STATE_SENDING" id="STATE_SENDING">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-<b>STATE_SENDING</b>		</code></td>
-		<td class="value"><code><span class="php-quote">'sending'</span></code></td>
-		<td class="description"><div>
-			<a href="#STATE_SENDING" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="STATE_COMPLETE" id="STATE_COMPLETE">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-<b>STATE_COMPLETE</b>		</code></td>
-		<td class="value"><code><span class="php-quote">'complete'</span></code></td>
-		<td class="description"><div>
-			<a href="#STATE_COMPLETE" class="anchor">#</a>
 
 			<div class="description short">
 				

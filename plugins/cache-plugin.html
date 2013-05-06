@@ -1,0 +1,315 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>HTTP Cache plugin &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Cookie plugin" href="cookie-plugin.html" />
+    <link rel="prev" title="Backoff retry plugin" href="backoff-plugin.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="http-cache-plugin">
+<h1>HTTP Cache plugin<a class="headerlink" href="#http-cache-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Guzzle can leverage HTTP&#8217;s caching specifications using the <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt>. The CachePlugin
+provides a private transparent proxy cache that caches HTTP responses. The caching logic, based on
+<a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior,
+cache lifetime, and supports ETag and Last-Modified based revalidation:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\CachePlugin</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">);</span>
+
+<span class="nv">$cachePlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;adapter&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">())</span>
+<span class="p">));</span>
+
+<span class="c1">// Add the cache plugin to the client object</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$cachePlugin</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.wikipedia.org/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// The next request will revalidate against the origin server to see if it</span>
+<span class="c1">// has been modified. If a 304 response is received the response will be</span>
+<span class="c1">// served from cache</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.wikipedia.org/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The cache plugin intercepts GET and HEAD requests before they are actually transferred to the origin server. The cache
+plugin then generates a hash key based on the request message and checks to see if a response exists in the cache. If
+a response exists in the cache, the cache adapter then checks to make sure that the response is still fresh. If the
+response is fresh and passes any required revalidation, then the cached response is served instead of contacting the
+origin server.</p>
+<div class="section" id="cache-options">
+<h2>Cache options<a class="headerlink" href="#cache-options" title="Permalink to this headline">¶</a></h2>
+<p>There are several options you can add to requests or clients to modify the behavior of the cache plugin.</p>
+<div class="section" id="override-cache-ttl">
+<h3>Override cache TTL<a class="headerlink" href="#override-cache-ttl" title="Permalink to this headline">¶</a></h3>
+<p>You can override the number of seconds a cacheable response is stored in the cache by setting the
+<tt class="docutils literal"><span class="pre">cache.override_ttl</span></tt> parameter on the params object of a request:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// If the response to the request is cacheable, then the response will be cached for 100 seconds</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;cache.override_ttl&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If a response doesn&#8217;t specify any freshness policy, it will be kept in cache for 3600 seconds by default.</p>
+</div>
+<div class="section" id="custom-caching-decision">
+<h3>Custom caching decision<a class="headerlink" href="#custom-caching-decision" title="Permalink to this headline">¶</a></h3>
+<p>If the service you are interacting with does not return caching headers or returns responses that are normally
+something that would not be cached, you can set a custom <tt class="docutils literal"><span class="pre">can_cache</span></tt> object on the constructor of the CachePlugin
+and provide a <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CanCacheInterface</span></tt> object. You can use the
+<tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CallbackCanCacheStrategy</span></tt> to easily make a caching decision based on an HTTP request and
+response.</p>
+</div>
+<div class="section" id="revalidation-options">
+<h3>Revalidation options<a class="headerlink" href="#revalidation-options" title="Permalink to this headline">¶</a></h3>
+<p>You can change the revalidation behavior of a request using the <tt class="docutils literal"><span class="pre">cache.revalidate</span></tt> parameter. Setting this
+parameter to <tt class="docutils literal"><span class="pre">never</span></tt> will ensure that a revalidation request is never sent, and the response is always served from
+the origin server. Setting this parameter to <tt class="docutils literal"><span class="pre">skip</span></tt> will never revalidate and uses the response stored in the cache.</p>
+</div>
+<div class="section" id="normalizing-requests-for-caching">
+<h3>Normalizing requests for caching<a class="headerlink" href="#normalizing-requests-for-caching" title="Permalink to this headline">¶</a></h3>
+<p>Use the <tt class="docutils literal"><span class="pre">cache.key_filter</span></tt> parameter if you wish to strip certain headers or query string parameters from your
+request before creating a unique hash for the request. This parameter can be useful if you send a special authorization
+header that changes based on the date, but still wish to cache the responses of those requests. The cache.key_filter
+format can contain a list of <tt class="docutils literal"><span class="pre">query</span></tt> and <tt class="docutils literal"><span class="pre">header</span></tt> values to remove from the request hash. You are not required to
+specify both a query or header list, and either list can contain one or more keys to ignore. For example, here we are
+saying that the <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">q</span></tt> query string variables and the <tt class="docutils literal"><span class="pre">Date</span></tt> header should be ignored when generating a
+hash key for the request:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;cache.key_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;query=a, q; header=Date, Host&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-options">
+<h3>Other options<a class="headerlink" href="#other-options" title="Permalink to this headline">¶</a></h3>
+<p>There are many other options available to the CachePlugin that can meet almost any caching requirement, including
+custom revalidation implementations, custom cache key generators, custom caching decision strategies, and custom
+cache storage objects. Take a look the constructor of <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache\CachePlugin</span></tt> for more information.</p>
+</div>
+<div class="section" id="setting-client-wide-cache-settings">
+<h3>Setting Client-wide cache settings<a class="headerlink" href="#setting-client-wide-cache-settings" title="Permalink to this headline">¶</a></h3>
+<p>You can specify cache settings for every request created by a client by adding cache settings to the configuration
+options of a client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;params.cache.override_ttl&#39;</span> <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">,</span>
+    <span class="s1">&#39;params.cache.revalidate&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;never&#39;</span>
+<span class="p">));</span>
+
+<span class="k">echo</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;cache.override_ttl&#39;</span><span class="p">);</span>
+<span class="c1">// &gt;&gt;&gt; 3600</span>
+
+<span class="k">echo</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;cache.revalidate&#39;</span><span class="p">);</span>
+<span class="c1">// &gt;&gt;&gt; never</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cache-revalidation">
+<h2>Cache revalidation<a class="headerlink" href="#cache-revalidation" title="Permalink to this headline">¶</a></h2>
+<p>If the cache plugin determines that a response to a GET request needs revalidation, a conditional GET is transferred
+to the origin server. If the origin server returns a 304 response, then a response containing the merged headers of
+the cached response with the new response and the entity body of the cached response is returned. Custom revalidation
+strategies can be injected into a CachePlugin if needed.</p>
+</div>
+<div class="section" id="cache-adapters">
+<h2>Cache adapters<a class="headerlink" href="#cache-adapters" title="Permalink to this headline">¶</a></h2>
+<p>Guzzle doesn&#8217;t try to reinvent the wheel when it comes to caching or logging. Plenty of other frameworks have
+excellent solutions in place that you are probably already using in your applications. Guzzle uses adapters for
+caching and logging. The cache plugin requires a cache adapter so that is can store responses in a cache. Guzzle
+currently supports cache adapters for <a class="reference external" href="http://www.doctrine-project.org/">Doctrine 2.0</a> and the
+<a class="reference external" href="http://framework.zend.com">Zend Framework</a>.</p>
+<div class="section" id="doctrine-cache-adapter">
+<h3>Doctrine cache adapter<a class="headerlink" href="#doctrine-cache-adapter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\CachePlugin</span><span class="p">;</span>
+
+<span class="nv">$backend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">();</span>
+<span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="nv">$backend</span><span class="p">);</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="nv">$adapter</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="zend-framework-cache-adapter">
+<h3>Zend Framework cache adapter<a class="headerlink" href="#zend-framework-cache-adapter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Cache\ZendCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Zend\Cache\Backend\TestBackend</span><span class="p">;</span>
+
+<span class="nv">$backend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TestBackend</span><span class="p">();</span>
+<span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ZendCacheAdapter</span><span class="p">(</span><span class="nv">$backend</span><span class="p">);</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="nv">$adapter</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="backoff-plugin.html" title="previous chapter">&lt; Backoff retry plugin</a></li>
+      <li><a href="cookie-plugin.html" title="next chapter">Cookie plugin &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HTTP Cache plugin</a><ul>
+<li><a class="reference internal" href="#cache-options">Cache options</a><ul>
+<li><a class="reference internal" href="#override-cache-ttl">Override cache TTL</a></li>
+<li><a class="reference internal" href="#custom-caching-decision">Custom caching decision</a></li>
+<li><a class="reference internal" href="#revalidation-options">Revalidation options</a></li>
+<li><a class="reference internal" href="#normalizing-requests-for-caching">Normalizing requests for caching</a></li>
+<li><a class="reference internal" href="#other-options">Other options</a></li>
+<li><a class="reference internal" href="#setting-client-wide-cache-settings">Setting Client-wide cache settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cache-revalidation">Cache revalidation</a></li>
+<li><a class="reference internal" href="#cache-adapters">Cache adapters</a><ul>
+<li><a class="reference internal" href="#doctrine-cache-adapter">Doctrine cache adapter</a></li>
+<li><a class="reference internal" href="#zend-framework-cache-adapter">Zend Framework cache adapter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="cookie-plugin.html" title="next chapter">Next: Cookie plugin</a>
+    <a href="backoff-plugin.html" title="previous chapter">Prev: Backoff retry plugin</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'plugins/cache-plugin';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cookie-plugin.html" title="Cookie plugin"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="backoff-plugin.html" title="Backoff retry plugin"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

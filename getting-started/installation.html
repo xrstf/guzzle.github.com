@@ -1,0 +1,365 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="Welcome to Guzzle" href="overview.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>PHP 5.3.3+ compiled with the cURL extension</li>
+<li>A recent version of cURL 7.16.2+ compiled with OpenSSL and zlib</li>
+</ol>
+</div>
+<div class="section" id="installing-guzzle">
+<h2>Installing Guzzle<a class="headerlink" href="#installing-guzzle" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="composer">
+<h3>Composer<a class="headerlink" href="#composer" title="Permalink to this headline">¶</a></h3>
+<p>The recommneded way to install Guzzle is with <a class="reference external" href="http://getcomposer.org">Composer</a>. Composer is a dependency
+management tool for PHP that allows you to declare the dependencies your project needs and installs them into your
+project. In order to use Guzzle with Composer, you must do the following:</p>
+<ol class="arabic">
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">&quot;guzzle/guzzle&quot;</span></tt> as a dependency in your project&#8217;s <tt class="docutils literal"><span class="pre">composer.json</span></tt> file.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;require&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;guzzle/guzzle&quot;</span><span class="o">:</span> <span class="s2">&quot;3.3.*&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Download and install Composer.</p>
+<div class="highlight-sh"><div class="highlight"><pre>curl -s <span class="s2">&quot;http://getcomposer.org/installer&quot;</span> | php
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install your dependencies.</p>
+<div class="highlight-sh"><div class="highlight"><pre>php composer.phar install
+</pre></div>
+</div>
+</li>
+<li><p class="first">Require Composer&#8217;s autoloader.</p>
+<p>Composer also prepares an autoload file that&#8217;s capable of autoloading all of the classes in any of the libraries
+that it downloads. To use it, just add the following line to your code&#8217;s bootstrap process.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">require</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>You can find out more on how to install Composer, configure autoloading, and other best-practices for defining
+dependencies at <a class="reference external" href="http://getcomposer.org">getcomposer.org</a>.</p>
+<div class="section" id="using-only-specific-parts-of-guzzle">
+<h4>Using only specific parts of Guzzle<a class="headerlink" href="#using-only-specific-parts-of-guzzle" title="Permalink to this headline">¶</a></h4>
+<p>While you can always just rely on <tt class="docutils literal"><span class="pre">guzzle/guzzle</span></tt>, Guzzle provides several smaller parts of Guzzle as individual
+packages available through Composer.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="69%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Package name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/common">guzzle/common</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Common</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/http">guzzle/http</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Http</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/parser">guzzle/parser</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Parser</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/batch">guzzle/batch</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Batch</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/cache">guzzle/cache</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Cache</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/inflection">guzzle/inflection</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Inflection</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/iterator">guzzle/iterator</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Iterator</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/log">guzzle/log</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Log</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin">guzzle/plugin</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin</span></tt> (all plugins)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-async">guzzle/plugin-async</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Async</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-backoff">guzzle/plugin-backoff</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\BackoffPlugin</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-cache">guzzle/plugin-cache</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cache</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-cookie">guzzle/plugin-cookie</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cookie</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-curlauth">guzzle/plugin-curlauth</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\CurlAuth</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-error-response">guzzle/plugin-error-response</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\ErrorResponse</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-history">guzzle/plugin-history</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\History</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-log">guzzle/plugin-log</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Log</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-md5">guzzle/plugin-md5</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Md5</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-mock">guzzle/plugin-mock</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Mock</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-oauth">guzzle/plugin-oauth</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Oauth</span></tt></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/service">guzzle/service</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Service</span></tt></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/stream">guzzle/stream</a></td>
+<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Stream</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bleeding-edge">
+<h4>Bleeding edge<a class="headerlink" href="#bleeding-edge" title="Permalink to this headline">¶</a></h4>
+<p>During your development, you can keep up with the latest changes on the master branch by setting the version
+requirement for Guzzle to <tt class="docutils literal"><span class="pre">dev-master</span></tt>.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;require&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;guzzle/guzzle&quot;</span><span class="o">:</span> <span class="s2">&quot;dev-master&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pear">
+<h3>PEAR<a class="headerlink" href="#pear" title="Permalink to this headline">¶</a></h3>
+<p>Guzzle can be installed through PEAR:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pear channel-discover guzzlephp.org/pear
+pear install guzzle/guzzle
+</pre></div>
+</div>
+<p>You can install a specific version of Guzzle by providing a version number suffix:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pearch install guzzle/guzzle-3.3.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="contributing-to-guzzle">
+<h2>Contributing to Guzzle<a class="headerlink" href="#contributing-to-guzzle" title="Permalink to this headline">¶</a></h2>
+<p>In order to contribute, you&#8217;ll need to checkout the source from GitHub and install Guzzle&#8217;s dependencies using
+Composer:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/guzzle/guzzle.git
+<span class="nb">cd </span>guzzle <span class="o">&amp;&amp;</span> curl -s http://getcomposer.org/installer | php <span class="o">&amp;&amp;</span> ./composer.phar install --dev
+</pre></div>
+</div>
+<p>Guzzle is unit tested with PHPUnit. You will need to create your own phpunit.xml file in order to run the unit tests
+(or just copy phpunit.xml.dist to phpunit.xml). Run the tests using the vendored PHPUnit binary:</p>
+<div class="highlight-bash"><div class="highlight"><pre>vendor/bin/phpunit
+</pre></div>
+</div>
+<p>You&#8217;ll need to install node.js v0.5.0 or newer in order to test the cURL implementation.</p>
+</div>
+<div class="section" id="framework-integrations">
+<h2>Framework integrations<a class="headerlink" href="#framework-integrations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-guzzle-with-symfony">
+<h3>Using Guzzle with Symfony<a class="headerlink" href="#using-guzzle-with-symfony" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://github.com/ddeboer/GuzzleBundle">Guzzle Symfony2 bundle</a> is available on github thanks to
+<a class="reference external" href="https://github.com/ddeboer">ddeboer</a></p>
+</div>
+<div class="section" id="using-guzzle-with-silex">
+<h3>Using Guzzle with Silex<a class="headerlink" href="#using-guzzle-with-silex" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://github.com/guzzle/guzzle-silex-extension">Guzzle Silex service provider</a> is available on github.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="overview.html" title="previous chapter">&lt; Welcome to Guzzle</a></li>
+      <li><a href="faq.html" title="next chapter">FAQ &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installing-guzzle">Installing Guzzle</a><ul>
+<li><a class="reference internal" href="#composer">Composer</a><ul>
+<li><a class="reference internal" href="#using-only-specific-parts-of-guzzle">Using only specific parts of Guzzle</a></li>
+<li><a class="reference internal" href="#bleeding-edge">Bleeding edge</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pear">PEAR</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contributing-to-guzzle">Contributing to Guzzle</a></li>
+<li><a class="reference internal" href="#framework-integrations">Framework integrations</a><ul>
+<li><a class="reference internal" href="#using-guzzle-with-symfony">Using Guzzle with Symfony</a></li>
+<li><a class="reference internal" href="#using-guzzle-with-silex">Using Guzzle with Silex</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="faq.html" title="next chapter">Next: FAQ</a>
+    <a href="overview.html" title="previous chapter">Prev: Welcome to Guzzle</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'getting-started/installation';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="faq.html" title="FAQ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Welcome to Guzzle"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

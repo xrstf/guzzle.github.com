@@ -1,0 +1,579 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Guzzle HTTP client &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Using Request objects" href="request.html" />
+    <link rel="prev" title="FAQ" href="../getting-started/faq.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-guzzle-http-client">
+<h1>The Guzzle HTTP client<a class="headerlink" href="#the-guzzle-http-client" title="Permalink to this headline">¶</a></h1>
+<p>Guzzle gives PHP developers complete control over HTTP requests while utilizing HTTP/1.1 best practices. Guzzle&#8217;s HTTP
+functionality is a robust framework built on top of the <a class="reference external" href="http://www.php.net/curl">PHP libcurl bindings</a>.</p>
+<p>The three main parts of the Guzzle HTTP client are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Clients</td>
+<td><tt class="docutils literal"><span class="pre">Guzzle\Http\Client</span></tt> (creates and sends requests, associates a response with a request)</td>
+</tr>
+<tr class="row-even"><td>Requests</td>
+<td><tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Request</span></tt> (requests with no body),
+<tt class="docutils literal"><span class="pre">Guzzle\Http\Message\EntityEnclosingRequest</span></tt> (requests with a body)</td>
+</tr>
+<tr class="row-odd"><td>Responses</td>
+<td><tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Response</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="creating-a-client">
+<h2>Creating a Client<a class="headerlink" href="#creating-a-client" title="Permalink to this headline">¶</a></h2>
+<p>Clients create requests, send requests, and set responses on a request object. When instantiating a client object,
+you can pass an optional &#8220;base URL&#8221; and optional array of configuration options. A base URL is a
+<a class="reference internal" href="#uri-templates"><em>URI template</em></a> that contains the URL of a remote server. When creating requests with a relative
+URL, the base URL of a client will be merged into the request&#8217;s URL.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+
+<span class="c1">// Create a client and provide a base URL</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;https://api.github.com&#39;</span><span class="p">);</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/user&#39;</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setAuth</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getUrl</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; https://api.github.com/user</span>
+
+<span class="c1">// You must send a request in order for the transfer to occur</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="c1">// &gt;&gt;&gt; {&quot;type&quot;:&quot;User&quot;, ...</span>
+
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">);</span>
+<span class="c1">// &gt;&gt;&gt; 792</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">];</span>
+<span class="c1">// &gt;&gt;&gt; User</span>
+</pre></div>
+</div>
+<div class="section" id="base-urls">
+<h3>Base URLs<a class="headerlink" href="#base-urls" title="Permalink to this headline">¶</a></h3>
+<p>Notice that the URL provided to the client&#8217;s <tt class="docutils literal"><span class="pre">get()</span></tt> method is relative. Relative URLs will always merge into the
+base URL of the client. There are a few rules that control how the URLs are merged.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Guzzle follows <a class="reference external" href="http://tools.ietf.org/html/rfc3986#section-5.2">RFC 3986</a> when merging base URLs and
+relative URLs.</p>
+</div>
+<p>In the above example, we passed <tt class="docutils literal"><span class="pre">/user</span></tt> to the <tt class="docutils literal"><span class="pre">get()</span></tt> method of the client. This is a relative URL, so it will
+merge into the base URL of the client&#8211; resulting in the derived URL of <tt class="docutils literal"><span class="pre">https://api.github.com/users</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">/user</span></tt> is a relative URL but uses an absolute path because it contains the leading slash. Absolute paths will
+overwrite any existing path of the base URL. If an absolute path is provided (e.g. <tt class="docutils literal"><span class="pre">/path/to/something</span></tt>), then the
+path specified in the base URL of the client will be replaced with the absolute path, and the query string provided
+by the relative URL will replace the query string of the base URL.</p>
+<p>Omitting the leading slash and using relative paths will add to the path of the base URL of the client. So using a
+client base URL of <tt class="docutils literal"><span class="pre">https://api.twitter.com/v1.1</span></tt> and creating a GET request with <tt class="docutils literal"><span class="pre">statuses/user_timeline.json</span></tt>
+will result in a URL of <tt class="docutils literal"><span class="pre">https://api.twitter.com/v1.1/statuses/user_timeline.json</span></tt>. If a relative path and a query
+string are provided, then the relative path will be appended to the base URL path, and the query string provided will
+be merged into the query string of the base URL.</p>
+<p>If an absolute URL is provided (e.g. <tt class="docutils literal"><span class="pre">http://httpbin.org/ip</span></tt>), then the request will completely use the absolute URL
+as-is without merging in any of the URL parts specified in the base URL.</p>
+</div>
+<div class="section" id="configuration-options">
+<h3>Configuration options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h3>
+<p>The second argument of the client&#8217;s constructor is an array of configuration data. This can include URI template data
+or special options that alter the client&#8217;s behavior:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">redirect.disable</span></tt></td>
+<td>Disable HTTP redirects for every request created by the client.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">curl.options</span></tt></td>
+<td>Associative array of cURL options to apply to every request created by the client.
+if either the key or value of an entry in the array is a string, Guzzle will
+attempt to find a matching defined cURL constant automatically (e.g.
+&#8220;CURLOPT_PROXY&#8221; will be converted to the constant <tt class="docutils literal"><span class="pre">CURLOPT_PROXY</span></tt>).</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">ssl.certificate_authority</span></tt></td>
+<td><p class="first">Set to true to use the Guzzle bundled SSL certificate bundle (this is used by
+default, or null to use the bundle on your system, a string pointing to a file to
+use a specific certificate file, a string pointing to a directory to use multiple
+certificates, or <tt class="docutils literal"><span class="pre">false</span></tt> to disable SSL validation (not recommended).</p>
+<p class="last">When using  Guzzle inside of a phar file, the bundled SSL certificate will be
+extracted to your system&#8217;s temp folder, and each time a client is created an MD5
+check will be performed to ensure the integrity of the certificate.</p>
+</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">request.params</span></tt></td>
+<td>Associative array of parameters to apply to the parameter collection of every
+request created by the client. Note: parameters are not query string parameters.
+Parameters in this context are simply contextual pieces of data that can be used
+with request collaborators.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">command.params</span></tt></td>
+<td>When using a <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object, this is an associative array of
+default options to set on each command created by the client.</td>
+</tr>
+</tbody>
+</table>
+<p>Here&#8217;s an example showing how to set various configuration options.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+
+<span class="c1">// Create a client and pass in optional configuration information</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;https://api.twitter.com/{version}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;version&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;v1.1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;curl.options&#39;</span>   <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="nx">CURLOPT_PROXY</span> <span class="o">=&gt;</span> <span class="s1">&#39;tcp://localhost:80&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;request.params&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-requests-with-a-client">
+<h2>Creating requests with a client<a class="headerlink" href="#creating-requests-with-a-client" title="Permalink to this headline">¶</a></h2>
+<p>A Client object exposes several methods used to create Request objects:</p>
+<ul class="simple">
+<li>Create a custom HTTP request: <tt class="docutils literal"><span class="pre">$client-&gt;createRequest($method,</span> <span class="pre">$uri,</span> <span class="pre">array</span> <span class="pre">$headers,</span> <span class="pre">$body)</span></tt></li>
+<li>Create a GET request: <tt class="docutils literal"><span class="pre">$client-&gt;get($uri,</span> <span class="pre">array</span> <span class="pre">$headers,</span> <span class="pre">$body)</span></tt></li>
+<li>Create a HEAD request: <tt class="docutils literal"><span class="pre">$client-&gt;head($uri,</span> <span class="pre">array</span> <span class="pre">$headers,</span> <span class="pre">$body)</span></tt></li>
+<li>Create a DELETE request: <tt class="docutils literal"><span class="pre">$client-&gt;delete($uri,</span> <span class="pre">array</span> <span class="pre">$headers,</span> <span class="pre">$body)</span></tt></li>
+<li>Create a POST request: <tt class="docutils literal"><span class="pre">$client-&gt;post($uri,</span> <span class="pre">array</span> <span class="pre">$headers,</span> <span class="pre">$postBody)</span></tt></li>
+<li>Create a PUT request: <tt class="docutils literal"><span class="pre">$client-&gt;put($uri,</span> <span class="pre">array</span> <span class="pre">$headers,</span> <span class="pre">$body)</span></tt></li>
+<li>Create a PATCH request: <tt class="docutils literal"><span class="pre">$client-&gt;patch($uri,</span> <span class="pre">array</span> <span class="pre">$headers,</span> <span class="pre">$body)</span></tt></li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://baseurl.com/api/v1&#39;</span><span class="p">);</span>
+
+<span class="c1">// Create a GET request using Relative to base URL</span>
+<span class="c1">// URL of the request: http://baseurl.com/api/v1/path?query=123&amp;value=abc)</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;path?query=123&amp;value=abc&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// Create HEAD request using a relative URL with an absolute path</span>
+<span class="c1">// URL of the request: http://baseurl.com/path?query=123&amp;value=abc</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">head</span><span class="p">(</span><span class="s1">&#39;/path?query=123&amp;value=abc&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// Create a DELETE request using an absolute URL</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/path?query=123&amp;value=abc&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// Create a PUT request using the contents of a PHP stream as the body</span>
+<span class="c1">// Specify custom HTTP headers</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/upload&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;X-Header&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My Header&#39;</span>
+<span class="p">),</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">));</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// Create a POST request and add the POST files manually</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;http://localhost:8983/solr/update&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addPostFiles</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;file&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/documents.xml&#39;</span><span class="p">));</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// Check if a resource supports the DELETE method</span>
+<span class="nv">$supportsDelete</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">(</span><span class="s1">&#39;/path&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">isMethodAllowed</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Client objects create Request objects using a request factory (<tt class="docutils literal"><span class="pre">Guzzle\Http\Message\RequestFactoryInterface</span></tt>).
+You can inject a custom request factory into the Client using <tt class="docutils literal"><span class="pre">$client-&gt;setRequestFactory()</span></tt>, but you can typically
+rely on a Client&#8217;s default request factory.</p>
+<div class="section" id="uri-templates">
+<span id="id1"></span><h3>URI templates<a class="headerlink" href="#uri-templates" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">$uri</span></tt> passed to one of the client&#8217;s request creational methods or the base URL of a client can utilize URI
+templates. Guzzle supports the entire <a class="reference external" href="http://tools.ietf.org/html/rfc6570">URI templates RFC</a>. URI templates add a
+special syntax to URIs that replace template place holders with user defined variables.</p>
+<p>Every request created by a Guzzle HTTP client passes through a URI template so that URI template expressions are
+automatically expanded:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;https://example.com/&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">));</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/{a}&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Because of URI template expansion, the URL of the above request will become <tt class="docutils literal"><span class="pre">https://example.com/hi</span></tt>. Notice that
+the template was expanded using configuration variables of the client. You can pass in custom URI template variables
+by passing the URI of your request as an array where the first index of the array is the URI template and the second
+index of the array are template variables that are merged into the client&#8217;s configuration variables.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;/test{?a,b}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;there&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>The URL for this request will become <tt class="docutils literal"><span class="pre">https://test.com?a=hi&amp;b=there</span></tt>. URI templates aren&#8217;t limited to just simple
+variable replacements;  URI templates can provide an enormous amount of flexibility when creating request URIs.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;http://example.com{+path}{/segments}{?query,data*}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;path&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;/foo/bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;segments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;query&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;data&#39;</span>     <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;more&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span>
+    <span class="p">)</span>
+<span class="p">)));</span>
+</pre></div>
+</div>
+<p>The resulting URL would become <tt class="docutils literal"><span class="pre">http://example.com/foo/bar/one/two?query=test&amp;more=value</span></tt>.</p>
+<p>By default, URI template expressions are enclosed in an opening and closing brace (e.g. <tt class="docutils literal"><span class="pre">{var}</span></tt>). If you are working
+with a web service that actually uses braces (e.g. Solr), then you can specify a custom regular expression to use to
+match URI template expressions.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getUriTemplate</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setRegex</span><span class="p">(</span><span class="s1">&#39;/\&lt;\$(.+)\&gt;/&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&lt;$a&gt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can learn about all of the different features of URI templates by reading the
+<a class="reference external" href="http://tools.ietf.org/html/rfc6570">URI templates RFC</a>.</p>
+</div>
+</div>
+<div class="section" id="sending-requests">
+<h2>Sending requests<a class="headerlink" href="#sending-requests" title="Permalink to this headline">¶</a></h2>
+<p>Requests can be sent by calling the <tt class="docutils literal"><span class="pre">send()</span></tt> method of a Request object, but you can also send requests using the
+<tt class="docutils literal"><span class="pre">send()</span></tt> method of a Client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.amazon.com&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="sending-requests-in-parallel">
+<h3>Sending requests in parallel<a class="headerlink" href="#sending-requests-in-parallel" title="Permalink to this headline">¶</a></h3>
+<p>The Client&#8217;s <tt class="docutils literal"><span class="pre">send()</span></tt> method accept a single <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\RequestInterface</span></tt> object or an array of
+RequestInterface objects. When an array is specified, the requests will be sent in parallel.</p>
+<p>Sending many HTTP requests serially (one at a time) can cause an unnecessary delay in a script&#8217;s execution. Each
+request must complete before a subsequent request can be sent. By sending requests in parallel, a pool of HTTP
+requests can complete at the speed of the slowest request in the pool, significantly reducing the amount of time
+needed to execute multiple HTTP requests. Guzzle provides a wrapper for the curl_multi functions in PHP.</p>
+<p>Here&#8217;s an example of sending three requests in parallel using a client object:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Exception\MultiTransferException</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$responses</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/&#39;</span><span class="p">),</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">head</span><span class="p">(</span><span class="s1">&#39;http://www.google.com/&#39;</span><span class="p">),</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;https://www.github.com/&#39;</span><span class="p">)</span>
+    <span class="p">));</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">MultiTransferException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;The following exceptions were encountered:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$e</span> <span class="k">as</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;The following requests failed:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getFailedRequests</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$request</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;The following requests succeeded:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getSuccessfulRequests</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$request</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the requests succeed, an array of <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Response</span></tt> objects are returned. A single request failure
+will not cause the entire pool of requests to fail. Any exceptions thrown while transferring a pool of requests will
+be aggregated into a <tt class="docutils literal"><span class="pre">Guzzle\Common\Exception\MultiTransferException</span></tt> exception.</p>
+</div>
+<div class="section" id="persistent-http-connections">
+<h3>Persistent HTTP connections<a class="headerlink" href="#persistent-http-connections" title="Permalink to this headline">¶</a></h3>
+<p>Persistent HTTP connections are an extremely important aspect of the HTTP/1.1 protocol that is often overlooked by
+PHP HTTP clients. Persistent connections allows data to be transferred between a client and server without the need
+to reconnect each time a subsequent request is sent, providing a significant performance boost to applications that
+need to send many HTTP requests to the same host.</p>
+<p>Reusing the same client when sending requests to the same server will ensure that you are utilizing HTTP persistent
+connections. All HTTP requests sent using the same client object will use the same cURL multi handle. cURL will
+maintain a cache of persistent connections on a multi handle. More information about cURL&#8217;s internal design and
+persistent connection handling can be found at <a class="reference external" href="http://curl.haxx.se/dev/internals.html">http://curl.haxx.se/dev/internals.html</a>.</p>
+<p>Clients will by default create their own <tt class="docutils literal"><span class="pre">Guzzle\Http\Curl\CurlMulti</span></tt> object for sending requests. You can inject a
+custom CurlMulti object into a client to utilize a custom CurlMulti object (for example, using the same CurlMulti
+object with every client) using <tt class="docutils literal"><span class="pre">$client-&gt;setCurlMulti()</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="customizing-a-client">
+<h2>Customizing a Client<a class="headerlink" href="#customizing-a-client" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-http-headers">
+<h3>Default HTTP headers<a class="headerlink" href="#default-http-headers" title="Permalink to this headline">¶</a></h3>
+<p>Use <tt class="docutils literal"><span class="pre">$client-&gt;setDefaultHeaders()</span></tt> if you need to send the same HTTP headers with every request created by a client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">();</span>
+
+<span class="c1">// Always send the following headers with each request</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setDefaultHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;Accept-Encoding&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;deflate&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Accept&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;application/json&#39;</span>
+<span class="p">));</span>
+
+<span class="c1">// Get the list of default client headers</span>
+<span class="nb">var_export</span><span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getDefaultHeaders</span><span class="p">());</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.com&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Accept&#39;</span><span class="p">);</span>
+<span class="c1">// &gt;&gt;&gt; application/json</span>
+<span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Accept-Encoding&#39;</span><span class="p">);</span>
+<span class="c1">// &gt;&gt;&gt; deflate</span>
+
+<span class="c1">// Send the request and get the response</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Specifying an array of default headers on a client will cause every request created by the client to always include
+the array of default headers.</p>
+</div>
+<div class="section" id="setting-a-custom-user-agent">
+<h3>Setting a custom User-Agent<a class="headerlink" href="#setting-a-custom-user-agent" title="Permalink to this headline">¶</a></h3>
+<p>The default Guzzle User-Agent header is <tt class="docutils literal"><span class="pre">Guzzle/&lt;Guzzle_Version&gt;</span> <span class="pre">curl/&lt;curl_version&gt;</span> <span class="pre">PHP/&lt;PHP_VERSION&gt;</span></tt>. You can
+customize the User-Agent header of a client by calling the <tt class="docutils literal"><span class="pre">setUserAgent()</span></tt> method of a Client object.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Completely override the default User-Agent</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setUserAgent</span><span class="p">(</span><span class="s1">&#39;Test/123&#39;</span><span class="p">);</span>
+
+<span class="c1">// Prepend a string to the default User-Agent</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setUserAgent</span><span class="p">(</span><span class="s1">&#39;Test/123&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plugins-and-events">
+<h2>Plugins and events<a class="headerlink" href="#plugins-and-events" title="Permalink to this headline">¶</a></h2>
+<p>Guzzle provides easy to use request plugins that add behavior to requests based on signal slot event notifications
+powered by the
+<a class="reference external" href="http://symfony.com/doc/2.0/components/event_dispatcher/introduction.html">Symfony2 Event Dispatcher component</a>. Any
+event listener or subscriber attached to a Client object will automatically be attached to each request created by the
+client.</p>
+<div class="section" id="using-the-same-cookie-session-for-each-request">
+<h3>Using the same cookie session for each request<a class="headerlink" href="#using-the-same-cookie-session-for-each-request" title="Permalink to this headline">¶</a></h3>
+<p>Attach a <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cookie\CookiePlugin</span></tt> to a client which will in turn add support for cookies to every request
+created by a client, and each request will use the same cookie session:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Plugin\Cookie\CookiePlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar</span><span class="p">;</span>
+
+<span class="c1">// Create a new cookie plugin</span>
+<span class="nv">$cookiePlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CookiePlugin</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayCookieJar</span><span class="p">());</span>
+
+<span class="c1">// Add the cookie plugin to the client</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$cookiePlugin</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="events-emitted-from-a-client">
+<span id="client-events"></span><h3>Events emitted from a client<a class="headerlink" href="#events-emitted-from-a-client" title="Permalink to this headline">¶</a></h3>
+<p>A <tt class="docutils literal"><span class="pre">Guzzle\Http\Client</span></tt> object emits the following events:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="38%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event name</th>
+<th class="head">Description</th>
+<th class="head">Event data</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>client.create_request</td>
+<td>Called when a client creates a request</td>
+<td><ul class="first last simple">
+<li>client: The client</li>
+<li>request: The created request</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="c1">// Add a listener that will echo out requests as they are created</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getEventDispatcher</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="s1">&#39;client.create_request&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;Client object: &#39;</span> <span class="o">.</span> <span class="nb">spl_object_hash</span><span class="p">(</span><span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;client&#39;</span><span class="p">])</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;Request object: </span><span class="si">{</span><span class="nv">$request</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="../getting-started/faq.html" title="previous chapter">&lt; FAQ</a></li>
+      <li><a href="request.html" title="next chapter">Using Request objects &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Guzzle HTTP client</a><ul>
+<li><a class="reference internal" href="#creating-a-client">Creating a Client</a><ul>
+<li><a class="reference internal" href="#base-urls">Base URLs</a></li>
+<li><a class="reference internal" href="#configuration-options">Configuration options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-requests-with-a-client">Creating requests with a client</a><ul>
+<li><a class="reference internal" href="#uri-templates">URI templates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sending-requests">Sending requests</a><ul>
+<li><a class="reference internal" href="#sending-requests-in-parallel">Sending requests in parallel</a></li>
+<li><a class="reference internal" href="#persistent-http-connections">Persistent HTTP connections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#customizing-a-client">Customizing a Client</a><ul>
+<li><a class="reference internal" href="#default-http-headers">Default HTTP headers</a></li>
+<li><a class="reference internal" href="#setting-a-custom-user-agent">Setting a custom User-Agent</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plugins-and-events">Plugins and events</a><ul>
+<li><a class="reference internal" href="#using-the-same-cookie-session-for-each-request">Using the same cookie session for each request</a></li>
+<li><a class="reference internal" href="#events-emitted-from-a-client">Events emitted from a client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="request.html" title="next chapter">Next: Using Request objects</a>
+    <a href="../getting-started/faq.html" title="previous chapter">Prev: FAQ</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'http-client/client';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="request.html" title="Using Request objects"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../getting-started/faq.html" title="FAQ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

@@ -1,0 +1,501 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using a service builder &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Guzzle service descriptions" href="guzzle-service-descriptions.html" />
+    <link rel="prev" title="The web service client" href="webservice-client.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-a-service-builder">
+<h1>Using a service builder<a class="headerlink" href="#using-a-service-builder" title="Permalink to this headline">¶</a></h1>
+<p>The best way to instantiate Guzzle web service clients is to let Guzzle handle building the clients for you using a
+ServiceBuilder. A ServiceBuilder is responsible for creating concrete client objects based on configuration settings
+and helps to manage credentials for different environments.</p>
+<p>You don&#8217;t have to use a service builder, but they help to decouple your application from concrete classes and help to
+share configuration data across multiple clients. Consider the following example. Here we are creating two clients that
+require the same API public key and secret key. The clients are created using their <tt class="docutils literal"><span class="pre">factory()</span></tt> methods.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">MyService\FooClient</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">MyService\BarClient</span><span class="p">;</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="nx">FooClient</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;key&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;custom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;and above all&#39;</span>
+<span class="p">));</span>
+
+<span class="nv">$bar</span> <span class="o">=</span> <span class="nx">BarClient</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;key&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;custom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;listen to me&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>The redundant specification of the API keys can be removed using a service builder.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="p">;</span>
+
+<span class="nv">$builder</span> <span class="o">=</span> <span class="nx">ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;services&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;abstract_client&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;params&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;key&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;extends&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;abstract_client&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;class&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;MyService\FooClient&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;params&#39;</span>  <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;custom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;and above all&#39;</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="s1">&#39;bar&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;extends&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;abstract_client&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;class&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;MyService\FooClient&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;params&#39;</span>  <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;custom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;listen to me&#39;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+<span class="nv">$bar</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can make managing your API keys even easier by saving the service builder configuration in a JSON format in a
+.json file.</p>
+<div class="section" id="creating-a-service-builder">
+<h2>Creating a service builder<a class="headerlink" href="#creating-a-service-builder" title="Permalink to this headline">¶</a></h2>
+<p>A ServiceBuilder can source information from an array, an PHP include file that returns an array, or a JSON file.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="p">;</span>
+
+<span class="c1">// Source service definitions from a JSON file</span>
+<span class="nv">$builder</span> <span class="o">=</span> <span class="nx">ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;services.json&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="sourcing-data-from-an-array">
+<h3>Sourcing data from an array<a class="headerlink" href="#sourcing-data-from-an-array" title="Permalink to this headline">¶</a></h3>
+<p>Data can be source from a PHP array. The array must contain an associative <tt class="docutils literal"><span class="pre">services</span></tt> array that maps the name of a
+client to the configuration information used by the service builder to create the client. Clients are given names
+which are used to identify how a client is retrieved from a service builder. This can be useful for using multiple
+accounts for the same service or creating development clients vs. production clients.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$services</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;includes&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;/path/to/other/services.json&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;/path/to/other/php_services.php&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;services&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;abstract.foo&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;params&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="s1">&#39;bar&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;extends&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;abstract.foo&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;class&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;MyClientClass&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;params&#39;</span>  <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;other&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;abc&#39;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>A service builder configuration array contains two top-level array keys:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>includes</td>
+<td>Array of paths to JSON or PHP include files to include in the configuration.</td>
+</tr>
+<tr class="row-odd"><td>services</td>
+<td><p class="first">Associative array of defined services that can be created by the service builder. Each service can
+contain the following keys:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>class</td>
+<td>The concrete class to instantiate that implements the
+<tt class="docutils literal"><span class="pre">Guzzle\Common\FromConfigInterface</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td>extends</td>
+<td>The name of a previously defined service to extend from</td>
+</tr>
+<tr class="row-even"><td>params</td>
+<td>Associative array of parameters to pass to the factory method of the service it is
+instantiated</td>
+</tr>
+<tr class="row-odd"><td>alias</td>
+<td>An alias that can be used in addition to the array key for retrieving a client from
+the service builder.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The first client defined, <tt class="docutils literal"><span class="pre">abstract.foo</span></tt>, is used as a placeholder of shared configuration values. Any service
+extending abstract.foo will inherit its params. As an example, this can be useful when clients share the same username
+and password.</p>
+<p>The next client, <tt class="docutils literal"><span class="pre">bar</span></tt>, extends from <tt class="docutils literal"><span class="pre">abstract.foo</span></tt> using the <tt class="docutils literal"><span class="pre">extends</span></tt> attribute referencing the client from
+which to extend. Additional parameters can be merged into the original service definition when extending a parent
+service.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Each client that you intend to instantiate must specify a <tt class="docutils literal"><span class="pre">class</span></tt> attribute that references the full class name
+of the client being created. The class referenced in the <tt class="docutils literal"><span class="pre">class</span></tt> parameter must implement a static <tt class="docutils literal"><span class="pre">factory()</span></tt>
+method that accepts an array or <tt class="docutils literal"><span class="pre">Guzzle\Common\Collection</span></tt> object and returns an instantiated object.</p>
+</div>
+</div>
+<div class="section" id="sourcing-from-a-php-include">
+<h3>Sourcing from a PHP include<a class="headerlink" href="#sourcing-from-a-php-include" title="Permalink to this headline">¶</a></h3>
+<p>You can create service builder configurations using a PHP include file. This can be useful if you wish to take
+advantage of an opcode cache like APC to speed up the process of loading and processing the configuration. The PHP
+include file is the same format as an array, but you simply create a PHP script that returns an array and save the
+file with the .php file extension.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;services&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;...&#39;</span><span class="p">);</span>
+<span class="c1">// Saved as config.php</span>
+</pre></div>
+</div>
+<p>This configuration file can then be used with a service builder.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$builder</span> <span class="o">=</span> <span class="nx">ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;/path/to/config.php&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sourcing-from-a-json-document">
+<h3>Sourcing from a JSON document<a class="headerlink" href="#sourcing-from-a-json-document" title="Permalink to this headline">¶</a></h3>
+<p>You can use JSON documents to serialize your service descriptions. The JSON format uses the exact same structure as
+the PHP array syntax, but it&#8217;s just serialized using JSON.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;includes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/other/services.json&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/other/php_services.php&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;services&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;abstract.foo&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;bar&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;extends&quot;</span><span class="o">:</span> <span class="s2">&quot;abstract.foo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;class&quot;</span><span class="o">:</span> <span class="s2">&quot;MyClientClass&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;other&quot;</span><span class="o">:</span> <span class="s2">&quot;abc&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="referencing-other-clients-in-parameters">
+<h3>Referencing other clients in parameters<a class="headerlink" href="#referencing-other-clients-in-parameters" title="Permalink to this headline">¶</a></h3>
+<p>If one of your clients depends on another client as one of its parameters, you can reference that client by name by
+enclosing the client&#8217;s reference key in <tt class="docutils literal"><span class="pre">{}</span></tt>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;services&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;class&quot;</span><span class="o">:</span> <span class="s2">&quot;My\Token\TokenFactory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;access_key&quot;</span><span class="o">:</span> <span class="s2">&quot;xyz&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;client&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;class&quot;</span><span class="o">:</span> <span class="s2">&quot;My\Client&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;token_client&quot;</span><span class="o">:</span> <span class="s2">&quot;{token}&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When <tt class="docutils literal"><span class="pre">client</span></tt> is constructed by the service builder, the service builder will first create the <tt class="docutils literal"><span class="pre">token</span></tt> service
+and then inject the token service into <tt class="docutils literal"><span class="pre">client</span></tt>&#8216;s factory method in the <tt class="docutils literal"><span class="pre">token_client</span></tt> parameter.</p>
+</div>
+</div>
+<div class="section" id="retrieving-clients-from-a-service-builder">
+<h2>Retrieving clients from a service builder<a class="headerlink" href="#retrieving-clients-from-a-service-builder" title="Permalink to this headline">¶</a></h2>
+<p>Clients are referenced using a customizable name you provide in your service definition. The ServiceBuilder is a sort
+of multiton object&#8211; it will only instantiate a client once and return that client for subsequent retrievals. Clients
+are retrieved by name (the array key used in the configuration) or by the <tt class="docutils literal"><span class="pre">alias</span></tt> setting of a service.</p>
+<p>Here&#8217;s an example of retrieving a client from your ServiceBuilder:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+
+<span class="c1">// You can also use the ServiceBuilder object as an array</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="nv">$builder</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">];</span>
+</pre></div>
+</div>
+<div class="section" id="creating-throwaway-clients">
+<h3>Creating throwaway clients<a class="headerlink" href="#creating-throwaway-clients" title="Permalink to this headline">¶</a></h3>
+<p>You can get a &#8220;throwaway&#8221; client (a client that is not persisted by the ServiceBuilder) by passing <tt class="docutils literal"><span class="pre">true</span></tt> in the
+second argument of <tt class="docutils literal"><span class="pre">ServiceBuilder::get()</span></tt>. This allows you to create a client that will not be returned by other
+parts of your code that use the service builder. Instead of passing <tt class="docutils literal"><span class="pre">true</span></tt>, you can pass an array of configuration
+settings that will override the configuration settings specified in the service builder.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Get a throwaway client and overwrite the &quot;custom&quot; setting of the client</span>
+<span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;custom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;in this world there are rules&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-raw-configuration-settings">
+<h3>Getting raw configuration settings<a class="headerlink" href="#getting-raw-configuration-settings" title="Permalink to this headline">¶</a></h3>
+<p>You can get the raw configuration settings provided to the service builder for a specific service using the
+<tt class="docutils literal"><span class="pre">getData($name)</span></tt> method of a service builder. This method will null if the service was not found in the service
+builder or an array of configuration settings if the service was found.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;secret&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;custom&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-a-plugin-to-all-clients">
+<h2>Adding a plugin to all clients<a class="headerlink" href="#adding-a-plugin-to-all-clients" title="Permalink to this headline">¶</a></h2>
+<p>You can add a plugin to all clients created by a service builder using the <tt class="docutils literal"><span class="pre">addGlobalPlugin($plugin)</span></tt> method of a
+service builder and passing a <tt class="docutils literal"><span class="pre">Symfony\Component\EventDispatcher\EventSubscriberInterface</span></tt> object. The service builder
+will then attach each global plugin to every client as it is created. This allows you to, for example, add a LogPlugin
+to every request created by a service builder for easy debugging.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Plugin\Log\LogPlugin</span><span class="p">;</span>
+
+<span class="c1">// Add a debug log plugin to every client as it is created</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">addGlobalPlugin</span><span class="p">(</span><span class="nx">LogPlugin</span><span class="o">::</span><span class="na">getDebugPlugin</span><span class="p">());</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<span class="c1">// Should output all of the data sent over the wire</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="events-emitted-from-a-service-builder">
+<span id="service-builder-events"></span><h2>Events emitted from a service builder<a class="headerlink" href="#events-emitted-from-a-service-builder" title="Permalink to this headline">¶</a></h2>
+<p>A <tt class="docutils literal"><span class="pre">Guzzle\Service\Builder\ServiceBuilder</span></tt> object emits the following events:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="38%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event name</th>
+<th class="head">Description</th>
+<th class="head">Event data</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service_builder.create_client</td>
+<td>Called when a client is created</td>
+<td><ul class="first last simple">
+<li>client: The created client object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="p">;</span>
+
+<span class="nv">$builder</span> <span class="o">=</span> <span class="nx">ServiceBuilder</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">&#39;/path/to/config.json&#39;</span><span class="p">);</span>
+
+<span class="c1">// Add an event listener to print out each client client as it is created</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">getEventDispatcher</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="s1">&#39;service_builder.create_client&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;Client created: &#39;</span> <span class="o">.</span> <span class="nb">get_class</span><span class="p">(</span><span class="nv">$e</span><span class="p">[</span><span class="s1">&#39;client&#39;</span><span class="p">])</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+<span class="c1">// Should output the class used for the &quot;foo&quot; client</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="webservice-client.html" title="previous chapter">&lt; The web service client</a></li>
+      <li><a href="guzzle-service-descriptions.html" title="next chapter">Guzzle service descriptions &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using a service builder</a><ul>
+<li><a class="reference internal" href="#creating-a-service-builder">Creating a service builder</a><ul>
+<li><a class="reference internal" href="#sourcing-data-from-an-array">Sourcing data from an array</a></li>
+<li><a class="reference internal" href="#sourcing-from-a-php-include">Sourcing from a PHP include</a></li>
+<li><a class="reference internal" href="#sourcing-from-a-json-document">Sourcing from a JSON document</a></li>
+<li><a class="reference internal" href="#referencing-other-clients-in-parameters">Referencing other clients in parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieving-clients-from-a-service-builder">Retrieving clients from a service builder</a><ul>
+<li><a class="reference internal" href="#creating-throwaway-clients">Creating throwaway clients</a></li>
+<li><a class="reference internal" href="#getting-raw-configuration-settings">Getting raw configuration settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-a-plugin-to-all-clients">Adding a plugin to all clients</a></li>
+<li><a class="reference internal" href="#events-emitted-from-a-service-builder">Events emitted from a service builder</a></li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="guzzle-service-descriptions.html" title="next chapter">Next: Guzzle service descriptions</a>
+    <a href="webservice-client.html" title="previous chapter">Prev: The web service client</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'webservice-client/using-the-service-builder';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="guzzle-service-descriptions.html" title="Guzzle service descriptions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="webservice-client.html" title="The web service client"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

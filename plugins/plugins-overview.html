@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plugin system overview &mdash; Guzzle 3.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify/prettify.css?v=4" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="Creating plugins" href="creating-plugins.html" />
+    <link rel="prev" title="HTTP redirects" href="../http-client/http-redirects.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+  <div id="menu">
+      <div class="width-wrapper">
+          <div id="left-logo">
+              <span id="left-logo-image"></span>
+              <a href="../index.html">Guzzle</a>
+          </div>
+          <ul id="main-menu">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../docs.html">Docs</a></li>
+              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+          </ul>
+          <div id="github-stars">
+              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+          </div>
+      </div>
+  </div>
+  
+
+  
+      
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="plugin-system-overview">
+<h1>Plugin system overview<a class="headerlink" href="#plugin-system-overview" title="Permalink to this headline">¶</a></h1>
+<p>The workflow of sending a request and parsing a response is driven by Guzzle&#8217;s event system, which is powered by the
+<a class="reference external" href="http://symfony.com/doc/current/components/event_dispatcher/introduction.html">Symfony2 Event Dispatcher component</a>.</p>
+<p>Any object in Guzzle that emits events will implement the <tt class="docutils literal"><span class="pre">Guzzle\Common\HasEventDispatcher</span></tt> interface. You can add
+event subscribers directly to these objects using the <tt class="docutils literal"><span class="pre">addSubscriber()</span></tt> method, or you can grab the
+<tt class="docutils literal"><span class="pre">Symfony\Component\EventDispatcher\EventDispatcher</span></tt> object owned by the object using <tt class="docutils literal"><span class="pre">getEventDispatcher()</span></tt> and
+add a listener or event subscriber.</p>
+<div class="section" id="adding-event-subscribers-to-clients">
+<h2>Adding event subscribers to clients<a class="headerlink" href="#adding-event-subscribers-to-clients" title="Permalink to this headline">¶</a></h2>
+<p>Any event subscriber or event listener attached to the EventDispatcher of a <tt class="docutils literal"><span class="pre">Guzzle\Http\Client</span></tt> or
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object will automatically be attached to all request objects created by the client. This
+allows you to attach, for example, a HistoryPlugin to a client object, and from that point on, every request sent
+through that client will utilize the HistoryPlugin.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Plugin\History\HistoryPlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Service\Client</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="c1">// Create a history plugin and attach it to the client</span>
+<span class="nv">$history</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HistoryPlugin</span><span class="p">();</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$history</span><span class="p">);</span>
+
+<span class="c1">// Create and send a request. This request will also utilize the HistoryPlugin</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+<span class="c1">// Echo out the last sent request by the client</span>
+<span class="k">echo</span> <span class="nv">$history</span><span class="o">-&gt;</span><span class="na">getLastRequest</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"><a class="reference internal" href="creating-plugins.html"><em>Create event subscribers</em></a>, or <em>plugins</em>, to implement reusable logic that can be
+shared across clients. Event subscribers are also easier to test than anonymous functions.</p>
+</div>
+</div>
+<div class="section" id="pre-built-plugins">
+<h2>Pre-Built plugins<a class="headerlink" href="#pre-built-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Guzzle provides easy to use request plugins that add behavior to requests based on signal slot event notifications
+powered by the Symfony2 Event Dispatcher component.</p>
+<ul class="simple">
+<li><a class="reference internal" href="async-plugin.html"><em>Async plugin</em></a></li>
+<li><a class="reference internal" href="backoff-plugin.html"><em>Backoff retry plugin</em></a></li>
+<li><a class="reference internal" href="cache-plugin.html"><em>HTTP Cache plugin</em></a></li>
+<li><a class="reference internal" href="cookie-plugin.html"><em>Cookie plugin</em></a></li>
+<li><a class="reference internal" href="curl-auth-plugin.html"><em>cURL authentication plugin</em></a></li>
+<li><a class="reference internal" href="history-plugin.html"><em>History plugin</em></a></li>
+<li><a class="reference internal" href="log-plugin.html"><em>Log plugin</em></a></li>
+<li><a class="reference internal" href="md5-validator-plugin.html"><em>MD5 validator plugin</em></a></li>
+<li><a class="reference internal" href="mock-plugin.html"><em>Mock plugin</em></a></li>
+<li><a class="reference internal" href="oauth-plugin.html"><em>OAuth plugin</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><ul>
+      <li><a href="../http-client/http-redirects.html" title="previous chapter">&lt; HTTP redirects</a></li>
+      <li><a href="creating-plugins.html" title="next chapter">Creating plugins &gt;</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Plugin system overview</a><ul>
+<li><a class="reference internal" href="#adding-event-subscribers-to-clients">Adding event subscribers to clients</a></li>
+<li><a class="reference internal" href="#pre-built-plugins">Pre-Built plugins</a></li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+    <div id="footer-links"  class="width-wrapper">
+    
+    <a href="creating-plugins.html" title="next chapter">Next: Creating plugins</a>
+    <a href="../http-client/http-redirects.html" title="previous chapter">Prev: HTTP redirects</a>
+    
+    </div>
+    
+    <div class="container comment-container">
+        <div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'guzzle';
+        var disqus_identifier = 'plugins/plugins-overview';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+    </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="creating-plugins.html" title="Creating plugins"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../http-client/http-redirects.html" title="HTTP redirects"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2012, Michael Dowling.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  <script type="text/javascript">
+    
+    
+  </script>
+  </body>
+</html>

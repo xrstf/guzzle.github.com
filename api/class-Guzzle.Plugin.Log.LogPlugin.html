@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Plugin\Log\LogPlugin | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?4062151815"></script>
+	<script type="text/javascript" src="elementlist.js?1186530155"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -285,7 +285,7 @@ buffer if the bodies are not repeatable.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDebugPlugin">#</a>
-		<code>getDebugPlugin( <span>boolean <var>$wireBodies</var> = <span class="php-keyword1">true</span></span>, <span>resource <var>$stream</var> = STDERR</span> )</code>
+		<code>getDebugPlugin( <span>boolean <var>$wireBodies</var> = <span class="php-keyword1">true</span></span>, <span>resource <var>$stream</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -307,7 +307,7 @@ information to stderr</p>
 					<dd><code>boolean</code><br>$wireBodies Set to false to disable request/response body output when they use
 are not repeatable</dd>
 					<dt><var>$stream</var></dt>
-					<dd><code>resource</code><br>$stream Stream to write to when logging</dd>
+					<dd><code>resource</code><br>$stream Stream to write to when logging. Defaults to STDERR when it is available</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
