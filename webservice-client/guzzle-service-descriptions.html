@@ -176,6 +176,10 @@ implementing a Guzzle service description.</p>
             <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;parameters&quot;</span><span class="p">,</span>
                 <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Parameters of the operation. Parameters are used to define how input data is serialized into a HTTP request.&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;additionalParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;parameters&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Validation and serialization rules for any parameter supplied to the operation that was not explicitly defined.&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
@@ -426,8 +430,49 @@ endpoint and HTTP method. If an API has a <tt class="docutils literal"><span cla
 <td>object containing <a class="reference internal" href="#parameter-schema"><em>Parameter schema</em></a> objects</td>
 <td>Parameters of the operation. Parameters are used to define how input data is serialized into a HTTP request.</td>
 </tr>
+<tr class="row-even"><td>additionalParameters</td>
+<td>A single <a class="reference internal" href="#parameter-schema"><em>Parameter schema</em></a> object</td>
+<td>Validation and serialization rules for any parameter supplied to the operation that was not explicitly defined.</td>
+</tr>
 </tbody>
 </table>
+<div class="section" id="additionalparameters">
+<h4>additionalParameters<a class="headerlink" href="#additionalparameters" title="Permalink to this headline">¶</a></h4>
+<p>When a webservice offers a large number of parameters that all are set in the same location (for example the query
+string or a JSON document), defining each parameter individually can require a lot of time and repetition. Furthermore,
+some web services allow for completely arbitrary parameters to be supplied for an operation. The
+<tt class="docutils literal"><span class="pre">additionalParameters</span></tt> attribute can be used to solve both of these issues.</p>
+<p>As an example, we can define a Twitter API operation quite easily using <tt class="docutils literal"><span class="pre">additionalParameters</span></tt>. The
+GetMentions operation accepts a large number of query string parameters. Defining each of these parameters
+is ideal because it provide much more introspection for the client and opens the possiblity to use the description with
+other tools (e.g. a documentation generator). However, you can very quickly provide a &#8220;catch-all&#8221; serialization rule
+that will place any custom parameters supplied to an operation the the generated request&#8217;s query string parameters.</p>
+<div class="small-service-description highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Twitter&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.twitter.com/1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetMentions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;statuses/mentions_timeline.json&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;responseClass&quot;</span><span class="p">:</span> <span class="s2">&quot;GetMentionsOutput&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;additionalParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;models&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;GetMentionsOutput&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="responseclass">
 <h4>responseClass<a class="headerlink" href="#responseclass" title="Permalink to this headline">¶</a></h4>
 <p>The <tt class="docutils literal"><span class="pre">responseClass</span></tt> attribute is used to define the return value of an operation (what is returned by calling the
@@ -707,10 +752,10 @@ EntityBody object.</p>
 <div class="section" id="no-location">
 <h5>No location<a class="headerlink" href="#no-location" title="Permalink to this headline">¶</a></h5>
 <p>If a parameter has no location attribute, then the parameter is simply used as a data value.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Custom locations can be registered as new locations or override default locations if needed.</p>
 </div>
+<div class="section" id="other-locations">
+<h5>Other locations<a class="headerlink" href="#other-locations" title="Permalink to this headline">¶</a></h5>
+<p>Custom locations can be registered as new locations or override default locations if needed.</p>
 </div>
 </div>
 </div>
@@ -747,14 +792,16 @@ response.</p>
 <div class="section" id="id5">
 <h5>json location<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
 <p>Retrieves a top-level parameter from a JSON document contained in an HTTP response.</p>
+<p>You can use <tt class="docutils literal"><span class="pre">additionalProperties</span></tt> if the JSON document is wrapped in an outer array. This allows you to parse the
+contents of each item in the array using the parsing rules defined in the <tt class="docutils literal"><span class="pre">additionalProperties</span></tt> schema.</p>
 </div>
 <div class="section" id="id6">
 <h5>xml location<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
 <p>Retrieves a top-level node value from an XML document contained in an HTTP response.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Custom locations can be registered as new locations or override default locations if needed.</p>
 </div>
+<div class="section" id="id7">
+<h5>Other locations<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h5>
+<p>Custom locations can be registered as new locations or override default locations if needed.</p>
 </div>
 </div>
 </div>
@@ -912,6 +959,7 @@ Foo web service and provide valuable response models for each operation.</p>
 <li><a class="reference internal" href="#service-description-schema">Service description schema</a><ul>
 <li><a class="reference internal" href="#top-level-attributes">Top-level attributes</a></li>
 <li><a class="reference internal" href="#operations">Operations</a><ul>
+<li><a class="reference internal" href="#additionalparameters">additionalParameters</a></li>
 <li><a class="reference internal" href="#responseclass">responseClass</a><ul>
 <li><a class="reference internal" href="#domain-objects-that-use-model-parsing">Domain objects that use model parsing</a></li>
 </ul>
@@ -935,6 +983,7 @@ Foo web service and provide valuable response models for each operation.</p>
 <li><a class="reference internal" href="#xml-location">xml location</a></li>
 <li><a class="reference internal" href="#responsebody-location">responseBody location</a></li>
 <li><a class="reference internal" href="#no-location">No location</a></li>
+<li><a class="reference internal" href="#other-locations">Other locations</a></li>
 </ul>
 </li>
 </ul>
@@ -947,6 +996,7 @@ Foo web service and provide valuable response models for each operation.</p>
 <li><a class="reference internal" href="#id4">body location</a></li>
 <li><a class="reference internal" href="#id5">json location</a></li>
 <li><a class="reference internal" href="#id6">xml location</a></li>
+<li><a class="reference internal" href="#id7">Other locations</a></li>
 </ul>
 </li>
 </ul>

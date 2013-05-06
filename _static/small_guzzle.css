@@ -8,7 +8,6 @@
 
 body {
     margin: 0;
-    padding: 20px 30px;
 }
 
 div.documentwrapper {
@@ -67,4 +66,16 @@ div.bodywrapper {
 div.body {
     min-height: 0;
     padding: 0;
+}
+
+#left-logo {
+    display: none;
+}
+
+#menu #main-menu li {
+    margin: 0 45px 0 0;
+}
+
+#github-stars {
+    display: none;
 }

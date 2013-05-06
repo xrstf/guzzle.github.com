@@ -89,6 +89,10 @@
             "parameters": {
                 "$ref": "parameters",
                 "description": "Parameters of the operation. Parameters are used to define how input data is serialized into a HTTP request."
+            },
+            "additionalParameters": {
+              "$ref": "parameters",
+              "description": "Validation and serialization rules for any parameter supplied to the operation that was not explicitly defined."
             }
         }
     },
