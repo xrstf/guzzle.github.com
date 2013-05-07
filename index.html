@@ -30,12 +30,7 @@
     <link rel="next" title="Guzzle Documentation" href="docs.html" />
   <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="_static/css/prettify.css" />
-  <script type="text/javascript" src="_static/js/prettify.js"></script>
-  
-  
    
-  <link media="only screen and (max-device-width: 480px)" href="_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
@@ -73,7 +68,9 @@
         <li><a href="#">Guzzle</a> &raquo;</li> 
       </ul>
     </div>
-    <link rel="stylesheet" type="text/css" href="_static/css/homepage.css" />
+    <script type="text/javascript" src="_static/js/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="_static/css/prettify.css" />
+<link rel="stylesheet" type="text/css" href="_static/css/homepage.css" />
 
 <div class="jumbotron masthead">
   <div class="container">
@@ -147,15 +144,15 @@ echo $response->getHeader('Content-Length');
 
 // Create a client to work with the Twitter API
 $client = new Client('https://api.twitter.com/{version}', array(
-  'version' => '1.1'
+    'version' => '1.1'
 ));
 
 // Sign all requests with the OauthPlugin
 $client->addSubscriber(new Guzzle\Plugin\Oauth\OauthPlugin(array(
-  'consumer_key'  => '***',
-  'consumer_secret' => '***',
-  'token'       => '***',
-  'token_secret'  => '***'
+    'consumer_key'  => '***',
+    'consumer_secret' => '***',
+    'token'       => '***',
+    'token_secret'  => '***'
 )));
 
 echo $client->get('statuses/user_timeline.json')->send()->getBody();
@@ -163,7 +160,7 @@ echo $client->get('statuses/user_timeline.json')->send()->getBody();
 
 // Create a tweet using POST
 $request = $client->post('statuses/update.json', null, array(
-  'status' => 'Tweeted with Guzzle, http://guzzlephp.org'
+    'status' => 'Tweeted with Guzzle, http://guzzlephp.org'
 ));
 
 // Send the request and parse the JSON response into an array
@@ -172,6 +169,8 @@ echo $data['text'];
 // >>> Tweeted with Guzzle, http://t.co/kngJMfRk
 </pre>
 </div>
+
+<script type="text/javascript">prettyPrint();</script>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -198,6 +197,5 @@ echo $data['text'];
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <script type="text/javascript">prettyPrint();</script>
   </body>
 </html>

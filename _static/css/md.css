@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 
 .container {
-    max-width: 940px;
+  max-width: 940px;
 }
 
 div.clearer {
@@ -13,10 +13,6 @@ body {
   position: relative;
   padding: 40px 0 0 0;
   font-family: Helvetica, arial, freesans, clean, sans-serif;
-}
-
-@media screen and (max-width: 768px) {
-  body { padding-top: 0px; }
 }
 
 div.document {
@@ -633,4 +629,54 @@ span.eqno {
 .overflow-height-250px {
   overflow: auto;
   height: 250px;
+}
+
+/* -- Small screen styles ----------------------------------------------------- */
+
+@media screen and (max-device-width: 480px) {
+  body {
+    margin: 0;
+  }
+
+  .body {
+    width: 100%;
+    float: none;
+    min-height: 0;
+    padding: 10px;
+  }
+
+  .navbar-fixed-top {
+    position: static;
+  }
+
+  div.sphinxsidebar {
+    float: none;
+    width: 100%;
+    margin: 0 0 24px 0;
+    padding: 10px 20px;
+  }
+
+  div.sphinxsidebar p.logo {
+    display: none;
+  }
+
+  div.related {
+    display: block;
+    margin: 0;
+    padding: 10px 0 20px 0;
+  }
+
+  div.related ul,
+  div.related ul li {
+    margin: 0;
+    padding: 0;
+  }
+
+  div.footer {
+    display: none;
+  }
+
+  #github-stars {
+    display: none;
+  }
 }
