@@ -7,9 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+
     <title>Unit Testing Guzzle clients &mdash; Guzzle 3.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="../_static/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/md.css_t" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,58 +26,114 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="prev" title="Guzzle iterators" href="../iterators/guzzle-iterators.html" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="../_static/prettify/prettify.css" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/prettify.css" />
+  <script type="text/javascript" src="../_static/js/prettify.js"></script>
   
   
    
-  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  <link media="only screen and (max-device-width: 480px)" href="../_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
-  <div id="menu">
-      <div class="width-wrapper">
-          <div id="left-logo">
-              <span id="left-logo-image"></span>
-              <a href="../index.html">Guzzle</a>
-          </div>
-          <ul id="main-menu">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../docs.html">Docs</a></li>
-              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
-              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
-              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
-              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
-              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
-          </ul>
-          <div id="github-stars">
-              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
-                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-          </div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../docs.html">Docs</a></li>
+          <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+          <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+          <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+          <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+          <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
       </div>
+    </div>
   </div>
   
 
-  
-    
-    <div class="width-wrapper">
-      <div class="top-links">
-        <a href="../iterators/guzzle-iterators.html" title="previous chapter">Prev: Guzzle iterators</a>
-      </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../iterators/guzzle-iterators.html" title="Guzzle iterators"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="../iterators/guzzle-iterators.html" title="previous chapter">Prev: Guzzle iterators</a>
+        </li>
+      </ul>
     </div>
   
-      
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      <div class="document clearer">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Unit Testing Guzzle clients</a><ul>
+<li><a class="reference internal" href="#phpunit-integration">PHPUnit integration</a><ul>
+<li><a class="reference internal" href="#bootstrapping">Bootstrapping</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unit-testing-remote-apis">Unit testing remote APIs</a><ul>
+<li><a class="reference internal" href="#mock-responses">Mock responses</a></li>
+<li><a class="reference internal" href="#integration-testing-over-the-internet">Integration testing over the internet</a><ul>
+<li><a class="reference internal" href="#group-internet-annotation">&#64;group internet annotation</a></li>
+<li><a class="reference internal" href="#api-credentials">API credentials</a></li>
+<li><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#queueing-mock-responses">Queueing Mock responses</a></li>
+<li><a class="reference internal" href="#node-js-web-server-for-integration-testing">node.js web server for integration testing</a><ul>
+<li><a class="reference internal" href="#using-the-test-server">Using the test server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="body">
+          
   <div class="section" id="unit-testing-guzzle-clients">
 <h1>Unit Testing Guzzle clients<a class="headerlink" href="#unit-testing-guzzle-clients" title="Permalink to this headline">¶</a></h1>
 <p>Guzzle provides several tools that will enable you to easily unit test your web service clients.</p>
@@ -86,7 +144,7 @@
 </ul>
 <div class="section" id="phpunit-integration">
 <h2>PHPUnit integration<a class="headerlink" href="#phpunit-integration" title="Permalink to this headline">¶</a></h2>
-<p>Guzzle is unit tested using <a class="reference external" href="http://www.phpunit.de/">PHPUnit</a>.  Your web service client&#8217;s unit tests should extend
+<p>Guzzle is unit tested using <a class="reference external" href="http://www.phpunit.de/">PHPUnit</a>.  Your web service client's unit tests should extend
 <tt class="docutils literal"><span class="pre">Guzzle\Tests\GuzzleTestCase</span></tt> so that you can take advantage of some of the built in helpers.</p>
 <p>In order to unit test your client, a developer would need to copy phpunit.xml.dist to phpunit.xml and make any needed
 modifications.  As a best practice and security measure for you and your contributors, it is recommended to add an
@@ -122,7 +180,7 @@ configuration.</p>
 <div class="section" id="mock-responses">
 <h3>Mock responses<a class="headerlink" href="#mock-responses" title="Permalink to this headline">¶</a></h3>
 <p>One of the benefits of unit testing is the ability to quickly determine if there are errors in your code.  If your
-unit tests run slowly, then they become tedious and will likely be run less frequently.  Guzzle&#8217;s philosophy on unit
+unit tests run slowly, then they become tedious and will likely be run less frequently.  Guzzle's philosophy on unit
 testing web service clients is that no network access should be required to run the unit tests.  This means that
 responses are served from mock responses or local servers.  By adhering to this principle, tests will run much faster
 and will not require an external resource to be available.  The problem with this approach is that your mock responses
@@ -167,7 +225,7 @@ superglobal: <tt class="docutils literal"><span class="pre">$apiUser</span> <spa
 </div>
 <div class="section" id="further-reading">
 <h4>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h4>
-<p>A good discussion on the topic of testing remote APIs can be found in Sebastian Bergmann&#8217;s
+<p>A good discussion on the topic of testing remote APIs can be found in Sebastian Bergmann's
 <a class="reference external" href="http://www.amazon.com/dp/0470872497">Real-World Solutions for Developing High-Quality PHP Frameworks and Applications</a>.</p>
 </div>
 </div>
@@ -211,7 +269,7 @@ were issued a mock response by calling <tt class="docutils literal"><span class=
 <p>Using mock responses is usually enough when testing a web service client.  If your client needs to add custom cURL
 options to requests, then you should use the node.js test web server to ensure that your HTTP request message is
 being created correctly.</p>
-<p>Guzzle is based around PHP&#8217;s libcurl bindings.  cURL sometimes modifies an HTTP request message based on
+<p>Guzzle is based around PHP's libcurl bindings.  cURL sometimes modifies an HTTP request message based on
 <tt class="docutils literal"><span class="pre">CURLOPT_*</span></tt> options.  Headers that are added to your request by cURL will not be accounted for if you inject mock
 responses into your tests.  Additionally, some request entity bodies cannot be loaded by the client before transmitting
 it to the sever (for example, when using a client as a sort of proxy and streaming content from a remote server). You
@@ -237,7 +295,7 @@ response will be returned by the server when it receives the first request and t
 request is received by a server with no queued responses, an exception will be thrown in your unit test.</p>
 <p>You can inspect the requests that the server has retrieved by calling <tt class="docutils literal"><span class="pre">$this-&gt;getServer()-&gt;getReceivedRequests()</span></tt>.
 This method accepts an optional <tt class="docutils literal"><span class="pre">$hydrate</span></tt> parameter that specifies if you are retrieving an array of string HTTP
-requests or an array of <tt class="docutils literal"><span class="pre">Guzzle\Http\RequestInterface</span></tt> subclassed objects.  &#8220;Hydrating&#8221; the requests will allow
+requests or an array of <tt class="docutils literal"><span class="pre">Guzzle\Http\RequestInterface</span></tt> subclassed objects.  &quot;Hydrating&quot; the requests will allow
 greater flexibility in your unit tests so that you can  easily assert the state of the various parts of a request.</p>
 <p>You will need to modify the base_url of your web service client in order to use it against the test server.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getServiceBuilder</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;my_client&#39;</span><span class="p">);</span>
@@ -250,68 +308,20 @@ greater flexibility in your unit tests so that you can  easily assert the state 
 </div>
 
 
-          </div>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Unit Testing Guzzle clients</a><ul>
-<li><a class="reference internal" href="#phpunit-integration">PHPUnit integration</a><ul>
-<li><a class="reference internal" href="#bootstrapping">Bootstrapping</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#unit-testing-remote-apis">Unit testing remote APIs</a><ul>
-<li><a class="reference internal" href="#mock-responses">Mock responses</a></li>
-<li><a class="reference internal" href="#integration-testing-over-the-internet">Integration testing over the internet</a><ul>
-<li><a class="reference internal" href="#group-internet-annotation">&#64;group internet annotation</a></li>
-<li><a class="reference internal" href="#api-credentials">API credentials</a></li>
-<li><a class="reference internal" href="#further-reading">Further reading</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#queueing-mock-responses">Queueing Mock responses</a></li>
-<li><a class="reference internal" href="#node-js-web-server-for-integration-testing">node.js web server for integration testing</a><ul>
-<li><a class="reference internal" href="#using-the-test-server">Using the test server</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3>Need help?</h3>
-<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
-question.</p>
-<h3>Found an error?</h3>
-<p>If you find an error in the documentation, please file a ticket or submit a pull request on
-<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    
-    <div class="width-wrapper">
-      <div class="footer-links">
-        <a href="../iterators/guzzle-iterators.html" title="previous chapter">Prev: Guzzle iterators</a>
-      </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="../iterators/guzzle-iterators.html" title="previous chapter">Prev: Guzzle iterators</a>
+        </li>
+      </ul>
     </div>
   
-    <div class="container comment-container">
-      
+        <div class="container comment-container">
+          
 <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -327,39 +337,37 @@ question.</p>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
-    </div>
-  
+        </div>
+        
 
+    </div>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="../iterators/guzzle-iterators.html" title="Guzzle iterators"
-             accesskey="P">previous</a> |</li>
+             >previous</a> |</li>
         <li><a href="../index.html">Guzzle</a> &raquo;</li>
-          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+          <li><a href="../docs.html" >Guzzle Documentation</a> &raquo;</li> 
       </ul>
     </div>
-  <div class="footer">
+
+  <div class="footer container">
     &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22752917-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-
-  
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">prettyPrint();</script>
   </body>
 </html>

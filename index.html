@@ -7,9 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+
     <title>Guzzle | PHP HTTP client and framework for consuming RESTful web services &mdash; Guzzle 3.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/md.css_t" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,100 +26,111 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="#" />
     <link rel="next" title="Guzzle Documentation" href="docs.html" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="_static/prettify/prettify.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/prettify.css" />
+  <script type="text/javascript" src="_static/js/prettify.js"></script>
   
   
    
-  <link media="only screen and (max-device-width: 480px)" href="_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  <link media="only screen and (max-device-width: 480px)" href="_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
-  <div id="menu">
-      <div class="width-wrapper">
-          <div id="left-logo">
-              <span id="left-logo-image"></span>
-              <a href="#">Guzzle</a>
-          </div>
-          <ul id="main-menu">
-              <li><a href="#">Home</a></li>
-              <li><a href="docs.html">Docs</a></li>
-              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
-              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
-              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
-              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
-              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
-          </ul>
-          <div id="github-stars">
-              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
-                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-          </div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Guzzle</a>
+        <ul class="nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="docs.html">Docs</a></li>
+          <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+          <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+          <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+          <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+          <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
       </div>
+    </div>
   </div>
   
 
-  
-    
-    <div class="jumbotron masthead">
-    <div class="container">
-        <img src="_static/logo.png" alt="guzzle" width="199" height="260" />
-        <h1>Guzzle</h1>
-        <p>Guzzle is a PHP HTTP client<br />&amp; framework for building RESTful web service clients.</p>
-        <p>
-            <a class="btn btn-primary btn-large" href="https://github.com/guzzle/guzzle">View Guzzle on GitHub</a>
-            <a class="btn btn-large" href="docs.html">Read the docs</a>
-        </p>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="docs.html" title="Guzzle Documentation"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">Guzzle</a> &raquo;</li> 
+      </ul>
+    </div>
+    <link rel="stylesheet" type="text/css" href="_static/css/homepage.css" />
+
+<div class="jumbotron masthead">
+  <div class="container">
+    <img src="_static/img/logo.png" alt="guzzle" width="199" height="260" />
+    <h1>Guzzle</h1>
+    <p>Guzzle is a PHP HTTP client<br />&amp; framework for building RESTful web service clients.</p>
+    <p>
+      <a class="btn btn-primary btn-large" href="https://github.com/guzzle/guzzle">View Guzzle on GitHub</a>
+      <a class="btn btn-large" href="docs.html">Read the docs</a>
+    </p>
     </div>
 </div>
 
 <div class="social">
-    <ul class="social-buttons">
-        <li>
-            <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true"
-                    allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-        </li>
-        <li>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://guzzlephp.org" data-text="Guzzle, PHP HTTP client &amp; framework for building RESTful web service clients" data-via="mtdowling">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </li>
-        <li>
-            <a href="https://twitter.com/mtdowling" class="twitter-follow-button" data-show-count="false">Follow @mtdowling</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </li>
-    </ul>
+  <ul class="social-buttons">
+    <li>
+      <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+    </li>
+    <li>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://guzzlephp.org" data-text="Guzzle, PHP HTTP client &amp; framework for building RESTful web service clients" data-via="mtdowling">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </li>
+    <li>
+      <a href="https://twitter.com/mtdowling" class="twitter-follow-button" data-show-count="false">Follow @mtdowling</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </li>
+  </ul>
 </div>
 
 <div class="container">
 
-    <h1>Introducing Guzzle</h1>
+  <h1>Introducing Guzzle</h1>
 
-    <p>Guzzle takes the pain out of sending HTTP requests and the redundancy out of creating web service clients. It's
+  <p>Guzzle takes the pain out of sending HTTP requests and the redundancy out of creating web service clients. It's
     a framework that includes the tools needed to create a robust web service client, including:
     Service descriptions for defining the inputs and outputs of an API, resource iterators for traversing
     paginated resources, batching for sending a large number of requests as efficiently as possible.</p>
 
-    <ul>
-        <li>All the power of cURL with a simple interface.</li>
-        <li>Persistent connections and parallel requests.</li>
-        <li>Streams request and response bodies</li>
-        <li><a href="webservice-client/guzzle-service-descriptions.html">Service descriptions</a> for quickly building clients.</li>
-        <li>Powered by the Symfony2 EventDispatcher.</li>
-        <li>Use all of the code or only <a href="https://packagist.org/packages/guzzle/">specific components</a>.</li>
-        <li><a href="plugins/plugins-overview.html">Plugins</a> for caching, logging, OAuth, mocks, and more</a>
-        <li>Includes a custom node.js webserver to <a href="testing/unit-testing.html">test your clients</a>.</li>
-    </ul>
+  <ul>
+    <li>All the power of cURL with a simple interface.</li>
+    <li>Persistent connections and parallel requests.</li>
+    <li>Streams request and response bodies</li>
+    <li><a href="webservice-client/guzzle-service-descriptions.html">Service descriptions</a> for quickly building clients.</li>
+    <li>Powered by the Symfony2 EventDispatcher.</li>
+    <li>Use all of the code or only <a href="https://packagist.org/packages/guzzle/">specific components</a>.</li>
+    <li><a href="plugins/plugins-overview.html">Plugins</a> for caching, logging, OAuth, mocks, and more</a>
+    <li>Includes a custom node.js webserver to <a href="testing/unit-testing.html">test your clients</a>.</li>
+  </ul>
 
-    <div class="center-announcement">
-        Guzzle is now part of Drupal 8 core and powers the official <a href="https://github.com/aws/aws-sdk-php">AWS SDK for PHP</a>
-    </div>
+  <div class="center-announcement">
+    Guzzle is now part of Drupal 8 core and powers the official <a href="https://github.com/aws/aws-sdk-php">AWS SDK for PHP</a>
+  </div>
 
-    <h2>Quick Twitter example</h2>
+  <h2>Quick Twitter example</h2>
 
-    <pre class="prettyprint">&lt;?php
+  <pre class="prettyprint">&lt;?php
 require_once 'vendor/autoload.php';
 use Guzzle\Http\Client;
 
@@ -134,15 +147,15 @@ echo $response->getHeader('Content-Length');
 
 // Create a client to work with the Twitter API
 $client = new Client('https://api.twitter.com/{version}', array(
-    'version' => '1.1'
+  'version' => '1.1'
 ));
 
 // Sign all requests with the OauthPlugin
 $client->addSubscriber(new Guzzle\Plugin\Oauth\OauthPlugin(array(
-    'consumer_key'    => '***',
-    'consumer_secret' => '***',
-    'token'           => '***',
-    'token_secret'    => '***'
+  'consumer_key'  => '***',
+  'consumer_secret' => '***',
+  'token'       => '***',
+  'token_secret'  => '***'
 )));
 
 echo $client->get('statuses/user_timeline.json')->send()->getBody();
@@ -150,7 +163,7 @@ echo $client->get('statuses/user_timeline.json')->send()->getBody();
 
 // Create a tweet using POST
 $request = $client->post('statuses/update.json', null, array(
-    'status' => 'Tweeted with Guzzle, http://guzzlephp.org'
+  'status' => 'Tweeted with Guzzle, http://guzzlephp.org'
 ));
 
 // Send the request and parse the JSON response into an array
@@ -159,39 +172,32 @@ echo $data['text'];
 // >>> Tweeted with Guzzle, http://t.co/kngJMfRk
 </pre>
 </div>
-  
-
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="docs.html" title="Guzzle Documentation"
-             accesskey="N">next</a> |</li>
+             >next</a> |</li>
         <li><a href="#">Guzzle</a> &raquo;</li> 
       </ul>
     </div>
-  <div class="footer">
+
+  <div class="footer container">
     &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22752917-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-
-  
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
     <script type="text/javascript">prettyPrint();</script>
-  
   </body>
 </html>

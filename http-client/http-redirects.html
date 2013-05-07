@@ -7,9 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+
     <title>HTTP redirects &mdash; Guzzle 3.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="../_static/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/md.css_t" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,65 +26,110 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="next" title="Plugin system overview" href="../plugins/plugins-overview.html" />
     <link rel="prev" title="Request and response bodies" href="entity-bodies.html" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="../_static/prettify/prettify.css" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/prettify.css" />
+  <script type="text/javascript" src="../_static/js/prettify.js"></script>
   
   
    
-  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  <link media="only screen and (max-device-width: 480px)" href="../_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
-  <div id="menu">
-      <div class="width-wrapper">
-          <div id="left-logo">
-              <span id="left-logo-image"></span>
-              <a href="../index.html">Guzzle</a>
-          </div>
-          <ul id="main-menu">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../docs.html">Docs</a></li>
-              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
-              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
-              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
-              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
-              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
-          </ul>
-          <div id="github-stars">
-              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
-                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-          </div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../docs.html">Docs</a></li>
+          <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+          <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+          <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+          <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+          <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
       </div>
+    </div>
   </div>
   
 
-  
-    
-    <div class="width-wrapper">
-      <div class="top-links">
-        <a href="../plugins/plugins-overview.html" title="next chapter">Next: Plugin system overview</a>
-        <a href="entity-bodies.html" title="previous chapter">Prev: Request and response bodies</a>
-      </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../plugins/plugins-overview.html" title="Plugin system overview"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="entity-bodies.html" title="Request and response bodies"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="entity-bodies.html" title="previous chapter">Prev: Request and response bodies</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="../plugins/plugins-overview.html" title="next chapter">Next: Plugin system overview</a></li>
+      </ul>
     </div>
   
-      
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      <div class="document clearer">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HTTP redirects</a><ul>
+<li><a class="reference internal" href="#redirect-history">Redirect history</a></li>
+<li><a class="reference internal" href="#disabling-redirects">Disabling redirects</a></li>
+<li><a class="reference internal" href="#redirects-and-non-repeatable-streams">Redirects and non-repeatable streams</a></li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="body">
+          
   <div class="section" id="http-redirects">
 <h1>HTTP redirects<a class="headerlink" href="#http-redirects" title="Permalink to this headline">¶</a></h1>
 <p>By default, Guzzle will automatically follow redirects using the non-RFC compliant implementation used by most web
 browsers. This means that redirects for POST requests are followed by a GET request. You can force RFC compliance by
-enabling the strict mode on a request&#8217;s parameter object:</p>
+enabling the strict mode on a request's parameter object:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Set per request</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;redirect.strict&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
@@ -110,7 +157,7 @@ You can raise or lower this value using the <tt class="docutils literal"><span c
 </div>
 <div class="section" id="disabling-redirects">
 <h2>Disabling redirects<a class="headerlink" href="#disabling-redirects" title="Permalink to this headline">¶</a></h2>
-<p>You can disable redirects on a client by passing a configuration option in the client&#8217;s constructor:</p>
+<p>You can disable redirects on a client by passing a configuration option in the client's constructor:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;redirect.disable&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -137,53 +184,23 @@ adding a custom rewind method to the entity body object being sent in the reques
 </div>
 
 
-          </div>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">HTTP redirects</a><ul>
-<li><a class="reference internal" href="#redirect-history">Redirect history</a></li>
-<li><a class="reference internal" href="#disabling-redirects">Disabling redirects</a></li>
-<li><a class="reference internal" href="#redirects-and-non-repeatable-streams">Redirects and non-repeatable streams</a></li>
-</ul>
-</li>
-</ul>
-<h3>Need help?</h3>
-<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
-question.</p>
-<h3>Found an error?</h3>
-<p>If you find an error in the documentation, please file a ticket or submit a pull request on
-<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    
-    <div class="width-wrapper">
-      <div class="footer-links">
-        <a href="../plugins/plugins-overview.html" title="next chapter">Next: Plugin system overview</a>
-        <a href="entity-bodies.html" title="previous chapter">Prev: Request and response bodies</a>
-      </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="entity-bodies.html" title="previous chapter">Prev: Request and response bodies</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="../plugins/plugins-overview.html" title="next chapter">Next: Plugin system overview</a></li>
+      </ul>
     </div>
   
-    <div class="container comment-container">
-      
+        <div class="container comment-container">
+          
 <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -199,42 +216,40 @@ question.</p>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
-    </div>
-  
+        </div>
+        
 
+    </div>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="../plugins/plugins-overview.html" title="Plugin system overview"
-             accesskey="N">next</a> |</li>
+             >next</a> |</li>
         <li class="right" >
           <a href="entity-bodies.html" title="Request and response bodies"
-             accesskey="P">previous</a> |</li>
+             >previous</a> |</li>
         <li><a href="../index.html">Guzzle</a> &raquo;</li>
-          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+          <li><a href="../docs.html" >Guzzle Documentation</a> &raquo;</li> 
       </ul>
     </div>
-  <div class="footer">
+
+  <div class="footer container">
     &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22752917-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-
-  
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">prettyPrint();</script>
   </body>
 </html>

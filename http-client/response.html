@@ -7,9 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+
     <title>Using Response objects &mdash; Guzzle 3.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="../_static/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/md.css_t" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,60 +26,110 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="next" title="Request and response bodies" href="entity-bodies.html" />
     <link rel="prev" title="Using Request objects" href="request.html" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="../_static/prettify/prettify.css" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/prettify.css" />
+  <script type="text/javascript" src="../_static/js/prettify.js"></script>
   
   
    
-  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  <link media="only screen and (max-device-width: 480px)" href="../_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
-  <div id="menu">
-      <div class="width-wrapper">
-          <div id="left-logo">
-              <span id="left-logo-image"></span>
-              <a href="../index.html">Guzzle</a>
-          </div>
-          <ul id="main-menu">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../docs.html">Docs</a></li>
-              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
-              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
-              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
-              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
-              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
-          </ul>
-          <div id="github-stars">
-              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
-                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-          </div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../docs.html">Docs</a></li>
+          <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+          <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+          <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+          <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+          <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
       </div>
+    </div>
   </div>
   
 
-  
-    
-    <div class="width-wrapper">
-      <div class="top-links">
-        <a href="entity-bodies.html" title="next chapter">Next: Request and response bodies</a>
-        <a href="request.html" title="previous chapter">Prev: Using Request objects</a>
-      </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="entity-bodies.html" title="Request and response bodies"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="request.html" title="Using Request objects"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="request.html" title="previous chapter">Prev: Using Request objects</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="entity-bodies.html" title="next chapter">Next: Request and response bodies</a></li>
+      </ul>
     </div>
   
-      
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      <div class="document clearer">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using Response objects</a><ul>
+<li><a class="reference internal" href="#response-status-line">Response status line</a></li>
+<li><a class="reference internal" href="#response-headers">Response headers</a></li>
+<li><a class="reference internal" href="#response-body">Response body</a><ul>
+<li><a class="reference internal" href="#json-responses">JSON Responses</a></li>
+<li><a class="reference internal" href="#xml-responses">XML Responses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#streaming-responses">Streaming responses</a></li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="body">
+          
   <div class="section" id="using-response-objects">
 <h1>Using Response objects<a class="headerlink" href="#using-response-objects" title="Permalink to this headline">¶</a></h1>
 <p>Sending a request will return a <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Response</span></tt> object. You can view the raw  HTTP response message by
@@ -86,7 +138,7 @@ as a string too, so this might be an expensive operation if the entity body is s
 you only want to see the response headers, you can call <tt class="docutils literal"><span class="pre">getRawHeaders()</span></tt>.</p>
 <div class="section" id="response-status-line">
 <h2>Response status line<a class="headerlink" href="#response-status-line" title="Permalink to this headline">¶</a></h2>
-<p>The different parts of a response&#8217;s <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1">status line</a>
+<p>The different parts of a response's <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1">status line</a>
 (the first line of the response HTTP message) are easily retrievable.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.amazon.com&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 
@@ -165,7 +217,7 @@ will get an exception if you call this method and the response is not valid XML.
 time while polling and reading. Guzzle provides a simple way to convert HTTP request messages into
 <tt class="docutils literal"><span class="pre">Guzzle\Stream\Stream</span></tt> objects so that you can send the initial headers of a request, read the response headers, and
 pull in the response body manually as needed.</p>
-<p>Here&#8217;s an example using the Twitter Streaming API to track the keyword &#8220;beiber&#8221;:</p>
+<p>Here's an example using the Twitter Streaming API to track the keyword &quot;beiber&quot;:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Stream\PhpStreamRequestFactory</span><span class="p">;</span>
 
@@ -193,58 +245,23 @@ pull in the response body manually as needed.</p>
 </div>
 
 
-          </div>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Using Response objects</a><ul>
-<li><a class="reference internal" href="#response-status-line">Response status line</a></li>
-<li><a class="reference internal" href="#response-headers">Response headers</a></li>
-<li><a class="reference internal" href="#response-body">Response body</a><ul>
-<li><a class="reference internal" href="#json-responses">JSON Responses</a></li>
-<li><a class="reference internal" href="#xml-responses">XML Responses</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#streaming-responses">Streaming responses</a></li>
-</ul>
-</li>
-</ul>
-<h3>Need help?</h3>
-<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
-question.</p>
-<h3>Found an error?</h3>
-<p>If you find an error in the documentation, please file a ticket or submit a pull request on
-<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    
-    <div class="width-wrapper">
-      <div class="footer-links">
-        <a href="entity-bodies.html" title="next chapter">Next: Request and response bodies</a>
-        <a href="request.html" title="previous chapter">Prev: Using Request objects</a>
-      </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="request.html" title="previous chapter">Prev: Using Request objects</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="entity-bodies.html" title="next chapter">Next: Request and response bodies</a></li>
+      </ul>
     </div>
   
-    <div class="container comment-container">
-      
+        <div class="container comment-container">
+          
 <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -260,42 +277,40 @@ question.</p>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
-    </div>
-  
+        </div>
+        
 
+    </div>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="entity-bodies.html" title="Request and response bodies"
-             accesskey="N">next</a> |</li>
+             >next</a> |</li>
         <li class="right" >
           <a href="request.html" title="Using Request objects"
-             accesskey="P">previous</a> |</li>
+             >previous</a> |</li>
         <li><a href="../index.html">Guzzle</a> &raquo;</li>
-          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+          <li><a href="../docs.html" >Guzzle Documentation</a> &raquo;</li> 
       </ul>
     </div>
-  <div class="footer">
+
+  <div class="footer container">
     &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22752917-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-
-  
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">prettyPrint();</script>
   </body>
 </html>

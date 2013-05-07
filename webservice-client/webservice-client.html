@@ -7,9 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+
     <title>The web service client &mdash; Guzzle 3.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="../_static/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/md.css_t" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,65 +26,142 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="next" title="Using a service builder" href="using-the-service-builder.html" />
     <link rel="prev" title="OAuth plugin" href="../plugins/oauth-plugin.html" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="../_static/prettify/prettify.css" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/prettify.css" />
+  <script type="text/javascript" src="../_static/js/prettify.js"></script>
   
   
    
-  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  <link media="only screen and (max-device-width: 480px)" href="../_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
-  <div id="menu">
-      <div class="width-wrapper">
-          <div id="left-logo">
-              <span id="left-logo-image"></span>
-              <a href="../index.html">Guzzle</a>
-          </div>
-          <ul id="main-menu">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../docs.html">Docs</a></li>
-              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
-              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
-              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
-              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
-              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
-          </ul>
-          <div id="github-stars">
-              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
-                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-          </div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../docs.html">Docs</a></li>
+          <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+          <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+          <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+          <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+          <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
       </div>
+    </div>
   </div>
   
 
-  
-    
-    <div class="width-wrapper">
-      <div class="top-links">
-        <a href="using-the-service-builder.html" title="next chapter">Next: Using a service builder</a>
-        <a href="../plugins/oauth-plugin.html" title="previous chapter">Prev: OAuth plugin</a>
-      </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="using-the-service-builder.html" title="Using a service builder"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../plugins/oauth-plugin.html" title="OAuth plugin"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="../plugins/oauth-plugin.html" title="previous chapter">Prev: OAuth plugin</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="using-the-service-builder.html" title="next chapter">Next: Using a service builder</a></li>
+      </ul>
     </div>
   
-      
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      <div class="document clearer">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The web service client</a><ul>
+<li><a class="reference internal" href="#creating-a-client">Creating a client</a><ul>
+<li><a class="reference internal" href="#factory-method">Factory method</a></li>
+<li><a class="reference internal" href="#implementing-a-factory-method">Implementing a factory method</a></li>
+<li><a class="reference internal" href="#service-builder">Service Builder</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commands">Commands</a><ul>
+<li><a class="reference internal" href="#executing-commands">Executing commands</a><ul>
+<li><a class="reference internal" href="#executing-with-magic-methods">Executing with magic methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-commands">Creating commands</a><ul>
+<li><a class="reference internal" href="#concrete-commands">Concrete commands</a><ul>
+<li><a class="reference internal" href="#serializing-requests">Serializing requests</a></li>
+<li><a class="reference internal" href="#parsing-responses">Parsing responses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operation-commands">Operation commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#executing-commands-in-parallel">Executing commands in parallel</a></li>
+<li><a class="reference internal" href="#special-command-options">Special command options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-client-configuration">Advanced client configuration</a><ul>
+<li><a class="reference internal" href="#default-command-parameters">Default command parameters</a></li>
+<li><a class="reference internal" href="#magic-methods">Magic methods</a></li>
+<li><a class="reference internal" href="#custom-command-factory">Custom command factory</a></li>
+<li><a class="reference internal" href="#custom-resource-iterator-factory">Custom resource Iterator factory</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plugins-and-events">Plugins and events</a><ul>
+<li><a class="reference internal" href="#events-emitted-from-a-service-client">Events emitted from a Service Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="body">
+          
   <div class="section" id="the-web-service-client">
 <h1>The web service client<a class="headerlink" href="#the-web-service-client" title="Permalink to this headline">¶</a></h1>
 <p>The <tt class="docutils literal"><span class="pre">Guzzle\Service</span></tt> namespace contains various abstractions that help to make it easier to interact with a web
 service API, including commands, service descriptions, and resource iterators.</p>
-<p>In this chapter, we&#8217;ll build a simple <a class="reference external" href="https://dev.twitter.com/docs/api/1.1">Twitter API client</a>.</p>
+<p>In this chapter, we'll build a simple <a class="reference external" href="https://dev.twitter.com/docs/api/1.1">Twitter API client</a>.</p>
 <div class="section" id="creating-a-client">
 <h2>Creating a client<a class="headerlink" href="#creating-a-client" title="Permalink to this headline">¶</a></h2>
 <p>A class that extends from <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> or implements <tt class="docutils literal"><span class="pre">Guzzle\Service\ClientInterface</span></tt> must implement a
@@ -103,12 +182,12 @@ service API, including commands, service descriptions, and resource iterators.</
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>If you&#8217;d like to follow along, here&#8217;s how to get your Twitter API credentials:</p>
+<p>If you'd like to follow along, here's how to get your Twitter API credentials:</p>
 <ol class="last arabic simple">
 <li>Visit <a class="reference external" href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></li>
-<li>Click on an application that you&#8217;ve created</li>
-<li>Click on the &#8220;OAuth tool&#8221; tab</li>
-<li>Copy all of the settings under &#8220;OAuth Settings&#8221;</li>
+<li>Click on an application that you've created</li>
+<li>Click on the &quot;OAuth tool&quot; tab</li>
+<li>Copy all of the settings under &quot;OAuth Settings&quot;</li>
 </ol>
 </div>
 </div>
@@ -161,7 +240,7 @@ or extend from <tt class="docutils literal"><span class="pre">Guzzle\Service\Cli
 <h3>Service Builder<a class="headerlink" href="#service-builder" title="Permalink to this headline">¶</a></h3>
 <p>A service builder is used to easily create web service clients, provides a simple configuration driven approach to
 creating clients, and allows you to share configuration settings across multiple clients. You can find out more about
-Guzzle&#8217;s service builder in <a class="reference internal" href="using-the-service-builder.html"><em>Using a service builder</em></a>.</p>
+Guzzle's service builder in <a class="reference internal" href="using-the-service-builder.html"><em>Using a service builder</em></a>.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Service\Builder\ServiceBuilder</span><span class="p">;</span>
 
 <span class="c1">// Create a service builder and provide client configuration data</span>
@@ -171,7 +250,7 @@ Guzzle&#8217;s service builder in <a class="reference internal" href="using-the-
 <span class="nv">$twitter</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;twitter&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The above example assumes you have JSON data similar to the following stored in &#8220;/path/to/client_config.json&#8221;:</p>
+<p>The above example assumes you have JSON data similar to the following stored in &quot;/path/to/client_config.json&quot;:</p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
     <span class="nt">&quot;services&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;twitter&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -251,20 +330,20 @@ command is returned.</p>
 <p>Commands are created using either the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method of a client or a magic missing method of a client. Using
 the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method allows you to create a command without executing it, allowing for customization of the
 command or the request serialized by the command.</p>
-<p>When a client attempts to create a command, it uses the client&#8217;s <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt>.
+<p>When a client attempts to create a command, it uses the client's <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt>.
 By default, Guzzle will utilize a command factory that first looks for a concrete class for a particular command
-(concrete commands) followed by a command defined by a service description (operation commands). We&#8217;ll learn more about
+(concrete commands) followed by a command defined by a service description (operation commands). We'll learn more about
 concrete commands and operation commands later in this chapter.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Get a command from the twitter client.</span>
 <span class="nv">$command</span> <span class="o">=</span> <span class="nv">$twitter</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(</span><span class="s1">&#39;getMentions&#39;</span><span class="p">);</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$command</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Unless you&#8217;ve skipped ahead, running the above code will throw an exception.</p>
+<p>Unless you've skipped ahead, running the above code will throw an exception.</p>
 <blockquote>
-<div>PHP Fatal error:  Uncaught exception &#8216;GuzzleCommonExceptionInvalidArgumentException&#8217; with message
-&#8216;Command was not found matching getMentions&#8217;</div></blockquote>
-<p>This exception was thrown because the &#8220;getMentions&#8221; command has not yet been implemented. Let&#8217;s implement one now.</p>
+<div>PHP Fatal error:  Uncaught exception 'GuzzleCommonExceptionInvalidArgumentException' with message
+'Command was not found matching getMentions'</div></blockquote>
+<p>This exception was thrown because the &quot;getMentions&quot; command has not yet been implemented. Let's implement one now.</p>
 <div class="section" id="concrete-commands">
 <h4>Concrete commands<a class="headerlink" href="#concrete-commands" title="Permalink to this headline">¶</a></h4>
 <p>Commands can be created in one of two ways: create a concrete command class that extends
@@ -276,14 +355,14 @@ logic must be implemented for marshaling or unmarshaling a HTTP message.</p>
 action on a web service. Commands in Guzzle are meant to be built by executing a series of setter methods on a command
 object. Commands are only validated right before they are executed. A <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object is responsible
 for executing commands. Commands created for your web service must implement
-<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandInterface</span></tt>, but it&#8217;s easier to extend the <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt>
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\CommandInterface</span></tt>, but it's easier to extend the <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\AbstractCommand</span></tt>
 class, implement the <tt class="docutils literal"><span class="pre">build()</span></tt> method, and optionally implement the <tt class="docutils literal"><span class="pre">process()</span></tt> method.</p>
 <div class="section" id="serializing-requests">
 <h5>Serializing requests<a class="headerlink" href="#serializing-requests" title="Permalink to this headline">¶</a></h5>
 <p>The <tt class="docutils literal"><span class="pre">build()</span></tt> method of a command is responsible for using the arguments of the command to build and serialize a
 HTTP request and set the request on the <tt class="docutils literal"><span class="pre">$request</span></tt> property of the command object. This step is usually taken care of
 for you when using a service description driven command that uses the default
-<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\OperationCommand</span></tt>. You may wish to implement the process method yourself when you aren&#8217;t
+<tt class="docutils literal"><span class="pre">Guzzle\Service\Command\OperationCommand</span></tt>. You may wish to implement the process method yourself when you aren't
 using a service description or need to implement more complex request serialization.</p>
 <p>The following example shows how to implement the <tt class="docutils literal"><span class="pre">getMentions</span></tt>
 <a class="reference external" href="https://dev.twitter.com/docs/api/1.1/get/statuses/mentions_timeline">Twitter API</a> method using a concrete command.</p>
@@ -347,7 +426,7 @@ to lowercased snake_casing (e.g. JarJar == jar_jar).</p>
 <p>The <tt class="docutils literal"><span class="pre">process()</span></tt> method of a command is responsible for converting an HTTP response into something more useful. For
 example, a service description operation that has specified a model object in the <tt class="docutils literal"><span class="pre">responseClass</span></tt> attribute of the
 operation will set a <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\Model</span></tt> object as the result of the command. This behavior can be
-completely modified as needed&#8211; even if you are using operations and responseClass models. Simply implement a custom
+completely modified as needed-- even if you are using operations and responseClass models. Simply implement a custom
 <tt class="docutils literal"><span class="pre">process()</span></tt> method that sets the <tt class="docutils literal"><span class="pre">$this-&gt;result</span></tt> class property to whatever you choose. You can reuse parts of the
 default Guzzle response parsing functionality or get inspiration from existing code by using
 <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\OperationResponseParser</span></tt> and <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\DefaultResponseParser</span></tt> classes.</p>
@@ -363,7 +442,7 @@ parsing.</p>
 driven by a Guzzle service description. Because request serialization, validation, and response parsing are
 described using a DSL, creating operation commands is a much faster process than writing concrete commands.</p>
 <p>Creating operation commands for our Twitter client can remove a great deal of redundancy from the previous concrete
-command, and allows for a deeper runtime introspection of the API. Here&#8217;s an example service description we can use to
+command, and allows for a deeper runtime introspection of the API. Here's an example service description we can use to
 create the Twitter API client:</p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Twitter&quot;</span><span class="p">,</span>
@@ -421,7 +500,7 @@ create the Twitter API client:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you&#8217;re lazy, you can define the API in a less descriptive manner using <tt class="docutils literal"><span class="pre">additionalParameters</span></tt>.
+<p>If you're lazy, you can define the API in a less descriptive manner using <tt class="docutils literal"><span class="pre">additionalParameters</span></tt>.
 <tt class="docutils literal"><span class="pre">additionalParameters</span></tt> define the serialization and validation rules of parameters that are not explicitly defined
 in a service description.</p>
 <div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
@@ -451,7 +530,7 @@ in a service description.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You should attach the service description to the client at the end of the client&#8217;s factory method:</p>
+<p>You should attach the service description to the client at the end of the client's factory method:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// ...</span>
 <span class="k">class</span> <span class="nc">TwitterClient</span> <span class="k">extends</span> <span class="nx">Client</span>
 <span class="p">{</span>
@@ -480,7 +559,7 @@ command classes. Feel free to delete the concrete command class we created earli
 <div class="section" id="executing-commands-in-parallel">
 <h3>Executing commands in parallel<a class="headerlink" href="#executing-commands-in-parallel" title="Permalink to this headline">¶</a></h3>
 <p>Much like HTTP requests, Guzzle allows you to send mutliple commands in parallel. You can send commands in parallel by
-passing an array of command objects to a client&#8217;s <tt class="docutils literal"><span class="pre">execute()</span></tt> method. The client will serialize each request and
+passing an array of command objects to a client's <tt class="docutils literal"><span class="pre">execute()</span></tt> method. The client will serialize each request and
 send them all in parallel. If an error is encountered during the transfer, then a
 <tt class="docutils literal"><span class="pre">Guzzle\Service\Exception\CommandTransferException</span></tt> is thrown, which allows you to retrieve a list of commands that
 succeeded and a list of commands that failed.</p>
@@ -516,7 +595,7 @@ succeeded and a list of commands that failed.</p>
 <div class="section" id="special-command-options">
 <h3>Special command options<a class="headerlink" href="#special-command-options" title="Permalink to this headline">¶</a></h3>
 <p>Guzzle exposes several options that help to control how commands are validated, serialized, and parsed.</p>
-<table border="1" class="docutils">
+<table class="table table-bordered">
 <colgroup>
 <col width="23%" />
 <col width="77%" />
@@ -529,11 +608,11 @@ succeeded and a list of commands that failed.</p>
 <td>Function to execute when the command has been executed and the response has been parsed</td>
 </tr>
 <tr class="row-odd"><td>command.disable_validation</td>
-<td>Set to true to disable JSON schema validation of the command&#8217;s input parameters</td>
+<td>Set to true to disable JSON schema validation of the command's input parameters</td>
 </tr>
 <tr class="row-even"><td>command.response_processing</td>
-<td>Determines how the default response parser will parse the command. One of &#8220;raw&#8221; no parsing,
-&#8220;model&#8221; (the default method used to parse commands using response models defined in service
+<td>Determines how the default response parser will parse the command. One of &quot;raw&quot; no parsing,
+&quot;model&quot; (the default method used to parse commands using response models defined in service
 descriptions)</td>
 </tr>
 <tr class="row-odd"><td>command.response_body</td>
@@ -565,10 +644,10 @@ by the client.</p>
 <p>Client objects will, by default, attempt to create and execute commands when a missing method is invoked on a client.
 This powerful concept applies to both concrete commands and operation commands powered by a service description. This
 makes it appear to the end user that you have defined actual methods on a client object, when in fact, the methods are
-invoked using PHP&#8217;s magic <tt class="docutils literal"><span class="pre">__call</span></tt> method.</p>
-<p>The <tt class="docutils literal"><span class="pre">__call</span></tt> method uses the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method of a client, which uses the client&#8217;s internal
+invoked using PHP's magic <tt class="docutils literal"><span class="pre">__call</span></tt> method.</p>
+<p>The <tt class="docutils literal"><span class="pre">__call</span></tt> method uses the <tt class="docutils literal"><span class="pre">getCommand()</span></tt> method of a client, which uses the client's internal
 <tt class="docutils literal"><span class="pre">Guzzle\Service\Command\Factory\FactoryInterface</span></tt> object. The default command factory allows you to instantiate
-operations defined in a client&#8217;s service description. The method in which a client determines which command to
+operations defined in a client's service description. The method in which a client determines which command to
 execute is defined as follows:</p>
 <ol class="arabic simple">
 <li>The client will first try to find a literal match for an operation in the service description.</li>
@@ -598,7 +677,7 @@ a client.</p>
 <div class="section" id="custom-resource-iterator-factory">
 <h3>Custom resource Iterator factory<a class="headerlink" href="#custom-resource-iterator-factory" title="Permalink to this headline">¶</a></h3>
 <p>Resource iterators can be retrieved from a client using the <tt class="docutils literal"><span class="pre">getIterator($name)</span></tt> method of a client. This method uses
-a client&#8217;s internal <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</span></tt> object. A client by default uses a
+a client's internal <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</span></tt> object. A client by default uses a
 <tt class="docutils literal"><span class="pre">Guzzle\Service\Resource\ResourceIteratorClassFactory</span></tt> to attempt to find concrete classes that implement resource
 iterators. The default factory will first look for matching iterators in the <tt class="docutils literal"><span class="pre">Iterator</span></tt> subdirectory of the client
 followed by the <tt class="docutils literal"><span class="pre">Model</span></tt> subdirectory of a client. Use the <tt class="docutils literal"><span class="pre">setResourceIteratorFactory()</span></tt> method of a client to
@@ -614,20 +693,20 @@ event subscribers (classes that listen to specific events of a dispatcher).</p>
 <div class="section" id="events-emitted-from-a-service-client">
 <span id="service-client-events"></span><h3>Events emitted from a Service Client<a class="headerlink" href="#events-emitted-from-a-service-client" title="Permalink to this headline">¶</a></h3>
 <p>A <tt class="docutils literal"><span class="pre">Guzzle\Service\Client</span></tt> object emits the following events:</p>
-<table border="1" class="docutils">
+<table class="table table-bordered">
 <colgroup>
 <col width="26%" />
 <col width="38%" />
 <col width="36%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Event name</th>
+<tr class="row-even"><th class="head">Event name</th>
 <th class="head">Description</th>
 <th class="head">Event data</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>client.command.create</td>
+<tr class="row-odd"><td>client.command.create</td>
 <td>The client created a command object</td>
 <td><ul class="first last simple">
 <li>client: Client object</li>
@@ -635,21 +714,21 @@ event subscribers (classes that listen to specific events of a dispatcher).</p>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td>command.before_prepare</td>
+<tr class="row-even"><td>command.before_prepare</td>
 <td>The client created a command object</td>
 <td><ul class="first last simple">
 <li>command: Command being prepared</li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td>command.after_prepare</td>
+<tr class="row-odd"><td>command.after_prepare</td>
 <td>The client created a command object</td>
 <td><ul class="first last simple">
 <li>command: Command that was prepared</li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td>command.before_send</td>
+<tr class="row-even"><td>command.before_send</td>
 <td>The client is about to execute a prepared
 command</td>
 <td><ul class="first last simple">
@@ -657,7 +736,7 @@ command</td>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td>command.after_send</td>
+<tr class="row-odd"><td>command.after_send</td>
 <td>The client successfully completed
 executing a command</td>
 <td><ul class="first last simple">
@@ -672,85 +751,23 @@ executing a command</td>
 </div>
 
 
-          </div>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">The web service client</a><ul>
-<li><a class="reference internal" href="#creating-a-client">Creating a client</a><ul>
-<li><a class="reference internal" href="#factory-method">Factory method</a></li>
-<li><a class="reference internal" href="#implementing-a-factory-method">Implementing a factory method</a></li>
-<li><a class="reference internal" href="#service-builder">Service Builder</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#commands">Commands</a><ul>
-<li><a class="reference internal" href="#executing-commands">Executing commands</a><ul>
-<li><a class="reference internal" href="#executing-with-magic-methods">Executing with magic methods</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#creating-commands">Creating commands</a><ul>
-<li><a class="reference internal" href="#concrete-commands">Concrete commands</a><ul>
-<li><a class="reference internal" href="#serializing-requests">Serializing requests</a></li>
-<li><a class="reference internal" href="#parsing-responses">Parsing responses</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#operation-commands">Operation commands</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#executing-commands-in-parallel">Executing commands in parallel</a></li>
-<li><a class="reference internal" href="#special-command-options">Special command options</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-client-configuration">Advanced client configuration</a><ul>
-<li><a class="reference internal" href="#default-command-parameters">Default command parameters</a></li>
-<li><a class="reference internal" href="#magic-methods">Magic methods</a></li>
-<li><a class="reference internal" href="#custom-command-factory">Custom command factory</a></li>
-<li><a class="reference internal" href="#custom-resource-iterator-factory">Custom resource Iterator factory</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#plugins-and-events">Plugins and events</a><ul>
-<li><a class="reference internal" href="#events-emitted-from-a-service-client">Events emitted from a Service Client</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3>Need help?</h3>
-<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
-question.</p>
-<h3>Found an error?</h3>
-<p>If you find an error in the documentation, please file a ticket or submit a pull request on
-<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    
-    <div class="width-wrapper">
-      <div class="footer-links">
-        <a href="using-the-service-builder.html" title="next chapter">Next: Using a service builder</a>
-        <a href="../plugins/oauth-plugin.html" title="previous chapter">Prev: OAuth plugin</a>
-      </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="../plugins/oauth-plugin.html" title="previous chapter">Prev: OAuth plugin</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="using-the-service-builder.html" title="next chapter">Next: Using a service builder</a></li>
+      </ul>
     </div>
   
-    <div class="container comment-container">
-      
+        <div class="container comment-container">
+          
 <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -766,42 +783,40 @@ question.</p>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
-    </div>
-  
+        </div>
+        
 
+    </div>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="using-the-service-builder.html" title="Using a service builder"
-             accesskey="N">next</a> |</li>
+             >next</a> |</li>
         <li class="right" >
           <a href="../plugins/oauth-plugin.html" title="OAuth plugin"
-             accesskey="P">previous</a> |</li>
+             >previous</a> |</li>
         <li><a href="../index.html">Guzzle</a> &raquo;</li>
-          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+          <li><a href="../docs.html" >Guzzle Documentation</a> &raquo;</li> 
       </ul>
     </div>
-  <div class="footer">
+
+  <div class="footer container">
     &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22752917-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-
-  
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">prettyPrint();</script>
   </body>
 </html>

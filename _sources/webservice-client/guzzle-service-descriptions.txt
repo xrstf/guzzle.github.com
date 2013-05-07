@@ -19,7 +19,7 @@ implementing a Guzzle service description.
 
 Download the schema here: :download:`Guzzle JSON schema document </_downloads/guzzle-schema-1.0.json>`
 
-.. class:: service-description
+.. class:: overflow-height-500px
 
     .. literalinclude:: ../_downloads/guzzle-schema-1.0.json
         :language: json
@@ -78,7 +78,7 @@ Operations are the actions that can be taken on a service. Each operation is giv
 endpoint and HTTP method. If an API has a ``DELETE /users/:id`` operation, a satisfactory operation name might be
 ``DeleteUser`` with a parameter of ``id`` that is inserted into the URI.
 
-.. class:: small-service-description
+.. class:: overflow-height-250px
 
     .. code-block:: json
 
@@ -144,7 +144,7 @@ is ideal because it provide much more introspection for the client and opens the
 other tools (e.g. a documentation generator). However, you can very quickly provide a "catch-all" serialization rule
 that will place any custom parameters supplied to an operation the the generated request's query string parameters.
 
-.. class:: small-service-description
+.. class:: overflow-height-250px
 
     .. code-block:: json
 
@@ -516,7 +516,7 @@ Let's say you're interacting with a web service called 'Foo' that allows for the
 
 The following JSON service description implements this simple web service:
 
-.. class:: service-description
+.. class:: overflow-height-500px
 
     .. code-block:: json
 

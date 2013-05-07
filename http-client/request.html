@@ -7,9 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+
     <title>Using Request objects &mdash; Guzzle 3.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="../_static/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/md.css_t" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,66 +26,149 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="next" title="Using Response objects" href="response.html" />
     <link rel="prev" title="The Guzzle HTTP client" href="client.html" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="../_static/prettify/prettify.css" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/prettify.css" />
+  <script type="text/javascript" src="../_static/js/prettify.js"></script>
   
   
    
-  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  <link media="only screen and (max-device-width: 480px)" href="../_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
-  <div id="menu">
-      <div class="width-wrapper">
-          <div id="left-logo">
-              <span id="left-logo-image"></span>
-              <a href="../index.html">Guzzle</a>
-          </div>
-          <ul id="main-menu">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../docs.html">Docs</a></li>
-              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
-              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
-              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
-              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
-              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
-          </ul>
-          <div id="github-stars">
-              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
-                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-          </div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../docs.html">Docs</a></li>
+          <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+          <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+          <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+          <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+          <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
       </div>
+    </div>
   </div>
   
 
-  
-    
-    <div class="width-wrapper">
-      <div class="top-links">
-        <a href="response.html" title="next chapter">Next: Using Response objects</a>
-        <a href="client.html" title="previous chapter">Prev: The Guzzle HTTP client</a>
-      </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="response.html" title="Using Response objects"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="client.html" title="The Guzzle HTTP client"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="client.html" title="previous chapter">Prev: The Guzzle HTTP client</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="response.html" title="next chapter">Next: Using Response objects</a></li>
+      </ul>
     </div>
   
-      
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      <div class="document clearer">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using Request objects</a><ul>
+<li><a class="reference internal" href="#http-request-messages">HTTP request messages</a></li>
+<li><a class="reference internal" href="#creating-requests-with-a-client">Creating requests with a client</a><ul>
+<li><a class="reference internal" href="#get-requests">GET requests</a></li>
+<li><a class="reference internal" href="#head-requests">HEAD requests</a></li>
+<li><a class="reference internal" href="#delete-requests">DELETE requests</a></li>
+<li><a class="reference internal" href="#post-requests">POST requests</a><ul>
+<li><a class="reference internal" href="#raw-post-data">Raw POST data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#put-requests">PUT requests</a></li>
+<li><a class="reference internal" href="#patch-requests">PATCH requests</a></li>
+<li><a class="reference internal" href="#options-requests">OPTIONS requests</a></li>
+<li><a class="reference internal" href="#custom-requests">Custom requests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#query-string-parameters">Query string parameters</a></li>
+<li><a class="reference internal" href="#http-message-headers">HTTP Message Headers</a></li>
+<li><a class="reference internal" href="#setting-the-body-of-a-request">Setting the body of a request</a><ul>
+<li><a class="reference internal" href="#content-type-header">Content-Type header</a></li>
+<li><a class="reference internal" href="#transfer-encoding-chunked-header">Transfer-Encoding: chunked header</a></li>
+<li><a class="reference internal" href="#expect-100-continue-header">Expect: 100-Continue header</a></li>
+<li><a class="reference internal" href="#post-fields-and-files">POST fields and files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-cookies">Working with cookies</a></li>
+<li><a class="reference internal" href="#changing-where-a-response-is-downloaded">Changing where a response is downloaded</a></li>
+<li><a class="reference internal" href="#custom-curl-options">Custom cURL options</a><ul>
+<li><a class="reference internal" href="#timeouts">Timeouts</a></li>
+<li><a class="reference internal" href="#proxy-settings">Proxy settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-errors">Working with errors</a><ul>
+<li><a class="reference internal" href="#http-errors">HTTP errors</a></li>
+<li><a class="reference internal" href="#curl-errors">cURL errors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plugins-and-events">Plugins and events</a><ul>
+<li><a class="reference internal" href="#events-emitted-from-a-request">Events emitted from a request</a></li>
+<li><a class="reference internal" href="#creating-a-request-event-listener">Creating a request event listener</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="body">
+          
   <div class="section" id="using-request-objects">
 <h1>Using Request objects<a class="headerlink" href="#using-request-objects" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="http-request-messages">
 <h2>HTTP request messages<a class="headerlink" href="#http-request-messages" title="Permalink to this headline">¶</a></h2>
 <p>Request objects are all about building an HTTP message. Each part of an HTTP request message can be set individually
-using methods on the request object or set in bulk using the <tt class="docutils literal"><span class="pre">setUrl()</span></tt> method. Here&#8217;s the format of an HTTP request
+using methods on the request object or set in bulk using the <tt class="docutils literal"><span class="pre">setUrl()</span></tt> method. Here's the format of an HTTP request
 with each part of the request referencing the method used to change it:</p>
 <div class="highlight-python"><pre>PUT(a) /path(b)?query=123(c) HTTP/1.1(d)
 X-Header(e): header
@@ -91,7 +176,7 @@ Content-Length(e): 4
 
 data(f)</pre>
 </div>
-<table border="1" class="docutils">
+<table class="table table-bordered">
 <colgroup>
 <col width="24%" />
 <col width="76%" />
@@ -212,7 +297,7 @@ header will become <tt class="docutils literal"><span class="pre">multipart/form
 <p>The <tt class="docutils literal"><span class="pre">post()</span></tt> method of a client object accepts three arguments: the URL, optional headers, and the post fields. To
 send files in the POST request, prepend the <tt class="docutils literal"><span class="pre">&#64;</span></tt> symbol to the array value (just like you would if you were using the
 PHP <tt class="docutils literal"><span class="pre">curl_setopt</span></tt> function).</p>
-<p>Here&#8217;s how to create a multipart/form-data POST request containing files and fields:</p>
+<p>Here's how to create a multipart/form-data POST request containing files and fields:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/post&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;custom_field&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my custom value&#39;</span><span class="p">,</span>
     <span class="s1">&#39;file_field&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;@/path/to/file.xml&#39;</span>
@@ -337,7 +422,7 @@ client object.</p>
 </div>
 <div class="section" id="query-string-parameters">
 <h2>Query string parameters<a class="headerlink" href="#query-string-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Query string parameters of a request are owned by a request&#8217;s <tt class="docutils literal"><span class="pre">Guzzle\Http\Query</span></tt> object that is accessible by
+<p>Query string parameters of a request are owned by a request's <tt class="docutils literal"><span class="pre">Guzzle\Http\Query</span></tt> object that is accessible by
 calling <tt class="docutils literal"><span class="pre">$request-&gt;getQuery()</span></tt>. The Query class extends from <tt class="docutils literal"><span class="pre">Guzzle\Common\Collection</span></tt> and allows you to set one
 or more query string parameters as key value pairs. You can set a parameter on a Query object using the
 <tt class="docutils literal"><span class="pre">set($key,</span> <span class="pre">$value)</span></tt> method. Any previously specified value for a key will be overwritten when using <tt class="docutils literal"><span class="pre">set()</span></tt>. Use
@@ -364,7 +449,7 @@ a specific key, the value will be converted to an array that contains all of the
 </div>
 <p>Whoah! What happened there? When <tt class="docutils literal"><span class="pre">foo=bar</span></tt> was added to the existing <tt class="docutils literal"><span class="pre">foo=baz</span></tt> query string parameter, the
 aggregator associated with the Query object was used to help convert multi-value query string parameters into a string.
-Let&#8217;s disable URL-encoding to better see what&#8217;s happening.</p>
+Let's disable URL-encoding to better see what's happening.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">useUrlEncoding</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$query</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="c1">// &gt;&gt;&gt; foo[0]=baz&amp;foo[1]=bar</span>
@@ -373,8 +458,8 @@ Let&#8217;s disable URL-encoding to better see what&#8217;s happening.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">URL encoding can be disabled by passing false, enabled by passing true, set to use RFC 1738 by passing
-<tt class="docutils literal"><span class="pre">Query::FORM_URLENCODED</span></tt> (internally uses PHP&#8217;s <tt class="docutils literal"><span class="pre">urlencode</span></tt> function), or set to RFC 3986 by passing
-<tt class="docutils literal"><span class="pre">Query::RFC_3986</span></tt> (this is the default and internally uses PHP&#8217;s <tt class="docutils literal"><span class="pre">rawurlencode</span></tt> function).</p>
+<tt class="docutils literal"><span class="pre">Query::FORM_URLENCODED</span></tt> (internally uses PHP's <tt class="docutils literal"><span class="pre">urlencode</span></tt> function), or set to RFC 3986 by passing
+<tt class="docutils literal"><span class="pre">Query::RFC_3986</span></tt> (this is the default and internally uses PHP's <tt class="docutils literal"><span class="pre">rawurlencode</span></tt> function).</p>
 </div>
 <p>As you can see, the multiple values were converted into query string parameters following the default PHP convention of
 adding numerically indexed square bracket suffixes to each key (<tt class="docutils literal"><span class="pre">foo[0]=baz&amp;foo[1]=bar</span></tt>). The strategy used to convert
@@ -390,14 +475,14 @@ repeated in a URL (e.g. <tt class="docutils literal"><span class="pre">foo=baz&a
 <div class="section" id="http-message-headers">
 <span id="id5"></span><h2>HTTP Message Headers<a class="headerlink" href="#http-message-headers" title="Permalink to this headline">¶</a></h2>
 <p>HTTP message headers are case insensitive, multiple occurrences of any header can be present in an HTTP message
-(whether it&#8217;s valid or not), and some servers require specific casing of particular headers. Because of this, request
+(whether it's valid or not), and some servers require specific casing of particular headers. Because of this, request
 and response headers are stored in <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Header</span></tt> objects. The Header object can be cast as a string,
 counted, or iterated to retrieve each value from the header. Casting a Header object to a string will return all of
-the header values concatenated together using a glue string (typically &#8221;, &#8221;).</p>
+the header values concatenated together using a glue string (typically &quot;, &quot;).</p>
 <p>A request (and response) object have several methods that allow you to retrieve and modify headers.</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">getHeaders()</span></tt>: Get all of the headers of a message as a <tt class="docutils literal"><span class="pre">Guzzle\Common\Collection</span></tt> object.</li>
-<li><tt class="docutils literal"><span class="pre">getHeader($header)</span></tt>: Get a specific header from a message. If the header exists, you&#8217;ll get a
+<li><tt class="docutils literal"><span class="pre">getHeader($header)</span></tt>: Get a specific header from a message. If the header exists, you'll get a
 <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Header</span></tt> object. If the header does not exist, this methods returns <tt class="docutils literal"><span class="pre">null</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">hasHeader($header)</span></tt>: Returns true or false based on if the message has a particular header.</li>
 <li><tt class="docutils literal"><span class="pre">setHeader($header,</span> <span class="pre">$value)</span></tt>: Set a header value and overwrite any previously set value for this header.</li>
@@ -507,7 +592,7 @@ which causes cURL to sleep for <a class="reference external" href="http://curl.h
 <div class="section" id="post-fields-and-files">
 <h3>POST fields and files<a class="headerlink" href="#post-fields-and-files" title="Permalink to this headline">¶</a></h3>
 <p>Any entity enclosing request can send POST style fields and files. This includes POST, PUT, PATCH, and DELETE requests.
-Any request that has set POST fields or files will use cURL&#8217;s POST message functionality.</p>
+Any request that has set POST fields or files will use cURL's POST message functionality.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/post&#39;</span><span class="p">);</span>
 <span class="c1">// Set an overwrite any previously specified value</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setPostField</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
@@ -582,7 +667,7 @@ the cURL options collection of a request:</p>
 </pre></div>
 </div>
 <p>Other special options that can be set in the <tt class="docutils literal"><span class="pre">curl.options</span></tt> array include:</p>
-<table border="1" class="docutils">
+<table class="table table-bordered">
 <colgroup>
 <col width="24%" />
 <col width="76%" />
@@ -593,7 +678,7 @@ the cURL options collection of a request:</p>
 </tr>
 <tr class="row-even"><td>progress</td>
 <td>Instructs cURL to emit events when IO events occur. This allows you to be
-notified when bytes are transferred over the wire by subscribing to a request&#8217;s
+notified when bytes are transferred over the wire by subscribing to a request's
 <tt class="docutils literal"><span class="pre">curl.callback.read</span></tt>, <tt class="docutils literal"><span class="pre">curl.callback.write</span></tt>, and <tt class="docutils literal"><span class="pre">curl.callback.progress</span></tt>
 events.</td>
 </tr>
@@ -634,7 +719,7 @@ settings, but the most commonly using setting is <tt class="docutils literal"><s
 <p>Requests that receive a 4xx or 5xx response will throw a <tt class="docutils literal"><span class="pre">Guzzle\Http\Exception\BadResponseException</span></tt>. More
 specifically, 4xx errors throw a <tt class="docutils literal"><span class="pre">Guzzle\Http\Exception\ClientErrorResponseException</span></tt>, and 5xx errors throw a
 <tt class="docutils literal"><span class="pre">Guzzle\Http\Exception\ServerErrorResponseException</span></tt>. You can catch the specific exceptions or just catch the
-BadResponseException to deal with either type of error. Here&#8217;s an example of catching a generic BadResponseException:</p>
+BadResponseException to deal with either type of error. Here's an example of catching a generic BadResponseException:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">try</span> <span class="p">{</span>
     <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/not_found.xml&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Guzzle\Http\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
@@ -656,7 +741,7 @@ request by modifying the event allows you to retry failed requests without compl
 This might be useful for sending requests to a web service that has expiring auth tokens. When a response shows that
 your token has expired, you can get a new token, retry the request with the new token, and return the successful
 response to the user.</p>
-<p>Here&#8217;s an example of retrying a request using updated authorization credentials when a 401 response is received,
+<p>Here's an example of retrying a request using updated authorization credentials when a 401 response is received,
 overriding the response of the original request with the new response, and still allowing the default exception
 behavior to be called when other non-200 response status codes are encountered:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Add custom error handling to any request created by this client</span>
@@ -702,7 +787,7 @@ directly by just calling <tt class="docutils literal"><span class="pre">$request
 <div class="section" id="events-emitted-from-a-request">
 <span id="request-events"></span><h3>Events emitted from a request<a class="headerlink" href="#events-emitted-from-a-request" title="Permalink to this headline">¶</a></h3>
 <p>A <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\Request</span></tt> and <tt class="docutils literal"><span class="pre">Guzzle\Http\Message\EntityEnclosingRequest</span></tt> object emit the following events:</p>
-<table border="1" class="docutils">
+<table class="table table-bordered">
 <colgroup>
 <col width="26%" />
 <col width="38%" />
@@ -776,7 +861,7 @@ received.</td>
 </tr>
 <tr class="row-odd"><td>curl.callback.progress</td>
 <td>cURL progress event (only dispatched when
-<cite>emit_io</cite> is set on a request&#8217;s curl
+<cite>emit_io</cite> is set on a request's curl
 options)</td>
 <td><ul class="first last simple">
 <li>handle: CurlHandle</li>
@@ -810,7 +895,7 @@ an incoming stream</td>
 </div>
 <div class="section" id="creating-a-request-event-listener">
 <h3>Creating a request event listener<a class="headerlink" href="#creating-a-request-event-listener" title="Permalink to this headline">¶</a></h3>
-<p>Here&#8217;s an example that listens to the <tt class="docutils literal"><span class="pre">request.complete</span></tt> event of a request and prints the request and response.</p>
+<p>Here's an example that listens to the <tt class="docutils literal"><span class="pre">request.complete</span></tt> event of a request and prints the request and response.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Event</span><span class="p">;</span>
 
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.google.com&#39;</span><span class="p">);</span>
@@ -827,91 +912,23 @@ an incoming stream</td>
 </div>
 
 
-          </div>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Using Request objects</a><ul>
-<li><a class="reference internal" href="#http-request-messages">HTTP request messages</a></li>
-<li><a class="reference internal" href="#creating-requests-with-a-client">Creating requests with a client</a><ul>
-<li><a class="reference internal" href="#get-requests">GET requests</a></li>
-<li><a class="reference internal" href="#head-requests">HEAD requests</a></li>
-<li><a class="reference internal" href="#delete-requests">DELETE requests</a></li>
-<li><a class="reference internal" href="#post-requests">POST requests</a><ul>
-<li><a class="reference internal" href="#raw-post-data">Raw POST data</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#put-requests">PUT requests</a></li>
-<li><a class="reference internal" href="#patch-requests">PATCH requests</a></li>
-<li><a class="reference internal" href="#options-requests">OPTIONS requests</a></li>
-<li><a class="reference internal" href="#custom-requests">Custom requests</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#query-string-parameters">Query string parameters</a></li>
-<li><a class="reference internal" href="#http-message-headers">HTTP Message Headers</a></li>
-<li><a class="reference internal" href="#setting-the-body-of-a-request">Setting the body of a request</a><ul>
-<li><a class="reference internal" href="#content-type-header">Content-Type header</a></li>
-<li><a class="reference internal" href="#transfer-encoding-chunked-header">Transfer-Encoding: chunked header</a></li>
-<li><a class="reference internal" href="#expect-100-continue-header">Expect: 100-Continue header</a></li>
-<li><a class="reference internal" href="#post-fields-and-files">POST fields and files</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#working-with-cookies">Working with cookies</a></li>
-<li><a class="reference internal" href="#changing-where-a-response-is-downloaded">Changing where a response is downloaded</a></li>
-<li><a class="reference internal" href="#custom-curl-options">Custom cURL options</a><ul>
-<li><a class="reference internal" href="#timeouts">Timeouts</a></li>
-<li><a class="reference internal" href="#proxy-settings">Proxy settings</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#working-with-errors">Working with errors</a><ul>
-<li><a class="reference internal" href="#http-errors">HTTP errors</a></li>
-<li><a class="reference internal" href="#curl-errors">cURL errors</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#plugins-and-events">Plugins and events</a><ul>
-<li><a class="reference internal" href="#events-emitted-from-a-request">Events emitted from a request</a></li>
-<li><a class="reference internal" href="#creating-a-request-event-listener">Creating a request event listener</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3>Need help?</h3>
-<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
-question.</p>
-<h3>Found an error?</h3>
-<p>If you find an error in the documentation, please file a ticket or submit a pull request on
-<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    
-    <div class="width-wrapper">
-      <div class="footer-links">
-        <a href="response.html" title="next chapter">Next: Using Response objects</a>
-        <a href="client.html" title="previous chapter">Prev: The Guzzle HTTP client</a>
-      </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="client.html" title="previous chapter">Prev: The Guzzle HTTP client</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="response.html" title="next chapter">Next: Using Response objects</a></li>
+      </ul>
     </div>
   
-    <div class="container comment-container">
-      
+        <div class="container comment-container">
+          
 <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -927,42 +944,40 @@ question.</p>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
-    </div>
-  
+        </div>
+        
 
+    </div>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="response.html" title="Using Response objects"
-             accesskey="N">next</a> |</li>
+             >next</a> |</li>
         <li class="right" >
           <a href="client.html" title="The Guzzle HTTP client"
-             accesskey="P">previous</a> |</li>
+             >previous</a> |</li>
         <li><a href="../index.html">Guzzle</a> &raquo;</li>
-          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+          <li><a href="../docs.html" >Guzzle Documentation</a> &raquo;</li> 
       </ul>
     </div>
-  <div class="footer">
+
+  <div class="footer container">
     &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22752917-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-
-  
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">prettyPrint();</script>
   </body>
 </html>

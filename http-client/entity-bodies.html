@@ -7,9 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+
     <title>Request and response bodies &mdash; Guzzle 3.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="../_static/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/md.css_t" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,60 +26,109 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="next" title="HTTP redirects" href="http-redirects.html" />
     <link rel="prev" title="Using Response objects" href="response.html" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-responsive.min.css" />
   
-  <link rel="stylesheet" type="text/css" href="../_static/prettify/prettify.css" />
+  <link rel="stylesheet" type="text/css" href="../_static/css/prettify.css" />
+  <script type="text/javascript" src="../_static/js/prettify.js"></script>
   
   
    
-  <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  <link media="only screen and (max-device-width: 480px)" href="../_static/css/md_small.css" type= "text/css" rel="stylesheet" />
 
   </head>
   <body>
-  <div id="menu">
-      <div class="width-wrapper">
-          <div id="left-logo">
-              <span id="left-logo-image"></span>
-              <a href="../index.html">Guzzle</a>
-          </div>
-          <ul id="main-menu">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../docs.html">Docs</a></li>
-              <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
-              <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
-              <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
-              <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
-              <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
-          </ul>
-          <div id="github-stars">
-              <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
-                      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-          </div>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../docs.html">Docs</a></li>
+          <li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+          <li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+          <li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+          <li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+          <li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
       </div>
+    </div>
   </div>
   
 
-  
-    
-    <div class="width-wrapper">
-      <div class="top-links">
-        <a href="http-redirects.html" title="next chapter">Next: HTTP redirects</a>
-        <a href="response.html" title="previous chapter">Prev: Using Response objects</a>
-      </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-redirects.html" title="HTTP redirects"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="response.html" title="Using Response objects"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="response.html" title="previous chapter">Prev: Using Response objects</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="http-redirects.html" title="next chapter">Next: HTTP redirects</a></li>
+      </ul>
     </div>
   
-      
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      <div class="document clearer">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Request and response bodies</a><ul>
+<li><a class="reference internal" href="#compression">Compression</a></li>
+<li><a class="reference internal" href="#decorators">Decorators</a><ul>
+<li><a class="reference internal" href="#ioemittingentitybody">IoEmittingEntityBody</a></li>
+<li><a class="reference internal" href="#readlimitentitybody">ReadLimitEntityBody</a></li>
+<li><a class="reference internal" href="#cachingentitybody">CachingEntityBody</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Need help?</h3>
+<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+question.</p>
+<h3>Found an error?</h3>
+<p>If you find an error in the documentation, please file a ticket or submit a pull request on
+<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+        <div class="body">
+          
   <div class="section" id="request-and-response-bodies">
 <h1>Request and response bodies<a class="headerlink" href="#request-and-response-bodies" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html">Entity body</a> is the term used for the body of an HTTP
@@ -89,10 +140,10 @@ temp PHP streams helps to protect your application from running out of memory wh
 bodies in your messages. When more than 2MB of data is stored in a temp stream, it automatically stores the data on
 disk rather than in memory.</p>
 <p>EntityBody objects provide a great deal of functionality: compression, decompression, calculate the Content-MD5,
-calculate the Content-Length (when the resource is repeatable), guessing the Content-Type, and more. Guzzle doesn&#8217;t
+calculate the Content-Length (when the resource is repeatable), guessing the Content-Type, and more. Guzzle doesn't
 need to load an entire entity body into a string when sending or retrieving data; entity bodies are streamed when
 being uploaded and downloaded.</p>
-<p>Here&#8217;s an example of gzip compressing a text file then sending the file to a URL:</p>
+<p>Here's an example of gzip compressing a text file then sending the file to a URL:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
 
 <span class="nv">$body</span> <span class="o">=</span> <span class="nx">EntityBody</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/path/to/file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">));</span>
@@ -141,7 +192,7 @@ the PHP stream filter to use when decompressing the stream (e.g. <tt class="docu
 <div class="section" id="ioemittingentitybody">
 <h3>IoEmittingEntityBody<a class="headerlink" href="#ioemittingentitybody" title="Permalink to this headline">¶</a></h3>
 <p>This decorator will emity events when data is read from a stream or written to a stream. Add an event subscriber to the
-entity body&#8217;s <tt class="docutils literal"><span class="pre">body.read</span></tt> or <tt class="docutils literal"><span class="pre">body.write</span></tt> methods to receive notifications when data data is transferred.</p>
+entity body's <tt class="docutils literal"><span class="pre">body.read</span></tt> or <tt class="docutils literal"><span class="pre">body.write</span></tt> methods to receive notifications when data data is transferred.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Common\Event</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Http\IoEmittingEntityBody</span><span class="p">;</span>
@@ -174,7 +225,7 @@ entity body&#8217;s <tt class="docutils literal"><span class="pre">body.read</sp
 <div class="section" id="readlimitentitybody">
 <h3>ReadLimitEntityBody<a class="headerlink" href="#readlimitentitybody" title="Permalink to this headline">¶</a></h3>
 <p>The ReadLimitEntityBody decorator can be used to transfer a subset or slice of an existing EntityBody object. This can
-be useful for breaking a large file into smaller pieces to be sent in chunks (e.g. Amazon S3&#8217;s multipart upload API).</p>
+be useful for breaking a large file into smaller pieces to be sent in chunks (e.g. Amazon S3's multipart upload API).</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\EntityBody</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Http\ReadLimitEntityBody</span><span class="p">;</span>
 
@@ -217,57 +268,23 @@ previously read bytes are cached first in memory, then on disk.</p>
 </div>
 
 
-          </div>
         </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Request and response bodies</a><ul>
-<li><a class="reference internal" href="#compression">Compression</a></li>
-<li><a class="reference internal" href="#decorators">Decorators</a><ul>
-<li><a class="reference internal" href="#ioemittingentitybody">IoEmittingEntityBody</a></li>
-<li><a class="reference internal" href="#readlimitentitybody">ReadLimitEntityBody</a></li>
-<li><a class="reference internal" href="#cachingentitybody">CachingEntityBody</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3>Need help?</h3>
-<p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
-question.</p>
-<h3>Found an error?</h3>
-<p>If you find an error in the documentation, please file a ticket or submit a pull request on
-<a href="https://github.com/guzzle/guzzle">GitHub</a></p>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    
-    <div class="width-wrapper">
-      <div class="footer-links">
-        <a href="http-redirects.html" title="next chapter">Next: HTTP redirects</a>
-        <a href="response.html" title="previous chapter">Prev: Using Response objects</a>
-      </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="response.html" title="previous chapter">Prev: Using Response objects</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="http-redirects.html" title="next chapter">Next: HTTP redirects</a></li>
+      </ul>
     </div>
   
-    <div class="container comment-container">
-      
+        <div class="container comment-container">
+          
 <div id="comments">
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -283,42 +300,40 @@ question.</p>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
-    </div>
-  
+        </div>
+        
 
+    </div>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
+             >index</a></li>
         <li class="right" >
           <a href="http-redirects.html" title="HTTP redirects"
-             accesskey="N">next</a> |</li>
+             >next</a> |</li>
         <li class="right" >
           <a href="response.html" title="Using Response objects"
-             accesskey="P">previous</a> |</li>
+             >previous</a> |</li>
         <li><a href="../index.html">Guzzle</a> &raquo;</li>
-          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+          <li><a href="../docs.html" >Guzzle Documentation</a> &raquo;</li> 
       </ul>
     </div>
-  <div class="footer">
+
+  <div class="footer container">
     &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22752917-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-  
-
-  
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script type="text/javascript">prettyPrint();</script>
   </body>
 </html>
