@@ -24,17 +24,16 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/prettify/prettify.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/prettify/prettify.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
     <link rel="next" title="Log plugin" href="log-plugin.html" />
     <link rel="prev" title="cURL authentication plugin" href="curl-auth-plugin.html" />
-   
-  <link type="text/css" href="../_static/prettify/prettify.css" />
   
+  <link rel="stylesheet" type="text/css" href="../_static/prettify/prettify.css" />
+  
+  
+   
   <link media="only screen and (max-device-width: 480px)" href="../_static/small_guzzle.css" type= "text/css" rel="stylesheet" />
   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
 
@@ -63,6 +62,14 @@
   </div>
   
 
+  
+    
+    <div class="width-wrapper">
+      <div class="top-links">
+        <a href="log-plugin.html" title="next chapter">Next: Log plugin</a>
+        <a href="curl-auth-plugin.html" title="previous chapter">Prev: cURL authentication plugin</a>
+      </div>
+    </div>
   
       
 
@@ -99,10 +106,7 @@ useful for crawling or unit testing. By default, the history plugin stores up to
         </div>
       </div>
       <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper"><ul>
-      <li><a href="curl-auth-plugin.html" title="previous chapter">&lt; cURL authentication plugin</a></li>
-      <li><a href="log-plugin.html" title="next chapter">Log plugin &gt;</a></li>
-</ul><h3>Need help?</h3>
+        <div class="sphinxsidebarwrapper"><h3>Need help?</h3>
 <p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
 question.</p>
 <h3>Found an error?</h3>
@@ -126,28 +130,30 @@ question.</p>
       <div class="clearer"></div>
     </div>
     
-    <div id="footer-links"  class="width-wrapper">
-    
-    <a href="log-plugin.html" title="next chapter">Next: Log plugin</a>
-    <a href="curl-auth-plugin.html" title="previous chapter">Prev: cURL authentication plugin</a>
-    
+    <div class="width-wrapper">
+      <div class="footer-links">
+        <a href="log-plugin.html" title="next chapter">Next: Log plugin</a>
+        <a href="curl-auth-plugin.html" title="previous chapter">Prev: cURL authentication plugin</a>
+      </div>
     </div>
-    
+  
     <div class="container comment-container">
-        <div id="comments">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'guzzle';
-        var disqus_identifier = 'plugins/history-plugin';
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+<div id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'guzzle';
+    var disqus_identifier = 'plugins/history-plugin';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
+
     </div>
   
 
@@ -168,13 +174,22 @@ question.</p>
       </ul>
     </div>
   <div class="footer">
-    &copy; Copyright 2012, Michael Dowling.
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
   </div>
+
   
   <script type="text/javascript">
-    
-    
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22752917-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
   </script>
+  
+
+  
   </body>
 </html>

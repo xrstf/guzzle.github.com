@@ -26,7 +26,7 @@ body {
 
 div.document {
     width: 960px;
-    margin: 30px auto 0 auto;
+    margin: 0 auto;
 }
 
 div.documentwrapper {
@@ -411,6 +411,7 @@ a:hover tt {
 }
 
 .width-wrapper {
+    position: relative;
     width: 960px;
     margin: 0 auto;
 }
@@ -425,7 +426,7 @@ a:hover tt {
     margin-top: 0;
 }
 #left-logo-image {
-    background: transparent url('guzzle-icon.png') no-repeat;
+    background: transparent url(guzzle-icon.png) no-repeat;
     width: 22px;
     height: 28px;
     margin: -6px 12px 0 0;
@@ -455,14 +456,19 @@ a:hover tt {
     text-decoration: underline;
 }
 
-#footer-links {
+.top-links {
+    height: 30px;
+    margin-top: 12px;
+}
+
+.footer-links {
     border-top: 1px solid #ccc;
     padding-top: 12px;
     margin-top: 30px;
     height: 30px;
 }
 
-#footer-links a {
+.footer-links a, .top-links a {
     padding: 0 24px 0 0;
     display: block;
     padding: 0 0 0 20px;
