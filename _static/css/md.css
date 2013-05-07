@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 
 .container {
-  max-width: 940px;
+  max-width: 960px;
 }
 
 div.clearer {
@@ -80,9 +80,15 @@ div.body p, div.body dd, div.body li {
   line-height: 1.5em;
 }
 
+tt {
+  font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
+  font-size: 15px;
+  color: #333;
+}
+
 code, pre {
   font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
-  font-size: 13px;
+  font-size: 14px;
   color: #333333;
 }
 
@@ -636,6 +642,7 @@ span.eqno {
 @media screen and (max-device-width: 480px) {
   body {
     margin: 0;
+    padding-top: 0;
   }
 
   .body {
@@ -643,6 +650,10 @@ span.eqno {
     float: none;
     min-height: 0;
     padding: 10px;
+  }
+
+  .left-bar-other {
+    display: none;
   }
 
   .navbar-fixed-top {
@@ -658,18 +669,6 @@ span.eqno {
 
   div.sphinxsidebar p.logo {
     display: none;
-  }
-
-  div.related {
-    display: block;
-    margin: 0;
-    padding: 10px 0 20px 0;
-  }
-
-  div.related ul,
-  div.related ul li {
-    margin: 0;
-    padding: 0;
   }
 
   div.footer {
