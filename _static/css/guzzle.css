@@ -5,14 +5,14 @@
   max-width: 960px;
 }
 
-div.clearer {
-  clear: both;
-}
-
 body {
   position: relative;
   padding: 40px 0 0 0;
   font-family: Helvetica, arial, freesans, clean, sans-serif;
+}
+
+div.clearer {
+  clear: both;
 }
 
 div.document {
@@ -22,7 +22,7 @@ div.document {
 }
 
 .body {
-  width: 700px;
+  width: 713px;
   float: right;
 }
 
@@ -88,12 +88,18 @@ tt {
 
 code, pre {
   font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
-  font-size: 14px;
+  font-size: 15px;
   color: #333333;
+  line-height: 23px;
+  margin: 20px 0;
 }
 
 div.highlight {
   background-color: white;
+}
+
+.navbar .brand {
+  font-weight: bold;
 }
 
 /* Sphinx sidebar
