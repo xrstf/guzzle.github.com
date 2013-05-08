@@ -44,35 +44,56 @@ Guzzle Documentation
 Getting started
 ---------------
 
-* :doc:`getting-started/overview`
-* :doc:`getting-started/installation`
-* :doc:`getting-started/faq`
-* `Read the API docs <http://guzzlephp.org/api/index.html>`_
+.. list-table::
+   :header-rows: 0
+   :stub-columns: 0
+   :class: two-column
+
+   * - :doc:`getting-started/overview`
+     - :doc:`getting-started/installation`
+   * - :doc:`getting-started/faq`
+     - `Read the API docs <http://guzzlephp.org/api/index.html>`_
 
 The HTTP client
 ---------------
 
-* :doc:`http-client/client`
-* :doc:`http-client/request`
-* :doc:`http-client/response`
-* :doc:`http-client/entity-bodies`
-* :doc:`http-client/http-redirects`
+.. list-table::
+   :header-rows: 0
+   :stub-columns: 0
+   :class: two-column
+
+   * - :doc:`http-client/client`
+     - :doc:`http-client/request`
+   * - :doc:`http-client/response`
+     - :doc:`http-client/entity-bodies`
+   * - :doc:`http-client/http-redirects`
+     -
 
 Plugins
 -------
 
-* :doc:`plugins/plugins-overview`
-* :doc:`plugins/creating-plugins`
+.. list-table::
+   :header-rows: 0
+   :stub-columns: 0
+   :class: two-column
+
+   * - :doc:`plugins/plugins-overview`
+     - :doc:`plugins/creating-plugins`
 
 The web service client
 ----------------------
 
-* :doc:`webservice-client/webservice-client`
-* :doc:`webservice-client/using-the-service-builder`
-* :doc:`webservice-client/guzzle-service-descriptions`
-* :doc:`batching/batching`
-* :doc:`iterators/resource-iterators`
-* :doc:`iterators/guzzle-iterators`
+.. list-table::
+   :header-rows: 0
+   :stub-columns: 0
+   :class: two-column
+
+   * - :doc:`webservice-client/webservice-client`
+     - :doc:`webservice-client/using-the-service-builder`
+   * - :doc:`webservice-client/guzzle-service-descriptions`
+     - :doc:`batching/batching`
+   * - :doc:`iterators/resource-iterators`
+     - :doc:`iterators/guzzle-iterators`
 
 Testing
 -------
