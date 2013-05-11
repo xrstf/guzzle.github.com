@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Plugin\History\HistoryPlugin | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1186530155"></script>
+	<script type="text/javascript" src="elementlist.js?3595091149"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -258,6 +258,43 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code>__toString( )</code>
+
+		<div class="description short">
+			
+<p>Convert to a string that contains all request and response headers</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Convert to a string that contains all request and response headers</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="add" id="_add">
 
 		<td class="attributes"><code>
@@ -269,7 +306,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_add">#</a>
-		<code>add( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code>add( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -287,6 +324,8 @@
 				<div class="list"><dl>
 					<dt><var>$request</var></dt>
 					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to add</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response of the request</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -371,6 +410,45 @@
 				<h4>Returns</h4>
 				<div class="list">
 					<code>integer</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAll" id="_getAll">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAll">#</a>
+		<code>getAll( )</code>
+
+		<div class="description short">
+			
+<p>Get all of the raw transactions in the form of an array of associative arrays
+containing 'request' and 'response' keys.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get all of the raw transactions in the form of an array of associative arrays
+containing 'request' and 'response' keys.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
 				</div>
 
 
@@ -498,7 +576,7 @@
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>
+			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|null
 			
 			</code>
 		</td>
@@ -522,7 +600,7 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br />
+					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|null</code><br />
 				</div>
 
 
@@ -568,7 +646,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="onRequestComplete" id="_onRequestComplete">
+	<tr data-order="onRequestSent" id="_onRequestSent">
 
 		<td class="attributes"><code>
 			 public 
@@ -578,8 +656,8 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_onRequestComplete">#</a>
-		<code>onRequestComplete( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<a class="anchor" href="#_onRequestSent">#</a>
+		<code>onRequestSent( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -638,27 +716,27 @@
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="requests" id="$requests">
+	<tr data-order="transactions" id="$transactions">
 		<td class="attributes"><code>
 			protected  
 			array
 		</code></td>
 
 		<td class="name">
-<var>$requests</var>		</td>
+<var>$transactions</var>		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
-			<a href="#$requests" class="anchor">#</a>
+			<a href="#$transactions" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>Requests that have passed through the plugin</p>
+<p>Requests and responses that have passed through the plugin</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Requests that have passed through the plugin</p>
+<p>Requests and responses that have passed through the plugin</p>
 
 
 			</div>

@@ -132,8 +132,11 @@ enabling the strict mode on a request's parameter object:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Set per request</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;redirect.strict&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-<span class="c1">// Set globally on a client so that all requests use strict redirects</span>
-<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getConfig</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request.params&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;redirect.strict&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">));</span>
+
+<span class="c1">// You can set globally on a client so all requests use strict redirects</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getConfig</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request.params&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;redirect.strict&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+<span class="p">));</span>
 </pre></div>
 </div>
 <p>By default, Guzzle will redirect up to 5 times before throwing a <tt class="docutils literal"><span class="pre">Guzzle\Http\Exception\TooManyRedirectsException</span></tt>.
@@ -143,14 +146,33 @@ You can raise or lower this value using the <tt class="docutils literal"><span c
 </div>
 <div class="section" id="redirect-history">
 <h2>Redirect history<a class="headerlink" href="#redirect-history" title="Permalink to this headline">¶</a></h2>
-<p>You can get the full chain of request/response objects that were sent to complete an HTTP transaction using the
-<tt class="docutils literal"><span class="pre">getPreviousResponse()</span></tt> method of a response object.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<p>You can get the number of redirects of a request using the resulting response object's <tt class="docutils literal"><span class="pre">getRedirectCount()</span></tt> method.
+Similar to cURL's <tt class="docutils literal"><span class="pre">effective_url</span></tt> property, Guzzle provides the effective URL, or the last redirect URL that returned
+the request, in a response's <tt class="docutils literal"><span class="pre">getEffectiveUrl()</span></tt> method.</p>
+<p>When testing or debugging, it is often useful to see a history of redirects for a particular request. This can be
+acheived using the HistoryPlugin.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="nv">$history</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Plugin\History\HistoryPlugin</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">addSubscriber</span><span class="p">(</span><span class="nv">$history</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 
-<span class="k">do</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$response</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">;</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getPreviousResponse</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+<span class="c1">// Get the last redirect URL or the URL of the request that received</span>
+<span class="c1">// this response</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getEffectiveUrl</span><span class="p">();</span>
+
+<span class="c1">// Get the number of redirects</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getRedirectCount</span><span class="p">();</span>
+
+<span class="c1">// Iterate over each sent request and response</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$history</span><span class="o">-&gt;</span><span class="na">getAll</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$transaction</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Request object</span>
+    <span class="k">echo</span> <span class="nv">$transaction</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getUrl</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="c1">// Response object</span>
+    <span class="k">echo</span> <span class="nv">$transaction</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getEffectiveUrl</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Or, simply cast the HistoryPlugin to a string to view each request and response</span>
+<span class="k">echo</span> <span class="nv">$history</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -170,12 +192,19 @@ You can raise or lower this value using the <tt class="docutils literal"><span c
 <p>If you are redirected when sending data from a non-repeatable stream and some of the data has been read off of the
 stream, then you will get a <tt class="docutils literal"><span class="pre">Guzzle\Http\Exception\CouldNotRewindStreamException</span></tt>. You can get around this error by
 adding a custom rewind method to the entity body object being sent in the request.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;http://httpbin.com/redirect/2&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;http://httpbin.com/get&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">));</span>
-<span class="c1">// Add a custom function that can be used to rewind the stream (reopen in this example)</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span>
+    <span class="s1">&#39;http://httpbin.com/redirect/2&#39;</span><span class="p">,</span>
+    <span class="k">null</span><span class="p">,</span>
+    <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;http://httpbin.com/get&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Add a custom function that can be used to rewind the stream</span>
+<span class="c1">// (reopen in this example)</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setRewindFunction</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">setStream</span><span class="p">(</span><span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;http://httpbin.com/get&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">));</span>
     <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
 <span class="p">);</span>
+
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>

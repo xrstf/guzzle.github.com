@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\RedirectPlugin | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1186530155"></script>
+	<script type="text/javascript" src="elementlist.js?3595091149"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -345,6 +345,48 @@ strict RFC 2616 compliance</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getOriginalRequest" id="_getOriginalRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getOriginalRequest">#</a>
+		<code>getOriginalRequest( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get the original request that initiated a series of redirects</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the original request that initiated a series of redirects</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to get the original request from</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="createRedirectRequest" id="_createRedirectRequest">
 
 		<td class="attributes"><code>
@@ -400,50 +442,6 @@ POST) vs doing what most clients do (e.g. redirect POST with GET).</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="cloneRequestWithGetMethod" id="_cloneRequestWithGetMethod">
-
-		<td class="attributes"><code>
-			 protected 
-			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_cloneRequestWithGetMethod">#</a>
-		<code>cloneRequestWithGetMethod( <span><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code> <var>$request</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Clone a request while changing the method to GET. Emulates the behavior of
-Guzzle\Http\Message\Request::clone, but can change the HTTP method.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Clone a request while changing the method to GET. Emulates the behavior of
-Guzzle\Http\Message\Request::clone, but can change the HTTP method.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code></code><br>$request Request to clone</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>Returns a GET request<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="prepareRedirection" id="_prepareRedirection">
 
 		<td class="attributes"><code>
@@ -455,7 +453,7 @@ Guzzle\Http\Message\Request::clone, but can change the HTTP method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_prepareRedirection">#</a>
-		<code>prepareRedirection( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code>prepareRedirection( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$original</var></span>, <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -473,15 +471,65 @@ redirects per client</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
+					<dt><var>$original</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$original Origina request</dd>
 					<dt><var>$request</var></dt>
 					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to prepare and validate</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response The current response</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>Returns the original request<br />
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
 				</div>
 
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="sendRedirectRequest" id="_sendRedirectRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_sendRedirectRequest">#</a>
+		<code>sendRedirectRequest( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$original</var></span>, <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Send a redirect request and handle any errors</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Send a redirect request and handle any errors</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$original</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$original The originating request</dd>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request The current request being redirected</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response The response of the current request</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Exception.BadResponseException.html">Guzzle\Http\Exception\BadResponseException</a></code>|<code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 
 
@@ -499,7 +547,7 @@ redirects per client</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_throwTooManyRedirectsException">#</a>
-		<code>throwTooManyRedirectsException( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code>throwTooManyRedirectsException( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$original</var></span>, <span>integer <var>$max</var></span> )</code>
 
 		<div class="description short">
 			
@@ -515,8 +563,10 @@ redirects per client</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request</dd>
+					<dt><var>$original</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$original Request</dd>
+					<dt><var>$max</var></dt>
+					<dd><code>integer</code><br>$max Max allowed redirects</dd>
 				</dl></div>
 
 

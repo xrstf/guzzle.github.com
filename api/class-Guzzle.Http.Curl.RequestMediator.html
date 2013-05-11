@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Curl\RequestMediator | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1186530155"></script>
+	<script type="text/javascript" src="elementlist.js?3595091149"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -260,48 +260,6 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setCurlHandle" id="_setCurlHandle">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Http.Curl.RequestMediator.html">Guzzle\Http\Curl\RequestMediator</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setCurlHandle">#</a>
-		<code>setCurlHandle( <span><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code> <var>$handle</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Set the associated CurlHandle object</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Set the associated CurlHandle object</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$handle</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code></code><br>$handle Curl handle</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Curl.RequestMediator.html">Guzzle\Http\Curl\RequestMediator</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="receiveResponseHeader" id="_receiveResponseHeader">
 
 		<td class="attributes"><code>
@@ -357,7 +315,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_progress">#</a>
-		<code>progress( <span>integer <var>$downloadSize</var></span>, <span>integer <var>$downloaded</var></span>, <span>integer <var>$uploadSize</var></span>, <span>integer <var>$uploaded</var></span> )</code>
+		<code>progress( <span>integer <var>$downloadSize</var></span>, <span>integer <var>$downloaded</var></span>, <span>integer <var>$uploadSize</var></span>, <span>integer <var>$uploaded</var></span>, <span>resource <var>$handle</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -381,6 +339,8 @@
 					<dd><code>integer</code><br>$uploadSize Total upload size</dd>
 					<dt><var>$uploaded</var></dt>
 					<dd><code>integer</code><br>$uploaded Amount of bytes uploaded</dd>
+					<dt><var>$handle</var></dt>
+					<dd><code>resource</code><br>$handle CurlHandle object</dd>
 				</dl></div>
 
 
@@ -539,28 +499,6 @@
 				
 <p>Whether or not to emit read/write events</p>
 
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="curlHandle" id="$curlHandle">
-		<td class="attributes"><code>
-			protected  
-			<code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code>
-		</code></td>
-
-		<td class="name">
-<var>$curlHandle</var>		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$curlHandle" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
 
 			</div>
 		</div></td>
