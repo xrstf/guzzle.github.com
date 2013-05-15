@@ -24,7 +24,7 @@ project. In order to use Guzzle with Composer, you must do the following:
 
        {
            "require": {
-               "guzzle/guzzle": "3.3.*"
+               "guzzle/guzzle": "3.5.*"
            }
        }
 
@@ -134,7 +134,7 @@ You can install a specific version of Guzzle by providing a version number suffi
 
 .. code-block:: bash
 
-    pearch install guzzle/guzzle-3.3.1
+    pear install guzzle/guzzle-3.5.0
 
 Contributing to Guzzle
 ----------------------
