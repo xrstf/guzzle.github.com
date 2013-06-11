@@ -203,7 +203,7 @@ You can use Guzzle's static client facade to more easily send simple HTTP reques
     Guzzle\Http\StaticClient::mount();
     $response = Guzzle::get('http://guzzlephp.org');
 
-Each request method of the static client (e.g. `get()`, `post()`, `put()`, etc) accepts an associative array of request
+Each request method of the static client (e.g. ``get()``, ``post()`, ``put()``, etc) accepts an associative array of request
 options to apply to the request.
 
 .. code-block:: php
@@ -219,15 +219,15 @@ options to apply to the request.
 Request options
 ---------------
 
-Request options can be specified when creating a request or in the `request.options` parameter of a client. These
+Request options can be specified when creating a request or in the ``request.options`` parameter of a client. These
 options can control various aspects of a request including: headers to send, query string data, where the response
 should be downloaded, proxies, auth, etc.
 
 headers
 ~~~~~~~
 
-Associative array of headers to apply to the request. When specified in the `$options` argument of a client creational
-method (e.g. `get()`, `post()`, etc), the headers in the `$options` array will overwrite headers specified in the
+Associative array of headers to apply to the request. When specified in the ``$options` argument of a client creational
+method (e.g. ``get()``, ``post()``, etc), the headers in the ``$options`` array will overwrite headers specified in the
 `$headers` array.
 
 .. code-block:: php
@@ -250,8 +250,8 @@ Headers can be specified on a client to add default headers to every request sen
 
 .. note::
 
-    In addition to setting request options when creating requests or using the `setDefaultOption()` method, any default
-    client request option can be set using a client's config object:
+    In addition to setting request options when creating requests or using the ``setDefaultOption()`` method, any
+    default client request option can be set using a client's config object:
 
     .. code-block:: php
 
@@ -260,9 +260,9 @@ Headers can be specified on a client to add default headers to every request sen
 query
 ~~~~~
 
-Associative array of query string parameters to the request. When specified in the `$options` argument of a client
-creational method, the query string parameters in the `$options` array will overwrite query string parameters specified
-in the `$url`.
+Associative array of query string parameters to the request. When specified in the ``$options`` argument of a client
+creational method, the query string parameters in the ``$options`` array will overwrite query string parameters
+specified in the `$url`.
 
 .. code-block:: php
 
@@ -286,9 +286,9 @@ client.
 body
 ~~~~
 
-Sets the body of a request. The value supplied to the body option can be a `Guzzle\Http\EntitBodyInterface`, string,
-fopen resource, or array when sending POST requests. When a `body` request option is supplied, the option value will
-ovewrite the `$body` argument of a client creational method.
+Sets the body of a request. The value supplied to the body option can be a ``Guzzle\Http\EntitBodyInterface``, string,
+fopen resource, or array when sending POST requests. When a ``body`` request option is supplied, the option value will
+ovewrite the ``$body`` argument of a client creational method.
 
 auth
 ~~~~
@@ -315,13 +315,13 @@ allow_redirects
 ~~~~~~~~~~~~~~~
 
 Specifies whether or not the request should follow redirects. Requests will follow redirects by default. Set
-`allow_redirects` to `false` to disable redirects.
+``allow_redirects`` to ``false`` to disable redirects.
 
 save_to
 ~~~~~~~
 
-The `save_to` option specifies where the body of a response is downloaded. You can pass the path to a file, an fopen
-resource, or a `Guzzle\Http\EntityBodyInterface` object.
+The ``save_to`` option specifies where the body of a response is downloaded. You can pass the path to a file, an fopen
+resource, or a ``Guzzle\Http\EntityBodyInterface`` object.
 
 See :ref:`Changing where a response is downloaded <request-set-response-body>` for more information on setting the
 `save_to` option.

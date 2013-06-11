@@ -54,7 +54,7 @@ requests are idempotent requests that are typically used to download content (an
     $response = $request->send();
 
 You can change where the body of a response is downloaded on any request using the
-`$request->setResponseBody(string|EntityBodyInterface|resource)` method of a request. You can also set the `save_to`
+``$request->setResponseBody(string|EntityBodyInterface|resource)`` method of a request. You can also set the ``save_to``
 option of a request:
 
 .. code-block:: php
@@ -458,7 +458,7 @@ Changing where a response is downloaded
 ----------------------------------------
 
 When a request is sent, the body of the response will be stored in a PHP temp stream by default. You can change the
-location in which the response will be downloaded using ``$request->setResponseBody($body)`` or the `save_to` request
+location in which the response will be downloaded using ``$request->setResponseBody($body)`` or the ``save_to`` request
 option. This can be useful for downloading the contents of a URL to a specific file.
 
 Here's an example of using request options:
@@ -472,7 +472,7 @@ Here's an example of using request options:
     var_export(file_exists('/tmp/large_file.mov'));
     // >>> true
 
-Here's an example of using `setResponseBody()`:
+Here's an example of using ``setResponseBody()``:
 
 .. code-block:: php
 
@@ -511,7 +511,7 @@ Other special options that can be set in the ``curl.options`` array include:
 Request options
 ---------------
 
-Requests options can be specified when creating a request or in the `request.options` parameter of a client. These
+Requests options can be specified when creating a request or in the ``request.options`` parameter of a client. These
 options can control various aspects of a request including: headers to send, query string data, where the response
 should be downloaded, proxies, auth, etc.
 
@@ -637,7 +637,7 @@ A ``Guzzle\Http\Message\Request`` and ``Guzzle\Http\Message\EntityEnclosingReque
 |                              |                                            | * previous_response: (e.g. redirect)     |
 +------------------------------+--------------------------------------------+------------------------------------------+
 | curl.callback.progress       | cURL progress event (only dispatched when  | * handle: CurlHandle                     |
-|                              | `emit_io` is set on a request's curl       | * download_size: Total download size     |
+|                              | ``emit_io`` is set on a request's curl     | * download_size: Total download size     |
 |                              | options)                                   | * downloaded: Bytes downloaded           |
 |                              |                                            | * upload_size: Total upload bytes        |
 |                              |                                            | * uploaded: Bytes uploaded               |

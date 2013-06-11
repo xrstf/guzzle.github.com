@@ -131,7 +131,7 @@ Here's an example using the Twitter Streaming API to track the keyword "beiber":
         $data = json_decode($line, true);
     }
 
-You can use the `stream` request option when using a static client to more easily create a streaming response.
+You can use the ``stream`` request option when using a static client to more easily create a streaming response.
 
 .. code-block:: php
 

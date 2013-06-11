@@ -361,7 +361,7 @@ rely on a Client's default request factory.</p>
 <span class="nv">$response</span> <span class="o">=</span> <span class="nx">Guzzle</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://guzzlephp.org&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Each request method of the static client (e.g. <cite>get()</cite>, <cite>post()</cite>, <cite>put()</cite>, etc) accepts an associative array of request
+<p>Each request method of the static client (e.g. <tt class="docutils literal"><span class="pre">get()</span></tt>, <tt class="docutils literal"><span class="pre">post()`,</span> <span class="pre">``put()</span></tt>, etc) accepts an associative array of request
 options to apply to the request.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$response</span> <span class="o">=</span> <span class="nx">Guzzle</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;http://test.com&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bar&#39;</span><span class="p">),</span>
@@ -373,13 +373,13 @@ options to apply to the request.</p>
 </div>
 <div class="section" id="request-options">
 <span id="id1"></span><h2>Request options<a class="headerlink" href="#request-options" title="Permalink to this headline">¶</a></h2>
-<p>Request options can be specified when creating a request or in the <cite>request.options</cite> parameter of a client. These
+<p>Request options can be specified when creating a request or in the <tt class="docutils literal"><span class="pre">request.options</span></tt> parameter of a client. These
 options can control various aspects of a request including: headers to send, query string data, where the response
 should be downloaded, proxies, auth, etc.</p>
 <div class="section" id="headers">
 <h3>headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h3>
-<p>Associative array of headers to apply to the request. When specified in the <cite>$options</cite> argument of a client creational
-method (e.g. <cite>get()</cite>, <cite>post()</cite>, etc), the headers in the <cite>$options</cite> array will overwrite headers specified in the
+<p>Associative array of headers to apply to the request. When specified in the <tt class="docutils literal"><span class="pre">$options`</span> <span class="pre">argument</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">client</span> <span class="pre">creational</span>
+<span class="pre">method</span> <span class="pre">(e.g.</span> <span class="pre">``get()</span></tt>, <tt class="docutils literal"><span class="pre">post()</span></tt>, etc), the headers in the <tt class="docutils literal"><span class="pre">$options</span></tt> array will overwrite headers specified in the
 <cite>$headers</cite> array.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bar&#39;</span><span class="p">)</span>
@@ -398,8 +398,8 @@ method (e.g. <cite>get()</cite>, <cite>post()</cite>, etc), the headers in the <
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>In addition to setting request options when creating requests or using the <cite>setDefaultOption()</cite> method, any default
-client request option can be set using a client's config object:</p>
+<p>In addition to setting request options when creating requests or using the <tt class="docutils literal"><span class="pre">setDefaultOption()</span></tt> method, any
+default client request option can be set using a client's config object:</p>
 <div class="last highlight-php"><div class="highlight"><pre><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getConfig</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setPath</span><span class="p">(</span><span class="s1">&#39;request.options/header/X-Foo&#39;</span><span class="p">,</span> <span class="s1">&#39;Bar&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -407,9 +407,9 @@ client request option can be set using a client's config object:</p>
 </div>
 <div class="section" id="query">
 <h3>query<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h3>
-<p>Associative array of query string parameters to the request. When specified in the <cite>$options</cite> argument of a client
-creational method, the query string parameters in the <cite>$options</cite> array will overwrite query string parameters specified
-in the <cite>$url</cite>.</p>
+<p>Associative array of query string parameters to the request. When specified in the <tt class="docutils literal"><span class="pre">$options</span></tt> argument of a client
+creational method, the query string parameters in the <tt class="docutils literal"><span class="pre">$options</span></tt> array will overwrite query string parameters
+specified in the <cite>$url</cite>.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;query&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">)</span>
 <span class="p">));</span>
@@ -429,9 +429,9 @@ client.</p>
 </div>
 <div class="section" id="body">
 <h3>body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h3>
-<p>Sets the body of a request. The value supplied to the body option can be a <cite>GuzzleHttpEntitBodyInterface</cite>, string,
-fopen resource, or array when sending POST requests. When a <cite>body</cite> request option is supplied, the option value will
-ovewrite the <cite>$body</cite> argument of a client creational method.</p>
+<p>Sets the body of a request. The value supplied to the body option can be a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntitBodyInterface</span></tt>, string,
+fopen resource, or array when sending POST requests. When a <tt class="docutils literal"><span class="pre">body</span></tt> request option is supplied, the option value will
+ovewrite the <tt class="docutils literal"><span class="pre">$body</span></tt> argument of a client creational method.</p>
 </div>
 <div class="section" id="auth">
 <h3>auth<a class="headerlink" href="#auth" title="Permalink to this headline">¶</a></h3>
@@ -454,12 +454,12 @@ The available authentication types are: &quot;Basic&quot; (default), &quot;Diges
 <div class="section" id="allow-redirects">
 <h3>allow_redirects<a class="headerlink" href="#allow-redirects" title="Permalink to this headline">¶</a></h3>
 <p>Specifies whether or not the request should follow redirects. Requests will follow redirects by default. Set
-<cite>allow_redirects</cite> to <cite>false</cite> to disable redirects.</p>
+<tt class="docutils literal"><span class="pre">allow_redirects</span></tt> to <tt class="docutils literal"><span class="pre">false</span></tt> to disable redirects.</p>
 </div>
 <div class="section" id="save-to">
 <h3>save_to<a class="headerlink" href="#save-to" title="Permalink to this headline">¶</a></h3>
-<p>The <cite>save_to</cite> option specifies where the body of a response is downloaded. You can pass the path to a file, an fopen
-resource, or a <cite>GuzzleHttpEntityBodyInterface</cite> object.</p>
+<p>The <tt class="docutils literal"><span class="pre">save_to</span></tt> option specifies where the body of a response is downloaded. You can pass the path to a file, an fopen
+resource, or a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntityBodyInterface</span></tt> object.</p>
 <p>See <a class="reference internal" href="request.html#request-set-response-body"><em>Changing where a response is downloaded</em></a> for more information on setting the
 <cite>save_to</cite> option.</p>
 </div>

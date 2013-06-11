@@ -237,7 +237,7 @@ requests are idempotent requests that are typically used to download content (an
 </pre></div>
 </div>
 <p>You can change where the body of a response is downloaded on any request using the
-<cite>$request-&gt;setResponseBody(string|EntityBodyInterface|resource)</cite> method of a request. You can also set the <cite>save_to</cite>
+<tt class="docutils literal"><span class="pre">$request-&gt;setResponseBody(string|EntityBodyInterface|resource)</span></tt> method of a request. You can also set the <tt class="docutils literal"><span class="pre">save_to</span></tt>
 option of a request:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="c1">// Send the response body to a file</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://test.com&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;save_to&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/file&#39;</span><span class="p">));</span>
@@ -588,7 +588,7 @@ you can add and process multiple fields with a single call. Adding multiple POST
 <div class="section" id="changing-where-a-response-is-downloaded">
 <span id="request-set-response-body"></span><h2>Changing where a response is downloaded<a class="headerlink" href="#changing-where-a-response-is-downloaded" title="Permalink to this headline">¶</a></h2>
 <p>When a request is sent, the body of the response will be stored in a PHP temp stream by default. You can change the
-location in which the response will be downloaded using <tt class="docutils literal"><span class="pre">$request-&gt;setResponseBody($body)</span></tt> or the <cite>save_to</cite> request
+location in which the response will be downloaded using <tt class="docutils literal"><span class="pre">$request-&gt;setResponseBody($body)</span></tt> or the <tt class="docutils literal"><span class="pre">save_to</span></tt> request
 option. This can be useful for downloading the contents of a URL to a specific file.</p>
 <p>Here's an example of using request options:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://example.com/large.mov&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
@@ -599,7 +599,7 @@ option. This can be useful for downloading the contents of a URL to a specific f
 <span class="c1">// &gt;&gt;&gt; true</span>
 </pre></div>
 </div>
-<p>Here's an example of using <cite>setResponseBody()</cite>:</p>
+<p>Here's an example of using <tt class="docutils literal"><span class="pre">setResponseBody()</span></tt>:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$body</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/tmp/large_file.mov&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://example.com/large.mov&#39;</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setResponseBody</span><span class="p">(</span><span class="nv">$body</span><span class="p">);</span>
@@ -641,7 +641,7 @@ events.</td>
 </div>
 <div class="section" id="request-options">
 <h2>Request options<a class="headerlink" href="#request-options" title="Permalink to this headline">¶</a></h2>
-<p>Requests options can be specified when creating a request or in the <cite>request.options</cite> parameter of a client. These
+<p>Requests options can be specified when creating a request or in the <tt class="docutils literal"><span class="pre">request.options</span></tt> parameter of a client. These
 options can control various aspects of a request including: headers to send, query string data, where the response
 should be downloaded, proxies, auth, etc.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;proxy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://proxy.com&#39;</span><span class="p">));</span>
@@ -798,7 +798,7 @@ received.</td>
 </tr>
 <tr class="row-odd"><td>curl.callback.progress</td>
 <td>cURL progress event (only dispatched when
-<cite>emit_io</cite> is set on a request's curl
+<tt class="docutils literal"><span class="pre">emit_io</span></tt> is set on a request's curl
 options)</td>
 <td><ul class="first last simple">
 <li>handle: CurlHandle</li>
