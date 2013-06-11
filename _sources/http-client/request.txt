@@ -34,12 +34,6 @@ Creating requests with a client
 
 Client objects are responsible for creating HTTP request objects.
 
-.. note::
-
-    The job of actually creating the request objects is delegated from a client to a
-    ``Guzzle\Http\Message\RequestFactoryInterface`` object owned by a client. You can modify the request classes
-    instantiated by a client by injecting a custom request factory into the client (using ``setRequestFactory()``).
-
 GET requests
 ~~~~~~~~~~~~
 
@@ -59,12 +53,17 @@ requests are idempotent requests that are typically used to download content (an
     // Send the request and get the response
     $response = $request->send();
 
-The above code sample will send the following GET request::
+You can change where the body of a response is downloaded on any request using the
+`$request->setResponseBody(string|EntityBodyInterface|resource)` method of a request. You can also set the `save_to`
+option of a request:
 
-    GET /?a=1 HTTP/1.1
-    Host: www.amazon.com
-    User-Agent: Guzzle/3.3.1 curl/7.21.4 PHP/5.3.15
-    X-Foo: Bar
+.. code-block:: php
+
+    // Send the response body to a file
+    $request = $client->get('http://test.com', array(), array('save_to' => '/path/to/file'));
+
+    // Send the response body to an fopen resource
+    $request = $client->get('http://test.com', array(), array('save_to' => fopen('/path/to/file', 'w')));
 
 HEAD requests
 ~~~~~~~~~~~~~
@@ -81,12 +80,6 @@ retrieving meta information about an entity identified by a Request-URI.
     echo $response->getContentLength();
     // >>> Will output the Content-Length header value
 
-The above code sample will send the following HEAD request::
-
-    HEAD / HTTP/1.1
-    Host: www.amazon.com
-    User-Agent: Guzzle/3.3.1 curl/7.21.4 PHP/5.3.15
-
 DELETE requests
 ~~~~~~~~~~~~~~~
 
@@ -99,33 +92,26 @@ delete the resource identified by the Request-URI.
     $request = $client->delete('http://example.com');
     $response = $request->send();
 
-The above code sample will send the following DELETE request::
-
-    DELETE / HTTP/1.1
-    Host: example.com
-    User-Agent: Guzzle/3.3.1 curl/7.21.4 PHP/5.3.15
-
-
 POST requests
 ~~~~~~~~~~~~~
 
 While `POST requests <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5>`_ can be used for a number of
-reasons, POST requests are often used when submitting HTML form data to a website. POST request can include an entity
+reasons, POST requests are often used when submitting HTML form data to a website. POST requests can include an entity
 body in the HTTP request.
 
 POST requests in Guzzle are sent with an ``application/x-www-form-urlencoded`` Content-Type header if POST fields are
 present but no files are being sent in the POST. If files are specified in the POST request, then the Content-Type
 header will become ``multipart/form-data``.
 
-The ``post()`` method of a client object accepts three arguments: the URL, optional headers, and the post fields. To
-send files in the POST request, prepend the ``@`` symbol to the array value (just like you would if you were using the
-PHP ``curl_setopt`` function).
+The ``post()`` method of a client object accepts four arguments: the URL, optional headers, post fields, and an array of
+request options. To send files in the POST request, prepend the ``@`` symbol to the array value (just like you would if
+you were using the PHP ``curl_setopt`` function).
 
 Here's how to create a multipart/form-data POST request containing files and fields:
 
 .. code-block:: php
 
-    $request = $client->post('http://httpbin.org/post', null, array(
+    $request = $client->post('http://httpbin.org/post', array(), array(
         'custom_field' => 'my custom value',
         'file_field'   => '@/path/to/file.xml'
     ));
@@ -140,7 +126,7 @@ Here's how to create a multipart/form-data POST request containing files and fie
 
         // Prevent users from accessing sensitive files by sanitizing input
         $_POST = array('firstname' => '@/etc/passwd');
-        $request = $client->post('http://www.example.com', null, array (
+        $request = $client->post('http://www.example.com', array(), array (
             'firstname' => str_replace('@', '', $_POST['firstname'])
         ));
 
@@ -161,17 +147,8 @@ POST requests can also contain raw POST data that is not related to HTML forms.
 
 .. code-block:: php
 
-    $request = $client->post('http://httpbin.org/post', null, 'this is the body');
+    $request = $client->post('http://httpbin.org/post', array(), 'this is the body');
     $response = $request->send();
-
-The above code sample will send the following POST request::
-
-    POST /post HTTP/1.1
-    Host: httpbin.org
-    User-Agent: Guzzle/3.3.1 curl/7.21.4 PHP/5.3.15
-    Content-Length: 16
-
-    this is the body
 
 You can set the body of POST request using the ``setBody()`` method of the
 ``Guzzle\Http\Message\EntityEnclosingRequest`` object. This method accepts a string, a resource returned from
@@ -180,7 +157,7 @@ You can set the body of POST request using the ``setBody()`` method of the
 .. code-block:: php
 
     $request = $client->post('http://httpbin.org/post');
-    // Set the body of the POST to stream the contents of /path/to/larg_body.txt
+    // Set the body of the POST to stream the contents of /path/to/large_body.txt
     $request->setBody(fopen('/path/to/large_body.txt', 'r'));
     $response = $request->send();
 
@@ -198,17 +175,8 @@ callback function, or simply send a string of data.
 
 .. code-block:: php
 
-    $request = $client->put('http://httpbin.org/put', null, 'this is the body');
+    $request = $client->put('http://httpbin.org/put', array(), 'this is the body');
     $response = $request->send();
-
-The above code sample will send the following PUT request::
-
-    PUT /put HTTP/1.1
-    Host: httpbin.org
-    User-Agent: Guzzle/3.3.1 curl/7.21.4 PHP/5.3.15
-    Content-Length: 16
-
-    this is the body
 
 Just like with POST, PATH, and DELETE requests, you can set the body of a PUT request using the ``setBody()`` method.
 
@@ -225,17 +193,8 @@ PATCH requests
 
 .. code-block:: php
 
-    $request = $client->put('http://httpbin.org', null, 'this is the body');
+    $request = $client->put('http://httpbin.org', array(), 'this is the body');
     $response = $request->send();
-
-The above code sample will send the following PATCH request::
-
-    PATCH / HTTP/1.1
-    Host: httpbin.org
-    User-Agent: Guzzle/3.3.1 curl/7.21.4 PHP/5.3.15
-    Content-Length: 16
-
-    this is the body
 
 OPTIONS requests
 ~~~~~~~~~~~~~~~~
@@ -271,9 +230,10 @@ Query string parameters
 Query string parameters of a request are owned by a request's ``Guzzle\Http\Query`` object that is accessible by
 calling ``$request->getQuery()``. The Query class extends from ``Guzzle\Common\Collection`` and allows you to set one
 or more query string parameters as key value pairs. You can set a parameter on a Query object using the
-``set($key, $value)`` method. Any previously specified value for a key will be overwritten when using ``set()``. Use
-``add($key, $value)`` to add a value to query string object, and in the event of a collision with an existing value at
-a specific key, the value will be converted to an array that contains all of the previously set values.
+``set($key, $value)`` method or access the query string object like an associative array. Any previously specified
+value for a key will be overwritten when using ``set()``. Use ``add($key, $value)`` to add a value to query string
+object, and in the event of a collision with an existing value at a specific key, the value will be converted to an
+array that contains all of the previously set values.
 
 .. code-block:: php
 
@@ -334,7 +294,7 @@ the header values concatenated together using a glue string (typically ", ").
 
 A request (and response) object have several methods that allow you to retrieve and modify headers.
 
-* ``getHeaders()``: Get all of the headers of a message as a ``Guzzle\Common\Collection`` object.
+* ``getHeaders()``: Get all of the headers of a message as a ``Guzzle\Http\Message\Header\HeaderCollection`` object.
 * ``getHeader($header)``: Get a specific header from a message. If the header exists, you'll get a
   ``Guzzle\Http\Message\Header`` object. If the header does not exist, this methods returns ``null``.
 * ``hasHeader($header)``: Returns true or false based on if the message has a particular header.
@@ -367,7 +327,7 @@ A request (and response) object have several methods that allow you to retrieve 
         echo $header . "\n";
     }
 
-    // You can get all of the request headers as a Guzzle\Common\Collection object
+    // You can get all of the request headers as a Guzzle\Http\Message\Header\HeaderCollection object
     $headers = $request->getHeaders();
 
     // Missing headers return NULL
@@ -403,7 +363,7 @@ extension of the payload being sent or the file extension present in the path of
 
 .. code-block:: php
 
-    $request = $client->put('/user.json', null, '{"foo":"bar"}');
+    $request = $client->put('/user.json', array(), '{"foo":"bar"}');
     // The Content-Type was guessed based on the path of the request
     echo $request->getHeader('Content-Type');
     // >>> application/json
@@ -424,9 +384,7 @@ before initiating the transfer. In these cases (when using HTTP/1.1), you can us
 header.
 
 If the Content-Length cannot be determined (i.e. using a PHP ``http://`` stream), then Guzzle will automatically add
-the ``Transfer-Encoding: chunked`` header to the request. You can force chunked transfer encoding by setting the
-Transfer-Encoding header manually or by passing ``true`` to the optional third parameter of
-``EntityEnclosingRequestInterface::setBody()``.
+the ``Transfer-Encoding: chunked`` header to the request.
 
 .. code-block:: php
 
@@ -494,54 +452,50 @@ Cookies can be modified and retrieved from a request using the following methods
 
 Use the :doc:`cookie plugin </plugins/cookie-plugin>` if you need to reuse cookies between requests.
 
+.. _request-set-response-body:
+
 Changing where a response is downloaded
 ----------------------------------------
 
 When a request is sent, the body of the response will be stored in a PHP temp stream by default. You can change the
-location in which the response will be downloaded using ``$request->setResponseBody($body)``. This can be useful for
-downloading the contents of a URL to a specific file.
+location in which the response will be downloaded using ``$request->setResponseBody($body)`` or the `save_to` request
+option. This can be useful for downloading the contents of a URL to a specific file.
+
+Here's an example of using request options:
+
+.. code-block:: php
+
+    $request = $this->client->get('http://example.com/large.mov', array(), array(
+        'save_as' => '/tmp/large_file.mov'
+    );
+    $request->send();
+    var_export(file_exists('/tmp/large_file.mov'));
+    // >>> true
+
+Here's an example of using `setResponseBody()`:
 
 .. code-block:: php
 
     $body = fopen('/tmp/large_file.mov', 'w');
     $request = $this->client->get('http://example.com/large.mov');
     $request->setResponseBody($body);
-    $request->send();
 
-    var_export(file_exists('/tmp/large_file.mov'));
-    // >>> true
-
-You can more easily specify the name of a file to save the contents of the response to by passing a string to
-``setResponseBody()``.
-
-.. code-block:: php
+    // You can more easily specify the name of a file to save the contents
+    // of the response to by passing a string to ``setResponseBody()``.
 
     $request = $this->client->get('http://example.com/large.mov');
     $request->setResponseBody('/tmp/large_file.mov');
-    $request->send();
-
-    var_export(file_exists('/tmp/large_file.mov'));
-    // >>> true
-
-You can specify the name of the file to download to when creating requests with a client:
-
-.. code-block:: php
-
-    $this->client->get('http://example.com/large.mov', null, '/tmp/large_file.mov')->send();
-    var_export(file_exists('/tmp/large_file.mov'));
-    // >>> true
 
 Custom cURL options
 -------------------
 
 Most of the functionality implemented in the libcurl bindings has been simplified and abstracted by Guzzle. Developers
-who need access to `cURL specific functionality <http://www.php.net/curl_setopt>`_ that is not abstracted by Guzzle
-(e.g. proxies and some SSL options) can still add cURL handle specific behavior to Guzzle HTTP requests by modifying
-the cURL options collection of a request:
+who need access to `cURL specific functionality <http://www.php.net/curl_setopt>`_ can still add cURL handle
+specific behavior to Guzzle HTTP requests by modifying the cURL options collection of a request:
 
 .. code-block:: php
 
-    $request->getCurlOptions()->set(CURLOPT_SSL_VERIFYHOST, true);
+    $request->getCurlOptions()->set(CURLOPT_LOW_SPEED_LIMIT, 200);
 
 Other special options that can be set in the ``curl.options`` array include:
 
@@ -554,36 +508,18 @@ Other special options that can be set in the ``curl.options`` array include:
 |                         | events.                                                                         |
 +-------------------------+---------------------------------------------------------------------------------+
 
-Timeouts
-~~~~~~~~
+Request options
+---------------
 
-cURL provides `several timeout options <http://www.php.net/curl_setopt>`_ that can be used to control the amount of
-time a request will wait before timing out.
-
-* ``CURLOPT_TIMEOUT``: The maximum number of seconds to allow cURL functions to execute.
-* ``CURLOPT_TIMEOUT_MS``: The maximum number of milliseconds to allow cURL functions to execute.
-* ``CURLOPT_CONNECTTIMEOUT``: The number of seconds to wait while trying to connect.
-* ``CURLOPT_CONNECTTIMEOUT_MS``: The number of milliseconds to wait while trying to connect.
-
-You can tell requests to stop waiting for a response after a given number of seconds with the CURLOPT_TIMEOUT
-parameter:
+Requests options can be specified when creating a request or in the `request.options` parameter of a client. These
+options can control various aspects of a request including: headers to send, query string data, where the response
+should be downloaded, proxies, auth, etc.
 
 .. code-block:: php
 
-    $request = $client->get('http://www.example.com');
-    // Time out after 5 seconds
-    $request->getCurlOptions()->set(CURLOPT_TIMEOUT, 5);
+    $request = $client->get($url, $headers, array('proxy' => 'http://proxy.com'));
 
-Proxy settings
-~~~~~~~~~~~~~~
-
-Some networks require that outbound HTTP requests are sent through a proxy. cURL offers several proxy specific
-settings, but the most commonly using setting is ``CURLOPT_PROXY``.
-
-.. code-block:: php
-
-    $request = $client->get('http://www.example.com');
-    $request->getCurlOptions()->set(CURLOPT_PROXY, 'tcp://127.0.0.1:8888');
+See :ref:`Request options <request-options>` for more information.
 
 Working with errors
 -------------------

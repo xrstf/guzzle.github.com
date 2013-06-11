@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Http\Message\RequestInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -146,7 +147,6 @@
 				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
 				<li><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
-				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
 				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
 				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
@@ -266,14 +266,10 @@
 
 		<div class="description short">
 			
-<p>Get the HTTP request as a string</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get the HTTP request as a string</p>
-
 
 
 
@@ -282,6 +278,47 @@
 					<code>string</code><br />
 				</div>
 
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="send" id="_send">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_send">#</a>
+		<code>send( )</code>
+
+		<div class="description short">
+			
+<p>Send the request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Send the request</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Exception.RequestException.html">Guzzle\Http\Exception\RequestException</a></code></code><br>on a request error<br />
+				</div>
 
 
 
@@ -390,9 +427,6 @@
 			
 <p>Set the URL of the request</p>
 
-<p>Warning: Calling this method will modify headers, rewrite the query string
-object, and set other data associated with the request.</p>
-
 
 
 				<h4>Parameters</h4>
@@ -412,78 +446,80 @@ object, and set other data associated with the request.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="send" id="_send">
+	<tr data-order="getUrl" id="_getUrl">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>
+			string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_send">#</a>
-		<code>send( )</code>
+		<a class="anchor" href="#_getUrl">#</a>
+		<code>getUrl( <span>boolean <var>$asObject</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Send the request</p>
+<p>Get the full URL of the request (e.g. 'http://www.guzzle-project.com/')</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Send the request</p>
+<p>Get the full URL of the request (e.g. 'http://www.guzzle-project.com/')</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$asObject</var></dt>
+					<dd><code>boolean</code><br>$asObject Set to TRUE to retrieve the URL as a clone of the URL object owned by
+the request.</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br />
+					<code>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Exception.RequestException.html">Guzzle\Http\Exception\RequestException</a></code></code><br>on a request error<br />
-				</div>
 
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getResponse" id="_getResponse">
+	<tr data-order="getResource" id="_getResource">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|null
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getResponse">#</a>
-		<code>getResponse( )</code>
+		<a class="anchor" href="#_getResource">#</a>
+		<code>getResource( )</code>
 
 		<div class="description short">
 			
-<p>Get the previously received <code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> or NULL if the request has not
-been sent</p>
+<p>Get the resource part of the the request, including the path, query string,
+and fragment</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get the previously received <code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> or NULL if the request has not
-been sent</p>
+<p>Get the resource part of the the request, including the path, query string,
+and fragment</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|null</code><br />
+					<code>string</code><br />
 				</div>
 
 
@@ -729,85 +765,6 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getProtocolVersion" id="_getProtocolVersion">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getProtocolVersion">#</a>
-		<code>getProtocolVersion( )</code>
-
-		<div class="description short">
-			
-<p>Get the HTTP protocol version of the request</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the HTTP protocol version of the request</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setProtocolVersion" id="_setProtocolVersion">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setProtocolVersion">#</a>
-		<code>setProtocolVersion( <span>string <var>$protocol</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Set the HTTP protocol version of the request (e.g. 1.1 or 1.0)</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Set the HTTP protocol version of the request (e.g. 1.1 or 1.0)</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$protocol</var></dt>
-					<dd><code>string</code><br>$protocol HTTP protocol version to use with the request</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="getPath" id="_getPath">
 
 		<td class="attributes"><code>
@@ -1003,61 +960,6 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setAuth" id="_setAuth">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Http.Message.Request.html">Guzzle\Http\Message\Request</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setAuth">#</a>
-		<code>setAuth( <span>string|boolean <var>$user</var></span>, <span>string <var>$password</var> = <span class="php-quote">''</span></span>, <span>string <var>$scheme</var> = <span class="php-quote">'Basic'</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Set HTTP authorization parameters</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Set HTTP authorization parameters</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$user</var></dt>
-					<dd><code>string|boolean</code><br>$user User name or false disable authentication</dd>
-					<dt><var>$password</var></dt>
-					<dd><code>string</code><br>$password Password</dd>
-					<dt><var>$scheme</var></dt>
-					<dd><code>string</code><br>$scheme Authentication scheme to use (CURLAUTH_BASIC, CURLAUTH_DIGEST, etc)</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.Request.html">Guzzle\Http\Message\Request</a></code></code><br />
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Exception.RequestException.html">Guzzle\Http\Exception\RequestException</a></code></code><br />
-				</div>
-
-				<h4>Link</h4>
-				<div class="list">
-						<a href="http://www.ietf.org/rfc/rfc2617.txt">http://www.ietf.org/rfc/rfc2617.txt</a><br />
-						<a href="http://php.net/manual/en/function.curl-setopt.php">See the available options for CURLOPT_HTTPAUTH</a><br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="getPassword" id="_getPassword">
 
 		<td class="attributes"><code>
@@ -1095,128 +997,7 @@ href="http://www.yahoo.com:80">www.yahoo.com:80</a>)</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getResource" id="_getResource">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getResource">#</a>
-		<code>getResource( )</code>
-
-		<div class="description short">
-			
-<p>Get the resource part of the the request, including the path, query string,
-and fragment</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the resource part of the the request, including the path, query string,
-and fragment</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getUrl" id="_getUrl">
-
-		<td class="attributes"><code>
-			 public 
-			string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getUrl">#</a>
-		<code>getUrl( <span>boolean <var>$asObject</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Get the full URL of the request (e.g. 'http://www.guzzle-project.com/')
-scheme://username:password@domain:port/path?query_string#fragment</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the full URL of the request (e.g. 'http://www.guzzle-project.com/')
-scheme://username:password@domain:port/path?query_string#fragment</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$asObject</var></dt>
-					<dd><code>boolean</code><br>$asObject Set to TRUE to retrieve the URL as a clone of the URL object owned by
-the request.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getState" id="_getState">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getState">#</a>
-		<code>getState( )</code>
-
-		<div class="description short">
-			
-<p>Get the state of the request. One of 'complete', 'sending', 'new'</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the state of the request. One of 'complete', 'sending', 'new'</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setState" id="_setState">
+	<tr data-order="setAuth" id="_setAuth">
 
 		<td class="attributes"><code>
 			 public 
@@ -1226,27 +1007,118 @@ the request.</dd>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setState">#</a>
-		<code>setState( <span>string <var>$state</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<a class="anchor" href="#_setAuth">#</a>
+		<code>setAuth( <span>string|boolean <var>$user</var></span>, <span>string <var>$password</var> = <span class="php-quote">''</span></span>, <span>string <var>$scheme</var> = <span class="php-quote">'Basic'</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Set the state of the request</p>
+<p>Set HTTP authorization parameters</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Set the state of the request</p>
+<p>Set HTTP authorization parameters</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$state</var></dt>
-					<dd><code>string</code><br>$state State of the request (complete, sending, or new)</dd>
-					<dt><var>$context</var></dt>
-					<dd><code>array</code><br>$context Contextual information about the state change</dd>
+					<dt><var>$user</var></dt>
+					<dd><code>string|boolean</code><br>$user User name or false disable authentication</dd>
+					<dt><var>$password</var></dt>
+					<dd><code>string</code><br>$password Password</dd>
+					<dt><var>$scheme</var></dt>
+					<dd><code>string</code><br>$scheme Authentication scheme ('Basic', 'Digest', or a CURLAUTH_* constant
+(deprecated))</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Exception.RequestException.html">Guzzle\Http\Exception\RequestException</a></code></code><br />
+				</div>
+
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://www.ietf.org/rfc/rfc2617.txt">http://www.ietf.org/rfc/rfc2617.txt</a><br />
+						<a href="http://php.net/manual/en/function.curl-setopt.php">See the available options for CURLOPT_HTTPAUTH</a><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getProtocolVersion" id="_getProtocolVersion">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getProtocolVersion">#</a>
+		<code>getProtocolVersion( )</code>
+
+		<div class="description short">
+			
+<p>Get the HTTP protocol version of the request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the HTTP protocol version of the request</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setProtocolVersion" id="_setProtocolVersion">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setProtocolVersion">#</a>
+		<code>setProtocolVersion( <span>string <var>$protocol</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the HTTP protocol version of the request (e.g. 1.1 or 1.0)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the HTTP protocol version of the request (e.g. 1.1 or 1.0)</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$protocol</var></dt>
+					<dd><code>string</code><br>$protocol HTTP protocol version to use with the request</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1260,35 +1132,37 @@ the request.</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getCurlOptions" id="_getCurlOptions">
+	<tr data-order="getResponse" id="_getResponse">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|null
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getCurlOptions">#</a>
-		<code>getCurlOptions( )</code>
+		<a class="anchor" href="#_getResponse">#</a>
+		<code>getResponse( )</code>
 
 		<div class="description short">
 			
-<p>Get the cURL options that will be applied when the cURL handle is created</p>
+<p>Get the previously received <code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> or NULL if the request has not
+been sent</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get the cURL options that will be applied when the cURL handle is created</p>
+<p>Get the previously received <code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> or NULL if the request has not
+been sent</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
+					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|null</code><br />
 				</div>
 
 
@@ -1297,40 +1171,91 @@ the request.</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="receiveResponseHeader" id="_receiveResponseHeader">
+	<tr data-order="setResponse" id="_setResponse">
 
 		<td class="attributes"><code>
 			 public 
-			integer
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_receiveResponseHeader">#</a>
-		<code>receiveResponseHeader( <span>string <var>$data</var></span> )</code>
+		<a class="anchor" href="#_setResponse">#</a>
+		<code>setResponse( <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>boolean <var>$queued</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Method to receive HTTP response headers as they are retrieved</p>
+<p>Manually set a response for the request.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Method to receive HTTP response headers as they are retrieved</p>
+<p>Manually set a response for the request.</p>
+
+<p>This method is useful for specifying a mock response for the request or
+setting the response using a cache. Manually setting a response will bypass the
+actual sending of a request.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$data</var></dt>
-					<dd><code>string</code><br>$data Header data.</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response object to set</dd>
+					<dt><var>$queued</var></dt>
+					<dd><code>boolean</code><br>$queued Set to TRUE to keep the request in a state of not having been sent, but
+queue the response for send()</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>integer</code><br>Returns the size of the data.<br />
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>Returns a reference to the object.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="startResponse" id="_startResponse">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_startResponse">#</a>
+		<code>startResponse( <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+
+		<div class="description short">
+			
+<p>The start of a response has been received for a request and the request is
+still in progress</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>The start of a response has been received for a request and the request is
+still in progress</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response that has been received so far</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
 				</div>
 
 
@@ -1431,35 +1356,37 @@ body.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="isResponseBodyRepeatable" id="_isResponseBodyRepeatable">
+	<tr data-order="getState" id="_getState">
 
 		<td class="attributes"><code>
 			 public 
-			boolean
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_isResponseBodyRepeatable">#</a>
-		<code>isResponseBodyRepeatable( )</code>
+		<a class="anchor" href="#_getState">#</a>
+		<code>getState( )</code>
 
 		<div class="description short">
 			
-<p>Determine if the response body is repeatable (readable + seekable)</p>
+<p>Get the state of the request. One of 'complete', 'transfer', 'new',
+'error'</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Determine if the response body is repeatable (readable + seekable)</p>
+<p>Get the state of the request. One of 'complete', 'transfer', 'new',
+'error'</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>boolean</code><br />
+					<code>string</code><br />
 				</div>
 
 
@@ -1468,47 +1395,80 @@ body.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setResponse" id="_setResponse">
+	<tr data-order="setState" id="_setState">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setResponse">#</a>
-		<code>setResponse( <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>boolean <var>$queued</var> = <span class="php-keyword1">false</span></span> )</code>
+		<a class="anchor" href="#_setState">#</a>
+		<code>setState( <span>string <var>$state</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
-<p>Manually set a response for the request.</p>
+<p>Set the state of the request</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Manually set a response for the request.</p>
-
-<p>This method is useful for specifying a mock response for the request or
-setting the response using a cache. Manually setting a response will bypass the
-actual sending of a request.</p>
+<p>Set the state of the request</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$response</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response object to set</dd>
-					<dt><var>$queued</var></dt>
-					<dd><code>boolean</code><br>$queued Set to TRUE to keep the request in a state of not having been sent, but
-queue the response for send()</dd>
+					<dt><var>$state</var></dt>
+					<dd><code>string</code><br>$state State of the request ('complete', 'transfer', 'new', 'error')</dd>
+					<dt><var>$context</var></dt>
+					<dd><code>array</code><br>$context Contextual information about the state change</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>Returns a reference to the object.<br />
+					<code>string</code><br>Returns the current state of the request (which may have changed due to events
+being fired)<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCurlOptions" id="_getCurlOptions">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCurlOptions">#</a>
+		<code>getCurlOptions( )</code>
+
+		<div class="description short">
+			
+<p>Get the cURL options that will be applied when the cURL handle is created</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the cURL options that will be applied when the cURL handle is created</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
 				</div>
 
 
@@ -1682,147 +1642,23 @@ queue the response for send()</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="canCache" id="_canCache">
-
-		<td class="attributes"><code>
-			 public 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_canCache">#</a>
-		<code>canCache( )</code>
-
-		<div class="description short">
-			
-<p>Returns whether or not the request can be cached</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Returns whether or not the request can be cached</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setIsRedirect" id="_setIsRedirect">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setIsRedirect">#</a>
-		<code>setIsRedirect( <span>boolean <var>$isRedirect</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Set whether or not the request is a request that resulted from a redirect</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Set whether or not the request is a request that resulted from a redirect</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$isRedirect</var></dt>
-					<dd><code>boolean</code><br>$isRedirect</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isRedirect" id="_isRedirect">
-
-		<td class="attributes"><code>
-			 public 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isRedirect">#</a>
-		<code>isRedirect( )</code>
-
-		<div class="description short">
-			
-<p>Check whether or not the request is a request that resulted from a
-redirect</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Check whether or not the request is a request that resulted from a
-redirect</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Guzzle.Http.Message.MessageInterface.html#methods">Guzzle\Http\Message\MessageInterface</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_addCacheControlDirective">addCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_addHeader">addHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_addHeaders">addHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getCacheControlDirective">getCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeader">getHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeaderLines">getHeaderLines()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeaders">getHeaders()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getParams">getParams()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getRawHeaders">getRawHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getTokenizedHeader">getTokenizedHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_hasCacheControlDirective">hasCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_hasHeader">hasHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_removeCacheControlDirective">removeCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_removeHeader">removeHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setHeader">setHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setHeaders">setHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setTokenizedHeader">setTokenizedHeader()</a>
+			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setHeaders">setHeaders()</a>
 		</code></td>
 	</tr>
 	</table>

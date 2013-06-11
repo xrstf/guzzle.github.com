@@ -116,6 +116,14 @@
               
   <div class="section" id="curl-authentication-plugin">
 <h1>cURL authentication plugin<a class="headerlink" href="#curl-authentication-plugin" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The CurlAuthPlugin is deprecated. You should use the <cite>auth</cite> parameter of a client to add authorization headers to
+every request created by a client.</p>
+<div class="last highlight-php"><div class="highlight"><pre><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setDefaultOption</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;Basic|Digest|NTLM|Any&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
 <p>If your web service client requires basic authorization, then you can use the CurlAuthPlugin to easily add an
 Authorization header to each request sent by the client.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>

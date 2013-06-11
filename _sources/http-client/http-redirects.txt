@@ -72,7 +72,7 @@ You can also disable redirects per request:
 
 .. code-block:: php
 
-    $request->getParams()->set('redirect.disable', true);
+    $request = $client->get($url, array(), array('allow_redirects' => false));
 
 Redirects and non-repeatable streams
 ------------------------------------

@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Plugin\Cache\CachePlugin | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -144,9 +145,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li class="active"><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">CachePlugin</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html">CallbackCacheKeyProvider</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html">CallbackCanCacheStrategy</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheKeyProvider.html">DefaultCacheKeyProvider</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheStorage.html">DefaultCacheStorage</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultCanCacheStrategy.html">DefaultCanCacheStrategy</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html">DefaultRevalidation</a></li>
@@ -156,7 +155,6 @@
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">CacheKeyProviderInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">CacheStorageInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CanCacheStrategyInterface.html">CanCacheStrategyInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.RevalidationInterface.html">RevalidationInterface</a></li>
@@ -266,44 +264,21 @@ failure).</p>
 
 		<div class="description short">
 			
-<p>Construct a new CachePlugin. Cache options include the following:</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Construct a new CachePlugin. Cache options include the following:</p>
-
-<ul>
-	<li>CacheKeyProviderInterface key_provider: (optional) Cache key provider</li>
-
-	<li>CacheAdapterInterface adapter: (optional) Adapter used to cache objects.
-	Pass this or a cache_storage</li>
-
-	<li>CacheStorageInterface storage: (optional) Adapter used to cache
-	responses</li>
-
-	<li>RevalidationInterface revalidation: (optional) Cache revalidation
-	strategy</li>
-
-	<li>CanCacheInterface can_cache: (optional) Object used to determine if a
-	request can be cached</li>
-
-	<li>int default_ttl: (optional) Default TTL to use when caching if no
-	cache_storage was set must set to 0 or it will assume the default of 3600
-	secs.</li>
-
-	<li>bool debug_headers: (optional) Add debug headers to the response (default
-	true)</li>
-</ul>
-
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$options</var></dt>
 					<dd><code>array|<code><a href="class-Guzzle.Cache.CacheAdapterInterface.html">Guzzle\Cache\CacheAdapterInterface</a></code>|<code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">Guzzle\Plugin\Cache\CacheStorageInterface</a></code></code><br>$options Array of options for the cache plugin, cache adapter, or cache storage
-object.</dd>
+object. - CacheStorageInterface storage: Adapter used to cache responses -
+RevalidationInterface revalidation: Cache revalidation strategy -
+CanCacheInterface can_cache: Object used to determine if a request can be cached
+- bool auto_purge Set to true to automatically PURGE resources when
+non-idempotent requests are sent to a resource. Defaults to false.</dd>
 				</dl></div>
 
 
@@ -603,24 +578,24 @@ constraints</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_purge">#</a>
-		<code>purge( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code>purge( <span>string <var>$url</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Purge a request from the cache storage</p>
+<p>Purge all cache entries for a given URL</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Purge a request from the cache storage</p>
+<p>Purge all cache entries for a given URL</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to purge</dd>
+					<dt><var>$url</var></dt>
+					<dd><code>string</code><br>$url URL to purge</dd>
 				</dl></div>
 
 
@@ -641,7 +616,7 @@ constraints</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addResponseHeaders">#</a>
-		<code>addResponseHeaders( <span>string <var>$cacheKey</var></span>, <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+		<code>addResponseHeaders( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -657,8 +632,6 @@ constraints</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$cacheKey</var></dt>
-					<dd><code>string</code><br>$cacheKey Cache key</dd>
 					<dt><var>$request</var></dt>
 					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request</dd>
 					<dt><var>$response</var></dt>
@@ -687,32 +660,6 @@ constraints</p>
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="keyProvider" id="$keyProvider">
-		<td class="attributes"><code>
-			protected  
-			<code><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">Guzzle\Plugin\Cache\CacheKeyProviderInterface</a></code>
-		</code></td>
-
-		<td class="name">
-<var>$keyProvider</var>		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$keyProvider" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Cache key provider</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Cache key provider</p>
-
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="revalidation" id="$revalidation">
 		<td class="attributes"><code>
 			protected  
@@ -791,28 +738,24 @@ constraints</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="debugHeaders" id="$debugHeaders">
+	<tr data-order="autoPurge" id="$autoPurge">
 		<td class="attributes"><code>
 			protected  
 			boolean
 		</code></td>
 
 		<td class="name">
-<var>$debugHeaders</var>		</td>
+<var>$autoPurge</var>		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$debugHeaders" class="anchor">#</a>
+			<a href="#$autoPurge" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>Whether to add debug headers to the response</p>
-
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Whether to add debug headers to the response</p>
-
 
 			</div>
 		</div></td>

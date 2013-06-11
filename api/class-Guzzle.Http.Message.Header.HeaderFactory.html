@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Interface Guzzle\Plugin\Cache\CacheKeyProviderInterface | Guzzle</title>
+	<title>Class Guzzle\Http\Message\Header\HeaderFactory | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -46,14 +46,17 @@
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -74,13 +77,13 @@
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li>
-				<li class="active"><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
 						</li>
 				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
 						</li>
-				<li class="active"><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
 						<ul>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -143,23 +144,16 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">CachePlugin</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html">CallbackCacheKeyProvider</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html">CallbackCanCacheStrategy</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheKeyProvider.html">DefaultCacheKeyProvider</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheStorage.html">DefaultCacheStorage</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DefaultCanCacheStrategy.html">DefaultCanCacheStrategy</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html">DefaultRevalidation</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DenyRevalidation.html">DenyRevalidation</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.SkipRevalidation.html">SkipRevalidation</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.CacheControl.html">CacheControl</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.HeaderCollection.html">HeaderCollection</a></li>
+				<li class="active"><a href="class-Guzzle.Http.Message.Header.HeaderFactory.html">HeaderFactory</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.Link.html">Link</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li class="active"><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">CacheKeyProviderInterface</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">CacheStorageInterface</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.CanCacheStrategyInterface.html">CanCacheStrategyInterface</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.RevalidationInterface.html">RevalidationInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.HeaderFactoryInterface.html">HeaderFactoryInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html">HeaderInterface</a></li>
 			</ul>
 
 
@@ -186,7 +180,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-Guzzle.Plugin.Cache.html" title="Summary of Guzzle\Plugin\Cache"><span>Namespace</span></a>
+				<a href="namespace-Guzzle.Http.Message.Header.html" title="Summary of Guzzle\Http\Message\Header"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -201,24 +195,28 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Interface CacheKeyProviderInterface</h1>
+	<h1>Class HeaderFactory</h1>
 
 
 	<div class="description">
 	
-<p>Used to determine a cache key for a request object</p>
+<p>Default header factory implementation</p>
 
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Http\Message\Header\HeaderFactory</span></b>			
+			 implements 
+				<a href="class-Guzzle.Http.Message.Header.HeaderFactoryInterface.html"><span>Guzzle\Http\Message\Header\HeaderFactoryInterface</span></a>
+			
+			
+		</dd>
+	</dl>
 
 
 
 
-	<div>
-		<h4>Direct known implementers</h4>
-			<a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html">Guzzle\Plugin\Cache\CallbackCacheKeyProvider</a>, 
-			<a href="class-Guzzle.Plugin.Cache.DefaultCacheKeyProvider.html">Guzzle\Plugin\Cache\DefaultCacheKeyProvider</a>
-	</div>
 
 
 
@@ -226,55 +224,59 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Plugin.html">Plugin</a>\<a href="namespace-Guzzle.Plugin.Cache.html">Cache</a><br />
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Message.html">Message</a>\<a href="namespace-Guzzle.Http.Message.Header.html">Header</a><br />
 		
 
-		<b>Located at</b> Guzzle/Plugin/Cache/CacheKeyProviderInterface.php<br />
+		<b>Located at</b> Guzzle/Http/Message/Header/HeaderFactory.php<br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="getCacheKey" id="_getCacheKey">
+	<tr data-order="createHeader" id="_createHeader">
 
 		<td class="attributes"><code>
 			 public 
-			string
+			<code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html">Guzzle\Http\Message\Header\HeaderInterface</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getCacheKey">#</a>
-		<code>getCacheKey( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<a class="anchor" href="#_createHeader">#</a>
+		<code>createHeader( <span>string <var>$header</var></span>, <span>string <var>$value</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Returns a cache key for a request object</p>
+<p>Create a header from a header name and a single value</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns a cache key for a request object</p>
+<p>Create a header from a header name and a single value</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to generate a cache key for</dd>
+					<dt><var>$header</var></dt>
+					<dd><code>string</code><br>$header Name of the header to create</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>string</code><br>$value Value to set on the header</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string</code><br />
+					<code><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html">Guzzle\Http\Message\Header\HeaderInterface</a></code></code><br />
 				</div>
 
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderFactoryInterface.html#_createHeader">Guzzle\Http\Message\Header\HeaderFactoryInterface::createHeader()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -291,6 +293,34 @@
 
 
 
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="mapping" id="$mapping">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+<var>$mapping</var>		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>(
+    <span class="php-quote">'cache-control'</span> =&gt; <span class="php-quote">'Guzzle\Http\Message\Header\CacheControl'</span>,
+    <span class="php-quote">'link'</span>          =&gt; <span class="php-quote">'Guzzle\Http\Message\Header\Link'</span>,
+)</code></td>
+		<td class="description"><div>
+			<a href="#$mapping" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
 
 
 

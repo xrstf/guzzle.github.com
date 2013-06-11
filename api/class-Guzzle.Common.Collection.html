@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Common\Collection | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -262,18 +263,14 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span>array <var>$data</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code>__construct( <span>array <var>$data</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
-<p>Constructor</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Constructor</p>
-
 
 
 				<h4>Parameters</h4>
@@ -300,7 +297,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fromConfig">#</a>
-		<code>fromConfig( <span>array <var>$config</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$defaults</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$required</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code>fromConfig( <span>array <var>$config</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$defaults</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$required</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
@@ -335,6 +332,272 @@ values where missing</p>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if a parameter is missing<br />
 				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="count" id="_count">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_count">#</a>
+		<code>count( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Countable.html#_count">Countable::count()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getIterator" id="_getIterator">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getIterator">#</a>
+		<code>getIterator( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toArray" id="_toArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toArray">#</a>
+		<code>toArray( )</code>
+
+		<div class="description short">
+			
+<p>Get the array representation of an object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the array representation of an object</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Common.ToArrayInterface.html#_toArray">Guzzle\Common\ToArrayInterface::toArray()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clear" id="_clear">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clear">#</a>
+		<code>clear( )</code>
+
+		<div class="description short">
+			
+<p>Removes all key value pairs</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Removes all key value pairs</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAll" id="_getAll">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAll">#</a>
+		<code>getAll( <span>array <var>$keys</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Get all or a subset of matching key value pairs</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get all or a subset of matching key value pairs</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$keys</var></dt>
+					<dd><code>array</code><br>$keys Pass an array of keys to retrieve only a subset of key value pairs</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Returns an array of all matching key value pairs<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+			mixed|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code>get( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get a specific key value.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a specific key value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to retrieve.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed|null</code><br>Value of the key or NULL<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code>set( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set a key value pair</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set a key value pair</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to set</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>mixed</code><br>$value Value to set</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>Returns a reference to the object<br />
+				</div>
+
 
 
 
@@ -389,7 +652,7 @@ the end of the array.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="clear" id="_clear">
+	<tr data-order="remove" id="_remove">
 
 		<td class="attributes"><code>
 			 public 
@@ -399,284 +662,35 @@ the end of the array.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_clear">#</a>
-		<code>clear( )</code>
+		<a class="anchor" href="#_remove">#</a>
+		<code>remove( <span>string <var>$key</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Removes all key value pairs</p>
+<p>Remove a specific key value pair</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Removes all key value pairs</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="count" id="_count">
-
-		<td class="attributes"><code>
-			 public 
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_count">#</a>
-		<code>count( )</code>
-
-		<div class="description short">
-			
-<p>Return the number of keys</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Return the number of keys</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br />
-				</div>
-
-
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Countable.html#_count">Countable::count()</a></code></div>
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="filter" id="_filter">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_filter">#</a>
-		<code>filter( <span><code><a href="class-Closure.html">Closure</a></code> <var>$closure</var></span>, <span>boolean <var>$static</var> = <span class="php-keyword1">true</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Iterates over each key value pair in the collection passing them to the
-Closure. If the Closure function returns true, the current value from input is
-returned into the result Collection. The Closure must accept three parameters:
-(string) $key, (string) $value and return Boolean TRUE or FALSE for each
-value.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Iterates over each key value pair in the collection passing them to the
-Closure. If the Closure function returns true, the current value from input is
-returned into the result Collection. The Closure must accept three parameters:
-(string) $key, (string) $value and return Boolean TRUE or FALSE for each
-value.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$closure</var></dt>
-					<dd><code><code><a href="class-Closure.html">Closure</a></code></code><br>$closure Closure evaluation function</dd>
-					<dt><var>$static</var></dt>
-					<dd><code>boolean</code><br>$static Set to TRUE to use the same class as the return rather than returning a
-Collection</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getIterator" id="_getIterator">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getIterator">#</a>
-		<code>getIterator( )</code>
-
-		<div class="description short">
-			
-<p>Get an iterator object</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get an iterator object</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="get" id="_get">
-
-		<td class="attributes"><code>
-			 public 
-			mixed|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_get">#</a>
-		<code>get( <span>string <var>$key</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Get a specific key value.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get a specific key value.</p>
+<p>Remove a specific key value pair</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key Key to retrieve.</dd>
+					<dd><code>string</code><br>$key A key to remove</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed|null</code><br>Value of the key or NULL<br />
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
 				</div>
 
 
 
 
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getAll" id="_getAll">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getAll">#</a>
-		<code>getAll( <span>array <var>$keys</var> = <span class="php-keyword1">null</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Get all or a subset of matching key value pairs</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get all or a subset of matching key value pairs</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$keys</var></dt>
-					<dd><code>array</code><br>$keys Pass an array of keys to retrieve only a subset of key value pairs</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of all matching key value pairs<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="toArray" id="_toArray">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_toArray">#</a>
-		<code>toArray( )</code>
-
-		<div class="description short">
-			
-<p>Get the array representation of an object</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the array representation of an object</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.ToArrayInterface.html#_toArray">Guzzle\Common\ToArrayInterface::toArray()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -843,6 +857,134 @@ Collection</dd>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="replace" id="_replace">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_replace">#</a>
+		<code>replace( <span>array <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Replace the data of the object with the value of an array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Replace the data of the object with the value of an array</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><code>array</code><br>$data Associative array of data</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>Returns a reference to the object<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="merge" id="_merge">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_merge">#</a>
+		<code>merge( <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add and merge in a Collection or array of key value pair data.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add and merge in a Collection or array of key value pair data.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array</code><br>$data Associative array of key value pair data</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>Returns a reference to the object.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="overwriteWith" id="_overwriteWith">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_overwriteWith">#</a>
+		<code>overwriteWith( <span>array|<code><a href="class-Traversable.html">Traversable</a></code> <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Over write key value pairs in this collection with all of the data from an
+array or collection.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Over write key value pairs in this collection with all of the data from an
+array or collection.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><code>array|<code><a href="class-Traversable.html">Traversable</a></code></code><br>$data Values to override over this config</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="map" id="_map">
 
 		<td class="attributes"><code>
@@ -896,7 +1038,7 @@ Collection</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="merge" id="_merge">
+	<tr data-order="filter" id="_filter">
 
 		<td class="attributes"><code>
 			 public 
@@ -906,30 +1048,41 @@ Collection</dd>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_merge">#</a>
-		<code>merge( <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array <var>$data</var></span> )</code>
+		<a class="anchor" href="#_filter">#</a>
+		<code>filter( <span><code><a href="class-Closure.html">Closure</a></code> <var>$closure</var></span>, <span>boolean <var>$static</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Add and merge in a Collection or array of key value pair data.</p>
+<p>Iterates over each key value pair in the collection passing them to the
+Closure. If the Closure function returns true, the current value from input is
+returned into the result Collection. The Closure must accept three parameters:
+(string) $key, (string) $value and return Boolean TRUE or FALSE for each
+value.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Add and merge in a Collection or array of key value pair data.</p>
+<p>Iterates over each key value pair in the collection passing them to the
+Closure. If the Closure function returns true, the current value from input is
+returned into the result Collection. The Closure must accept three parameters:
+(string) $key, (string) $value and return Boolean TRUE or FALSE for each
+value.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$data</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array</code><br>$data Associative array of key value pair data</dd>
+					<dt><var>$closure</var></dt>
+					<dd><code><code><a href="class-Closure.html">Closure</a></code></code><br>$closure Closure evaluation function</dd>
+					<dt><var>$static</var></dt>
+					<dd><code>boolean</code><br>$static Set to TRUE to use the same class as the return rather than returning a
+Collection</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>Returns a reference to the object.<br />
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
 				</div>
 
 
@@ -942,37 +1095,24 @@ Collection</dd>
 
 		<td class="attributes"><code>
 			 public 
-			boolean
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetExists">#</a>
-		<code>offsetExists( <span>string <var>$offset</var></span> )</code>
+		<code>offsetExists( <span>mixed <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
-<p>ArrayAccess implementation of offsetExists()</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>ArrayAccess implementation of offsetExists()</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$offset</var></dt>
-					<dd><code>string</code><br>$offset Array key</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br />
-				</div>
 
 
 
@@ -986,37 +1126,24 @@ Collection</dd>
 
 		<td class="attributes"><code>
 			 public 
-			null|mixed
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetGet">#</a>
-		<code>offsetGet( <span>string <var>$offset</var></span> )</code>
+		<code>offsetGet( <span>mixed <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
-<p>ArrayAccess implementation of offsetGet()</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>ArrayAccess implementation of offsetGet()</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$offset</var></dt>
-					<dd><code>string</code><br>$offset Array key</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>null|mixed</code><br />
-				</div>
 
 
 
@@ -1037,27 +1164,16 @@ Collection</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetSet">#</a>
-		<code>offsetSet( <span>string <var>$offset</var></span>, <span>mixed <var>$value</var></span> )</code>
+		<code>offsetSet( <span>mixed <var>$offset</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
-<p>ArrayAccess implementation of offsetGet()</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>ArrayAccess implementation of offsetGet()</p>
 
 
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$offset</var></dt>
-					<dd><code>string</code><br>$offset Array key</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>mixed</code><br>$value Value to set</dd>
-				</dl></div>
 
 
 
@@ -1079,25 +1195,16 @@ Collection</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetUnset">#</a>
-		<code>offsetUnset( <span>string <var>$offset</var></span> )</code>
+		<code>offsetUnset( <span>mixed <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
-<p>ArrayAccess implementation of offsetUnset()</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>ArrayAccess implementation of offsetUnset()</p>
 
 
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$offset</var></dt>
-					<dd><code>string</code><br>$offset Array key</dd>
-				</dl></div>
 
 
 
@@ -1108,7 +1215,7 @@ Collection</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="remove" id="_remove">
+	<tr data-order="setPath" id="_setPath">
 
 		<td class="attributes"><code>
 			 public 
@@ -1118,25 +1225,29 @@ Collection</dd>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_remove">#</a>
-		<code>remove( <span>string <var>$key</var></span> )</code>
+		<a class="anchor" href="#_setPath">#</a>
+		<code>setPath( <span>string <var>$path</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Remove a specific key value pair</p>
+<p>Set a value into a nested array key. Keys will be created as needed to set
+the value.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Remove a specific key value pair</p>
+<p>Set a value into a nested array key. Keys will be created as needed to set
+the value.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key A key to remove</dd>
+					<dt><var>$path</var></dt>
+					<dd><code>string</code><br>$path Path to set</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>mixed</code><br>$value Value to set at the key</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1144,134 +1255,10 @@ Collection</dd>
 					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
 				</div>
 
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="replace" id="_replace">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_replace">#</a>
-		<code>replace( <span>array <var>$data</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Replace the data of the object with the value of an array</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Replace the data of the object with the value of an array</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$data</var></dt>
-					<dd><code>array</code><br>$data Associative array of data</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
+				<h4>Throws</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>Returns a reference to the object<br />
+					<code><code><a href="class-Guzzle.Common.Exception.RuntimeException.html">Guzzle\Common\Exception\RuntimeException</a></code></code><br>when trying to setPath using a nested path that travels through a scalar value<br />
 				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="set" id="_set">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_set">#</a>
-		<code>set( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Set a key value pair</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Set a key value pair</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key Key to set</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>mixed</code><br>$value Value to set</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>Returns a reference to the object<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="inject" id="_inject">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_inject">#</a>
-		<code>inject( <span>string <var>$input</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Inject configuration settings into an input string</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Inject configuration settings into an input string</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$input</var></dt>
-					<dd><code>string</code><br>$input Input to inject</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
 
 
 
@@ -1324,50 +1311,6 @@ from each diverging path.</p>
 				<h4>Returns</h4>
 				<div class="list">
 					<code>mixed|null</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="overwriteWith" id="_overwriteWith">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_overwriteWith">#</a>
-		<code>overwriteWith( <span>array|<code><a href="class-Traversable.html">Traversable</a></code> <var>$data</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Over write key value pairs in this collection with all of the data from an
-array or collection.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Over write key value pairs in this collection with all of the data from an
-array or collection.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$data</var></dt>
-					<dd><code>array|<code><a href="class-Traversable.html">Traversable</a></code></code><br>$data Values to override over this config</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
 				</div>
 
 

@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\Response | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -146,7 +147,6 @@
 				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
 				<li><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
-				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
 				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
 				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
@@ -222,6 +222,8 @@
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>Guzzle\Http\Message\Response</span></b>			
+			 implements 
+				<a href="class-Serializable.html"><span>Serializable</span></a>
 			
 			
 		</dd>
@@ -300,7 +302,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span>string <var>$statusCode</var></span>, <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code>__construct( <span>string <var>$statusCode</var></span>, <span><code><a href="class-Guzzle.Common.ToArrayInterface.html">Guzzle\Common\ToArrayInterface</a></code>|array <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -319,7 +321,7 @@
 					<dt><var>$statusCode</var></dt>
 					<dd><code>string</code><br>$statusCode The response status code (e.g. 200, 404, etc)</dd>
 					<dt><var>$headers</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array</code><br>$headers The response headers</dd>
+					<dd><code><code><a href="class-Guzzle.Common.ToArrayInterface.html">Guzzle\Common\ToArrayInterface</a></code>|array</code><br>$headers The response headers</dd>
 					<dt><var>$body</var></dt>
 					<dd><code>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body The body of the response</dd>
 				</dl></div>
@@ -331,6 +333,8 @@
 				</div>
 
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.AbstractMessage.html#___construct">Guzzle\Http\Message\AbstractMessage::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -350,14 +354,10 @@
 
 		<div class="description short">
 			
-<p>Convert the response object to a string</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Convert the response object to a string</p>
-
 
 
 
@@ -369,6 +369,68 @@
 
 
 
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="serialize" id="_serialize">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_serialize">#</a>
+		<code>serialize( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Serializable.html#_serialize">Serializable::serialize()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unserialize" id="_unserialize">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unserialize">#</a>
+		<code>unserialize( <span>mixed <var>$serialize</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Serializable.html#_unserialize">Serializable::unserialize()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -899,6 +961,43 @@ status code</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="calculateAge" id="_calculateAge">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_calculateAge">#</a>
+		<code>calculateAge( )</code>
+
+		<div class="description short">
+			
+<p>Calculate the age of the response</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Calculate the age of the response</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getAge" id="_getAge">
 
 		<td class="attributes"><code>
@@ -910,7 +1009,7 @@ status code</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAge">#</a>
-		<code>getAge( <span>boolean <var>$headerOnly</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code>getAge( )</code>
 
 		<div class="description short">
 			
@@ -924,12 +1023,6 @@ status code</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$headerOnly</var></dt>
-					<dd><code>boolean</code><br>$headerOnly Set to TRUE to only retrieve the Age header rather than calculating
-the age</dd>
-				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -1026,7 +1119,7 @@ allowed.<br />
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>|null
+			string
 			
 			</code>
 		</td>
@@ -1050,8 +1143,7 @@ allowed.<br />
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>|null</code><br>Returns a Header object that tells all caching mechanisms from server to client
-whether they may cache this object.<br />
+					<code>string</code><br />
 				</div>
 
 
@@ -1125,8 +1217,7 @@ whether they may cache this object.<br />
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string|null</code><br>Returns the type of encoding used on the data. One of compress, deflate, gzip,
-identity.<br />
+					<code>string|null</code><br />
 				</div>
 
 
@@ -1782,7 +1873,7 @@ after a specified period of time.<br />
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>|null
+			string|null
 			
 			</code>
 		</td>
@@ -1806,7 +1897,7 @@ after a specified period of time.<br />
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>|null</code><br>An HTTP cookie.<br />
+					<code>string|null</code><br>An HTTP cookie.<br />
 				</div>
 
 
@@ -1881,8 +1972,7 @@ present in the trailer of a message encoded with chunked transfer-coding.<br />
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string|null</code><br>The form of encoding used to safely transfer the entity to the user. Currently
-defined methods are: chunked<br />
+					<code>string|null</code><br>The form of encoding used to safely transfer the entity to the user<br />
 				</div>
 
 
@@ -1958,8 +2048,7 @@ origin server.<br />
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string|null</code><br>Informs the client of proxies through which the response was sent. (e.g. 1.0
-fred, 1.1 nowhere.com (Apache/1.1))<br />
+					<code>string|null</code><br>Informs the client of proxies through which the response was sent.<br />
 				</div>
 
 
@@ -1996,8 +2085,7 @@ fred, 1.1 nowhere.com (Apache/1.1))<br />
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string|null</code><br>A general warning about possible problems with the entity body. (e.g. 199
-Miscellaneous warning)<br />
+					<code>string|null</code><br>A general warning about possible problems with the entity body<br />
 				</div>
 
 
@@ -2035,7 +2123,7 @@ Miscellaneous warning)<br />
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string|null</code><br>Indicates the authentication scheme that should be used to access the requested
-entity (e.g. Basic)<br />
+entity<br />
 				</div>
 
 
@@ -2281,13 +2369,13 @@ entity (e.g. Basic)<br />
 
 		<div class="description short">
 			
-<p>Check if the response can be cached</p>
+<p>Check if the response can be cached based on the response headers</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Check if the response can be cached</p>
+<p>Check if the response can be cached based on the response headers</p>
 
 
 
@@ -2673,23 +2761,17 @@ URL)</p>
 	<caption>Methods inherited from <a href="class-Guzzle.Http.Message.AbstractMessage.html#methods">Guzzle\Http\Message\AbstractMessage</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_addCacheControlDirective">addCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_addHeader">addHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_addHeaders">addHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_changedHeader">changedHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getCacheControlDirective">getCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeader">getHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaderLines">getHeaderLines()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaders">getHeaders()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getParams">getParams()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getTokenizedHeader">getTokenizedHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_hasCacheControlDirective">hasCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_hasHeader">hasHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_removeCacheControlDirective">removeCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_removeHeader">removeHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_setHeader">setHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_setHeaders">setHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_setTokenizedHeader">setTokenizedHeader()</a>
+			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_setHeaderFactory">setHeaderFactory()</a>, 
+			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_setHeaders">setHeaders()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -2784,32 +2866,6 @@ URL)</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="protocol" id="$protocol">
-		<td class="attributes"><code>
-			protected  
-			string
-		</code></td>
-
-		<td class="name">
-<var>$protocol</var>		</td>
-		<td class="value"><code><span class="php-quote">'HTTP'</span></code></td>
-		<td class="description"><div>
-			<a href="#$protocol" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Response protocol</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Response protocol</p>
-
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="info" id="$info">
 		<td class="attributes"><code>
 			protected  
@@ -2831,58 +2887,6 @@ URL)</p>
 			<div class="description detailed hidden">
 				
 <p>Information about the request</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="request" id="$request">
-		<td class="attributes"><code>
-			protected  
-			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>|callable
-		</code></td>
-
-		<td class="name">
-<var>$request</var>		</td>
-		<td class="value"><code><span class="php-keyword1">null</span></code></td>
-		<td class="description"><div>
-			<a href="#$request" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Request object that may or may not be set</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Request object that may or may not be set</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="cacheResponseCodes" id="$cacheResponseCodes">
-		<td class="attributes"><code>
-			protected  
-			array
-		</code></td>
-
-		<td class="name">
-<var>$cacheResponseCodes</var>		</td>
-		<td class="value"><code><span class="php-keyword1">array</span>(<span class="php-num">200</span>, <span class="php-num">203</span>, <span class="php-num">206</span>, <span class="php-num">300</span>, <span class="php-num">301</span>, <span class="php-num">410</span>)</code></td>
-		<td class="description"><div>
-			<a href="#$cacheResponseCodes" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Cacheable response codes (see RFC 2616:13.4)</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Cacheable response codes (see RFC 2616:13.4)</p>
 
 
 			</div>
@@ -2914,14 +2918,42 @@ URL)</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="cacheResponseCodes" id="$cacheResponseCodes">
+		<td class="attributes"><code>
+			protected static 
+			array
+		</code></td>
+
+		<td class="name">
+<var>$cacheResponseCodes</var>		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>(<span class="php-num">200</span>, <span class="php-num">203</span>, <span class="php-num">206</span>, <span class="php-num">300</span>, <span class="php-num">301</span>, <span class="php-num">410</span>)</code></td>
+		<td class="description"><div>
+			<a href="#$cacheResponseCodes" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Cacheable response codes (see RFC 2616:13.4)</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Cacheable response codes (see RFC 2616:13.4)</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-Guzzle.Http.Message.AbstractMessage.html#properties">Guzzle\Http\Message\AbstractMessage</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-Guzzle.Http.Message.AbstractMessage.html#$headerFactory"><var>$headerFactory</var></a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#$headers"><var>$headers</var></a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#$params"><var>$params</var></a>, 
+			<a href="class-Guzzle.Http.Message.AbstractMessage.html#$protocol"><var>$protocol</var></a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#$protocolVersion"><var>$protocolVersion</var></a>
 		</code></td>
 	</tr>

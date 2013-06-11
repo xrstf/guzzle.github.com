@@ -5,7 +5,6 @@
 
     getting-started/overview
     getting-started/installation
-    getting-started/faq
 
     http-client/client
     http-client/request
@@ -36,6 +35,8 @@
     iterators/guzzle-iterators
 
     testing/unit-testing.rst
+    http-client/uri-templates
+    getting-started/faq
 
 ====================
 Guzzle Documentation
@@ -67,7 +68,7 @@ The HTTP client
    * - :doc:`http-client/response`
      - :doc:`http-client/entity-bodies`
    * - :doc:`http-client/http-redirects`
-     -
+     - :doc:`http-client/uri-templates`
 
 Plugins
 -------

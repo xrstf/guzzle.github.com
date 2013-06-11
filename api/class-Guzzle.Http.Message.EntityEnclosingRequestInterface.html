@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Http\Message\EntityEnclosingRequestInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -146,7 +147,6 @@
 				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
 				<li><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
-				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
 				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
 				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
@@ -255,7 +255,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setBody">#</a>
-		<code>setBody( <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span>, <span>string <var>$contentType</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$tryChunkedTransfer</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code>setBody( <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span>, <span>string <var>$contentType</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -276,8 +276,6 @@
 					<dt><var>$contentType</var></dt>
 					<dd><code>string</code><br>$contentType Content-Type to set. Leave null to use an existing Content-Type or
 to guess the Content-Type</dd>
-					<dt><var>$tryChunkedTransfer</var></dt>
-					<dd><code>boolean</code><br>$tryChunkedTransfer Try to use chunked Transfer-Encoding</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -808,7 +806,6 @@ disable redirects.</dd>
 		<td><code>
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#___toString">__toString()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_addCookie">addCookie()</a>, 
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#_canCache">canCache()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_getClient">getClient()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_getCookie">getCookie()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_getCookies">getCookies()</a>, 
@@ -827,15 +824,11 @@ disable redirects.</dd>
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_getState">getState()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_getUrl">getUrl()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_getUsername">getUsername()</a>, 
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#_isRedirect">isRedirect()</a>, 
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#_isResponseBodyRepeatable">isResponseBodyRepeatable()</a>, 
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#_receiveResponseHeader">receiveResponseHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_removeCookie">removeCookie()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_send">send()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setAuth">setAuth()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setClient">setClient()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setHost">setHost()</a>, 
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setIsRedirect">setIsRedirect()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setPath">setPath()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setPort">setPort()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setProtocolVersion">setProtocolVersion()</a>, 
@@ -843,7 +836,8 @@ disable redirects.</dd>
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setResponseBody">setResponseBody()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setScheme">setScheme()</a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setState">setState()</a>, 
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setUrl">setUrl()</a>
+			<a href="class-Guzzle.Http.Message.RequestInterface.html#_setUrl">setUrl()</a>, 
+			<a href="class-Guzzle.Http.Message.RequestInterface.html#_startResponse">startResponse()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -863,23 +857,17 @@ disable redirects.</dd>
 	<caption>Methods inherited from <a href="class-Guzzle.Http.Message.MessageInterface.html#methods">Guzzle\Http\Message\MessageInterface</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_addCacheControlDirective">addCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_addHeader">addHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_addHeaders">addHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getCacheControlDirective">getCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeader">getHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeaderLines">getHeaderLines()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeaders">getHeaders()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getParams">getParams()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getRawHeaders">getRawHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_getTokenizedHeader">getTokenizedHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_hasCacheControlDirective">hasCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_hasHeader">hasHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_removeCacheControlDirective">removeCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_removeHeader">removeHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setHeader">setHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setHeaders">setHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setTokenizedHeader">setTokenizedHeader()</a>
+			<a href="class-Guzzle.Http.Message.MessageInterface.html#_setHeaders">setHeaders()</a>
 		</code></td>
 	</tr>
 	</table>

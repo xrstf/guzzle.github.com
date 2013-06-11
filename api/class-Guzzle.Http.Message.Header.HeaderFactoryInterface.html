@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Namespace Guzzle\Plugin\CurlAuth | Guzzle</title>
+	<title>Interface Guzzle\Http\Message\Header\HeaderFactoryInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -46,14 +46,17 @@
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -74,7 +77,7 @@
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li>
-				<li class="active"><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
 						</li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li class="active"><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -143,9 +144,17 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Plugin.CurlAuth.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.CacheControl.html">CacheControl</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.HeaderCollection.html">HeaderCollection</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.HeaderFactory.html">HeaderFactory</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.Link.html">Link</a></li>
 			</ul>
 
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Http.Message.Header.HeaderFactoryInterface.html">HeaderFactoryInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html">HeaderInterface</a></li>
+			</ul>
 
 
 
@@ -170,9 +179,10 @@
 			<li>
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
-			<li class="active">
-<span>Namespace</span>			</li>
 			<li>
+				<a href="namespace-Guzzle.Http.Message.Header.html" title="Summary of Guzzle\Http\Message\Header"><span>Namespace</span></a>
+			</li>
+			<li class="active">
 <span>Class</span>			</li>
 		</ul>
 		<ul>
@@ -184,19 +194,99 @@
 		</ul>
 	</div>
 
-<div id="content" class="namespace">
-	<h1>Namespace <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Plugin.html">Plugin</a>\CurlAuth</h1>
+<div id="content" class="class">
+	<h1>Interface HeaderFactoryInterface</h1>
+
+
+	<div class="description">
+	
+<p>Interface for creating headers</p>
+
+	</div>
 
 
 
-<table class="summary" id="classes">
-<caption>Classes summary</caption>
-<tr>
-	<td class="name"><a href="class-Guzzle.Plugin.CurlAuth.CurlAuthPlugin.html">CurlAuthPlugin</a></td>
-	<td>Adds specified curl auth to all requests sent from a client. Defaults to
-CURLAUTH_BASIC if none supplied.</td>
-</tr>
-</table>
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Guzzle.Http.Message.Header.HeaderFactory.html">Guzzle\Http\Message\Header\HeaderFactory</a>
+	</div>
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Message.html">Message</a>\<a href="namespace-Guzzle.Http.Message.Header.html">Header</a><br />
+		
+
+		<b>Located at</b> Guzzle/Http/Message/Header/HeaderFactoryInterface.php<br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="createHeader" id="_createHeader">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html">Guzzle\Http\Message\Header\HeaderInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createHeader">#</a>
+		<code>createHeader( <span>string <var>$header</var></span>, <span>string <var>$value</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a header from a header name and a single value</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a header from a header name and a single value</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$header</var></dt>
+					<dd><code>string</code><br>$header Name of the header to create</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>string</code><br>$value Value to set on the header</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html">Guzzle\Http\Message\Header\HeaderInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

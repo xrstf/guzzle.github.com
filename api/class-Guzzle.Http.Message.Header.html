@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\Header | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -146,7 +147,6 @@
 				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
-				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
 				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
 				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
@@ -214,17 +214,18 @@
 		<dd style="padding-left:0px">
 <b><span>Guzzle\Http\Message\Header</span></b>			
 			 implements 
-				<a href="class-Guzzle.Common.ToArrayInterface.html"><span>Guzzle\Common\ToArrayInterface</span></a>, 
-			
-				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
-			
-				<a href="class-Countable.html"><span>Countable</span></a>
+				<a href="class-Guzzle.Http.Message.Header.HeaderInterface.html"><span>Guzzle\Http\Message\Header\HeaderInterface</span></a>
 			
 			
 		</dd>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-Guzzle.Http.Message.Header.CacheControl.html">Guzzle\Http\Message\Header\CacheControl</a>, 
+			<a href="class-Guzzle.Http.Message.Header.Link.html">Guzzle\Http\Message\Header\Link</a>
+	</div>
 
 
 
@@ -255,18 +256,14 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span>string <var>$header</var></span>, <span>array <var>$values</var> = <span class="php-keyword1">array</span>()</span>, <span>string <var>$glue</var> = <span class="php-quote">', '</span></span> )</code>
+		<code>__construct( <span>string <var>$header</var></span>, <span>array|string <var>$values</var> = <span class="php-keyword1">array</span>()</span>, <span>string <var>$glue</var> = <span class="php-quote">','</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Construct a new header object</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Construct a new header object</p>
-
 
 
 				<h4>Parameters</h4>
@@ -274,7 +271,7 @@
 					<dt><var>$header</var></dt>
 					<dd><code>string</code><br>$header Name of the header</dd>
 					<dt><var>$values</var></dt>
-					<dd><code>array</code><br>$values Values of the header</dd>
+					<dd><code>array|string</code><br>$values Values of the header as an array or a scalar</dd>
 					<dt><var>$glue</var></dt>
 					<dd><code>string</code><br>$glue Glue used to combine multiple values into a string</dd>
 				</dl></div>
@@ -320,6 +317,8 @@
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#___toString">Guzzle\Http\Message\Header\HeaderInterface::__toString()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -334,7 +333,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_add">#</a>
-		<code>add( <span>string <var>$value</var></span>, <span>string <var>$header</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code>add( <span>string <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -351,9 +350,7 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$value</var></dt>
-					<dd><code>string</code><br>$value Value to add</dd>
-					<dt><var>$header</var></dt>
-					<dd><code>string</code><br>$header The exact header casing to add with. Defaults to the name of the header.</dd>
+					<dd><code>string</code><br>$value Value to add to the header</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -364,6 +361,8 @@
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_add">Guzzle\Http\Message\Header\HeaderInterface::add()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -401,6 +400,52 @@
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_getName">Guzzle\Http\Message\Header\HeaderInterface::getName()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setName" id="_setName">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setName">#</a>
+		<code>setName( <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Change the name of the header</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Change the name of the header</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br>$name Name to change to</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_setName">Guzzle\Http\Message\Header\HeaderInterface::setName()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -443,6 +488,8 @@
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_setGlue">Guzzle\Http\Message\Header\HeaderInterface::setGlue()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -480,6 +527,8 @@
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_getGlue">Guzzle\Http\Message\Header\HeaderInterface::getGlue()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -494,80 +543,27 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_normalize">#</a>
-		<code>normalize( <span>boolean <var>$explodeOnGlue</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code>normalize( )</code>
 
 		<div class="description short">
 			
-<p>Normalize the header to be a single header with an array of values</p>
+<p>Normalize the header to be a single header with an array of values.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Normalize the header to be a single header with an array of values</p>
+<p>Normalize the header to be a single header with an array of values.</p>
+
+<p>If any values of the header contains the glue string value (e.g. ","), then
+the value will be exploded into multiple entries in the header.</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$explodeOnGlue</var></dt>
-					<dd><code>boolean</code><br>$explodeOnGlue Set to true to explode each header value on the glue of the
-header</dd>
-				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="hasExactHeader" id="_hasExactHeader">
-
-		<td class="attributes"><code>
-			 public 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_hasExactHeader">#</a>
-		<code>hasExactHeader( <span>string <var>$header</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Check if a particular case variation is present in the header Example: A
-header exists on a message for 'Foo', and 'foo'. The Header object will contain
-all of the values of 'Foo' and all of the values of 'foo'. You can use this
-method to check to see if a header was set using 'foo' (true), 'Foo' (true),
-'FOO' (false), etc.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Check if a particular case variation is present in the header Example: A
-header exists on a message for 'Foo', and 'foo'. The Header object will contain
-all of the values of 'Foo' and all of the values of 'foo'. You can use this
-method to check to see if a header was set using 'foo' (true), 'Foo' (true),
-'FOO' (false), etc.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$header</var></dt>
-					<dd><code>string</code><br>$header Exact header to check for</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br />
 				</div>
 
 
@@ -587,7 +583,7 @@ method to check to see if a header was set using 'foo' (true), 'Foo' (true),
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hasValue">#</a>
-		<code>hasValue( <span>string <var>$searchValue</var></span>, <span>boolean <var>$caseInsensitive</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code>hasValue( <span>string <var>$searchValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -605,8 +601,6 @@ method to check to see if a header was set using 'foo' (true), 'Foo' (true),
 				<div class="list"><dl>
 					<dt><var>$searchValue</var></dt>
 					<dd><code>string</code><br>$searchValue Value to search for</dd>
-					<dt><var>$caseInsensitive</var></dt>
-					<dd><code>boolean</code><br>$caseInsensitive Set to TRUE to use a case insensitive search</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -617,6 +611,8 @@ method to check to see if a header was set using 'foo' (true), 'Foo' (true),
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_hasValue">Guzzle\Http\Message\Header\HeaderInterface::hasValue()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -659,6 +655,8 @@ method to check to see if a header was set using 'foo' (true), 'Foo' (true),
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_removeValue">Guzzle\Http\Message\Header\HeaderInterface::removeValue()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -677,15 +675,13 @@ method to check to see if a header was set using 'foo' (true), 'Foo' (true),
 
 		<div class="description short">
 			
-<p>Get all of the header values as a flat array Get the array representation of
-an object</p>
+<p>Get the array representation of an object</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get all of the header values as a flat array Get the array representation of
-an object</p>
+<p>Get the array representation of an object</p>
 
 
 
@@ -703,52 +699,11 @@ an object</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="raw" id="_raw">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_raw">#</a>
-		<code>raw( )</code>
-
-		<div class="description short">
-			
-<p>Get the raw data array of the headers. This array is represented as an
-associative array of the various cases that might be stored in the header and an
-array of values associated with each case variation.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the raw data array of the headers. This array is represented as an
-associative array of the various cases that might be stored in the header and an
-array of values associated with each case variation.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="count" id="_count">
 
 		<td class="attributes"><code>
 			 public 
-			integer
+			
 			
 			</code>
 		</td>
@@ -759,21 +714,13 @@ array of values associated with each case variation.</p>
 
 		<div class="description short">
 			
-<p>Returns the total number of header values</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns the total number of header values</p>
 
 
 
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br />
-				</div>
 
 
 
@@ -787,7 +734,7 @@ array of values associated with each case variation.</p>
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-ArrayIterator.html">ArrayIterator</a></code>
+			
 			
 			</code>
 		</td>
@@ -798,27 +745,106 @@ array of values associated with each case variation.</p>
 
 		<div class="description short">
 			
-<p>Get an iterator that can be used to easily iterate over each header value</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get an iterator that can be used to easily iterate over each header value</p>
 
 
 
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-ArrayIterator.html">ArrayIterator</a></code></code><br />
-				</div>
 
 
 
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="parseParams" id="_parseParams">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parseParams">#</a>
+		<code>parseParams( )</code>
+
+		<div class="description short">
+			
+<p>Parse a header containing ";" separated data into an array of associative
+arrays representing the header key value pair data of the header. When a
+parameter does not contain a value, but just contains a key, this function will
+inject a key with a '' string value.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse a header containing ";" separated data into an array of associative
+arrays representing the header key value pair data of the header. When a
+parameter does not contain a value, but just contains a key, this function will
+inject a key with a '' string value.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.Header.HeaderInterface.html#_parseParams">Guzzle\Http\Message\Header\HeaderInterface::parseParams()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="trimHeader" id="_trimHeader">
+
+		<td class="attributes"><code>
+			 protected 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_trimHeader">#</a>
+		<code>trimHeader( <span>mixed <var>$str</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Trim a header by removing excess spaces and wrapping quotes</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Trim a header by removing excess spaces and wrapping quotes</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$str</var></dt>
+					<dd><code>mixed</code><br>$str</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
 		</div>
 		</div></td>
 	</tr>
@@ -892,50 +918,6 @@ array of values associated with each case variation.</p>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
 			<a href="#$glue" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="stringCache" id="$stringCache">
-		<td class="attributes"><code>
-			protected  
-			mixed
-		</code></td>
-
-		<td class="name">
-<var>$stringCache</var>		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$stringCache" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="arrayCache" id="$arrayCache">
-		<td class="attributes"><code>
-			protected  
-			mixed
-		</code></td>
-
-		<td class="name">
-<var>$arrayCache</var>		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$arrayCache" class="anchor">#</a>
 
 			<div class="description short">
 				

@@ -2,6 +2,15 @@
 cURL authentication plugin
 ==========================
 
+.. warning::
+
+    The CurlAuthPlugin is deprecated. You should use the `auth` parameter of a client to add authorization headers to
+    every request created by a client.
+
+    .. code-block:: php
+
+        $client->setDefaultOption('auth', array('username', 'password', 'Basic|Digest|NTLM|Any'));
+
 If your web service client requires basic authorization, then you can use the CurlAuthPlugin to easily add an
 Authorization header to each request sent by the client.
 

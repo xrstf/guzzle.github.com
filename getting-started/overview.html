@@ -150,6 +150,16 @@ requests and the redundancy out of creating web service clients.</p>
 <li>Resource iterators for traversing paginated resources</li>
 <li>Batching for sending a large number of requests as efficiently as possible</li>
 </ul>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Really simple using a static facade</span>
+<span class="nx">Guzzle\Http\StaticClient</span><span class="o">::</span><span class="na">mount</span><span class="p">();</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nx">Guzzle</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://guzzlephp.org&#39;</span><span class="p">);</span>
+
+<span class="c1">// More control using a client class</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;http://guzzlephp.org&#39;</span><span class="p">);</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="license">
 <h3>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>

@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
     <link rel="up" title="Guzzle Documentation" href="../docs.html" />
-    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="next" title="The Guzzle HTTP client" href="../http-client/client.html" />
     <link rel="prev" title="Welcome to Guzzle" href="overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../_static/bootstrap-responsive.min.css" />
@@ -66,7 +66,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="faq.html" title="FAQ"
+          <a href="../http-client/client.html" title="The Guzzle HTTP client"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="overview.html" title="Welcome to Guzzle"
@@ -84,7 +84,7 @@
           <span class="divider">/</span>
           
         </li>
-          <li><a href="faq.html" title="next chapter (use the right arrow)">FAQ &rarr;</a></li>
+          <li><a href="../http-client/client.html" title="next chapter (use the right arrow)">The Guzzle HTTP client &rarr;</a></li>
       </ul>
     </div>
   
@@ -152,35 +152,18 @@
 <h3>Composer<a class="headerlink" href="#composer" title="Permalink to this headline">¶</a></h3>
 <p>The recommneded way to install Guzzle is with <a class="reference external" href="http://getcomposer.org">Composer</a>. Composer is a dependency
 management tool for PHP that allows you to declare the dependencies your project needs and installs them into your
-project. In order to use Guzzle with Composer, you must do the following:</p>
-<ol class="arabic">
-<li><p class="first">Add <tt class="docutils literal"><span class="pre">&quot;guzzle/guzzle&quot;</span></tt> as a dependency in your project's <tt class="docutils literal"><span class="pre">composer.json</span></tt> file.</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;require&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;guzzle/guzzle&quot;</span><span class="o">:</span> <span class="s2">&quot;3.5.*&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+project.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Install Composer</span>
+curl -sS https://getcomposer.org/installer | php
+
+<span class="c"># Add Guzzle as a dependency</span>
+php composer.phar require guzzle/guzzle:~3.7
 </pre></div>
 </div>
-</li>
-<li><p class="first">Download and install Composer.</p>
-<div class="highlight-sh"><div class="highlight"><pre>curl -s <span class="s2">&quot;http://getcomposer.org/installer&quot;</span> | php
+<p>After installing, you need to require Composer's autoloader:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="k">require</span> <span class="s1">&#39;vendor/autoload.php&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-</li>
-<li><p class="first">Install your dependencies.</p>
-<div class="highlight-sh"><div class="highlight"><pre>php composer.phar install
-</pre></div>
-</div>
-</li>
-<li><p class="first">Require Composer's autoloader.</p>
-<p>Composer also prepares an autoload file that's capable of autoloading all of the classes in any of the libraries
-that it downloads. To use it, just add the following line to your code's bootstrap process.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="k">require</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">;</span>
-</pre></div>
-</div>
-</li>
-</ol>
 <p>You can find out more on how to install Composer, configure autoloading, and other best-practices for defining
 dependencies at <a class="reference external" href="http://getcomposer.org">getcomposer.org</a>.</p>
 <div class="section" id="using-only-specific-parts-of-guzzle">
@@ -237,31 +220,28 @@ packages available through Composer.</p>
 <tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-cookie">guzzle/plugin-cookie</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Cookie</span></tt></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-curlauth">guzzle/plugin-curlauth</a></td>
-<td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\CurlAuth</span></tt></td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-error-response">guzzle/plugin-error-response</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-error-response">guzzle/plugin-error-response</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\ErrorResponse</span></tt></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-history">guzzle/plugin-history</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-history">guzzle/plugin-history</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\History</span></tt></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-log">guzzle/plugin-log</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-log">guzzle/plugin-log</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Log</span></tt></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-md5">guzzle/plugin-md5</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-md5">guzzle/plugin-md5</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Md5</span></tt></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-mock">guzzle/plugin-mock</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-mock">guzzle/plugin-mock</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Mock</span></tt></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-oauth">guzzle/plugin-oauth</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/plugin-oauth">guzzle/plugin-oauth</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Plugin\Oauth</span></tt></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/service">guzzle/service</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/service">guzzle/service</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Service</span></tt></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://packagist.org/packages/guzzle/stream">guzzle/stream</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://packagist.org/packages/guzzle/stream">guzzle/stream</a></td>
 <td>Provides <tt class="docutils literal"><span class="pre">Guzzle\Stream</span></tt></td>
 </tr>
 </tbody>
@@ -288,7 +268,7 @@ pear install guzzle/guzzle
 </pre></div>
 </div>
 <p>You can install a specific version of Guzzle by providing a version number suffix:</p>
-<div class="highlight-bash"><div class="highlight"><pre>pear install guzzle/guzzle-3.5.0
+<div class="highlight-bash"><div class="highlight"><pre>pear install guzzle/guzzle-3.7.0
 </pre></div>
 </div>
 </div>
@@ -312,8 +292,11 @@ Composer:</p>
 <h2>Framework integrations<a class="headerlink" href="#framework-integrations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="using-guzzle-with-symfony">
 <h3>Using Guzzle with Symfony<a class="headerlink" href="#using-guzzle-with-symfony" title="Permalink to this headline">¶</a></h3>
-<p>A <a class="reference external" href="https://github.com/ddeboer/GuzzleBundle">Guzzle Symfony2 bundle</a> is available on github thanks to
-<a class="reference external" href="https://github.com/ddeboer">ddeboer</a></p>
+<p>Bundles are available on github:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/ddeboer/GuzzleBundle">DdeboerGuzzleBundle</a> for Guzzle 2</li>
+<li><a class="reference external" href="https://github.com/misd-service-development/guzzle-bundle">MisdGuzzleBundle</a> for Guzzle 3</li>
+</ul>
 </div>
 <div class="section" id="using-guzzle-with-silex">
 <h3>Using Guzzle with Silex<a class="headerlink" href="#using-guzzle-with-silex" title="Permalink to this headline">¶</a></h3>
@@ -334,7 +317,7 @@ Composer:</p>
           <span class="divider">/</span>
           
         </li>
-          <li><a href="faq.html" title="next chapter (use the right arrow)">FAQ &rarr;</a></li>
+          <li><a href="../http-client/client.html" title="next chapter (use the right arrow)">The Guzzle HTTP client &rarr;</a></li>
       </ul>
     </div>
   
@@ -366,7 +349,7 @@ Composer:</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="faq.html" title="FAQ"
+          <a href="../http-client/client.html" title="The Guzzle HTTP client"
              >next</a> |</li>
         <li class="right" >
           <a href="overview.html" title="Welcome to Guzzle"
@@ -400,7 +383,7 @@ Composer:</p>
             
           } else if (e.keyCode == 39) {
             
-            window.location = 'faq.html';
+            window.location = '../http-client/client.html';
             return false;
             
           }

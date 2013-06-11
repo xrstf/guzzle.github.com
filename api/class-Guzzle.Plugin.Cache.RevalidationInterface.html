@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Plugin\Cache\RevalidationInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -144,9 +145,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">CachePlugin</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html">CallbackCacheKeyProvider</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html">CallbackCanCacheStrategy</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheKeyProvider.html">DefaultCacheKeyProvider</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheStorage.html">DefaultCacheStorage</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultCanCacheStrategy.html">DefaultCanCacheStrategy</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html">DefaultRevalidation</a></li>
@@ -156,7 +155,6 @@
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">CacheKeyProviderInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">CacheStorageInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CanCacheStrategyInterface.html">CanCacheStrategyInterface</a></li>
 				<li class="active"><a href="class-Guzzle.Plugin.Cache.RevalidationInterface.html">RevalidationInterface</a></li>
@@ -216,11 +214,14 @@
 
 	<div>
 		<h4>Direct known implementers</h4>
-			<a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html">Guzzle\Plugin\Cache\DefaultRevalidation</a>, 
+			<a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html">Guzzle\Plugin\Cache\DefaultRevalidation</a>
+	</div>
+
+	<div>
+		<h4>Indirect known implementers</h4>
 			<a href="class-Guzzle.Plugin.Cache.DenyRevalidation.html">Guzzle\Plugin\Cache\DenyRevalidation</a>, 
 			<a href="class-Guzzle.Plugin.Cache.SkipRevalidation.html">Guzzle\Plugin\Cache\SkipRevalidation</a>
 	</div>
-
 
 
 
@@ -273,6 +274,50 @@
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br>Returns true if the request can be cached<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="shouldRevalidate" id="_shouldRevalidate">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_shouldRevalidate">#</a>
+		<code>shouldRevalidate( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Returns true if the response should be revalidated</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns true if the response should be revalidated</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to check</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response to check</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
 				</div>
 
 

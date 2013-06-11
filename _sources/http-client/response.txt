@@ -130,3 +130,12 @@ Here's an example using the Twitter Streaming API to track the keyword "beiber":
         // JSON decode the line of data
         $data = json_decode($line, true);
     }
+
+You can use the `stream` request option when using a static client to more easily create a streaming response.
+
+.. code-block:: php
+
+    $stream = Guzzle::get('http://guzzlephp.org', array('stream' => true));
+    while (!$stream->feof()) {
+        echo $stream->readLine();
+    }

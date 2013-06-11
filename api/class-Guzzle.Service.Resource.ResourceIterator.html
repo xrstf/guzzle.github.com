@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Service\Resource\ResourceIterator | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -148,7 +149,6 @@
 				<li><a href="class-Guzzle.Service.Resource.MapResourceIteratorFactory.html">MapResourceIteratorFactory</a></li>
 				<li><a href="class-Guzzle.Service.Resource.Model.html">Model</a></li>
 				<li class="active"><a href="class-Guzzle.Service.Resource.ResourceIterator.html">ResourceIterator</a></li>
-				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorApplyBatched.html">ResourceIteratorApplyBatched</a></li>
 				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorClassFactory.html">ResourceIteratorClassFactory</a></li>
 			</ul>
 
@@ -301,14 +301,10 @@
 
 		<div class="description short">
 			
-<p>This should only be invoked by a ClientInterface object.</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>This should only be invoked by a ClientInterface object.</p>
-
 
 
 				<h4>Parameters</h4>
@@ -394,6 +390,9 @@ number of requests)</p>
 			
 <p>Attempt to limit the total number of resources returned by the iterator.</p>
 
+<p>You may still receive more items than you specify. Set to 0 to specify no
+limit.</p>
+
 
 
 				<h4>Parameters</h4>
@@ -439,6 +438,10 @@ iterator.</p>
 			
 <p>Attempt to limit the total number of resources retrieved per request by the
 iterator.</p>
+
+<p>The iterator may return more than you specify in the page size argument
+depending on the service and underlying command implementation. Set to 0 to
+specify no page size limitation.</p>
 
 
 
@@ -555,7 +558,7 @@ iterator.</p>
 
 		<td class="attributes"><code>
 			 public 
-			mixed
+			
 			
 			</code>
 		</td>
@@ -566,21 +569,13 @@ iterator.</p>
 
 		<div class="description short">
 			
-<p>Return the current element.</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Return the current element.</p>
 
 
 
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>Returns the current element.<br />
-				</div>
 
 
 
@@ -594,7 +589,7 @@ iterator.</p>
 
 		<td class="attributes"><code>
 			 public 
-			mixed
+			
 			
 			</code>
 		</td>
@@ -605,21 +600,13 @@ iterator.</p>
 
 		<div class="description short">
 			
-<p>Return the key of the current element.</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Return the key of the current element.</p>
 
 
 
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br />
-				</div>
 
 
 
@@ -633,7 +620,7 @@ iterator.</p>
 
 		<td class="attributes"><code>
 			 public 
-			integer
+			
 			
 			</code>
 		</td>
@@ -644,21 +631,13 @@ iterator.</p>
 
 		<div class="description short">
 			
-<p>Return the total number of items that have been retrieved thus far.</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Return the total number of items that have been retrieved thus far.</p>
 
 
 
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br />
-				</div>
 
 
 
@@ -744,7 +723,7 @@ iterator.</p>
 
 		<td class="attributes"><code>
 			 public 
-			boolean
+			
 			
 			</code>
 		</td>
@@ -755,21 +734,13 @@ iterator.</p>
 
 		<div class="description short">
 			
-<p>Check if there is a current element after calls to rewind() or next().</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Check if there is a current element after calls to rewind() or next().</p>
 
 
 
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br>Returns TRUE if the current element is valid or FALSE<br />
-				</div>
 
 
 
@@ -794,14 +765,10 @@ iterator.</p>
 
 		<div class="description short">
 			
-<p>Move forward to next element and may trigger subsequent requests</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Move forward to next element and may trigger subsequent requests</p>
-
 
 
 
@@ -1266,15 +1233,13 @@ implement.</p>
 
 			<div class="description short">
 				
-<p>Whether or not the current value is known to be invalid (e.g. when
-sendRequest() returns 0 resources)</p>
+<p>Whether or not the current value is known to be invalid</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Whether or not the current value is known to be invalid (e.g. when
-sendRequest() returns 0 resources)</p>
+<p>Whether or not the current value is known to be invalid</p>
 
 
 			</div>

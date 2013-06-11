@@ -23,6 +23,17 @@ Features at a glance
 - Resource iterators for traversing paginated resources
 - Batching for sending a large number of requests as efficiently as possible
 
+.. code-block:: php
+
+    // Really simple using a static facade
+    Guzzle\Http\StaticClient::mount();
+    $response = Guzzle::get('http://guzzlephp.org');
+
+    // More control using a client class
+    $client = new \Guzzle\Http\Client('http://guzzlephp.org');
+    $request = $client->get('/');
+    $response = $request->send();
+
 License
 -------
 

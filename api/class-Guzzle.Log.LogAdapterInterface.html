@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Log\LogAdapterInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -147,7 +148,6 @@
 				<li><a href="class-Guzzle.Log.ArrayLogAdapter.html">ArrayLogAdapter</a></li>
 				<li><a href="class-Guzzle.Log.ClosureLogAdapter.html">ClosureLogAdapter</a></li>
 				<li><a href="class-Guzzle.Log.MessageFormatter.html">MessageFormatter</a></li>
-				<li><a href="class-Guzzle.Log.MonologLogAdapter.html">MonologLogAdapter</a></li>
 				<li><a href="class-Guzzle.Log.PsrLogAdapter.html">PsrLogAdapter</a></li>
 				<li><a href="class-Guzzle.Log.Zf2LogAdapter.html">Zf2LogAdapter</a></li>
 			</ul>
@@ -219,7 +219,6 @@ implementations.</p>
 	<div>
 		<h4>Indirect known implementers</h4>
 			<a href="class-Guzzle.Log.ClosureLogAdapter.html">Guzzle\Log\ClosureLogAdapter</a>, 
-			<a href="class-Guzzle.Log.MonologLogAdapter.html">Guzzle\Log\MonologLogAdapter</a>, 
 			<a href="class-Guzzle.Log.PsrLogAdapter.html">Guzzle\Log\PsrLogAdapter</a>, 
 			<a href="class-Guzzle.Log.Zf2LogAdapter.html">Guzzle\Log\Zf2LogAdapter</a>
 	</div>
@@ -250,7 +249,7 @@ implementations.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_log">#</a>
-		<code>log( <span>string <var>$message</var></span>, <span>integer <var>$priority</var> = LOG_INFO</span>, <span>mixed <var>$extras</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code>log( <span>string <var>$message</var></span>, <span>integer <var>$priority</var> = LOG_INFO</span>, <span>array <var>$extras</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
@@ -271,7 +270,7 @@ implementations.</p>
 					<dt><var>$priority</var></dt>
 					<dd><code>integer</code><br>$priority Priority of message (use the \LOG_* constants of 0 - 7)</dd>
 					<dt><var>$extras</var></dt>
-					<dd><code>mixed</code><br>$extras Extra information to log in event</dd>
+					<dd><code>array</code><br>$extras Extra information to log in event</dd>
 				</dl></div>
 
 

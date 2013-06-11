@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+    <title>URI templates &mdash; Guzzle 3.0.0 documentation</title>
+  <link rel="stylesheet" type="text/css" href="../_static/bootstrap.min.css" />
+  <script type="text/javascript" src="../_static/jquery-1.9.1.min.js.html"></script>
+    
+    <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Guzzle 3.0.0 documentation" href="../index.html" />
+    <link rel="up" title="Guzzle Documentation" href="../docs.html" />
+    <link rel="next" title="FAQ" href="../getting-started/faq.html" />
+    <link rel="prev" title="Unit Testing Guzzle clients" href="../testing/unit-testing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../_static/bootstrap-responsive.min.css" />
+  
+   
+
+  </head>
+  <body>
+  <div class="navbar navbar-fixed-top ">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="../index.html">Guzzle</a>
+        <ul class="nav">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../docs.html">Docs</a></li>
+<li><a href="http://guzzlephp.org/api/index.html">API</a></li>
+<li><a href="https://github.com/guzzle/guzzle">GitHub</a></li>
+<li><a href="https://groups.google.com/forum/?hl=en#!forum/guzzle">Forum</a></li>
+<li><a href="https://packagist.org/packages/guzzle/guzzle">Packagist</a></li>
+<li><a href="irc:irc.freenode.com/#guzzlephp">IRC</a></li>
+        </ul>
+        <div class="pull-right" id="github-stars">
+          <iframe src="http://ghbtns.com/github-btn.html?user=guzzle&repo=guzzle&type=watch&count=true&size=small"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../getting-started/faq.html" title="FAQ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../testing/unit-testing.html" title="Unit Testing Guzzle clients"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" accesskey="U">Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container">
+        
+    <div class="top-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="../testing/unit-testing.html" title="previous chapter (use the left arrow)">&larr; Unit Testing Guzzle clients</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="../getting-started/faq.html" title="next chapter (use the right arrow)">FAQ &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="document clearer">
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><div class="hidden-phone">
+  <h3>Need help?</h3>
+  <p>Please post to our google group or #guzzlephp IRC channel on freenode if you need support or have a technical
+  question.</p>
+</div>
+<div class="hidden-phone">
+  <h3>Found an error?</h3>
+  <p>If you find an error in the documentation, please file a ticket or submit a pull request on
+  <a href="https://github.com/guzzle/guzzle">GitHub</a></p>
+</div>
+<div id="searchbox" style="display: none">
+    <h3>Quick search</h3>
+    <form class="form-search margin-top-1em" action="../search.html" method="get">
+        <input type="text" name="q" style="width: 105px" class="input-small search-query" />
+        <button type="submit" class="btn btn-small">Search</button>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+            <div class="body">
+              
+  <div class="section" id="uri-templates">
+<h1>URI templates<a class="headerlink" href="#uri-templates" title="Permalink to this headline">¶</a></h1>
+<p>The <tt class="docutils literal"><span class="pre">$uri</span></tt> passed to one of the client's request creational methods or the base URL of a client can utilize URI
+templates. Guzzle supports the entire <a class="reference external" href="http://tools.ietf.org/html/rfc6570">URI templates RFC</a>. URI templates add a
+special syntax to URIs that replace template place holders with user defined variables.</p>
+<p>Every request created by a Guzzle HTTP client passes through a URI template so that URI template expressions are
+automatically expanded:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Http\Client</span><span class="p">(</span><span class="s1">&#39;https://example.com/&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">));</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/{a}&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Because of URI template expansion, the URL of the above request will become <tt class="docutils literal"><span class="pre">https://example.com/hi</span></tt>. Notice that
+the template was expanded using configuration variables of the client. You can pass in custom URI template variables
+by passing the URI of your request as an array where the first index of the array is the URI template and the second
+index of the array are template variables that are merged into the client's configuration variables.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;/test{?a,b}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;there&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>The URL for this request will become <tt class="docutils literal"><span class="pre">https://test.com?a=hi&amp;b=there</span></tt>. URI templates aren't limited to just simple
+variable replacements;  URI templates can provide an enormous amount of flexibility when creating request URIs.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;http://example.com{+path}{/segments}{?query,data*}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;path&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;/foo/bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;segments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;query&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;data&#39;</span>     <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;more&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span>
+    <span class="p">)</span>
+<span class="p">)));</span>
+</pre></div>
+</div>
+<p>The resulting URL would become <tt class="docutils literal"><span class="pre">http://example.com/foo/bar/one/two?query=test&amp;more=value</span></tt>.</p>
+<p>By default, URI template expressions are enclosed in an opening and closing brace (e.g. <tt class="docutils literal"><span class="pre">{var}</span></tt>). If you are working
+with a web service that actually uses braces (e.g. Solr), then you can specify a custom regular expression to use to
+match URI template expressions.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getUriTemplate</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setRegex</span><span class="p">(</span><span class="s1">&#39;/\&lt;\$(.+)\&gt;/&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&lt;$a&gt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can learn about all of the different features of URI templates by reading the
+<a class="reference external" href="http://tools.ietf.org/html/rfc6570">URI templates RFC</a>.</p>
+</div>
+
+
+            </div>
+          <div class="clearfix"></div>
+        </div>
+        
+    <div class="footer-links">
+      <ul class="breadcrumb pull-right">
+        <li>
+          <a href="../testing/unit-testing.html" title="previous chapter (use the left arrow)">&larr; Unit Testing Guzzle clients</a>
+          <span class="divider">/</span>
+          
+        </li>
+          <li><a href="../getting-started/faq.html" title="next chapter (use the right arrow)">FAQ &rarr;</a></li>
+      </ul>
+    </div>
+  
+        <div class="container comment-container">
+          
+<div id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'guzzle';
+    var disqus_identifier = 'http-client/uri-templates';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+        </div>
+        
+
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../getting-started/faq.html" title="FAQ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../testing/unit-testing.html" title="Unit Testing Guzzle clients"
+             >previous</a> |</li>
+        <li><a href="../index.html">Guzzle</a> &raquo;</li>
+          <li><a href="../docs.html" >Guzzle Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+  <div class="footer container">
+    &copy; Copyright 2012, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22752917-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+  
+    
+      <script type="text/javascript">
+        $(document).keydown(function(e){
+          if (e.keyCode == 37) {
+            
+            window.location = '../testing/unit-testing.html';
+            return false;
+            
+          } else if (e.keyCode == 39) {
+            
+            window.location = '../getting-started/faq.html';
+            return false;
+            
+          }
+        });
+      </script>
+    
+  
+  </body>
+</html>

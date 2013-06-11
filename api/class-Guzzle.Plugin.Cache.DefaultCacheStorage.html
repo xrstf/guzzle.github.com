@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Plugin\Cache\DefaultCacheStorage | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?3595091149"></script>
+	<script type="text/javascript" src="elementlist.js?1873333801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -52,8 +52,11 @@
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
-				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Message.Header.html">Header</a>
 						</li>
+							</ul></li>
 				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
@@ -89,8 +92,6 @@
 				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
-						</li>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
@@ -144,9 +145,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">CachePlugin</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html">CallbackCacheKeyProvider</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html">CallbackCanCacheStrategy</a></li>
-				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheKeyProvider.html">DefaultCacheKeyProvider</a></li>
 				<li class="active"><a href="class-Guzzle.Plugin.Cache.DefaultCacheStorage.html">DefaultCacheStorage</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultCanCacheStrategy.html">DefaultCanCacheStrategy</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html">DefaultRevalidation</a></li>
@@ -156,7 +155,6 @@
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">CacheKeyProviderInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">CacheStorageInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.CanCacheStrategyInterface.html">CanCacheStrategyInterface</a></li>
 				<li><a href="class-Guzzle.Plugin.Cache.RevalidationInterface.html">RevalidationInterface</a></li>
@@ -251,7 +249,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span><code><a href="class-Guzzle.Cache.CacheAdapterInterface.html">Guzzle\Cache\CacheAdapterInterface</a></code> <var>$cache</var></span>, <span>integer <var>$defaultTtl</var> = <span class="php-num">0</span></span> )</code>
+		<code>__construct( <span>mixed <var>$cache</var></span>, <span>string <var>$keyPrefix</var> = <span class="php-quote">''</span></span>, <span>integer <var>$defaultTtl</var> = <span class="php-num">3600</span></span> )</code>
 
 		<div class="description short">
 			
@@ -264,7 +262,9 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$cache</var></dt>
-					<dd><code><code><a href="class-Guzzle.Cache.CacheAdapterInterface.html">Guzzle\Cache\CacheAdapterInterface</a></code></code><br>$cache Cache used to store cache data</dd>
+					<dd><code>mixed</code><br>$cache Cache used to store cache data</dd>
+					<dt><var>$keyPrefix</var></dt>
+					<dd><code>string</code><br>$keyPrefix Provide an optional key prefix to prefix on all cache keys</dd>
 					<dt><var>$defaultTtl</var></dt>
 					<dd><code>integer</code><br>$defaultTtl Default cache TTL</dd>
 				</dl></div>
@@ -287,7 +287,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_cache">#</a>
-		<code>cache( <span>string <var>$key</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>integer <var>$ttl</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code>cache( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -303,12 +303,10 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key Cache key</dd>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request being cached</dd>
 					<dt><var>$response</var></dt>
 					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response to cache</dd>
-					<dt><var>$ttl</var></dt>
-					<dd><code>integer</code><br>$ttl Amount of time to cache the response</dd>
 				</dl></div>
 
 
@@ -331,24 +329,24 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code>delete( <span>string <var>$key</var></span> )</code>
+		<code>delete( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Delete an item from the cache</p>
+<p>Deletes cache entries that match a request</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Delete an item from the cache</p>
+<p>Deletes cache entries that match a request</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key Cache key</dd>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to delete from cache</dd>
 				</dl></div>
 
 
@@ -357,6 +355,46 @@
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html#_delete">Guzzle\Plugin\Cache\CacheStorageInterface::delete()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="purge" id="_purge">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_purge">#</a>
+		<code>purge( <span>string <var>$url</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Purge all cache entries for a given URL</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Purge all cache entries for a given URL</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$url</var></dt>
+					<dd><code>string</code><br>$url</dd>
+				</dl></div>
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html#_purge">Guzzle\Plugin\Cache\CacheStorageInterface::purge()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -371,24 +409,24 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fetch">#</a>
-		<code>fetch( <span>string <var>$key</var></span> )</code>
+		<code>fetch( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Get a Response from the cache</p>
+<p>Get a Response from the cache for a request</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get a Response from the cache</p>
+<p>Get a Response from the cache for a request</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br>$key Cache key</dd>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -401,6 +439,92 @@
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html#_fetch">Guzzle\Plugin\Cache\CacheStorageInterface::fetch()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCacheKey" id="_getCacheKey">
+
+		<td class="attributes"><code>
+			 protected 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCacheKey">#</a>
+		<code>getCacheKey( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Hash a request URL into a string that returns cache metadata</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Hash a request URL into a string that returns cache metadata</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getBodyKey" id="_getBodyKey">
+
+		<td class="attributes"><code>
+			 protected 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getBodyKey">#</a>
+		<code>getBodyKey( <span>string <var>$url</var></span>, <span><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a cache key for a response's body</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a cache key for a response's body</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$url</var></dt>
+					<dd><code>string</code><br>$url URL of the entry</dd>
+					<dt><var>$body</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Response body</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
 		</div>
 		</div></td>
 	</tr>
@@ -419,6 +543,28 @@
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
+	<tr data-order="keyPrefix" id="$keyPrefix">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+<var>$keyPrefix</var>		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$keyPrefix" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="cache" id="$cache">
 		<td class="attributes"><code>
 			protected  
@@ -466,35 +612,6 @@
 			<div class="description detailed hidden">
 				
 <p>Default cache TTL</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="excludeResponseHeaders" id="$excludeResponseHeaders">
-		<td class="attributes"><code>
-			protected  
-			array
-		</code></td>
-
-		<td class="name">
-<var>$excludeResponseHeaders</var>		</td>
-		<td class="value"><code><span class="php-keyword1">array</span>(
-    <span class="php-quote">'Connection'</span>, <span class="php-quote">'Keep-Alive'</span>, <span class="php-quote">'Proxy-Authenticate'</span>, <span class="php-quote">'Proxy-Authorization'</span>,
-    <span class="php-quote">'TE'</span>, <span class="php-quote">'Trailers'</span>, <span class="php-quote">'Transfer-Encoding'</span>, <span class="php-quote">'Upgrade'</span>, <span class="php-quote">'Set-Cookie'</span>, <span class="php-quote">'Set-Cookie2'</span>
-)</code></td>
-		<td class="description"><div>
-			<a href="#$excludeResponseHeaders" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Headers are excluded from the caching (see RFC 2616:13.5.1)</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Headers are excluded from the caching (see RFC 2616:13.5.1)</p>
 
 
 			</div>
