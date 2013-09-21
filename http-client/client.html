@@ -378,9 +378,9 @@ options can control various aspects of a request including: headers to send, que
 should be downloaded, proxies, auth, etc.</p>
 <div class="section" id="headers">
 <h3>headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h3>
-<p>Associative array of headers to apply to the request. When specified in the <tt class="docutils literal"><span class="pre">$options`</span> <span class="pre">argument</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">client</span> <span class="pre">creational</span>
-<span class="pre">method</span> <span class="pre">(e.g.</span> <span class="pre">``get()</span></tt>, <tt class="docutils literal"><span class="pre">post()</span></tt>, etc), the headers in the <tt class="docutils literal"><span class="pre">$options</span></tt> array will overwrite headers specified in the
-<cite>$headers</cite> array.</p>
+<p>Associative array of headers to apply to the request. When specified in the <tt class="docutils literal"><span class="pre">$options</span></tt> argument of a client creational
+method (e.g. <tt class="docutils literal"><span class="pre">get()</span></tt>, <tt class="docutils literal"><span class="pre">post()</span></tt>, etc), the headers in the <tt class="docutils literal"><span class="pre">$options</span></tt> array will overwrite headers specified in the
+<tt class="docutils literal"><span class="pre">$headers</span></tt> array.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bar&#39;</span><span class="p">)</span>
 <span class="p">));</span>
@@ -429,14 +429,14 @@ client.</p>
 </div>
 <div class="section" id="body">
 <h3>body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h3>
-<p>Sets the body of a request. The value supplied to the body option can be a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntitBodyInterface</span></tt>, string,
+<p>Sets the body of a request. The value supplied to the body option can be a <tt class="docutils literal"><span class="pre">Guzzle\Http\EntityBodyInterface</span></tt>, string,
 fopen resource, or array when sending POST requests. When a <tt class="docutils literal"><span class="pre">body</span></tt> request option is supplied, the option value will
 ovewrite the <tt class="docutils literal"><span class="pre">$body</span></tt> argument of a client creational method.</p>
 </div>
 <div class="section" id="auth">
 <h3>auth<a class="headerlink" href="#auth" title="Permalink to this headline">¶</a></h3>
 <p>Specifies and array of HTTP authorization parameters parameters to use with the request. The array must contain the
-username in index [0], the password in index [2], and can optionally contain the authentication type in index [3].
+username in index [0], the password in index [1], and can optionally contain the authentication type in index [2].
 The available authentication types are: &quot;Basic&quot; (default), &quot;Digest&quot;, &quot;NTLM&quot;, or &quot;Any&quot;.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;auth&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;Digest&#39;</span><span class="p">)</span>

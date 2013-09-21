@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Plugin\Oauth\OauthPlugin | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1873333801"></script>
+	<script type="text/javascript" src="elementlist.js?3771557029"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -436,6 +436,50 @@ string to sign and a signing key</dd>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getOauthParams" id="_getOauthParams">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getOauthParams">#</a>
+		<code>getOauthParams( <span>mixed <var>$timestamp</var></span>, <span>mixed <var>$nonce</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get the oauth parameters as named by the oauth spec</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the oauth parameters as named by the oauth spec</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$timestamp</var></dt>
+					<dd><code>mixed</code><br>$timestamp</dd>
+					<dt><var>$nonce</var></dt>
+					<dd><code>mixed</code><br>$nonce</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getParamsToSign" id="_getParamsToSign">
 
 		<td class="attributes"><code>
@@ -451,13 +495,31 @@ string to sign and a signing key</dd>
 
 		<div class="description short">
 			
-<p>Parameters sorted and filtered in order to properly sign a request</p>
+<p>Get all of the parameters required to sign a request including:</p>
+
+<ul>
+	<li>The oauth params</li>
+
+	<li>The request GET params</li>
+
+	<li>The params passed in the POST body (with a content-type of
+	application/x-www-form-urlencoded)</li>
+</ul>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Parameters sorted and filtered in order to properly sign a request</p>
+<p>Get all of the parameters required to sign a request including:</p>
+
+<ul>
+	<li>The oauth params</li>
+
+	<li>The request GET params</li>
+
+	<li>The params passed in the POST body (with a content-type of
+	application/x-www-form-urlencoded)</li>
+</ul>
 
 
 

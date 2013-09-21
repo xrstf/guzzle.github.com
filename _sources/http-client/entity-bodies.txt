@@ -116,7 +116,7 @@ be useful for breaking a large file into smaller pieces to be sent in chunks (e.
     use Guzzle\Http\ReadLimitEntityBody;
 
     $original = EntityBody::factory(fopen('/tmp/test.txt', 'r+'));
-    echo $body->getSize();
+    echo $original->getSize();
     // >>> 1048576
 
     // Limit the size of the body to 1024 bytes and start reading from byte 2048

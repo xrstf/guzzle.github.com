@@ -48,7 +48,7 @@ variations of HTTP response headers.
     $response->getEtag();
     // etc... There are methods for every known response header
 
-You can interact withe Response headers using the same exact methods used to interact with Request headers. See
+You can interact with the Response headers using the same exact methods used to interact with Request headers. See
 :ref:`http-message-headers` for more information.
 
 .. code-block:: php
@@ -67,7 +67,7 @@ be cast to a string, or you can pass ``true`` to this method to retrieve the bod
 
     $request = $client->get('http://www.amazon.com');
     $response = $request->send();
-    echo $request->getBody();
+    echo $response->getBody();
 
 See :doc:`/http-client/entity-bodies` for more information on entity bodies.
 

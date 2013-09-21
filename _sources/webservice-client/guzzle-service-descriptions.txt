@@ -91,7 +91,7 @@ endpoint and HTTP method. If an API has a ``DELETE /users/:id`` operation, a sat
                     "summary": "string",
                     "class": "string",
                     "responseClass": "string",
-                    "responseNotes": {
+                    "responseNotes": "string",
                     "type": "string",
                     "description": "string",
                     "responseType": "primitive|class|(model by name)|documentation|(string)",

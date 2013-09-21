@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Http\Message\RequestFactoryInterface | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1873333801"></script>
+	<script type="text/javascript" src="elementlist.js?3771557029"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -431,9 +431,14 @@ timeout of the request in seconds "connect_timeout": Float describing the number
 of seconds to wait while trying to connect. Use 0 to wait indefinitely.
 "verify": Set to true to enable SSL cert validation (the default), false to
 disable, or supply the path to a CA bundle to enable verification using a custom
-certificate. "proxy": Specify an HTTP proxy (e.g.
-"http://username:password@192.168.16.1:10") "debug": Set to true to display all
-data sent over the wire</dd>
+certificate. "cert": Set to a string to specify the path to a file containing a
+PEM formatted certificate. If a password is required, then set an array
+containing the path to the PEM file followed by the the password required for
+the certificate. "ssl_key": Specify the path to a file containing a private SSL
+key in PEM format. If a password is required, then set an array containing the
+path to the SSL key followed by the password required for the certificate.
+"proxy": Specify an HTTP proxy (e.g. "http://username:password@192.168.16.1:10")
+"debug": Set to true to display all data sent over the wire</dd>
 					<dt><var>$flags</var></dt>
 					<dd><code>integer</code><br>$flags Bitwise flags to apply when applying the options to the request. Defaults
 to no special options. <code>1</code> (OPTIONS_AS_DEFAULTS): When specified,

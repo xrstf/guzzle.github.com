@@ -135,7 +135,7 @@ You can alternatively build up the contents of a POST request.
 .. code-block:: php
 
     $request = $client->post('http://httpbin.org/post')
-        ->addPostField('custom_field', 'my custom value')
+        ->setPostField('custom_field', 'my custom value')
         ->addPostFile('file', '/path/to/file.xml');
 
     $response = $request->send();
@@ -193,7 +193,7 @@ PATCH requests
 
 .. code-block:: php
 
-    $request = $client->put('http://httpbin.org', array(), 'this is the body');
+    $request = $client->patch('http://httpbin.org', array(), 'this is the body');
     $response = $request->send();
 
 OPTIONS requests

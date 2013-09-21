@@ -18,5 +18,5 @@ The ``Guzzle\Plugin\Backoff\BackoffPlugin`` automatically retries failed HTTP re
 
 The BackoffPlugin's constructor accepts a ``Guzzle\Plugin\Backoff\BackoffStrategyInterface`` object that is used to
 determine when a retry should be issued and how long to delay between retries. The above code example shows how to
-attach a BackoffPlugn to a client that is pre-configured to retry failed 500 and 503 responses using truncated
+attach a BackoffPlugin to a client that is pre-configured to retry failed 500 and 503 responses using truncated
 exponential backoff (emulating the behavior of Guzzle 2's ExponentialBackoffPlugin).

@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Guzzle\Iterator\ChunkedIterator | Guzzle</title>
+	<title>Class Guzzle\Service\Command\CreateResponseClassEvent | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
 	<script type="text/javascript" src="elementlist.js?3771557029"></script>
@@ -62,7 +62,7 @@
 							</ul></li>
 				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
 						</li>
-				<li class="active"><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
 						</li>
 				<li><a href="namespace-Guzzle.Log.html">Log</a>
 						</li>
@@ -108,11 +108,11 @@
 				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+				<li class="active"><a href="namespace-Guzzle.Service.html">Service<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
 						</li>
-				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+				<li class="active"><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
 						<ul>
 				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
 						</li>
@@ -144,13 +144,22 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Iterator.AppendIterator.html">AppendIterator</a></li>
-				<li class="active"><a href="class-Guzzle.Iterator.ChunkedIterator.html">ChunkedIterator</a></li>
-				<li><a href="class-Guzzle.Iterator.FilterIterator.html">FilterIterator</a></li>
-				<li><a href="class-Guzzle.Iterator.MapIterator.html">MapIterator</a></li>
-				<li><a href="class-Guzzle.Iterator.MethodProxyIterator.html">MethodProxyIterator</a></li>
+				<li><a href="class-Guzzle.Service.Command.AbstractCommand.html">AbstractCommand</a></li>
+				<li><a href="class-Guzzle.Service.Command.ClosureCommand.html">ClosureCommand</a></li>
+				<li class="active"><a href="class-Guzzle.Service.Command.CreateResponseClassEvent.html">CreateResponseClassEvent</a></li>
+				<li><a href="class-Guzzle.Service.Command.DefaultRequestSerializer.html">DefaultRequestSerializer</a></li>
+				<li><a href="class-Guzzle.Service.Command.DefaultResponseParser.html">DefaultResponseParser</a></li>
+				<li><a href="class-Guzzle.Service.Command.OperationCommand.html">OperationCommand</a></li>
+				<li><a href="class-Guzzle.Service.Command.OperationResponseParser.html">OperationResponseParser</a></li>
 			</ul>
 
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Command.CommandInterface.html">CommandInterface</a></li>
+				<li><a href="class-Guzzle.Service.Command.RequestSerializerInterface.html">RequestSerializerInterface</a></li>
+				<li><a href="class-Guzzle.Service.Command.ResponseClassInterface.html">ResponseClassInterface</a></li>
+				<li><a href="class-Guzzle.Service.Command.ResponseParserInterface.html">ResponseParserInterface</a></li>
+			</ul>
 
 
 
@@ -176,7 +185,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-Guzzle.Iterator.html" title="Summary of Guzzle\Iterator"><span>Namespace</span></a>
+				<a href="namespace-Guzzle.Service.Command.html" title="Summary of Guzzle\Service\Command"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -191,31 +200,37 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class ChunkedIterator</h1>
+	<h1>Class CreateResponseClassEvent</h1>
 
 
 	<div class="description">
 	
-<p>Pulls out chunks from an inner iterator and yields the chunks as arrays</p>
+<p>Event class emitted with the operation.parse_class event</p>
 
 	</div>
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-			<a href="class-IteratorIterator.html"><span>IteratorIterator</span></a>
-			
-			 implements 
-				<a href="class-Iterator.html"><span>Iterator</span></a>, 
-			
-				<a href="class-Traversable.html"><span>Traversable</span></a>, 
-			
-				<a href="class-OuterIterator.html"><span>OuterIterator</span></a>
+Symfony\Component\EventDispatcher\Event
 			
 			
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Guzzle\Iterator\ChunkedIterator</span></b>			
+			<a href="class-Guzzle.Common.Event.html"><span>Guzzle\Common\Event</span></a>
+			
+			 implements 
+				<a href="class-Guzzle.Common.ToArrayInterface.html"><span>Guzzle\Common\ToArrayInterface</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Guzzle\Service\Command\CreateResponseClassEvent</span></b>			
 			
 			
 		</dd>
@@ -231,17 +246,17 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Iterator.html">Iterator</a><br />
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Service.html">Service</a>\<a href="namespace-Guzzle.Service.Command.html">Command</a><br />
 		
 
-		<b>Located at</b> Guzzle/Iterator/ChunkedIterator.php<br />
+		<b>Located at</b> Guzzle/Service/Command/CreateResponseClassEvent.php<br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
+	<tr data-order="setResult" id="_setResult">
 
 		<td class="attributes"><code>
 			 public 
@@ -251,158 +266,67 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span><code><a href="class-Traversable.html">Traversable</a></code> <var>$iterator</var></span>, <span>integer <var>$chunkSize</var></span> )</code>
+		<a class="anchor" href="#_setResult">#</a>
+		<code>setResult( <span>mixed <var>$result</var></span> )</code>
 
 		<div class="description short">
 			
+<p>Set the result of the object creation</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Set the result of the object creation</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$iterator</var></dt>
-					<dd><code><code><a href="class-Traversable.html">Traversable</a></code></code><br>$iterator Traversable iterator</dd>
-					<dt><var>$chunkSize</var></dt>
-					<dd><code>integer</code><br>$chunkSize Size to make each chunk</dd>
+					<dt><var>$result</var></dt>
+					<dd><code>mixed</code><br>$result Result value to set</dd>
 				</dl></div>
 
 
-				<h4>Throws</h4>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getResult" id="_getResult">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getResult">#</a>
+		<code>getResult( )</code>
+
+		<div class="description short">
+			
+<p>Get the created object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the created object</p>
+
+
+
+
+				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code></code><br />
+					<code>mixed</code><br />
 				</div>
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-IteratorIterator.html#___construct">IteratorIterator::__construct()</a></code></div>
 
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="rewind" id="_rewind">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_rewind">#</a>
-		<code>rewind( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-IteratorIterator.html#_rewind">IteratorIterator::rewind()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="next" id="_next">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_next">#</a>
-		<code>next( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-IteratorIterator.html#_next">IteratorIterator::next()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="current" id="_current">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_current">#</a>
-		<code>current( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-IteratorIterator.html#_current">IteratorIterator::current()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="valid" id="_valid">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_valid">#</a>
-		<code>valid( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-IteratorIterator.html#_valid">IteratorIterator::valid()</a></code></div>
 
 		</div>
 		</div></td>
@@ -410,11 +334,16 @@
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-IteratorIterator.html#methods">IteratorIterator</a></caption>
+	<caption>Methods inherited from <a href="class-Guzzle.Common.Event.html#methods">Guzzle\Common\Event</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-IteratorIterator.html#_getInnerIterator">getInnerIterator()</a>, 
-			<a href="class-IteratorIterator.html#_key">key()</a>
+			<a href="class-Guzzle.Common.Event.html#___construct">__construct()</a>, 
+			<a href="class-Guzzle.Common.Event.html#_getIterator">getIterator()</a>, 
+			<a href="class-Guzzle.Common.Event.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-Guzzle.Common.Event.html#_offsetGet">offsetGet()</a>, 
+			<a href="class-Guzzle.Common.Event.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-Guzzle.Common.Event.html#_offsetUnset">offsetUnset()</a>, 
+			<a href="class-Guzzle.Common.Event.html#_toArray">toArray()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -429,61 +358,6 @@
 
 
 
-	<table class="summary" id="properties">
-	<caption>Properties summary</caption>
-	<tr data-order="chunkSize" id="$chunkSize">
-		<td class="attributes"><code>
-			protected  
-			integer
-		</code></td>
-
-		<td class="name">
-<var>$chunkSize</var>		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$chunkSize" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Size of each chunk</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Size of each chunk</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="chunk" id="$chunk">
-		<td class="attributes"><code>
-			protected  
-			array
-		</code></td>
-
-		<td class="name">
-<var>$chunk</var>		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$chunk" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Current chunk</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Current chunk</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	</table>
 
 
 

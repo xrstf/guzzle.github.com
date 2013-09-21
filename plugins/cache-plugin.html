@@ -143,14 +143,19 @@ provides a private transparent proxy cache that caches HTTP responses. The cachi
 <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">RFC 2616</a>, uses HTTP headers to control caching behavior,
 cache lifetime, and supports ETag and Last-Modified based revalidation:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">use</span> <span class="nx">Guzzle\Http\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Doctrine\Common\Cache\ArrayCache</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Guzzle\Common\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\Common\Cache\FilesystemCache</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Cache\DoctrineCacheAdapter</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\CachePlugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Guzzle\Plugin\Cache\DefaultCacheStorage</span><span class="p">;</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="s1">&#39;http://www.test.com/&#39;</span><span class="p">);</span>
 
 <span class="nv">$cachePlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CachePlugin</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;adapter&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArrayCache</span><span class="p">())</span>
+    <span class="s1">&#39;storage&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DefaultCacheStorage</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">DoctrineCacheAdapter</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">FilesystemCache</span><span class="p">(</span><span class="s1">&#39;/path/to/cache/files&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 <span class="p">));</span>
 
 <span class="c1">// Add the cache plugin to the client object</span>

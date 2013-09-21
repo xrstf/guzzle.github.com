@@ -505,13 +505,13 @@ Default command parameters
 --------------------------
 
 When creating a client object, you can specify default command parameters to pass into all commands. Any key value pair
-present in the ``command.options`` settings of a client will be added as default parameters to any command created
+present in the ``command.params`` settings of a client will be added as default parameters to any command created
 by the client.
 
 .. code-block:: php
 
     $client = new Guzzle\Service\Client(array(
-        'command.options' => array(
+        'command.params' => array(
             'default_1' => 'foo',
             'another'   => 'bar'
         )

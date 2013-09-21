@@ -18,7 +18,7 @@ How can I speed up my client?
 
 There are several things you can do to speed up your client:
 
-1. Utilize a C based HTTP message parser (e.g. ``Guzzle\Http\Parser\Message\PeclHttpMessageParser``)
+1. Utilize a C based HTTP message parser (e.g. ``Guzzle\Parser\Message\PeclHttpMessageParser``)
 2. Disable operation validation by setting the ``command.disable_validation`` option to true on a command
 
 Why am I getting a 417 error response?

@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\Response | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1873333801"></script>
+	<script type="text/javascript" src="elementlist.js?3771557029"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -2609,13 +2609,17 @@ that no freshness information is available.</p>
 
 		<div class="description short">
 			
-<p>Parse the XML response body and return a SimpleXMLElement</p>
+<p>Parse the XML response body and return a \SimpleXMLElement.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Parse the XML response body and return a SimpleXMLElement</p>
+<p>Parse the XML response body and return a \SimpleXMLElement.</p>
+
+<p>In order to prevent XXE attacks, this method disables loading external
+entities. If you rely on external entities, then you must parse the XML response
+manually by accessing the response body directly.</p>
 
 
 
@@ -2630,6 +2634,10 @@ that no freshness information is available.</p>
 					<code><code><a href="class-Guzzle.Common.Exception.RuntimeException.html">Guzzle\Common\Exception\RuntimeException</a></code></code><br>if the response body is not in XML format<br />
 				</div>
 
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://websec.io/2012/08/27/Preventing-XXE-in-PHP.html">http://websec.io/2012/08/27/Preventing-XXE-in-PHP.html</a><br />
+				</div>
 
 
 		</div>

@@ -169,7 +169,7 @@ variations of HTTP response headers.</p>
 <span class="c1">// etc... There are methods for every known response header</span>
 </pre></div>
 </div>
-<p>You can interact withe Response headers using the same exact methods used to interact with Request headers. See
+<p>You can interact with the Response headers using the same exact methods used to interact with Request headers. See
 <a class="reference internal" href="request.html#http-message-headers"><em>HTTP Message Headers</em></a> for more information.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">);</span>
@@ -183,7 +183,7 @@ variations of HTTP response headers.</p>
 be cast to a string, or you can pass <tt class="docutils literal"><span class="pre">true</span></tt> to this method to retrieve the body as a string.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;http://www.amazon.com&#39;</span><span class="p">);</span>
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="entity-bodies.html"><em>Request and response bodies</em></a> for more information on entity bodies.</p>

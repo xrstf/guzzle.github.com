@@ -10,14 +10,19 @@ cache lifetime, and supports ETag and Last-Modified based revalidation:
 .. code-block:: php
 
     use Guzzle\Http\Client;
-    use Doctrine\Common\Cache\ArrayCache;
-    use Guzzle\Common\Cache\DoctrineCacheAdapter;
+    use Doctrine\Common\Cache\FilesystemCache;
+    use Guzzle\Cache\DoctrineCacheAdapter;
     use Guzzle\Plugin\Cache\CachePlugin;
+    use Guzzle\Plugin\Cache\DefaultCacheStorage;
 
     $client = new Client('http://www.test.com/');
 
     $cachePlugin = new CachePlugin(array(
-        'adapter' => new DoctrineCacheAdapter(new ArrayCache())
+        'storage' => new DefaultCacheStorage(
+            new DoctrineCacheAdapter(
+                new FilesystemCache('/path/to/cache/files')
+            )
+        )
     ));
 
     // Add the cache plugin to the client object

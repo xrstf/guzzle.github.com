@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Service\Command\OperationResponseParser | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1873333801"></script>
+	<script type="text/javascript" src="elementlist.js?3771557029"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -146,6 +146,7 @@
 			<ul>
 				<li><a href="class-Guzzle.Service.Command.AbstractCommand.html">AbstractCommand</a></li>
 				<li><a href="class-Guzzle.Service.Command.ClosureCommand.html">ClosureCommand</a></li>
+				<li><a href="class-Guzzle.Service.Command.CreateResponseClassEvent.html">CreateResponseClassEvent</a></li>
 				<li><a href="class-Guzzle.Service.Command.DefaultRequestSerializer.html">DefaultRequestSerializer</a></li>
 				<li><a href="class-Guzzle.Service.Command.DefaultResponseParser.html">DefaultResponseParser</a></li>
 				<li><a href="class-Guzzle.Service.Command.OperationCommand.html">OperationCommand</a></li>
@@ -295,7 +296,7 @@ based on models in a service description</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code>__construct( <span><code><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html">Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</a></code> <var>$factory</var></span> )</code>
+		<code>__construct( <span><code><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html">Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</a></code> <var>$factory</var></span>, <span>boolean <var>$schemaInModels</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -309,6 +310,8 @@ based on models in a service description</p>
 				<div class="list"><dl>
 					<dt><var>$factory</var></dt>
 					<dd><code><code><a href="class-Guzzle.Service.Command.LocationVisitor.VisitorFlyweight.html">Guzzle\Service\Command\LocationVisitor\VisitorFlyweight</a></code></code><br>$factory Factory to use when creating visitors</dd>
+					<dt><var>$schemaInModels</var></dt>
+					<dd><code>boolean</code><br>$schemaInModels Set to true to inject schemas into models</dd>
 				</dl></div>
 
 
@@ -393,6 +396,52 @@ based on models in a service description</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="parseClass" id="_parseClass">
+
+		<td class="attributes"><code>
+			 protected 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parseClass">#</a>
+		<code>parseClass( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Parse a class object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse a class object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Command to parse into an object</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Exception.ResponseClassException.html">Guzzle\Service\Exception\ResponseClassException</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="visitResult" id="_visitResult">
 
 		<td class="attributes"><code>
@@ -432,6 +481,35 @@ based on models in a service description</p>
 				<div class="list">
 					<code>array</code><br>Returns the array of result data<br />
 				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="visitAdditionalProperties" id="_visitAdditionalProperties">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_visitAdditionalProperties">#</a>
+		<code>visitAdditionalProperties( <span><code><a href="class-Guzzle.Service.Description.Parameter.html">Guzzle\Service\Description\Parameter</a></code> <var>$model</var></span>, <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span><code><a href="class-Guzzle.Service.Description.Parameter.html">Guzzle\Service\Description\Parameter</a></code> <var>$additional</var></span>, <span>mixed <var>&amp; $result</var></span>, <span>array <var>&amp; $foundVisitors</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
 
 
 

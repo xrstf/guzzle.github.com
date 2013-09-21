@@ -627,10 +627,10 @@ of a request that will be serialized by the command</td>
 <div class="section" id="default-command-parameters">
 <h3>Default command parameters<a class="headerlink" href="#default-command-parameters" title="Permalink to this headline">¶</a></h3>
 <p>When creating a client object, you can specify default command parameters to pass into all commands. Any key value pair
-present in the <tt class="docutils literal"><span class="pre">command.options</span></tt> settings of a client will be added as default parameters to any command created
+present in the <tt class="docutils literal"><span class="pre">command.params</span></tt> settings of a client will be added as default parameters to any command created
 by the client.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle\Service\Client</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;command.options&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;command.params&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;default_1&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
         <span class="s1">&#39;another&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span>
     <span class="p">)</span>

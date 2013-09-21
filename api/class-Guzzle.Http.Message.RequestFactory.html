@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\RequestFactory | Guzzle</title>
 
 	<script type="text/javascript" src="resources/combined.js?2230489249"></script>
-	<script type="text/javascript" src="elementlist.js?1873333801"></script>
+	<script type="text/javascript" src="elementlist.js?3771557029"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -553,9 +553,14 @@ timeout of the request in seconds "connect_timeout": Float describing the number
 of seconds to wait while trying to connect. Use 0 to wait indefinitely.
 "verify": Set to true to enable SSL cert validation (the default), false to
 disable, or supply the path to a CA bundle to enable verification using a custom
-certificate. "proxy": Specify an HTTP proxy (e.g.
-"http://username:password@192.168.16.1:10") "debug": Set to true to display all
-data sent over the wire</dd>
+certificate. "cert": Set to a string to specify the path to a file containing a
+PEM formatted certificate. If a password is required, then set an array
+containing the path to the PEM file followed by the the password required for
+the certificate. "ssl_key": Specify the path to a file containing a private SSL
+key in PEM format. If a password is required, then set an array containing the
+path to the SSL key followed by the password required for the certificate.
+"proxy": Specify an HTTP proxy (e.g. "http://username:password@192.168.16.1:10")
+"debug": Set to true to display all data sent over the wire</dd>
 					<dt><var>$flags</var></dt>
 					<dd><code>integer</code><br>$flags Bitwise flags to apply when applying the options to the request. Defaults
 to no special options. <code>1</code> (OPTIONS_AS_DEFAULTS): When specified,
@@ -1020,6 +1025,64 @@ may be added in the future.</dd>
 		<td class="name"><div>
 		<a class="anchor" href="#_visit_proxy">#</a>
 		<code>visit_proxy( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>mixed <var>$value</var></span>, <span>mixed <var>$flags</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="visit_cert" id="_visit_cert">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_visit_cert">#</a>
+		<code>visit_cert( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>mixed <var>$value</var></span>, <span>mixed <var>$flags</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="visit_ssl_key" id="_visit_ssl_key">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_visit_ssl_key">#</a>
+		<code>visit_ssl_key( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>mixed <var>$value</var></span>, <span>mixed <var>$flags</var></span> )</code>
 
 		<div class="description short">
 			
